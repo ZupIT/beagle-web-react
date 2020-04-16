@@ -40,3 +40,8 @@ export interface BeagleContext<T = any> {
 export interface BeagleComponent<T = any> {
   beagleContext: BeagleContext<T>,
 }
+
+export interface DataContext {
+  id: string,
+  value?: any,
+}

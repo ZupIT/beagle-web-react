@@ -6,7 +6,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 */
 
-import React, { Fragment, FC, createElement } from 'react'
+import { Fragment, FC, createElement } from 'react'
 import { map } from 'lodash'
 import { BeagleUIElement, BeagleContext } from '@zup-it/beagle-web'
 import { BeagleConfig } from './types'
@@ -16,7 +16,7 @@ const createReactComponentTree = <Schema>(
   ui: BeagleUIElement<Schema>,
   viewId: string,
 ): JSX.Element => {
-  const { _beagleType_, children, id, ...props } = ui
+  const { _beagleType_, children, id, _context_, ...props } = ui
   const Component = components[_beagleType_]
 
   if (!Component) {

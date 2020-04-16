@@ -22,6 +22,8 @@ import {
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
 import { BeagleError } from '@zup-it/beagle-web/dist/errors'
+import createEventHandler, { EventHandler } from './actions'
+import { replaceBindings } from './bindings'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'
 
@@ -33,12 +35,21 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(loadParams.id)
+  let eventHandler: EventHandler | null = null
   
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {
-    setUiTree(beagleUITree)
+    const uiTreeWithValues = replaceBindings(beagleUITree)
+  
+    if (!eventHandler)
+      throw new Error(
+        'Couldn\'t find an Event Handler! This is probably a bug within the Beagle library, please report'
+      )
+  
+    const uiTreeWithActions = eventHandler.interpretEventsInTree(uiTreeWithValues)
+    setUiTree(uiTreeWithActions)
   }
 
   const handleError = (errorListener: BeagleError[]) => {
@@ -54,6 +65,8 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
 
     return view
   }, [])
+
+  eventHandler = useMemo(() => createEventHandler({}, beagleView), [beagleView])
 
   useEffect(() => {
     beagleView.updateWithFetch(loadParams)

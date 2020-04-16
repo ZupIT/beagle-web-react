@@ -1,0 +1,27 @@
+/*
+ * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+import { findById } from '@zup-it/beagle-web/dist/utils/tree-reading'
+import { clone } from '@zup-it/beagle-web/dist/utils/tree-manipulation'
+import { ActionHandler, SetAttributeAction } from './types'
+
+const setAttribute: ActionHandler<SetAttributeAction> = ({ action, beagleView }) => {
+  const { attributeName, attributeValue, componentId } = action
+  const uiTree = beagleView.getTree()
+  const component = findById(uiTree, componentId)
+
+  if (!component) {
+    console.warn(`No component with id ${componentId} has been found in the tree`)
+    return
+  }
+
+  component[attributeName] = attributeValue
+  beagleView.updateWithTree({ sourceTree: uiTree })
+}
+
+export default setAttribute
