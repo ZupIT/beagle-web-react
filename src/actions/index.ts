@@ -21,7 +21,7 @@ const defaultHandlers: Record<string, ActionHandler> = {
 }
 
 function createEventHandler(
-  customActionHandlers: Record<string, ActionHandler>,
+  customActionHandlers: Record<string, ActionHandler> = {},
   beagleView: BeagleView,
 ) {
   Object.keys(customActionHandlers).forEach((actionType) => {

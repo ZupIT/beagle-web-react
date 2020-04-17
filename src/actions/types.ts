@@ -18,6 +18,7 @@ export interface XHRAction {
   data?: any,
   onSuccess?: BeagleAction,
   onError?: BeagleAction,
+  onFinish?: BeagleAction,
 }
 
 export interface SetAttributeAction {

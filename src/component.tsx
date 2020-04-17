@@ -66,7 +66,10 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     return view
   }, [])
 
-  eventHandler = useMemo(() => createEventHandler({}, beagleView), [beagleView])
+  eventHandler = useMemo(
+    () => createEventHandler(beagleService.getConfig().customActions, beagleView),
+    [beagleView],
+  )
 
   useEffect(() => {
     beagleView.updateWithFetch(loadParams)

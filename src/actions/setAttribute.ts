@@ -7,7 +7,6 @@
 */
 
 import { findById } from '@zup-it/beagle-web/dist/utils/tree-reading'
-import { clone } from '@zup-it/beagle-web/dist/utils/tree-manipulation'
 import { ActionHandler, SetAttributeAction } from './types'
 
 const setAttribute: ActionHandler<SetAttributeAction> = ({ action, beagleView }) => {

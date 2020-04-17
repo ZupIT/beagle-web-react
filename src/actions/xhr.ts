@@ -20,7 +20,7 @@ const xhr: ActionHandler<XHRAction> = async ({
   eventContextHierarchy,
   ...otherParameters
 }) => {
-  const { url, method, data, onSuccess, onError } = action
+  const { url, method, data, onSuccess, onError, onFinish } = action
 
   function handleSuccess(parsedResponse: ParsedResponse) {
     if (!onSuccess) return
@@ -44,9 +44,22 @@ const xhr: ActionHandler<XHRAction> = async ({
     })
   }
 
+  function handleFinish() {
+    if (!onFinish) return
+
+    handleAction({
+      action: onFinish,
+      eventContextHierarchy,
+      handleAction,
+      ...otherParameters,
+    })
+  }
+
   try {
     const response = await fetch(url, { method, body: JSON.stringify(data) })
-    const resultData = await response.json()
+    if (response.status >= 400) throw response
+    const resultText = await response.text()
+    const resultData = resultText && await response.json()
     handleSuccess({
       data: resultData,
       status: response.status,
@@ -54,6 +67,8 @@ const xhr: ActionHandler<XHRAction> = async ({
     })
   } catch (error) {
     handleError(error)
+  } finally {
+    handleFinish()
   }
 }
 
