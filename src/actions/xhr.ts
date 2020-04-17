@@ -59,13 +59,14 @@ const xhr: ActionHandler<XHRAction> = async ({
     const response = await fetch(url, { method, body: JSON.stringify(data) })
     if (response.status >= 400) throw response
     const resultText = await response.text()
-    const resultData = resultText && await response.json()
+    const resultData = resultText && JSON.parse(resultText)
     handleSuccess({
       data: resultData,
       status: response.status,
       statusText: response.statusText,
     })
   } catch (error) {
+    console.error(error)
     handleError(error)
   } finally {
     handleFinish()

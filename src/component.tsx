@@ -40,16 +40,15 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
-  const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {
-    const uiTreeWithValues = replaceBindings(beagleUITree)
-  
+  const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {  
     if (!eventHandler)
       throw new Error(
         'Couldn\'t find an Event Handler! This is probably a bug within the Beagle library, please report'
       )
   
-    const uiTreeWithActions = eventHandler.interpretEventsInTree(uiTreeWithValues)
-    setUiTree(uiTreeWithActions)
+    const uiTreeWithActions = eventHandler.interpretEventsInTree(beagleUITree)
+    const uiTreeWithValues = replaceBindings(uiTreeWithActions)
+    setUiTree(uiTreeWithValues)
   }
 
   const handleError = (errorListener: BeagleError[]) => {

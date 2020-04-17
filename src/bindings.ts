@@ -35,7 +35,8 @@ function replaceBindingsInString(str: string, contextHierarchy: DataContext[]) {
 
   return str.replace(bindingRegex, (bindingStr, path) => {
     const bindingValue = getBindingValue(path, contextHierarchy)
-    return bindingValue === undefined ? bindingStr : JSON.stringify(bindingValue)
+    const asString = typeof bindingValue === 'object' ? JSON.stringify(bindingValue) : bindingValue
+    return bindingValue === undefined ? bindingStr : asString
   })
 }
 
