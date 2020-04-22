@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -fr dist",
     "build": "tsc --declaration && node bin/copy-files",
-    "lint": "eslint ./src/**"
+    "lint": "eslint ./src/**/*.ts"
   },
   "dependencies": {
     "@zup-it/beagle-web": "^0.0.10",

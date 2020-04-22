@@ -28,6 +28,13 @@ export interface SetAttributeAction {
   attributeValue: string,
 }
 
+export interface AddChildrenAction {
+  _actionType_: 'addChildren',
+  componentId: string,
+  value: IdentifiableBeagleUIElement[],
+  method?: 'append' | 'prepend',
+}
+
 export interface SetContextAction {
   _actionType_: 'setContext',
   context?: string,
@@ -40,7 +47,13 @@ export interface CustomAction {
   [key: string]: any,
 }
 
-export type BeagleAction = XHRAction | SetAttributeAction | SetContextAction | CustomAction
+export type BeagleAction = (
+  XHRAction
+  | SetAttributeAction
+  | AddChildrenAction
+  | SetContextAction
+  | CustomAction
+)
 
 export interface ActionHandlerParams<Action extends BeagleAction = any> {
   action: Action,
