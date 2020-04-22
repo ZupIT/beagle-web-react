@@ -1,8 +1,67 @@
 # beagle-react
 Project: Produto - Beagle
 
-## Debugar beagle-react localmente
-Ao realizar um debug da lib como dependência de um projeto local em sua máquina, você poderá enfrentar o erro [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html). Essa [issue](https://github.com/facebook/react/issues/14257) explica o motivo. No entanto, existe um workaround para esse problema e está descrito abaixo
+# Installation
+Install `beagle-react` with the following command:
+
+```
+yarn add @zup-it/beagle-react
+```
+
+Or
+
+```
+npm install --save @zup-it/beagle-react
+```
+
+# Configuration
+Now that you have installed the library, follow the instructions below to set up beagle-react in your project.
+
+1. Create beagle service configuration
+```
+import { createBeagleUIService } from '@zup-it/beagle-react'
+
+export default createBeagleUIService({
+  baseUrl: beagleUrl,
+  components: {
+    loading: YourLoadingComponent,
+    error: YourErrorComponent,
+    // your components
+  },
+})
+```
+
+---
+**NOTE**: 
+Remember to declare in your configuration all the components that beagle will render
+
+---
+
+2. Provide beagle service in your app
+
+```
+import { BeagleProvider } from '@zup-it/beagle-react'
+
+const App = () => (
+  <BeagleProvider value={beagleService}>
+    <YourAppComponent />
+  </BeagleProvider>
+)
+
+render(<App />, document.getElementById('root'))
+```
+
+3. Finally, you can render a beagle view in your project
+```
+import { BeagleRemoteView } from '@zup-it/beagle-react'
+
+const YourAppComponent = () => (
+  <BeagleRemoteView path={pathToYourRemoteView} />
+)
+```
+
+## Debug beagle-react locally
+When debugging beagle-react as a dependency on a local project in your machine, you may experience the error [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html). This [issue](https://github.com/facebook/react/issues/14257) explains the reason. However, there is a workaround for this problem and it is described below.
 
 ```
 cd beagle-react
