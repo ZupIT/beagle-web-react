@@ -1,5 +1,6 @@
-# beagle-react
-Project: Produto - Beagle
+# [Beagle React](https://docs.usebeagle.io/introducing/beagle-web/beagle-for-react)
+Beagle React is a Zup's open source library for using [Beagle](https://docs.usebeagle.io) in a [React](https://reactjs.org) based project.
+
 
 # Installation
 Install `beagle-react` with the following command:
@@ -31,11 +32,8 @@ export default createBeagleUIService({
 })
 ```
 
----
 **NOTE**: 
 Remember to declare in your configuration all the components that beagle will render
-
----
 
 2. Provide beagle service in your app
 
@@ -74,3 +72,6 @@ yarn link
 cd YOUR_PROJECT
 yarn link beagle-react react react-dom
 ```
+
+# License
+Beagle React is [Mozilla licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)
