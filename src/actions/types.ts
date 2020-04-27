@@ -19,11 +19,12 @@ import { DataContext } from '../types'
 
 type HTTPMethod = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
-export interface XHRAction {
-  _actionType_: 'xhr',
+export interface SendRequestAction {
+  _actionType_: 'sendRequest',
   url: string,
   method?: HTTPMethod,
   data?: any,
+  headers?: Record<string, string>,
   onSuccess?: BeagleAction,
   onError?: BeagleAction,
   onFinish?: BeagleAction,
@@ -40,7 +41,7 @@ export interface AddChildrenAction {
   _actionType_: 'addChildren',
   componentId: string,
   value: IdentifiableBeagleUIElement[],
-  method?: 'append' | 'prepend',
+  mode?: 'append' | 'prepend' | 'replace',
 }
 
 export interface SetContextAction {
@@ -56,7 +57,7 @@ export interface CustomAction {
 }
 
 export type BeagleAction = (
-  XHRAction
+  SendRequestAction
   | SetAttributeAction
   | AddChildrenAction
   | SetContextAction

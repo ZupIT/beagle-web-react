@@ -21,14 +21,14 @@ import { DataContext } from '../types'
 import setAttribute from './setAttribute'
 import addChildren from './addChildren'
 import setContext from './setContext'
-import xhr from './xhr'
+import sendRequest from './sendRequest'
 import { ActionHandler, BeagleAction } from './types'
 
 const defaultHandlers: Record<string, ActionHandler> = {
   setAttribute,
   addChildren,
   setContext,
-  xhr,
+  sendRequest,
 }
 
 function createEventHandler(
@@ -51,9 +51,7 @@ function createEventHandler(
       return
     }
     
-    if (params.action.debug) console.log('Dispatched:', params)
     const actionWithEventValues = replaceBindings(params.action, params.eventContextHierarchy)
-    if (params.action.debug) console.log('Action after replacing bindings:', actionWithEventValues)
     actionHandlers[actionType]({ ...params, action: actionWithEventValues })
   }
 

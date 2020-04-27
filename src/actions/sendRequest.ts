@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { ActionHandler, XHRAction } from './types'
+import { ActionHandler, SendRequestAction } from './types'
 
 interface ParsedResponse {
   data: any,
@@ -22,7 +22,7 @@ interface ParsedResponse {
   statusText: string,
 }
 
-const xhr: ActionHandler<XHRAction> = async ({
+const xhr: ActionHandler<SendRequestAction> = async ({
   action,
   handleAction,
   eventContextHierarchy,

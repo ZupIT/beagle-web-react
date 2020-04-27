@@ -18,7 +18,7 @@ import { findById } from '@zup-it/beagle-web/dist/utils/tree-reading'
 import { ActionHandler, AddChildrenAction } from './types'
 
 const addChildren: ActionHandler<AddChildrenAction> = ({ action, beagleView }) => {
-  const { componentId, value, method = 'append' } = action
+  const { componentId, value, mode = 'append' } = action
   const uiTree = beagleView.getTree()
   const component = findById(uiTree, componentId)
 
@@ -28,9 +28,9 @@ const addChildren: ActionHandler<AddChildrenAction> = ({ action, beagleView }) =
   }
 
   const currentChildren = component.children || []
-  component.children = method === 'append'
-    ? [...currentChildren, ...value]
-    : [...value, ...currentChildren]
+  if (mode === 'append') component.children = [...currentChildren, ...value]
+  if (mode === 'prepend') component.children = [...value, ...currentChildren]
+  if (mode === 'replace') component.children = value
 
   beagleView.updateWithTree({ sourceTree: uiTree })
 }
