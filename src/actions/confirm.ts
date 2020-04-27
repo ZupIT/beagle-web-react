@@ -14,21 +14,15 @@
   * limitations under the License.
 */
 
-import setAttribute from './setAttribute'
-import addChildren from './addChildren'
-import setContext from './setContext'
-import sendRequest from './sendRequest'
-import alert from './alert'
-import confirm from './confirm'
-import { ActionHandler } from './types'
+import { ActionHandler, ConfirmAction } from './types'
 
-const defaultActionHandlers: Record<string, ActionHandler> = {
-  setAttribute,
-  addChildren,
-  setContext,
-  sendRequest,
-  alert,
-  confirm,
+const confirm: ActionHandler<ConfirmAction> = ({ action, handleAction, ...other }) => {
+  const { message, onPressOk, onPressCancel } = action
+  
+  const hasConfirmed = window.confirm(message)
+  if (hasConfirmed && onPressOk) handleAction({ action: onPressOk, handleAction, ...other })
+  else if (!hasConfirmed && onPressCancel)
+    handleAction({ action: onPressCancel, handleAction, ...other })
 }
 
-export default defaultActionHandlers
+export default confirm

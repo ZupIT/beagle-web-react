@@ -30,7 +30,7 @@ import {
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
 import { BeagleError } from '@zup-it/beagle-web/dist/errors'
-import createEventHandler, { EventHandler } from './actions'
+import createEventHandler, { EventHandler } from './EventHandler'
 import { replaceBindings } from './bindings'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'

@@ -17,13 +17,18 @@
 import get from 'lodash/get'
 import { DataContext } from './types'
 
-const bindingRegex = /\$\{([^\}]+)\}/g
+const bindingRegex = /(\\*)\$\{([^\}]+)\}/g
 const fullBindingRegex = /^\$\{([^\}]+)\}$/
 
 function getBindingValue(
   path: string,
   contextHierarchy: DataContext[],
 ) {
+  if (!path.match(/^[\w\d_]+(\[\d+\])?(\.([\w\d_]+(\[\d+\])?))*$/))
+    console.warn(
+      `Invalid path "${path}". Please, make sure your variable names contain only letters, numbers and the symbol "_". To access substructures use "." and to access array indexes use "[index]".`
+    )
+
   const pathMatch = path.match(/^([^\.]+)\.?(.*)/)
   if (!pathMatch || pathMatch.length < 1) return
   const contextId = pathMatch[1]
@@ -41,10 +46,13 @@ function replaceBindingsInString(str: string, contextHierarchy: DataContext[]) {
     return bindingValue === undefined ? str : bindingValue
   }
 
-  return str.replace(bindingRegex, (bindingStr, path) => {
+  return str.replace(bindingRegex, (bindingStr, slashes, path) => {
+    const isBindingScaped = slashes.length % 2 === 1
+    const scapedSlashes = slashes.replace(/\\\\/g, '\\')
+    if (isBindingScaped) return `${scapedSlashes.replace(/\\$/, '')}\${${path}}`
     const bindingValue = getBindingValue(path, contextHierarchy)
     const asString = typeof bindingValue === 'object' ? JSON.stringify(bindingValue) : bindingValue
-    return bindingValue === undefined ? bindingStr : asString
+    return bindingValue === undefined ? bindingStr : `${scapedSlashes}${asString}`
   })
 }
 

@@ -14,21 +14,13 @@
   * limitations under the License.
 */
 
-import setAttribute from './setAttribute'
-import addChildren from './addChildren'
-import setContext from './setContext'
-import sendRequest from './sendRequest'
-import alert from './alert'
-import confirm from './confirm'
-import { ActionHandler } from './types'
+import { ActionHandler, AlertAction } from './types'
 
-const defaultActionHandlers: Record<string, ActionHandler> = {
-  setAttribute,
-  addChildren,
-  setContext,
-  sendRequest,
-  alert,
-  confirm,
+const alert: ActionHandler<AlertAction> = ({ action, handleAction, ...other }) => {
+  const { message, onPressOk } = action
+  
+  window.alert(message)
+  if (onPressOk) handleAction({ action: onPressOk, handleAction, ...other })
 }
 
-export default defaultActionHandlers
+export default alert
