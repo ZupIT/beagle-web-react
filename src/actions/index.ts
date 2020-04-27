@@ -22,6 +22,8 @@ import setAttribute from './setAttribute'
 import addChildren from './addChildren'
 import setContext from './setContext'
 import sendRequest from './sendRequest'
+import alert from './alert'
+import confirm from './confirm'
 import { ActionHandler, BeagleAction } from './types'
 
 const defaultHandlers: Record<string, ActionHandler> = {
@@ -29,6 +31,8 @@ const defaultHandlers: Record<string, ActionHandler> = {
   addChildren,
   setContext,
   sendRequest,
+  alert,
+  confirm,
 }
 
 function createEventHandler(

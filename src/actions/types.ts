@@ -51,6 +51,19 @@ export interface SetContextAction {
   value: string,
 }
 
+export interface AlertAction {
+  _actionType_: 'alert',
+  message: string,
+  onPressOk?: BeagleAction,
+}
+
+export interface ConfirmAction {
+  _actionType_: 'confirm',
+  message: string,
+  onPressOk?: BeagleAction,
+  onPressCancel?: BeagleAction,
+}
+
 export interface CustomAction {
   _actionType_: string,
   [key: string]: any,
@@ -61,6 +74,8 @@ export type BeagleAction = (
   | SetAttributeAction
   | AddChildrenAction
   | SetContextAction
+  | AlertAction
+  | ConfirmAction
   | CustomAction
 )
 
