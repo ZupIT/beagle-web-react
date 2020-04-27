@@ -24,6 +24,11 @@ function getBindingValue(
   path: string,
   contextHierarchy: DataContext[],
 ) {
+  if (!path.match(/^[\w\d_]+(\[\d+\])?(\.([\w\d_]+(\[\d+\])?))*$/))
+    console.warn(
+      `Invalid path "${path}". Please, make sure your variable names contain only letters, numbers and the symbol "_". To access substructures use "." and to access array indexes use "[index]".`
+    )
+
   const pathMatch = path.match(/^([^\.]+)\.?(.*)/)
   if (!pathMatch || pathMatch.length < 1) return
   const contextId = pathMatch[1]
