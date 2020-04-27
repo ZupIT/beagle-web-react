@@ -28,7 +28,8 @@ const xhr: ActionHandler<SendRequestAction> = async ({
   eventContextHierarchy,
   ...otherParameters
 }) => {
-  const { url, method, data, onSuccess, onError, onFinish } = action
+  const { url, method, data, headers, onSuccess, onError, onFinish } = action
+  console.log(action)
 
   function handleSuccess(parsedResponse: ParsedResponse) {
     if (!onSuccess) return
@@ -64,7 +65,12 @@ const xhr: ActionHandler<SendRequestAction> = async ({
   }
 
   try {
-    const response = await fetch(url, { method, body: JSON.stringify(data) })
+    const response = await fetch(url, {
+      method,
+      body: JSON.stringify(data),
+      headers,
+    })
+
     if (response.status >= 400) throw response
     const resultText = await response.text()
     const resultData = resultText && JSON.parse(resultText)
