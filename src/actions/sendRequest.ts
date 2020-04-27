@@ -29,7 +29,6 @@ const xhr: ActionHandler<SendRequestAction> = async ({
   ...otherParameters
 }) => {
   const { url, method, data, headers, onSuccess, onError, onFinish } = action
-  console.log(action)
 
   function handleSuccess(parsedResponse: ParsedResponse) {
     if (!onSuccess) return
@@ -65,20 +64,23 @@ const xhr: ActionHandler<SendRequestAction> = async ({
   }
 
   try {
-    const response = await fetch(url, {
-      method,
-      body: JSON.stringify(data),
-      headers,
-    })
+    const response = await fetch(url, { method, body: JSON.stringify(data), headers })
 
-    if (response.status >= 400) throw response
     const resultText = await response.text()
     const resultData = resultText && JSON.parse(resultText)
-    handleSuccess({
+    const contextResponse = {
       data: resultData,
       status: response.status,
       statusText: response.statusText,
-    })
+    }
+    
+    if (!response.ok) {
+      const error = { ...contextResponse, message: 'Erro ao processar requisição' }
+      throw error
+    }
+
+    handleSuccess(contextResponse)
+    
   } catch (error) {
     console.error(error)
     handleError(error)
