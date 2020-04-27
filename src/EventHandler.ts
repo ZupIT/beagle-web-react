@@ -18,6 +18,7 @@ import { IdentifiableBeagleUIElement, BeagleView } from '@zup-it/beagle-web'
 import { clone } from '@zup-it/beagle-web/dist/utils/tree-manipulation'
 import { replaceBindings } from './bindings'
 import { DataContext } from './types'
+import { getContextHierarchy } from './context'
 import defaultActionHandlers from './actions'
 import { ActionHandler, BeagleAction } from './actions/types'
 
@@ -68,14 +69,11 @@ function createEventHandler(
 
   function replaceBeagleActionsWithFunctions(
     element: IdentifiableBeagleUIElement,
-    tree: IdentifiableBeagleUIElement,
-    contextHierarchy: DataContext[] = [],
+    contextHierarchy?: DataContext[],
   ) {
     const keys = Object.keys(element)
     const ignore = ['id', '_beagleType_', '_context_', 'children']
-    const hierarchy = element._context_
-      ? [element._context_, ...contextHierarchy]
-      : contextHierarchy
+    const hierarchy = getContextHierarchy(element, contextHierarchy)
 
     keys.forEach((key) => {
       if (ignore.includes(key)) return
@@ -88,12 +86,12 @@ function createEventHandler(
     })
 
     if (element.children)
-      element.children.forEach(child => replaceBeagleActionsWithFunctions(child, tree, hierarchy))
+      element.children.forEach(child => replaceBeagleActionsWithFunctions(child, hierarchy))
   }
 
   function interpretEventsInTree(tree: IdentifiableBeagleUIElement) {
     const treeWithFunctions = clone(tree)
-    replaceBeagleActionsWithFunctions(treeWithFunctions, treeWithFunctions)
+    replaceBeagleActionsWithFunctions(treeWithFunctions)
     return treeWithFunctions
   }
 

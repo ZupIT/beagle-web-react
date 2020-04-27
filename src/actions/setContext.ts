@@ -15,31 +15,14 @@
 */
 
 import set from 'lodash/set'
-import { IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
-import { DataContext } from '../types'
+import { getContextHierarchyByElementId, getContextInHierarchy } from '../context'
 import { ActionHandler, SetContextAction } from './types'
-
-function getContextHierarchy(
-  tree: IdentifiableBeagleUIElement,
-  elementId: string,
-  contextHierarchy: DataContext[] = [],
-): DataContext[] | undefined {
-  const hierarchy = tree._context_ ? [tree._context_, ...contextHierarchy] : contextHierarchy
-  if (tree.id === elementId) return hierarchy
-  if (!tree.children) return
-  for (let i = 0; i < tree.children.length; i++) {
-    const result = getContextHierarchy(tree.children[i], elementId, hierarchy)
-    if (result) return result
-  }
-}
 
 const setContext: ActionHandler<SetContextAction> = ({ action, element, beagleView }) => {
   const { value, context: contextId, path } = action
   const uiTree = beagleView.getTree()
-  const contextHierarchy = getContextHierarchy(uiTree, element.id) || []
-  const context = contextId
-    ? contextHierarchy.find(({ id }) => id === contextId)
-    : contextHierarchy[0]
+  const contextHierarchy = getContextHierarchyByElementId(uiTree, element.id) || []
+  const context = getContextInHierarchy(contextHierarchy, contextId)
 
   if (!context) {
     const specificContextMessage = (

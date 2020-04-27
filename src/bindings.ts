@@ -15,6 +15,7 @@
 */
 
 import get from 'lodash/get'
+import { getContextHierarchy, getContextInHierarchy } from './context'
 import { DataContext } from './types'
 
 const bindingRegex = /(\\*)\$\{([^\}]+)\}/g
@@ -33,7 +34,7 @@ function getBindingValue(
   if (!pathMatch || pathMatch.length < 1) return
   const contextId = pathMatch[1]
   const contextPath = pathMatch[2]
-  const context = contextHierarchy.find(({ id }: DataContext) => id === contextId)
+  const context = getContextInHierarchy(contextHierarchy, contextId)
   if (!context) return
   
   return contextPath ? get(context.value, contextPath) : context.value
@@ -65,7 +66,7 @@ export function replaceBindings(
   if (data instanceof Array) return data.map(item => replaceBindings(item, contextHierarchy))
 
   if (typeof data === 'object') {
-    const hierarchy = data._context_ ? [data._context_, ...contextHierarchy] : contextHierarchy
+    const hierarchy = getContextHierarchy(data, contextHierarchy)
     const ignore = ['id', '_beagleType_', '_context_']
 
     return Object.keys(data).reduce((result, key) => ({
