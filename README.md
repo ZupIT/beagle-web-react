@@ -74,4 +74,4 @@ yarn link beagle-react react react-dom
 ```
 
 # License
-Beagle React is [Mozilla licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)
+Beagle React is [Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)
