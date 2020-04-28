@@ -24,13 +24,11 @@ import {
   BeagleView,
 } from '@zup-it/beagle-web'
 import { UpdateWithTreeParams } from '@zup-it/beagle-web/dist/types'
-import { ActionHandler } from './actions/types'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
   components: { error: FC, loading: FC } & {
     [K in keyof Schema]: FC<Schema[K]>
   },
-  customActions?: Record<string, ActionHandler>,
 }
 
 export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreUIService<Schema> {
@@ -49,9 +47,4 @@ export interface BeagleContext<T = any> {
 
 export interface BeagleComponent<T = any> {
   beagleContext: BeagleContext<T>,
-}
-
-export interface DataContext {
-  id: string,
-  value?: any,
 }
