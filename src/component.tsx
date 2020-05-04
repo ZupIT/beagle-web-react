@@ -70,6 +70,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     const view = beagleService.createView()
     view.subscribe(updateTree)
     view.addErrorListener(handleError)
+    view.initBeagleNavigator(loadParams.path)
 
     return view
   }, [])
