@@ -14,5 +14,6 @@
   * limitations under the License.
 */
 
-export const purgeArray = (array: Array<string|undefined>): string =>
-	array.filter(Boolean).join()
+import { NonNull } from '../types'
+
+export const filterBooleanArray = (array: Array<any>): Array<NonNull> => array.filter(Boolean)

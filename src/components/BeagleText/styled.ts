@@ -14,4 +14,15 @@
   * limitations under the License.
 */
 
-export * from './beagle-text'
+import styled from 'styled-components'
+import { TextAlignment } from '../../types'
+
+interface StyledTextInterface {
+	textColor?: string,
+	alignment?: TextAlignment,
+}
+
+export const StyledText = styled.p<StyledTextInterface>`
+	color: ${({ textColor }) =>  textColor ? textColor : 'inherit'};
+	text-align: ${({ alignment }) => alignment ? alignment : 'inherit'};
+`

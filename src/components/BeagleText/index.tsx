@@ -16,20 +16,26 @@
 
 import React, { FC } from 'react'
 import { StyledText } from './styled'
-import { purgeArray } from '../utils'
+import { filterBooleanArray } from '../../utils/array'
+import { TextAlignment, NonNull } from '../../types'
 
 export interface BeagleTextInterface {
 	text: string;
 	theme?: string;
 	textColor?: string;
-	alignment?: string;
+	alignment?: TextAlignment;
 	className?: string;
 }
 
 const BeagleText: FC<BeagleTextInterface> = props => {
-	const { text, className, theme } = props
-	const classNames: string = purgeArray([className, theme])
-	return <StyledText {...props} className={classNames}>{text}</StyledText>
+	const { text, className, theme, textColor, alignment } = props
+	const validClass: Array<NonNull> = filterBooleanArray([className, theme])
+	const classNames = validClass.join()
+	return (
+		<StyledText textColor={textColor} alignment={alignment} className={classNames}>
+			{text}
+		</StyledText>
+	)
 }
 
 export default BeagleText
