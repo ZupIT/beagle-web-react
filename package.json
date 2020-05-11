@@ -14,7 +14,7 @@
   "scripts": {
     "clean": "rm -fr dist",
     "build": "tsc --declaration && node bin/copy-files",
-    "lint": "eslint ./src/**/*.ts",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit"
   },
