@@ -19,7 +19,7 @@ name: Pull request validation
 
 on:
   pull_request:
-    branches: [ development, master ]
+    branches: [ master ]
 
 jobs:
   validation:
