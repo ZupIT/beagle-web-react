@@ -55,3 +55,7 @@ export interface DataContext {
   id: string,
   value?: any,
 }
+
+export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>
+
+export type TextAlignment = 'left' | 'right' |'center' | 'inherit'
