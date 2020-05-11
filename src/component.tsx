@@ -27,11 +27,12 @@ import {
   BeagleView,
   BeagleContext,
   BeagleUIElement,
+  createEventHandler,
+  EventHandler,
+  replaceBindings,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
-import { BeagleError } from '@zup-it/beagle-web/dist/errors'
-import createEventHandler, { EventHandler } from './actions'
-import { replaceBindings } from './bindings'
+import { BeagleError } from '@zup-it/beagle-web/errors'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'
 
@@ -65,8 +66,9 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
 
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
-
-    const view = beagleService.createView()
+    
+    // fixme: what if this.loadParams.baseUrl has been set?
+    const view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
     view.addErrorListener(handleError)
 

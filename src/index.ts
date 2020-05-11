@@ -15,7 +15,6 @@
 */
 
 import createBeagleCoreUIService, { DefaultSchema } from '@zup-it/beagle-web'
-import { ActionHandler, CustomAction } from './actions/types'
 import BeagleRemoteView from './component'
 import { BeagleProvider } from './provider'
 import { BeagleConfig, BeagleUIService, BeagleComponent } from './types'
@@ -31,6 +30,4 @@ export {
   BeagleConfig,
   BeagleUIService,
   BeagleComponent,
-  ActionHandler,
-  CustomAction,
 }
