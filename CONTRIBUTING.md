@@ -4,7 +4,7 @@ Want to contribute to Beagle React? There are a few things you need to know.
 
 # Branch Organization
 
-We try to keep `master` compatible with the latest stable release, therefore submit all changes to `development` branch.  Always base your work on the project's `master` branch, naming your new branch according to the following guide:
+Submit all changes to `master` branch.  Always base your work on the project's `master` branch, naming your new branch according to the following guide:
 
 * `feature/branch-name` for new features
 * `fix/branch-name` for fixing a bug
