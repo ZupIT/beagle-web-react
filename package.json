@@ -45,6 +45,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
+    "json-schema": "^0.2.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "styled-components": "^5.1.0",
