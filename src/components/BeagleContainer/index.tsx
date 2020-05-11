@@ -16,13 +16,11 @@
 
 import React, { FC, ReactNode } from 'react'
 import { filterBooleanArray } from '../../utils/array'
-import { TextAlignment } from '../../types'
 import { StyledContainer } from "./styled";
 
 export interface BeagleContainerInterface {
 	children: ReactNode,
 	styleId?: string,
-	alignment?: TextAlignment,
 	className?: string,
 }
 
