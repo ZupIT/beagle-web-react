@@ -16,26 +16,24 @@
 
 import React, { FC } from 'react'
 import { filterBooleanArray } from '../../utils/array'
-import { TextAlignment } from '../../types'
-import { StyledText } from './styled'
+import { StyledButton } from './styled'
 
-export interface BeagleTextInterface {
+interface BeagleButtonInterface {
 	text: string,
+	onPress?: () => void,
 	theme?: string,
-	textColor?: string,
-	alignment?: TextAlignment,
 	className?: string,
 }
 
-const BeagleText: FC<BeagleTextInterface> = props => {
-	const { text, className, theme, textColor, alignment } = props
+const BeagleButton: FC<BeagleButtonInterface> = props => {
+	const { text, className, theme, onPress } = props
 	const validClass = filterBooleanArray([className, theme])
 	const classNames = validClass.join()
 	return (
-		<StyledText textColor={textColor} alignment={alignment} className={classNames}>
+		<StyledButton className={classNames} onClick={onPress}>
 			{text}
-		</StyledText>
+		</StyledButton>
 	)
 }
 
-export default BeagleText
+export default BeagleButton
