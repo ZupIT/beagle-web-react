@@ -48,3 +48,12 @@ export interface BeagleContext<T = any> {
 export interface BeagleComponent<T = any> {
   beagleContext: BeagleContext<T>,
 }
+
+export interface DataContext {
+  id: string,
+  value?: any,
+}
+
+export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>
+
+export type TextAlignment = 'left' | 'right' |'center' | 'inherit'

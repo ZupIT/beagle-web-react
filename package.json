@@ -3,7 +3,13 @@
   "version": "0.0.16",
   "main": "index.js",
   "typings": "index.d.ts",
-  "license": "MPL-2.0",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "private": false,
   "scripts": {
     "clean": "rm -fr dist",
@@ -11,6 +17,11 @@
     "lint": "eslint ./src/**/*.ts",
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sh ./bin/check-license.sh"
+    }
   },
   "dependencies": {
     "@zup-it/beagle-web": "^0.0.16",
@@ -27,13 +38,16 @@
     "@types/lodash": "^4.14.149",
     "@types/react": "16.9.23",
     "@types/react-dom": "16.9.5",
+    "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "styled-components": "^5.1.0",
     "ts-jest": "25.2.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"

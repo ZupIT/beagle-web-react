@@ -90,11 +90,10 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   }, [])
 
   const renderComponents = () => {
+    if (!uiTree || !viewID) return <></>
     const components = beagleService.getConfig().components
     
-    return uiTree && viewID
-      ? createReactComponentTree(components, uiTree, viewID)
-      : <></>
+    return createReactComponentTree(components, uiTree, viewID)
   }
 
   return renderComponents()
