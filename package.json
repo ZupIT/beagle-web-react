@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react",
-  "version": "0.0.12",
+  "version": "0.0.16",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MPL-2.0",
@@ -13,7 +13,7 @@
     "check-test-types": "tsc ./__tests__/** --noEmit"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "^0.0.10",
+    "@zup-it/beagle-web": "^0.0.16",
     "lodash": "^4.17.15"
   },
   "peerDependencies": {

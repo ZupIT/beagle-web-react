@@ -32,7 +32,7 @@ import {
   replaceBindings,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
-import { BeagleError } from '@zup-it/beagle-web/dist/errors'
+import { BeagleError } from '@zup-it/beagle-web/errors'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'
 

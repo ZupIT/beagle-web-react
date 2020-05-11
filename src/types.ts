@@ -23,7 +23,7 @@ import {
   IdentifiableBeagleUIElement,
   BeagleView,
 } from '@zup-it/beagle-web'
-import { UpdateWithTreeParams } from '@zup-it/beagle-web/dist/types'
+import { UpdateWithTreeParams } from '@zup-it/beagle-web/types'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
   components: { error: FC, loading: FC } & {
