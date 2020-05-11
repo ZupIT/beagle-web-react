@@ -62,6 +62,7 @@ module.exports = {
       multiline: { delimiter: 'comma', requireLast: true },
       singleline: { delimiter: 'comma', requireLast: false }
     }],
-    '@typescript-eslint/no-unused-vars': 'off'
+    '@typescript-eslint/no-unused-vars': 'off',
+    'react/prop-types': 'off',
   }
 }
