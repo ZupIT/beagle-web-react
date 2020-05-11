@@ -15,16 +15,16 @@
 */
 
 import React, { FC } from 'react'
-import { StyledText } from './styled'
 import { filterBooleanArray } from '../../utils/array'
 import { TextAlignment } from '../../types'
+import { StyledText } from './styled'
 
 export interface BeagleTextInterface {
-	text: string;
-	theme?: string;
-	textColor?: string;
-	alignment?: TextAlignment;
-	className?: string;
+	text: string,
+	theme?: string,
+	textColor?: string,
+	alignment?: TextAlignment,
+	className?: string,
 }
 
 const BeagleText: FC<BeagleTextInterface> = props => {

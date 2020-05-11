@@ -15,14 +15,14 @@
 */
 
 import React, { FC } from 'react'
-import { StyledButton } from './styled'
 import { filterBooleanArray } from '../../utils/array'
+import { StyledButton } from './styled'
 
 interface BeagleButtonInterface {
-	text: string;
-	onPress?: () => void
-	theme?: string;
-	className?: string;
+	text: string,
+	onPress?: () => void,
+	theme?: string,
+	className?: string,
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = props => {
