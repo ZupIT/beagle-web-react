@@ -16,7 +16,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import { filterBooleanArray } from '../../utils/array'
-import { StyledContainer } from "./styled";
+import { StyledContainer } from './styled'
 
 export interface BeagleContainerInterface {
 	children: ReactNode,
