@@ -18,7 +18,7 @@ import React, { FC, useEffect } from 'react'
 import { filterBooleanArray } from '../../utils/array'
 import { StyledContainer } from './styled'
 
-export interface BeagleContainerInterface {
+interface BeagleContainerInterface {
 	styleId?: string,
 	className?: string,
 	onInit?: () => void,
