@@ -14,30 +14,21 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
-import { filterBooleanArray } from '../../utils/array'
-import { StyledContainer } from './styled'
+import React, { FC } from 'react'
+import { StyledLoading } from './styled'
 
-interface BeagleContainerInterface {
-	styleId?: string,
+interface BeagleLoadingInterface {
 	className?: string,
-	onInit?: () => void,
 }
 
-const BeagleContainer: FC<BeagleContainerInterface> = props => {
-	const { children, onInit, className, styleId } = props
-	const validClass = filterBooleanArray([className, styleId])
-	const classNames = validClass.join()
-
-	useEffect(() => {
-		if (onInit) onInit()
-	}, [])
+const BeagleLoading: FC<BeagleLoadingInterface> = props => {
+	const { className } = props
 
 	return (
-		<StyledContainer className={classNames}>
-			{children}
-		</StyledContainer>
+		<StyledLoading className={className}>
+			<div className="spinner" />
+		</StyledLoading>
 	)
 }
 
-export default BeagleContainer
+export default BeagleLoading
