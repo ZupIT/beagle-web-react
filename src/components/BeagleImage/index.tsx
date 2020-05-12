@@ -18,7 +18,7 @@ import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
 import { filterBooleanArray } from '../../utils/array'
 
-export interface BeagleImageInterface extends BeagleComponent {
+interface BeagleImageInterface extends BeagleComponent {
   url: string,
   mode: 'Network' | 'Local',
   theme?: string,
