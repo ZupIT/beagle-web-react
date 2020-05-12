@@ -21,8 +21,8 @@ import { filterBooleanArray } from '../../utils/array'
 export interface BeagleImageInterface extends BeagleComponent {
   url: string,
   mode: 'Network' | 'Local',
-	theme?: string,
-	className?: string,
+  theme?: string,
+  className?: string,
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({ className, theme, mode, url, beagleContext }) => {
@@ -31,8 +31,8 @@ const BeagleImage: FC<BeagleImageInterface> = ({ className, theme, mode, url, be
   const source = (mode === 'Local' || !beagleContext)
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
-
-	return <img src={source} className={classNames} />
+    
+  return <img src={source} className={classNames} />
 }
 
 export default BeagleImage
