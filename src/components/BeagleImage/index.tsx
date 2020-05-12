@@ -26,7 +26,7 @@ export interface BeagleImageInterface extends BeagleComponent {
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({ className, theme, mode, url, beagleContext }) => {
-	const validClass = filterBooleanArray([className, theme])
+  const validClass = filterBooleanArray([className, theme])
   const classNames = validClass.join()
   const source = (mode === 'Local' || !beagleContext)
     ? url
