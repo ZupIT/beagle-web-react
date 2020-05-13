@@ -22,13 +22,13 @@ interface BeagleLoadingInterface {
 }
 
 const BeagleLoading: FC<BeagleLoadingInterface> = props => {
-	const { className } = props
+  const { className } = props
 
-	return (
-		<StyledLoading className={className}>
-			<div className="spinner" />
-		</StyledLoading>
-	)
+  return (
+    <StyledLoading className={className}>
+      <div className="spinner" />
+    </StyledLoading>
+  )
 }
 
 export default BeagleLoading
