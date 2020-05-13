@@ -14,8 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC } from "react"
-import { StyledListView } from "./styled"
+import React, { FC } from 'react'
+import { StyledListView } from './styled'
 
 export enum Direction {
     VERTICAL = 'vertical',
