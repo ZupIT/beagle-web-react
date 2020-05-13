@@ -18,18 +18,18 @@ import React, { FC } from 'react'
 import { StyledListView } from './styled'
   
 interface BeagleListViewInterface {
-    direction: 'vertical' | 'horizontal',
+    direction: 'VERTICAL' | 'HORIZONTAL',
     className?: string,
 }
 
 const BeagleListView: FC<BeagleListViewInterface> = props => {
-	const { children, direction, className } = props
+  const { children, direction, className } = props
 
-	return (
-		<StyledListView className={className} direction={direction}>
-			{children}
-		</StyledListView>
-	)
+  return (
+    <StyledListView className={className} direction={direction}>
+      {children}
+    </StyledListView>
+  )
 }
 
 export default BeagleListView
