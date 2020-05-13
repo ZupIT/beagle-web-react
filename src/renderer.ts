@@ -36,7 +36,7 @@ const createReactComponentTree = <Schema>(
 
   const beagleContext = BeagleContext.getContext(viewId, id)
   const componentChildren = map(children, child =>
-      createReactComponentTree(components, child, viewId))
+    createReactComponentTree(components, child, viewId))
   const componentProps = { ...props, key: id, beagleContext }
 
   return createElement(Component as FC<any>, componentProps, componentChildren)

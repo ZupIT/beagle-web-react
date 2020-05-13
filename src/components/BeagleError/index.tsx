@@ -22,13 +22,13 @@ interface BeagleErrorInterface {
 }
 
 const BeagleError: FC<BeagleErrorInterface> = props => {
-	const { className } = props
-	return (
-		<div className={className}>
-			<BeagleText text="Sorry!" textColor="red" />
-			<BeagleText text="An unexpected error happened while loading your page." />
-		</div>
-	)
+  const { className } = props
+  return (
+    <div className={className}>
+      <BeagleText text="Sorry!" textColor="red" />
+      <BeagleText text="An unexpected error happened while loading your page." />
+    </div>
+  )
 }
 
 export default BeagleError
