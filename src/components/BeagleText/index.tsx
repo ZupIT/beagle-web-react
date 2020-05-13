@@ -28,14 +28,14 @@ interface BeagleTextInterface {
 }
 
 const BeagleText: FC<BeagleTextInterface> = props => {
-	const { text, className, theme, textColor, alignment } = props
-	const validClass = filterBooleanArray([className, theme])
-	const classNames = validClass.join()
-	return (
-		<StyledText textColor={textColor} alignment={alignment} className={classNames}>
-			{text}
-		</StyledText>
-	)
+  const { text, className, theme, textColor, alignment } = props
+  const validClass = filterBooleanArray([className, theme])
+  const classNames = validClass.join()
+  return (
+    <StyledText textColor={textColor} alignment={alignment} className={classNames}>
+      {text}
+    </StyledText>
+  )
 }
 
 export default BeagleText

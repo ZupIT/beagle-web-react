@@ -25,19 +25,19 @@ interface BeagleContainerInterface {
 }
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-	const { children, onInit, className, styleId } = props
-	const validClass = filterBooleanArray([className, styleId])
-	const classNames = validClass.join()
+  const { children, onInit, className, styleId } = props
+  const validClass = filterBooleanArray([className, styleId])
+  const classNames = validClass.join()
 
-	useEffect(() => {
-		if (onInit) onInit()
-	}, [])
+  useEffect(() => {
+    if (onInit) onInit()
+  }, [])
 
-	return (
-		<StyledContainer className={classNames}>
-			{children}
-		</StyledContainer>
-	)
+  return (
+    <StyledContainer className={classNames}>
+      {children}
+    </StyledContainer>
+  )
 }
 
 export default BeagleContainer
