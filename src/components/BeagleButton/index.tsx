@@ -26,14 +26,14 @@ interface BeagleButtonInterface {
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = props => {
-	const { text, className, theme, onPress } = props
-	const validClass = filterBooleanArray([className, theme])
-	const classNames = validClass.join()
-	return (
-		<StyledButton className={classNames} onClick={onPress}>
-			{text}
-		</StyledButton>
-	)
+  const { text, className, theme, onPress } = props
+  const validClass = filterBooleanArray([className, theme])
+  const classNames = validClass.join()
+  return (
+    <StyledButton className={classNames} onClick={onPress}>
+      {text}
+    </StyledButton>
+  )
 }
 
 export default BeagleButton

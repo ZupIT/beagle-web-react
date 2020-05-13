@@ -64,5 +64,6 @@ module.exports = {
     }],
     '@typescript-eslint/no-unused-vars': 'off',
     'react/prop-types': 'off',
+    'indent': ['error', 2],
   }
 }
