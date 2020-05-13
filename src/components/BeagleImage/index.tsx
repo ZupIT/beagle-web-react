@@ -14,30 +14,25 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
+import { BeagleComponent } from '../../types'
 import { filterBooleanArray } from '../../utils/array'
-import { StyledContainer } from './styled'
 
-interface BeagleContainerInterface {
-	styleId?: string,
-	className?: string,
-	onInit?: () => void,
+interface BeagleImageInterface extends BeagleComponent {
+  url: string,
+  mode: 'Network' | 'Local',
+  theme?: string,
+  className?: string,
 }
 
-const BeagleContainer: FC<BeagleContainerInterface> = props => {
-	const { children, onInit, className, styleId } = props
-	const validClass = filterBooleanArray([className, styleId])
-	const classNames = validClass.join()
-
-	useEffect(() => {
-		if (onInit) onInit()
-	}, [])
-
-	return (
-		<StyledContainer className={classNames}>
-			{children}
-		</StyledContainer>
-	)
+const BeagleImage: FC<BeagleImageInterface> = ({ className, theme, mode, url, beagleContext }) => {
+  const validClass = filterBooleanArray([className, theme])
+  const classNames = validClass.join()
+  const source = (mode === 'Local' || !beagleContext)
+    ? url
+    : beagleContext.getView().getUrlBuilder().build(url)
+    
+  return <img src={source} className={classNames} />
 }
 
-export default BeagleContainer
+export default BeagleImage

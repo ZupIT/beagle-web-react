@@ -19,7 +19,7 @@ import { filterBooleanArray } from '../../utils/array'
 import { TextAlignment } from '../../types'
 import { StyledText } from './styled'
 
-export interface BeagleTextInterface {
+interface BeagleTextInterface {
 	text: string,
 	theme?: string,
 	textColor?: string,
