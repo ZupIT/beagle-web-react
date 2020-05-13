@@ -16,14 +16,9 @@
 
 import React, { FC } from 'react'
 import { StyledListView } from './styled'
-
-export enum Direction {
-    VERTICAL = 'vertical',
-    HORIZONTAL = 'horizontal'
-}
   
-export interface BeagleListViewInterface {
-    direction: Direction,
+interface BeagleListViewInterface {
+    direction: 'vertical' | 'horizontal',
     className?: string,
 }
 

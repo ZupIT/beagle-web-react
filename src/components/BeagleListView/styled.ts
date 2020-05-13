@@ -17,7 +17,7 @@
 import styled from 'styled-components'
 
 interface StyledListViewInterface {
-	direction?: string,
+  direction: string,
 }
 
 export const StyledListView = styled.div<StyledListViewInterface>`
