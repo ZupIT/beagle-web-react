@@ -15,10 +15,11 @@
 */
 
 import React, { FC } from 'react'
+import { Direction } from '../../types'
 import { StyledListView } from './styled'
   
 interface BeagleListViewInterface {
-    direction: 'VERTICAL' | 'HORIZONTAL',
+    direction: Direction,
     className?: string,
 }
 

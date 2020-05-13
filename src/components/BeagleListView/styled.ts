@@ -15,12 +15,13 @@
 */
 
 import styled from 'styled-components'
+import { Direction } from '../../types'
 
 interface StyledListViewInterface {
-  direction: string,
+  direction: Direction,
 }
 
 export const StyledListView = styled.div<StyledListViewInterface>`
   display: flex;
-  flex-direction: ${({ direction }) => direction === 'vertical' ? 'column' : 'row'}
+  flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'}
 `
