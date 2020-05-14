@@ -14,15 +14,6 @@
   * limitations under the License.
 */
 
-import styled from 'styled-components'
-import { TextAlignment } from '../types'
+export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
-interface StyledTextInterface {
-	textColor?: string,
-	alignment?: TextAlignment,
-}
-
-export const StyledText = styled.p<StyledTextInterface>`
-	color: ${({ textColor }) =>  textColor ? textColor : 'inherit'};
-	text-align: ${({ alignment }) => alignment ? alignment : 'inherit'};
-`
+export type Direction =  'VERTICAL' | 'HORIZONTAL'

@@ -15,7 +15,7 @@
 */
 
 import React, { FC } from 'react'
-import { Direction } from '../../types'
+import { Direction } from '../types'
 import { StyledListView } from './styled'
   
 interface BeagleListViewInterface {
