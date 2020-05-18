@@ -19,20 +19,21 @@ import { filterBooleanArray } from '../../utils/array'
 import { TextAlignment } from '../types'
 import { StyledText } from './styled'
 
-interface BeagleTextInterface {
+export interface BeagleTextInterface {
 	text: string,
 	theme?: string,
 	textColor?: string,
 	alignment?: TextAlignment,
-	className?: string,
+  className?: string,
+  style?: React.CSSProperties,
 }
 
 const BeagleText: FC<BeagleTextInterface> = props => {
-  const { text, className, theme, textColor, alignment } = props
+  const { text, className, theme, textColor, alignment, style } = props
   const validClass = filterBooleanArray([className, theme])
   const classNames = validClass.join()
   return (
-    <StyledText textColor={textColor} alignment={alignment} className={classNames}>
+    <StyledText textColor={textColor} alignment={alignment} className={classNames} style={style}>
       {text}
     </StyledText>
   )

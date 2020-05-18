@@ -20,6 +20,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  MutableRefObject,
 } from 'react'
 import {
   LoadParams,
@@ -38,6 +39,7 @@ import createReactComponentTree from './renderer'
 
 interface BeagleRemoteViewType extends LoadParams {
   id?: string,
+  viewRef?: MutableRefObject<BeagleView | undefined>,
 }
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
@@ -71,6 +73,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     const view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
     view.addErrorListener(handleError)
+    if (loadParams.viewRef) loadParams.viewRef.current = view
 
     return view
   }, [])

@@ -17,15 +17,16 @@
 import React, { FC } from 'react'
 import { StyledLoading } from './styled'
 
-interface BeagleLoadingInterface {
-	className?: string,
+export interface BeagleLoadingInterface {
+  className?: string,
+  style?: React.CSSProperties,
 }
 
 const BeagleLoading: FC<BeagleLoadingInterface> = props => {
-  const { className } = props
+  const { className, style } = props
 
   return (
-    <StyledLoading className={className}>
+    <StyledLoading className={className} style={style}>
       <div className="spinner" />
     </StyledLoading>
   )
