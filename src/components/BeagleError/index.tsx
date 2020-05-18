@@ -17,8 +17,8 @@
 import React, { FC } from 'react'
 import BeagleText from '../BeagleText'
 
-interface BeagleErrorInterface {
-	className?: string,
+export interface BeagleErrorInterface {
+  className?: string,
 }
 
 const BeagleError: FC<BeagleErrorInterface> = props => {

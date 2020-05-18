@@ -18,9 +18,16 @@ import createBeagleCoreUIService, { DefaultSchema } from '@zup-it/beagle-web'
 import BeagleRemoteView from './component'
 import { BeagleProvider } from './provider'
 import { BeagleConfig, BeagleUIService, BeagleComponent } from './types'
+import defaultComponents from './components'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Schema>) {
-  return createBeagleCoreUIService<Schema>(config)
+  return createBeagleCoreUIService<Schema>({
+    ...config,
+    components: {
+      ...defaultComponents,
+      ...config.components,
+    },
+  })
 }
 
 export {

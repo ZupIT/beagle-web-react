@@ -18,19 +18,20 @@ import React, { FC } from 'react'
 import { filterBooleanArray } from '../../utils/array'
 import { StyledButton } from './styled'
 
-interface BeagleButtonInterface {
+export interface BeagleButtonInterface {
 	text: string,
 	onPress?: () => void,
 	theme?: string,
-	className?: string,
+  className?: string,
+  style?: React.CSSProperties,
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = props => {
-  const { text, className, theme, onPress } = props
+  const { text, className, theme, onPress, style } = props
   const validClass = filterBooleanArray([className, theme])
   const classNames = validClass.join()
   return (
-    <StyledButton className={classNames} onClick={onPress}>
+    <StyledButton style={style} className={classNames} onClick={onPress}>
       {text}
     </StyledButton>
   )
