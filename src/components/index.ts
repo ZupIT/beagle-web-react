@@ -14,26 +14,26 @@
   * limitations under the License.
 */
 
-import Button from './BeagleButton'
-import Container from './BeagleContainer'
-import Error from './BeagleError'
-import Image from './BeagleImage'
-import ListView from './BeagleListView'
-import Loading from './BeagleLoading'
-import Text from './BeagleText'
+import BeagleButtonComponent from '../components/BeagleButton'
+import BeagleTextComponent from '../components/BeagleText'
+import BeagleContainerComponent from '../components/BeagleContainer'
+import BeagleLoadingComponent from '../components/BeagleLoading'
+import BeagleErrorComponent from '../components/BeagleError'
+import BeagleImageComponent from '../components/BeagleImage'
+import BeagleListViewComponent from '../components/BeagleListView'
 
 export default {
-  'beagle:component:button': Button,
-  'beagle:component:text': Text,
-  'beagle:component:listview': ListView,
-  'beagle:component:container': Container,
-  'beagle:component:screencomponent': null,
+  'beagle:component:button': BeagleButtonComponent,
+  'beagle:component:text': BeagleTextComponent,
+  'beagle:component:listview': BeagleListViewComponent,
+  'beagle:component:container': BeagleContainerComponent,
+  'beagle:component:screencomponent': BeagleContainerComponent,
   'beagle:component:pageview': null,
-  'beagle:component:networkimage': Image,
-  'beagle:component:image': Image,
+  'beagle:component:networkimage': BeagleImageComponent,
+  'beagle:component:image': BeagleImageComponent,
   'beagle:component:tabview': null,
   'beagle:component:tabitem': null,
-  'beagle:component:scrollview': null,
-  error: Error,
-  loading: Loading,
+  'beagle:component:scrollview': BeagleContainerComponent,
+  error: BeagleErrorComponent,
+  loading: BeagleLoadingComponent,
 }
