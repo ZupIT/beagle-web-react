@@ -21,6 +21,7 @@ import BeagleLoadingComponent from '../components/BeagleLoading'
 import BeagleErrorComponent from '../components/BeagleError'
 import BeagleImageComponent from '../components/BeagleImage'
 import BeagleListViewComponent from '../components/BeagleListView'
+import BeagleTouchableComponent from '../components/BeagleTouchable'
 
 export default {
   'beagle:component:button': BeagleButtonComponent,
@@ -34,6 +35,7 @@ export default {
   'beagle:component:tabview': null,
   'beagle:component:tabitem': null,
   'beagle:component:scrollview': BeagleContainerComponent,
+  'beagle:component:touchable': BeagleTouchableComponent,
   error: BeagleErrorComponent,
   loading: BeagleLoadingComponent,
 }
