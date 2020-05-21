@@ -15,22 +15,38 @@
 */
 
 import React, { FC } from 'react'
-import { Direction, BeagleDefaultComponent } from '../types'
+import Spinner from '../Spinner'
+import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
-import { StyledListView } from './styled'
-  
-export interface BeagleListViewInterface extends BeagleDefaultComponent {
-  direction: Direction,
+import { StyledForm, LoadingPanel } from './styled'
+
+export interface FormInterface extends BeagleDefaultComponent {
+  isLoading?: boolean,
+  onSubmit?: () => void,
+  onReset?: () => void,
 }
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, className, style } = props
+const Form: FC<FormInterface> = ({
+  isLoading = false,
+  onSubmit,
+  onReset,
+  style,
+  className,
+  children,
+}) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (onSubmit) onSubmit()
+  }
 
   return (
-    <StyledListView className={className} direction={direction} style={style}>
+    <StyledForm onSubmit={handleSubmit} onReset={onReset} style={style} className={className}>
       {children}
-    </StyledListView>
+      <LoadingPanel isVisible={isLoading}>
+        <Spinner />
+      </LoadingPanel>
+    </StyledForm>
   )
 }
 
-export default withTheme(BeagleListView)
+export default withTheme(Form)

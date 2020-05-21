@@ -14,23 +14,30 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import BeagleText from '../BeagleText'
+import React, { FC, useEffect } from 'react'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
+import { StyledModal } from './styled'
 
-export interface BeagleErrorInterface extends BeagleDefaultComponent {
-  className?: string,
+export interface ModalInterface extends BeagleDefaultComponent {
+  isOpen: boolean,
+  onClose: () => void,
 }
 
-const BeagleError: FC<BeagleErrorInterface> = props => {
-  const { className } = props
-  return (
-    <div className={className}>
-      <BeagleText text="Sorry!" textColor="red" />
-      <BeagleText text="An unexpected error happened while loading your page." />
-    </div>
-  )
+const Modal: FC<ModalInterface> = ({ isOpen, onClose, style, className, children }) => {
+  function closeOnEsc({ key }: KeyboardEvent) {
+    if (key === 'Escape') {
+      onClose()
+      document.removeEventListener('keyup', onClose)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keyup', closeOnEsc)
+    return () => document.removeEventListener('keyup', closeOnEsc)
+  }, [])
+
+  return isOpen ? <StyledModal style={style} className={className}>{children}</StyledModal> : null
 }
 
-export default withTheme(BeagleError)
+export default withTheme(Modal)

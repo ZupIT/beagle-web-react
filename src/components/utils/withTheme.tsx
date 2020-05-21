@@ -15,22 +15,28 @@
 */
 
 import React, { FC } from 'react'
-import { Direction, BeagleDefaultComponent } from '../types'
-import withTheme from '../utils/withTheme'
-import { StyledListView } from './styled'
-  
-export interface BeagleListViewInterface extends BeagleDefaultComponent {
-  direction: Direction,
+import { filterBooleanArray } from '../../utils/array'
+
+interface InputProps {
+  className?: string,
 }
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, className, style } = props
-
-  return (
-    <StyledListView className={className} direction={direction} style={style}>
-      {children}
-    </StyledListView>
-  )
+interface OutputProps {
+  className?: string,
+  theme?: string,
 }
 
-export default withTheme(BeagleListView)
+// HOC for adding theming properties to the default components
+function withTheme<T extends InputProps>(Component: FC<T>): FC<T & OutputProps> {
+  const ComponentWithTheme: FC<T & OutputProps> = ({ className, theme, ...props }) => {
+    const validClass = filterBooleanArray([className, theme])
+    const classNames = validClass.join()
+
+    // @ts-ignore: this error makes zero sense
+    return <Component className={classNames} {...props} />
+  }
+
+  return ComponentWithTheme
+}
+
+export default withTheme

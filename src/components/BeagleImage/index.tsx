@@ -17,30 +17,26 @@
 import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
 import { filterBooleanArray } from '../../utils/array'
+import { BeagleDefaultComponent } from '../types'
+import withTheme from '../utils/withTheme'
 
-export interface BeagleImageInterface extends BeagleComponent {
+export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   url: string,
   mode: 'Network' | 'Local',
-  styleId?: string,
-  className?: string,
-  style?: React.CSSProperties,
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({
   className,
-  styleId,
   mode,
   url,
   beagleContext,
   style,
 }) => {
-  const validClass = filterBooleanArray([className, styleId])
-  const classNames = validClass.join()
   const source = (mode === 'Local' || !beagleContext)
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
     
-  return <img src={source} className={classNames} style={style} />
+  return <img src={source} className={className} style={style} />
 }
 
-export default BeagleImage
+export default withTheme(BeagleImage)
