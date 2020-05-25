@@ -14,9 +14,10 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { BeagleComponent } from '../../types'
 import { filterBooleanArray } from '../../utils/array'
+import BeagleProvider from '../../provider'
 
 export interface BeagleImageInterface extends BeagleComponent {
   url: string,
@@ -34,10 +35,16 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   beagleContext,
   style,
 }) => {
+  const beagleService = useContext(BeagleProvider)
   const validClass = filterBooleanArray([className, styleId])
   const classNames = validClass.join()
+  let root = ''
+
+  if (beagleService)
+    root = beagleService.getConfig().sourceRoot || ''
+    
   const source = (mode === 'Local' || !beagleContext)
-    ? url
+    ? `${root}${url}`
     : beagleContext.getView().getUrlBuilder().build(url)
     
   return <img src={source} className={classNames} style={style} />
