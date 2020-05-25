@@ -10,4 +10,11 @@ export const StyledModal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > div {
+    background-color: #FFF;
+    border-radius: 25px;
+    width: 800px;
+    padding: 20px;
+  }
 `

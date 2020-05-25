@@ -14,15 +14,25 @@
   * limitations under the License.
 */
 
-import BeagleButtonComponent from '../components/BeagleButton'
-import BeagleTextComponent from '../components/BeagleText'
-import BeagleContainerComponent from '../components/BeagleContainer'
-import BeagleLoadingComponent from '../components/BeagleLoading'
-import BeagleErrorComponent from '../components/BeagleError'
-import BeagleImageComponent from '../components/BeagleImage'
-import BeagleListViewComponent from '../components/BeagleListView'
+import BeagleButtonComponent from './BeagleButton'
+import BeagleTextComponent from './BeagleText'
+import BeagleContainerComponent from './BeagleContainer'
+import BeagleLoadingComponent from './BeagleLoading'
+import BeagleErrorComponent from './BeagleError'
+import BeagleImageComponent from './BeagleImage'
+import BeagleListViewComponent from './BeagleListView'
+import Form from './Form'
+import LinkList from './LinkList'
+import Modal from './Modal'
+import TextArea from './TextArea'
+import TextInput from './TextInput'
 
-export default {
+const libRequiredComponents = {
+  error: BeagleErrorComponent,
+  loading: BeagleLoadingComponent,
+}
+
+const beagleDefaultComponents = {
   'beagle:component:button': BeagleButtonComponent,
   'beagle:component:text': BeagleTextComponent,
   'beagle:component:listview': BeagleListViewComponent,
@@ -34,6 +44,18 @@ export default {
   'beagle:component:tabview': null,
   'beagle:component:tabitem': null,
   'beagle:component:scrollview': BeagleContainerComponent,
-  error: BeagleErrorComponent,
-  loading: BeagleLoadingComponent,
+}
+
+const webSpecificComponents = {
+  'form': Form,
+  'link-list': LinkList,
+  'modal': Modal,
+  'text-area': TextArea,
+  'text-input': TextInput,
+}
+
+export default {
+  ...libRequiredComponents,
+  ...beagleDefaultComponents,
+  ...webSpecificComponents,  
 }

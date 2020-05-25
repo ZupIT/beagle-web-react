@@ -19,7 +19,7 @@ import { InputEvent, InputHandler, BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledInput } from './styled'
 
-interface TextInputInterface extends BeagleDefaultComponent {
+export interface TextInputInterface extends BeagleDefaultComponent {
   value: string,
   label?: string,
   placeholder?: string,

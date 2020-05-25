@@ -15,7 +15,6 @@
 */
 
 import React, { FC } from 'react'
-import { filterBooleanArray } from '../../utils/array'
 import { TextAlignment, BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledText } from './styled'

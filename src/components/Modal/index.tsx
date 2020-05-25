@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledModal } from './styled'
@@ -25,6 +25,8 @@ export interface ModalInterface extends BeagleDefaultComponent {
 }
 
 const Modal: FC<ModalInterface> = ({ isOpen, onClose, style, className, children }) => {
+  const elementRef = useRef<HTMLDivElement>()
+
   function closeOnEsc({ key }: KeyboardEvent) {
     if (key === 'Escape') {
       onClose()
@@ -32,12 +34,24 @@ const Modal: FC<ModalInterface> = ({ isOpen, onClose, style, className, children
     }
   }
 
+  function closeOnClickOutside({ target }: React.MouseEvent<HTMLDivElement>) {
+    if (!elementRef.current || !elementRef.current.firstChild) return
+    if (!elementRef.current.firstChild.contains(target as Node)) onClose()
+  }
+
   useEffect(() => {
     document.addEventListener('keyup', closeOnEsc)
     return () => document.removeEventListener('keyup', closeOnEsc)
   }, [])
 
-  return isOpen ? <StyledModal style={style} className={className}>{children}</StyledModal> : null
+  const modal = (
+    // @ts-ignore: ref types are still wrong
+    <StyledModal ref={elementRef} style={style} className={className} onClick={closeOnClickOutside}>
+      {children}
+    </StyledModal>
+  )
+
+  return isOpen ? modal : null
 }
 
 export default withTheme(Modal)

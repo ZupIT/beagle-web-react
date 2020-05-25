@@ -17,11 +17,11 @@
 import React, { FC } from 'react'
 import { filterBooleanArray } from '../../utils/array'
 
-interface InputProps {
+export interface InputProps {
   className?: string,
 }
 
-interface OutputProps {
+export interface OutputProps {
   className?: string,
   theme?: string,
 }

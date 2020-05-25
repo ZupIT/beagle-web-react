@@ -16,7 +16,6 @@
 
 import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
-import { filterBooleanArray } from '../../utils/array'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 
