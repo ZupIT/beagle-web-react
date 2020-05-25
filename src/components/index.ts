@@ -14,13 +14,14 @@
   * limitations under the License.
 */
 
-import BeagleButtonComponent from './BeagleButton'
-import BeagleTextComponent from './BeagleText'
-import BeagleContainerComponent from './BeagleContainer'
-import BeagleLoadingComponent from './BeagleLoading'
-import BeagleErrorComponent from './BeagleError'
-import BeagleImageComponent from './BeagleImage'
-import BeagleListViewComponent from './BeagleListView'
+import BeagleButton from './BeagleButton'
+import BeagleText from './BeagleText'
+import BeagleContainer from './BeagleContainer'
+import BeagleLoading from './BeagleLoading'
+import BeagleError from './BeagleError'
+import BeagleImage from './BeagleImage'
+import BeagleListView from './BeagleListView'
+import BeagleTouchable from './BeagleTouchable'
 import Form from './Form'
 import LinkList from './LinkList'
 import Modal from './Modal'
@@ -28,22 +29,23 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 
 const libRequiredComponents = {
-  error: BeagleErrorComponent,
-  loading: BeagleLoadingComponent,
+  error: BeagleError,
+  loading: BeagleLoading,
 }
 
 const beagleDefaultComponents = {
-  'beagle:component:button': BeagleButtonComponent,
-  'beagle:component:text': BeagleTextComponent,
-  'beagle:component:listview': BeagleListViewComponent,
-  'beagle:component:container': BeagleContainerComponent,
-  'beagle:component:screencomponent': BeagleContainerComponent,
+  'beagle:component:button': BeagleButton,
+  'beagle:component:text': BeagleText,
+  'beagle:component:listview': BeagleListView,
+  'beagle:component:container': BeagleContainer,
+  'beagle:component:screencomponent': BeagleContainer,
   'beagle:component:pageview': null,
-  'beagle:component:networkimage': BeagleImageComponent,
-  'beagle:component:image': BeagleImageComponent,
+  'beagle:component:networkimage': BeagleImage,
+  'beagle:component:image': BeagleImage,
   'beagle:component:tabview': null,
   'beagle:component:tabitem': null,
-  'beagle:component:scrollview': BeagleContainerComponent,
+  'beagle:component:scrollview': BeagleContainer,
+  'beagle:component:touchable': BeagleTouchable,
 }
 
 const webSpecificComponents = {
