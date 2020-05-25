@@ -14,23 +14,27 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { Direction, BeagleDefaultComponent } from '../types'
+import React, { FC, useMemo } from 'react'
+import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
-import { StyledListView } from './styled'
-  
-export interface BeagleListViewInterface extends BeagleDefaultComponent {
-  direction: Direction,
+
+interface LinkItem {
+  text: string,
+  url?: string,
+  onPress?: () => {},
 }
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, className, style } = props
-
-  return (
-    <StyledListView className={className} direction={direction} style={style}>
-      {children}
-    </StyledListView>
-  )
+export interface LinkListInterface extends BeagleDefaultComponent {
+  items: LinkItem[],
 }
 
-export default withTheme(BeagleListView)
+function linkItemToJSX({ text, url = '#', onPress }: LinkItem, key: number) {
+  return <li key={`${key}`}><a href={url} onClick={onPress}>{text}</a></li>
+}
+
+const LinkList: FC<LinkListInterface> = ({ items, style, className }) => {
+  const listContent = useMemo(() => items.map(linkItemToJSX), items)
+  return <ul style={style} className={className}>{listContent}</ul>
+}
+
+export default withTheme(LinkList)

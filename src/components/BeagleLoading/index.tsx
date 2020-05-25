@@ -15,21 +15,19 @@
 */
 
 import React, { FC } from 'react'
+import Spinner from '../Spinner'
+import { BeagleDefaultComponent } from '../types'
+import withTheme from '../utils/withTheme'
 import { StyledLoading } from './styled'
 
-export interface BeagleLoadingInterface {
-  className?: string,
-  style?: React.CSSProperties,
-}
-
-const BeagleLoading: FC<BeagleLoadingInterface> = props => {
+const BeagleLoading: FC<BeagleDefaultComponent> = props => {
   const { className, style } = props
 
   return (
     <StyledLoading className={className} style={style}>
-      <div className="spinner" />
+      <Spinner />
     </StyledLoading>
   )
 }
 
-export default BeagleLoading
+export default withTheme(BeagleLoading)
