@@ -18,6 +18,8 @@ import React, { FC, useContext } from 'react'
 import { BeagleComponent } from '../../types'
 import { filterBooleanArray } from '../../utils/array'
 import BeagleProvider from '../../provider'
+import { ImageContentMode } from '../types'
+import { StyledImage } from './styled'
 
 export interface BeagleImageInterface extends BeagleComponent {
   url: string,
@@ -25,6 +27,21 @@ export interface BeagleImageInterface extends BeagleComponent {
   styleId?: string,
   className?: string,
   style?: React.CSSProperties,
+  contentMode?: ImageContentMode,
+}
+
+export const getContentModeValue = (contentMode?: ImageContentMode) => {
+  if (contentMode === 'FIT_XY')
+    return 'fill'
+
+  if (contentMode === 'FIT_CENTER')
+    return 'cover'
+
+  if (contentMode === 'CENTER_CROP')
+    return 'none'
+
+  if (contentMode === 'CENTER')
+    return 'contain'
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({
@@ -34,6 +51,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   url,
   beagleContext,
   style,
+  contentMode,
 }) => {
   const beagleService = useContext(BeagleProvider)
   const validClass = filterBooleanArray([className, styleId])
@@ -47,7 +65,8 @@ const BeagleImage: FC<BeagleImageInterface> = ({
     ? `${root}${url}`
     : beagleContext.getView().getUrlBuilder().build(url)
     
-  return <img src={source} className={classNames} style={style} />
+  return <StyledImage contentMode={getContentModeValue(contentMode)} 
+    src={source} className={classNames} style={style} />
 }
 
 export default BeagleImage

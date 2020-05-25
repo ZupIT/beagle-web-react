@@ -14,8 +14,12 @@
   * limitations under the License.
 */
 
-export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
+import styled from 'styled-components'
 
-export type Direction =  'VERTICAL' | 'HORIZONTAL'
+interface StyledImageInterface {
+  contentMode?: 'fill' | 'cover' | 'none' | 'contain',
+}
 
-export type ImageContentMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
+export const StyledImage = styled.img<StyledImageInterface>`
+  object-fit: ${({ contentMode }) => contentMode || 'cover'}
+`
