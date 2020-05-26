@@ -25,29 +25,28 @@ export interface BeagleTabViewInterface {
   className?: string,
 }
 
+export interface BeagleChildren {
+  key: string,
+}
+
 const BeagleTabView: FC<BeagleTabViewInterface> = props => {
   const { children, styleId, className } = props
   const validClass = filterBooleanArray([className, styleId])
   const classNames = validClass.join()
 
   const [activeTab, setActiveTab] = useState('')
-  const handleTabChange = (activeTab: string) => {
-    if (activeTab) setActiveTab(activeTab)
+  
+  const tabViewContext = {
+    activeTab: activeTab,
+    setActiveTab: (active: string) => setActiveTab(active),
   }
 
   useEffect(() => {
     if (children && Array.isArray(children) && children[0]) {
-      //@ts-ignore
-      const key = typeof children[0] === 'object' ? children[0].key : ''
-      handleTabChange(key)
+      const firstChildren = children[0] as BeagleChildren
+      tabViewContext.setActiveTab(firstChildren.key)
     }
   }, [])
-
-
-  const tabViewContext = {
-    activeTab: activeTab,
-    setActiveTab: (active: string) => handleTabChange(active),
-  }
 
   return (
     <BeagleComponentsProvider value={tabViewContext}>
