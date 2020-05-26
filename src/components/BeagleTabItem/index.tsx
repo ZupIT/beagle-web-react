@@ -35,11 +35,6 @@ const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   const id = beagleContext.getElementId()
   const componentsService = useContext(BeagleComponentsProvider)
 
-  useEffect(() => {
-    if (componentsService && componentsService.setActiveTab)
-      componentsService.setActiveTab(id)
-  }, [])
-
   return (
     <StyledBeagleTabItem>
       <StyledBeagleTabItemHeader onClick={() => componentsService.setActiveTab(id)}>

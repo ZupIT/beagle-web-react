@@ -21,9 +21,6 @@ export interface TabViewContextInterface {
   setActiveTab: (id: string) => void,
 }
 
-const context = createContext<TabViewContextInterface>({
-  activeTab: '', 
-  setActiveTab: (id: string) => {}, 
-})
+const context = createContext<TabViewContextInterface>({} as TabViewContextInterface)
 export const BeagleComponentsProvider = context.Provider
 export default context
