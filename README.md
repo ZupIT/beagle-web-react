@@ -61,9 +61,11 @@ When debugging beagle-react as a dependency on a local project in your machine, 
 
 ```
 cd beagle-react
-yarn link
 yarn
-cd node_modules/react
+yarn build
+cd dist
+yarn link
+cd ../node_modules/react
 yarn link
 cd ../react-dom
 yarn link
