@@ -14,8 +14,21 @@
   * limitations under the License.
 */
 
+import { ChangeEvent, FocusEvent } from 'react'
+
 export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
 export type Direction =  'VERTICAL' | 'HORIZONTAL'
 
 export type ImageContentMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
+
+export type InputHandler = (event: { value: string }) => void
+
+type InputElement = HTMLTextAreaElement | HTMLInputElement
+
+export type InputEvent = ChangeEvent<InputElement> | FocusEvent<InputElement>
+
+export interface BeagleDefaultComponent {
+  style?: React.CSSProperties,
+  className?: string,
+}

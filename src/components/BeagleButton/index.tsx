@@ -15,26 +15,23 @@
 */
 
 import React, { FC } from 'react'
-import { filterBooleanArray } from '../../utils/array'
+import { BeagleDefaultComponent } from '../types'
+import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
 
-export interface BeagleButtonInterface {
+export interface BeagleButtonInterface extends BeagleDefaultComponent {
 	text: string,
 	onPress?: () => void,
-	theme?: string,
-  className?: string,
-  style?: React.CSSProperties,
+  type?: 'button' | 'submit' | 'reset',
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = props => {
-  const { text, className, theme, onPress, style } = props
-  const validClass = filterBooleanArray([className, theme])
-  const classNames = validClass.join()
+  const { text, className, onPress, style, type = 'button' } = props
   return (
-    <StyledButton style={style} className={classNames} onClick={onPress}>
+    <StyledButton style={style} className={className} onClick={onPress} type={type}>
       {text}
     </StyledButton>
   )
 }
 
-export default BeagleButton
+export default withTheme(BeagleButton)

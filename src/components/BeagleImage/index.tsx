@@ -14,20 +14,16 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext } from 'react'
+import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
-import { filterBooleanArray } from '../../utils/array'
-import BeagleProvider from '../../provider'
-import { ImageContentMode } from '../types'
+import { BeagleDefaultComponent, ImageContentMode } from '../types'
+import withTheme from '../utils/withTheme'
 import { StyledImage } from './styled'
 
-export interface BeagleImageInterface extends BeagleComponent {
+export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   url: string,
   mode: 'Network' | 'Local',
-  styleId?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  contentMode?: ImageContentMode,
+  contentMode: ImageContentMode,
 }
 
 export const getContentModeValue = (contentMode?: ImageContentMode) => {
@@ -46,27 +42,18 @@ export const getContentModeValue = (contentMode?: ImageContentMode) => {
 
 const BeagleImage: FC<BeagleImageInterface> = ({
   className,
-  styleId,
   mode,
   url,
   beagleContext,
   style,
   contentMode,
 }) => {
-  const beagleService = useContext(BeagleProvider)
-  const validClass = filterBooleanArray([className, styleId])
-  const classNames = validClass.join()
-  let root = ''
-
-  if (beagleService)
-    root = beagleService.getConfig().sourceRoot || ''
-    
   const source = (mode === 'Local' || !beagleContext)
-    ? `${root}${url}`
+    ? url
     : beagleContext.getView().getUrlBuilder().build(url)
     
   return <StyledImage contentMode={getContentModeValue(contentMode)} 
-    src={source} className={classNames} style={style} />
+    src={source} className={className} style={style} />
 }
 
-export default BeagleImage
+export default withTheme(BeagleImage)

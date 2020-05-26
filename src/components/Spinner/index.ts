@@ -16,14 +16,15 @@
 
 import styled from 'styled-components'
 import { BeagleTheme } from '../commons.styled'
+import { spin } from '../utils/animation'
 
-export const StyledLoading = styled.div`
-	width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  background: ${BeagleTheme.swampLight};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Spinner = styled.div`
+  border: 8px solid ${BeagleTheme.blackTransparent};
+  border-left-color: ${BeagleTheme.athensGray};
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: ${spin} 1s linear infinite;
 `
+
+export default Spinner

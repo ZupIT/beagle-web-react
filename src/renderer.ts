@@ -24,12 +24,12 @@ const createReactComponentTree = <Schema>(
   ui: BeagleUIElement<Schema>,
   viewId: string,
 ): JSX.Element => {
-  const { _beagleType_, children, id, _context_, ...props } = ui
-  const Component = components[_beagleType_]
+  const { _beagleComponent_, children, id, _context_, ...props } = ui
+  const Component = components[_beagleComponent_]
 
   if (!Component) {
     console.error(
-      `Error: Beagle could not find component ${_beagleType_}. This component and its children won't be rendered.`
+      `Error: Beagle could not find component ${_beagleComponent_}. This component and its children won't be rendered.`
     )
     return createElement(Fragment)
   }
