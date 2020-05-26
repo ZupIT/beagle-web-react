@@ -34,18 +34,18 @@ const libRequiredComponents = {
 }
 
 const beagleDefaultComponents = {
-  'beagle:component:button': BeagleButton,
-  'beagle:component:text': BeagleText,
-  'beagle:component:listview': BeagleListView,
-  'beagle:component:container': BeagleContainer,
-  'beagle:component:screencomponent': BeagleContainer,
-  'beagle:component:pageview': null,
-  'beagle:component:networkimage': BeagleImage,
-  'beagle:component:image': BeagleImage,
-  'beagle:component:tabview': null,
-  'beagle:component:tabitem': null,
-  'beagle:component:scrollview': BeagleContainer,
-  'beagle:component:touchable': BeagleTouchable,
+  'beagle:button': BeagleButton,
+  'beagle:text': BeagleText,
+  'beagle:listview': BeagleListView,
+  'beagle:container': BeagleContainer,
+  'beagle:screencomponent': BeagleContainer,
+  'beagle:pageview': null,
+  'beagle:networkimage': BeagleImage,
+  'beagle:image': BeagleImage,
+  'beagle:tabview': null,
+  'beagle:tabitem': null,
+  'beagle:scrollview': BeagleContainer,
+  'beagle:touchable': BeagleTouchable,
 }
 
 const webSpecificComponents = {
