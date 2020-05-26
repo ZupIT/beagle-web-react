@@ -25,4 +25,5 @@ interface StyledTextInterface {
 export const StyledText = styled.p<StyledTextInterface>`
 	color: ${({ textColor }) =>  textColor ? textColor : 'inherit'};
 	text-align: ${({ alignment }) => alignment ? alignment : 'inherit'};
+  margin: 0;
 `

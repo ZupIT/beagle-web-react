@@ -15,24 +15,18 @@
 */
 
 import React, { FC } from 'react'
+import { BeagleDefaultComponent } from '../types'
+import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'
 
-export interface BeagleTouchableInterface {
+export interface BeagleTouchableInterface extends BeagleDefaultComponent {
   onPress: () => void,
 }
 
-const BeagleTouchable: FC<BeagleTouchableInterface> = props => {
-  const { onPress, children } = props
+const BeagleTouchable: FC<BeagleTouchableInterface> = ({ onPress, className, style, children }) => (
+  <StyledBeagleTouchable className={className} onClick={onPress} style={style}>
+    {children}
+  </StyledBeagleTouchable>
+)
 
-  const handleClick = () => {
-    onPress()
-  }
-
-  return (
-    <StyledBeagleTouchable onClick={handleClick}>
-      {children}
-    </StyledBeagleTouchable>
-  )
-}
-
-export default BeagleTouchable
+export default withTheme(BeagleTouchable)
