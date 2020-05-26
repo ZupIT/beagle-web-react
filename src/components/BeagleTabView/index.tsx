@@ -14,25 +14,18 @@
   * limitations under the License.
 */
 
-import React, { FC, useState, useMemo, useEffect } from 'react'
-
-import { BeagleComponentsProvider, TabViewContextInterface } from '../context'
-import { filterBooleanArray } from '../../utils/array'
+import React, { FC, useState, useEffect } from 'react'
+import withTheme from '../utils/withTheme'
+import { BeagleDefaultComponent } from '../types'
+import { BeagleComponentsProvider } from './context'
 import { StyledTabView } from './styled'
-
-export interface BeagleTabViewInterface {
-  styleId?: string,
-  className?: string,
-}
 
 export interface BeagleChildren {
   key: string,
 }
 
-const BeagleTabView: FC<BeagleTabViewInterface> = props => {
-  const { children, styleId, className } = props
-  const validClass = filterBooleanArray([className, styleId])
-  const classNames = validClass.join()
+const BeagleTabView: FC<BeagleDefaultComponent> = props => {
+  const { children, className } = props
 
   const [activeTab, setActiveTab] = useState('')
   
@@ -50,11 +43,11 @@ const BeagleTabView: FC<BeagleTabViewInterface> = props => {
 
   return (
     <BeagleComponentsProvider value={tabViewContext}>
-      <StyledTabView className={classNames}>
+      <StyledTabView className={className}>
         {children}
       </StyledTabView>
     </BeagleComponentsProvider>
   )
 }
 
-export default BeagleTabView
+export default withTheme(BeagleTabView)

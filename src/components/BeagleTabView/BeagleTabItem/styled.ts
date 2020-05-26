@@ -15,8 +15,8 @@
 */
 
 import styled from 'styled-components'
-import { BeagleTheme } from '../commons.styled'
-import BeagleImage from '../BeagleImage'
+import { BeagleTheme } from '../../commons.styled'
+import BeagleImage from '../../BeagleImage'
 
 export const StyledBeagleTabItem = styled.div`
   margin: 0 5px;

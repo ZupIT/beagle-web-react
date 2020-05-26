@@ -14,9 +14,9 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext, useEffect, Fragment } from 'react'
-import { BeagleComponent } from '../../types'
-import BeagleComponentsProvider from '../context'
+import React, { FC, useContext } from 'react'
+import { BeagleComponent } from '../../../types'
+import tabContext from '../context'
 import {
   StyledBeagleTabItem,
   StyledBeagleTabItemHeader,
@@ -33,7 +33,7 @@ export interface BeagleTabItemInterface extends BeagleComponent {
 const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   const { title, icon, beagleContext, children } = props
   const id = beagleContext.getElementId()
-  const componentsService = useContext(BeagleComponentsProvider)
+  const componentsService = useContext(tabContext)
 
   return (
     <StyledBeagleTabItem>
@@ -43,12 +43,12 @@ const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
         {title}
       </StyledBeagleTabItemHeader>
       {id === componentsService.activeTab &&
-        <Fragment>
+        <>
           <StyledSelected></StyledSelected>
           <StyledBeagleTabItemContent>
             {children}
           </StyledBeagleTabItemContent>
-        </Fragment>
+        </>
       }
     </StyledBeagleTabItem>
   )
