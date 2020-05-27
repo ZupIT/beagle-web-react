@@ -29,8 +29,8 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 
 const libRequiredComponents = {
-  error: BeagleError,
-  loading: BeagleLoading,
+  'custom:error': BeagleError,
+  'custom:loading': BeagleLoading,
 }
 
 const beagleDefaultComponents = {
@@ -59,5 +59,5 @@ const webSpecificComponents = {
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents,  
+  ...webSpecificComponents,
 }
