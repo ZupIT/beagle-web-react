@@ -49,11 +49,11 @@ const beagleDefaultComponents = {
 }
 
 const webSpecificComponents = {
-  'form': Form,
-  'link-list': LinkList,
-  'modal': Modal,
-  'text-area': TextArea,
-  'text-input': TextInput,
+  'custom:form': Form,
+  'custom:link-list': LinkList,
+  'custom:modal': Modal,
+  'custom:text-area': TextArea,
+  'custom:text-input': TextInput,
 }
 
 export default {
