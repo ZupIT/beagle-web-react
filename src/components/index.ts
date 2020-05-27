@@ -21,6 +21,7 @@ import BeagleLoading from './BeagleLoading'
 import BeagleError from './BeagleError'
 import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
+import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
 import Form from './Form'
 import LinkList from './LinkList'
@@ -46,6 +47,7 @@ const beagleDefaultComponents = {
   'beagle:tabitem': null,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
+  'beagle:lazycomponent': BeagleLazy,
 }
 
 const webSpecificComponents = {
