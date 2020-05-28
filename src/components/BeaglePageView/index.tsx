@@ -55,7 +55,8 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       <StyleContentItens>
         {
           Children.map(children, (child, index) => (
-            (isValidElement(child) && index === active) ? cloneElement(child, { className: 'active' }) : child
+            (isValidElement(child) && index === active) ? 
+              cloneElement(child, { className: 'active' }) : child
           ))
         }
       </StyleContentItens>
@@ -64,7 +65,9 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       <StyledOrderList>
         {
           Children.map(children, (child, index) => (
-            <StyledItemList selected={index === active} pageIndicator={pageIndicator}></StyledItemList>
+            <StyledItemList selected={index === active} 
+              pageIndicator={pageIndicator}>
+            </StyledItemList>
           ))
         }
       </StyledOrderList>
