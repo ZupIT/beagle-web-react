@@ -21,7 +21,10 @@ import BeagleLoading from './BeagleLoading'
 import BeagleError from './BeagleError'
 import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
+import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
+import BeagleTabView from './BeagleTabView'
+import BeagleTabItem from './BeagleTabView/BeagleTabItem'
 import Form from './Form'
 import LinkList from './LinkList'
 import Modal from './Modal'
@@ -29,8 +32,8 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 
 const libRequiredComponents = {
-  error: BeagleError,
-  loading: BeagleLoading,
+  'custom:error': BeagleError,
+  'custom:loading': BeagleLoading,
 }
 
 const beagleDefaultComponents = {
@@ -42,22 +45,23 @@ const beagleDefaultComponents = {
   'beagle:pageview': null,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
-  'beagle:tabview': null,
-  'beagle:tabitem': null,
+  'beagle:tabview': BeagleTabView,
+  'beagle:tabitem': BeagleTabItem,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
+  'beagle:lazycomponent': BeagleLazy,
 }
 
 const webSpecificComponents = {
-  'form': Form,
-  'link-list': LinkList,
-  'modal': Modal,
-  'text-area': TextArea,
-  'text-input': TextInput,
+  'custom:form': Form,
+  'custom:link-list': LinkList,
+  'custom:modal': Modal,
+  'custom:text-area': TextArea,
+  'custom:text-input': TextInput,
 }
 
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents,  
+  ...webSpecificComponents,
 }

@@ -23,13 +23,13 @@ export interface InputProps {
 
 export interface OutputProps {
   className?: string,
-  theme?: string,
+  styleId?: string,
 }
 
 // HOC for adding theming properties to the default components
 function withTheme<T extends InputProps>(Component: FC<T>): FC<T & OutputProps> {
-  const ComponentWithTheme: FC<T & OutputProps> = ({ className, theme, ...props }) => {
-    const validClass = filterBooleanArray([className, theme])
+  const ComponentWithTheme: FC<T & OutputProps> = ({ className, styleId, ...props }) => {
+    const validClass = filterBooleanArray([className, styleId])
     const classNames = validClass.join()
 
     // @ts-ignore: this error makes zero sense
