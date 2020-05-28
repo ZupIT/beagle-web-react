@@ -20,6 +20,11 @@ export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
 export type Direction =  'VERTICAL' | 'HORIZONTAL'
 
+export interface PageIndicator {
+  selectedColor: string,
+  unselectedColor: string,
+}
+
 export type InputHandler = (event: { value: string }) => void
 
 type InputElement = HTMLTextAreaElement | HTMLInputElement
