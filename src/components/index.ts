@@ -32,8 +32,8 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 
 const libRequiredComponents = {
-  error: BeagleError,
-  loading: BeagleLoading,
+  'custom:error': BeagleError,
+  'custom:loading': BeagleLoading,
 }
 
 const beagleDefaultComponents = {
@@ -53,15 +53,15 @@ const beagleDefaultComponents = {
 }
 
 const webSpecificComponents = {
-  'form': Form,
-  'link-list': LinkList,
-  'modal': Modal,
-  'text-area': TextArea,
-  'text-input': TextInput,
+  'custom:form': Form,
+  'custom:link-list': LinkList,
+  'custom:modal': Modal,
+  'custom:text-area': TextArea,
+  'custom:text-input': TextInput,
 }
 
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents,  
+  ...webSpecificComponents,
 }
