@@ -23,6 +23,7 @@ import {
   StyledBeaglePageView, StyledLeftArrow, StyleContentItens,
   StyledRightArrow, StyledItemList, StyledOrderList,
 } from './styled'
+import { KeyBoardArrow } from './KeyboardArrowLeft'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
   pageIndicator?: PageIndicator,
@@ -51,21 +52,25 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
 
   return (
     <StyledBeaglePageView>
-      <StyledLeftArrow onClick={backSlide} />
+      <StyledLeftArrow onClick={backSlide} >
+        <KeyBoardArrow />
+      </StyledLeftArrow>
       <StyleContentItens>
         {
           Children.map(children, (child, index) => (
-            (isValidElement(child) && index === active) ? 
+            (isValidElement(child) && index === active) ?
               cloneElement(child, { className: 'active' }) : child
           ))
         }
       </StyleContentItens>
-      <StyledRightArrow onClick={nextSlide} />
+      <StyledRightArrow onClick={nextSlide}>
+        <KeyBoardArrow />
+      </StyledRightArrow>
 
       <StyledOrderList>
         {
           Children.map(children, (child, index) => (
-            <StyledItemList onClick={() => setActive(index)} selected={index === active} 
+            <StyledItemList onClick={() => setActive(index)} selected={index === active}
               pageIndicator={pageIndicator}>
             </StyledItemList>
           ))

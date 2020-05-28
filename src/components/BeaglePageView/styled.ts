@@ -40,7 +40,6 @@ export const StyledLeftArrow = styled.span`
   color: ${BeagleTheme.swamp};
   cursor: pointer;
   left: 0;
-  background-color:red;
 `
 
 export const StyledRightArrow = styled.span`
@@ -56,7 +55,6 @@ export const StyledRightArrow = styled.span`
   cursor: pointer;
   right: 0;
   transform: rotateY(180deg);
-  background-color:red;
 `
 
 export const StyledOrderList = styled.ol`
