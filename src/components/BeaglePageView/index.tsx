@@ -15,7 +15,7 @@
 */
 
 import React, {
-  FC, useMemo, useState,
+  FC, useState,
   cloneElement, Children, isValidElement,
 } from 'react'
 import { BeagleDefaultComponent, PageIndicator } from '../types'
