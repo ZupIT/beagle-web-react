@@ -15,7 +15,7 @@
 */
 
 import React, {
-  FC, useEffect, useState,
+  FC, useMemo, useState,
   cloneElement, Children, isValidElement,
 } from 'react'
 import { BeagleDefaultComponent, PageIndicator } from '../types'
@@ -32,7 +32,11 @@ export interface BeaglePageViewInterface extends BeagleDefaultComponent {
 const BeaglePageView: FC<BeaglePageViewInterface> = props => {
   const { children, pageIndicator } = props
   const [active, setActive] = useState(0)
-  let numberChildren = 0
+
+  const numberChildren = useMemo(() => {
+    if (children && Array.isArray(children)) return children.length
+    return 0
+  }, [])
 
   const backSlide = () => {
     if (active > 0) setActive(active - 1)
@@ -41,10 +45,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
   const nextSlide = () => {
     if (active < numberChildren - 1) setActive(active + 1)
   }
-
-  useEffect(() => {
-    if (children && Array.isArray(children)) numberChildren = children.length
-  }, [])
 
   return (
     <StyledBeaglePageView>
