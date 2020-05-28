@@ -24,6 +24,8 @@ export interface TextAreaInterface extends BeagleDefaultComponent {
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
+  disabled?: boolean,
+  readonly?: boolean,
 }
 
 const TextArea: FC<TextAreaInterface> = ({
@@ -32,6 +34,8 @@ const TextArea: FC<TextAreaInterface> = ({
   onChange,
   onFocus,
   onBlur,
+  disabled,
+  readonly,
   style,
   className,
 }) => {
@@ -47,6 +51,8 @@ const TextArea: FC<TextAreaInterface> = ({
       onChange={handleEvent(onChange)}
       onBlur={handleEvent(onBlur)}
       onFocus={handleEvent(onFocus)}
+      disabled={disabled}
+      readOnly={readonly}
       style={style}
       className={className}
     />

@@ -22,7 +22,7 @@ import BeagleError from './BeagleError'
 import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
 import BeagleTouchable from './BeagleTouchable'
-import Form from './Form'
+import BeagleSimpleForm from './BeagleSimpleForm'
 import LinkList from './LinkList'
 import Modal from './Modal'
 import TextArea from './TextArea'
@@ -46,10 +46,10 @@ const beagleDefaultComponents = {
   'beagle:tabitem': null,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
+  'beagle:simpleform': BeagleSimpleForm,
 }
 
 const webSpecificComponents = {
-  'form': Form,
   'link-list': LinkList,
   'modal': Modal,
   'text-area': TextArea,

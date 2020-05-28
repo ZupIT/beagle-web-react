@@ -22,13 +22,12 @@ import { StyledButton } from './styled'
 export interface BeagleButtonInterface extends BeagleDefaultComponent {
 	text: string,
 	onPress?: () => void,
-  type?: 'button' | 'submit' | 'reset',
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = props => {
-  const { text, className, onPress, style, type = 'button' } = props
+  const { text, className, onPress, style } = props
   return (
-    <StyledButton style={style} className={className} onClick={onPress} type={type}>
+    <StyledButton style={style} className={className} onClick={onPress}>
       {text}
     </StyledButton>
   )
