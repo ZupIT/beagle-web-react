@@ -65,7 +65,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       <StyledOrderList>
         {
           Children.map(children, (child, index) => (
-            <StyledItemList selected={index === active} 
+            <StyledItemList onClick={() => setActive(index)} selected={index === active} 
               pageIndicator={pageIndicator}>
             </StyledItemList>
           ))
