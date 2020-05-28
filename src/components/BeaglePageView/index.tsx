@@ -33,10 +33,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
   const { children, pageIndicator } = props
   const [active, setActive] = useState(0)
 
-  const numberChildren = useMemo(() => {
-    if (children && Array.isArray(children)) return children.length
-    return 0
-  }, [])
+  const numberChildren = React.Children.count(children)
 
   const backSlide = () => {
     if (active > 0) setActive(active - 1)
