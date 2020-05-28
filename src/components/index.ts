@@ -23,6 +23,8 @@ import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
 import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
+import BeagleTabView from './BeagleTabView'
+import BeagleTabItem from './BeagleTabView/BeagleTabItem'
 import Form from './Form'
 import LinkList from './LinkList'
 import Modal from './Modal'
@@ -43,8 +45,8 @@ const beagleDefaultComponents = {
   'beagle:pageview': null,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
-  'beagle:tabview': null,
-  'beagle:tabitem': null,
+  'beagle:tabview': BeagleTabView,
+  'beagle:tabitem': BeagleTabItem,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
   'beagle:lazycomponent': BeagleLazy,
