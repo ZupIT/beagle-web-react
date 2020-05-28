@@ -23,21 +23,20 @@ import { StyledImage } from './styled'
 export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   url: string,
   mode: 'Network' | 'Local',
-  contentMode: ImageContentMode,
+  contentMode?: ImageContentMode,
 }
 
 export const getContentModeValue = (contentMode?: ImageContentMode) => {
   if (contentMode === 'FIT_XY')
     return 'fill'
 
-  if (contentMode === 'FIT_CENTER')
-    return 'cover'
-
   if (contentMode === 'CENTER_CROP')
     return 'none'
 
   if (contentMode === 'CENTER')
     return 'contain'
+  
+  return 'cover'
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({

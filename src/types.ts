@@ -29,7 +29,6 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
   components: { 'custom:error'?: FC, 'custom:loading'?: FC } & {
     [K in keyof Schema]: FC<Schema[K]>
   },
-  sourceRoot?: string,
 }
 
 export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreUIService<Schema> {
