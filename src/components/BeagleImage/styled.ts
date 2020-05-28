@@ -16,10 +16,10 @@
 
 import styled from 'styled-components'
 
-interface StyledImageInterface {
-  contentMode: 'fill' | 'cover' | 'none' | 'contain',
+export interface StyledImageInterface {
+  contentMode?: string,
 }
 
 export const StyledImage = styled.img<StyledImageInterface>`
-  object-fit: ${({ contentMode }) => contentMode}
+  object-fit: ${({ contentMode }) => contentMode }
 `

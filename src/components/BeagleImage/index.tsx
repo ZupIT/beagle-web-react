@@ -26,17 +26,11 @@ export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComp
   contentMode?: ImageContentMode,
 }
 
-export const getContentModeValue = (contentMode?: ImageContentMode) => {
-  if (contentMode === 'FIT_XY')
-    return 'fill'
-
-  if (contentMode === 'CENTER_CROP')
-    return 'none'
-
-  if (contentMode === 'CENTER')
-    return 'contain'
-  
-  return 'cover'
+const contentModeMap = {
+  FIT_XY: 'fill',
+  CENTER_CROP: 'none',
+  CENTER: 'contain',
+  FIT_CENTER: 'cover',
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({
@@ -50,8 +44,8 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   const source = (mode === 'Local' || !beagleContext)
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
-    
-  return <StyledImage contentMode={getContentModeValue(contentMode)} 
+
+  return <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
     src={source} className={className} style={style} />
 }
 
