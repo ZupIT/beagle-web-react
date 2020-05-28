@@ -31,12 +31,10 @@ export const StyledBeaglePageView = styled.div`
 export const StyledLeftArrow = styled.span`
   position: absolute;
   top: 50%;
-  bottom: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
   color: ${BeagleTheme.swamp};
   cursor: pointer;
   left: 0;
@@ -45,12 +43,10 @@ export const StyledLeftArrow = styled.span`
 export const StyledRightArrow = styled.span`
   position: absolute;
   top: 50%;
-  bottom: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
   color: ${BeagleTheme.swamp};
   cursor: pointer;
   right: 0;
