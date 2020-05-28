@@ -17,9 +17,9 @@
 import styled from 'styled-components'
 
 interface StyledImageInterface {
-  contentMode?: 'fill' | 'cover' | 'none' | 'contain',
+  contentMode: 'fill' | 'cover' | 'none' | 'contain',
 }
 
 export const StyledImage = styled.img<StyledImageInterface>`
-  object-fit: ${({ contentMode }) => contentMode || 'cover'}
+  object-fit: ${({ contentMode }) => contentMode}
 `
