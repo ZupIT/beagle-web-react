@@ -29,10 +29,6 @@ export interface BeaglePageViewInterface extends BeagleDefaultComponent {
   pageIndicator?: PageIndicator,
 }
 
-export interface BeagleChildren {
-  key: string,
-}
-
 const BeaglePageView: FC<BeaglePageViewInterface> = props => {
   const { children, pageIndicator } = props
   const [active, setActive] = useState(0)
