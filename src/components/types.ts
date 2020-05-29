@@ -22,6 +22,11 @@ export type Direction =  'VERTICAL' | 'HORIZONTAL'
 
 export type ImageContentMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
 
+export interface PageIndicator {
+  selectedColor: string,
+  unselectedColor: string,
+}
+
 export type InputHandler = (event: { value: string }) => void
 
 type InputElement = HTMLTextAreaElement | HTMLInputElement
