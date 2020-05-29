@@ -16,12 +16,21 @@
 
 import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleDefaultComponent, ImageContentMode } from '../types'
 import withTheme from '../utils/withTheme'
+import { StyledImage } from './styled'
 
 export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   url: string,
   mode: 'Network' | 'Local',
+  contentMode?: ImageContentMode,
+}
+
+const contentModeMap = {
+  FIT_XY: 'fill',
+  CENTER_CROP: 'none',
+  CENTER: 'contain',
+  FIT_CENTER: 'cover',
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({
@@ -30,12 +39,14 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   url,
   beagleContext,
   style,
+  contentMode,
 }) => {
   const source = (mode === 'Local' || !beagleContext)
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
-    
-  return <img src={source} className={className} style={style} />
+
+  return <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
+    src={source} className={className} style={style} />
 }
 
 export default withTheme(BeagleImage)

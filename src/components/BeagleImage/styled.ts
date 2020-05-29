@@ -14,26 +14,12 @@
   * limitations under the License.
 */
 
-import { ChangeEvent, FocusEvent } from 'react'
+import styled from 'styled-components'
 
-export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
-
-export type Direction =  'VERTICAL' | 'HORIZONTAL'
-
-export type ImageContentMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
-
-export interface PageIndicator {
-  selectedColor: string,
-  unselectedColor: string,
+export interface StyledImageInterface {
+  contentMode?: string,
 }
 
-export type InputHandler = (event: { value: string }) => void
-
-type InputElement = HTMLTextAreaElement | HTMLInputElement
-
-export type InputEvent = ChangeEvent<InputElement> | FocusEvent<InputElement>
-
-export interface BeagleDefaultComponent {
-  style?: React.CSSProperties,
-  className?: string,
-}
+export const StyledImage = styled.img<StyledImageInterface>`
+  object-fit: ${({ contentMode }) => contentMode }
+`

@@ -26,6 +26,7 @@ import BeagleTouchable from './BeagleTouchable'
 import BeagleSimpleForm from './BeagleSimpleForm'
 import BeagleTabView from './BeagleTabView'
 import BeagleTabItem from './BeagleTabView/BeagleTabItem'
+import BeaglePageView from './BeaglePageView'
 import LinkList from './LinkList'
 import Modal from './Modal'
 import TextArea from './TextArea'
@@ -42,7 +43,7 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleContainer,
-  'beagle:pageview': null,
+  'beagle:pageview': BeaglePageView,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
   'beagle:tabview': BeagleTabView,
