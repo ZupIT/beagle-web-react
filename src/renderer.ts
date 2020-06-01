@@ -17,6 +17,7 @@
 import { Fragment, FC, createElement } from 'react'
 import { map } from 'lodash'
 import { BeagleUIElement, BeagleContext } from '@zup-it/beagle-web'
+import BeagleId from './BeagleId'
 import { BeagleConfig } from './types'
 
 const createReactComponentTree = <Schema>(
@@ -39,7 +40,9 @@ const createReactComponentTree = <Schema>(
     createReactComponentTree(components, child, viewId))
   const componentProps = { ...props, key: id, beagleContext }
 
-  return createElement(Component as FC<any>, componentProps, componentChildren)
+  return createElement(BeagleId, { id, key: id }, [
+    createElement(Component as FC<any>, componentProps, componentChildren),
+  ])
 }
 
 export default createReactComponentTree
