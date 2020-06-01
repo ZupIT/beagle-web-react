@@ -39,9 +39,10 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     && element.onPress._beagleAction_ === 'beagle:submitForm'
   )
   const type = isSubmitButton ? 'submit' : 'button'
+  const handlePress = isSubmitButton ? undefined : onPress
 
   return (
-    <StyledButton style={style} className={className} onClick={onPress}>
+    <StyledButton style={style} className={className} onClick={handlePress} type={type}>
       {text}
     </StyledButton>
   )
