@@ -15,19 +15,33 @@
 */
 
 import React, { FC } from 'react'
+import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
 
-export interface BeagleButtonInterface extends BeagleDefaultComponent {
+export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
 	text: string,
 	onPress?: () => void,
 }
 
-const BeagleButton: FC<BeagleButtonInterface> = props => {
-  const { text, className, onPress, style } = props
+const BeagleButton: FC<BeagleButtonInterface> = ({
+  text,
+  className,
+  onPress,
+  style,
+  beagleContext,
+}) => {
+  const element = beagleContext.getElement()
+  const isSubmitButton = (
+    element
+    && element.onPress
+    && element.onPress._beagleAction_ === 'beagle:submitForm'
+  )
+  const type = isSubmitButton ? 'submit' : 'button'
+
   return (
-    <StyledButton style={style} className={className} onClick={onPress}>
+    <StyledButton style={style} className={className} onClick={onPress} type={type}>
       {text}
     </StyledButton>
   )
