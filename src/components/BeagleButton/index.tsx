@@ -41,7 +41,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   const type = isSubmitButton ? 'submit' : 'button'
 
   return (
-    <StyledButton style={style} className={className} onClick={onPress} type={type}>
+    <StyledButton style={style} className={className} onClick={onPress}>
       {text}
     </StyledButton>
   )
