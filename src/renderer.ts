@@ -19,6 +19,7 @@ import { map } from 'lodash'
 import { BeagleUIElement, BeagleContext } from '@zup-it/beagle-web'
 import { ComponentName } from '@zup-it/beagle-web/types'
 import { BeagleConfig } from './types'
+import { getComponentKey } from './utils/beagleComponentsMapKeys'
 
 const createReactComponentTree = <Schema>(
   components: BeagleConfig<Schema>['components'],
@@ -26,11 +27,9 @@ const createReactComponentTree = <Schema>(
   viewId: string,
 ): JSX.Element => {
   const { _beagleComponent_, children, id, _context_, ...props } = ui
-  const keys = Object.keys(components)
-  const lowerCaseKeyMap: Record<string, ComponentName<Schema>> = 
-    keys.reduce((result, key) => ({ ...result, [key.toLowerCase()]: key }), {})
-  const componentKey = lowerCaseKeyMap[(_beagleComponent_ as string).toLowerCase()]
+  const componentKey = getComponentKey(components, _beagleComponent_)
   const Component = components[componentKey]
+
   
 
   if (!Component) {
