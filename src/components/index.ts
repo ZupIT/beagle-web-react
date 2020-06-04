@@ -23,9 +23,10 @@ import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
 import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
+import BeagleSimpleForm from './BeagleSimpleForm'
 import BeagleTabView from './BeagleTabView'
 import BeagleTabItem from './BeagleTabView/BeagleTabItem'
-import Form from './Form'
+import BeaglePageView from './BeaglePageView'
 import LinkList from './LinkList'
 import Modal from './Modal'
 import TextArea from './TextArea'
@@ -42,18 +43,18 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleContainer,
-  'beagle:pageview': null,
+  'beagle:pageview': BeaglePageView,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
   'beagle:tabview': BeagleTabView,
   'beagle:tabitem': BeagleTabItem,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
+  'beagle:simpleform': BeagleSimpleForm,
   'beagle:lazycomponent': BeagleLazy,
 }
 
 const webSpecificComponents = {
-  'custom:form': Form,
   'custom:link-list': LinkList,
   'custom:modal': Modal,
   'custom:text-area': TextArea,

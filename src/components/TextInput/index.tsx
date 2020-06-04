@@ -62,8 +62,7 @@ const TextField: FC<TextInputInterface> = ({
         onFocus={handleEvent(onFocus)}
         type={type}
         disabled={disabled}
-        // @ts-ignore
-        readonly={readonly}
+        readOnly={readonly}
         name={name}
         style={style}
         className={className}

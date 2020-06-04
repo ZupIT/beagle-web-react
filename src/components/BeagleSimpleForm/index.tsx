@@ -15,21 +15,15 @@
 */
 
 import React, { FC } from 'react'
-import Spinner from '../Spinner'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
-import { StyledForm, LoadingPanel } from './styled'
 
 export interface FormInterface extends BeagleDefaultComponent {
-  isLoading?: boolean,
   onSubmit?: () => void,
-  onReset?: () => void,
 }
 
 const Form: FC<FormInterface> = ({
-  isLoading = false,
   onSubmit,
-  onReset,
   style,
   className,
   children,
@@ -40,12 +34,9 @@ const Form: FC<FormInterface> = ({
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit} onReset={onReset} style={style} className={className}>
+    <form onSubmit={handleSubmit} style={style} className={className}>
       {children}
-      <LoadingPanel isVisible={isLoading}>
-        <Spinner />
-      </LoadingPanel>
-    </StyledForm>
+    </form>
   )
 }
 

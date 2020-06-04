@@ -17,21 +17,28 @@
 import React, { FC } from 'react'
 import { InputEvent, InputHandler, BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
+import { InputGroup, Label, StyledTextArea } from './styled'
 
 export interface TextAreaInterface extends BeagleDefaultComponent {
   value: string,
+  label?: string,
   name?: string,
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
+  disabled?: boolean,
+  readonly?: boolean,
 }
 
 const TextArea: FC<TextAreaInterface> = ({
   value,
+  label,
   name,
   onChange,
   onFocus,
   onBlur,
+  disabled,
+  readonly,
   style,
   className,
 }) => {
@@ -41,15 +48,20 @@ const TextArea: FC<TextAreaInterface> = ({
   }
 
   return (
-    <textarea
-      name={name}
-      value={value}
-      onChange={handleEvent(onChange)}
-      onBlur={handleEvent(onBlur)}
-      onFocus={handleEvent(onFocus)}
-      style={style}
-      className={className}
-    />
+    <InputGroup>
+      {label && <Label>{label}:</Label>}
+      <StyledTextArea
+        name={name}
+        value={value}
+        onChange={handleEvent(onChange)}
+        onBlur={handleEvent(onBlur)}
+        onFocus={handleEvent(onFocus)}
+        disabled={disabled}
+        readOnly={readonly}
+        style={style}
+        className={className}
+      />
+    </InputGroup>
   )
 }
 
