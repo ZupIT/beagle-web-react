@@ -20,7 +20,7 @@ import { BeagleUIElement, BeagleContext } from '@zup-it/beagle-web'
 import { ComponentName } from '@zup-it/beagle-web/types'
 import BeagleId from './BeagleId'
 import { BeagleConfig } from './types'
-import { getComponentKey } from './utils/beagleComponentsMapKeys'
+import { getComponentByCaseInsentiveKey } from './utils/beagleComponent'
 
 const createReactComponentTree = <Schema>(
   components: BeagleConfig<Schema>['components'],
@@ -28,8 +28,7 @@ const createReactComponentTree = <Schema>(
   viewId: string,
 ): JSX.Element => {
   const { _beagleComponent_, children, id, _context_, ...props } = ui
-  const componentKey = getComponentKey(components, _beagleComponent_)
-  const Component = components[componentKey]
+  const Component = getComponentByCaseInsentiveKey(components, _beagleComponent_)
 
   if (!Component) {
     console.error(

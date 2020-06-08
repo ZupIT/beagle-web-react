@@ -14,31 +14,29 @@
   * limitations under the License.
 */
 import { BeagleConfig } from '@zup-it/beagle-web'
-import { ComponentName } from '@zup-it/beagle-web/types'
-
+import { ComponentName, DefaultSchema } from '@zup-it/beagle-web/types'
 
 function createMapOfKeys<Schema> (components: BeagleConfig<Schema>['components']) {
   const keys = Object.keys(components)
   return keys.reduce((result, key) => ({ ...result, [key.toLowerCase()]: key }), {})
 }
 
-const getMapKeysOfComponents = (<Schema>() => {
-  const Memo: Record<string, Record<string, ComponentName<Schema>>> = {}
-
+const getLowercaseMapOfKeys = (<Schema>() => {
+  type ComponentMap = BeagleConfig<Schema>['components']
+  type ComponentKeyMap = Record<string, ComponentName<Schema>>
+  const memo: Map<ComponentMap, ComponentKeyMap> = new Map()
+  
   return (components: BeagleConfig<Schema>['components']) => {
-    const keyMap = JSON.stringify(components) 
-    if (Memo && Memo[keyMap]) 
-      return Memo[keyMap]
-    else
-      return (Memo[keyMap] = createMapOfKeys(components))
+    if (!memo.has(components)) memo.set(components, createMapOfKeys(components))
+    return memo.get(components)
   }
-    
 })()
 
-export const getComponentKey = <Schema> (
+export const getComponentByCaseInsentiveKey = <Schema> (
   components: BeagleConfig<Schema>['components'], 
   name: ComponentName<Schema>
 ) => {
-  const mapKeysOfComponents = getMapKeysOfComponents(components)
-  return mapKeysOfComponents[(name as string).toLowerCase()]
+  const lowercaseKeyMap = getLowercaseMapOfKeys(components) || {}
+  const originalKey = lowercaseKeyMap[(name as string).toLowerCase()]
+  return components[originalKey]
 }
