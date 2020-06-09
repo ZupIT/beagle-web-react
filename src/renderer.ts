@@ -17,7 +17,6 @@
 import { Fragment, FC, createElement } from 'react'
 import { map } from 'lodash'
 import { BeagleUIElement, BeagleContext } from '@zup-it/beagle-web'
-import { ComponentName } from '@zup-it/beagle-web/types'
 import BeagleId from './BeagleId'
 import { BeagleConfig } from './types'
 import { getComponentByCaseInsentiveKey } from './utils/beagleComponent'
