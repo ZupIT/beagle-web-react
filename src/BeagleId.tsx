@@ -20,10 +20,10 @@ Unfortunately, we can't do it without a class component or without the use of Re
 which is not recommended by the React team. We should alter this as soon as React provides a better
 way to do it. */
 
-import { Component } from 'react'
+import { Component, cloneElement, Children, isValidElement } from 'react'
 import { findDOMNode } from 'react-dom'
 
-class BeagleId extends Component<{ id: string }> {
+class BeagleId extends Component<{ id: string, className?: string }> {
   componentDidMount() {
     // eslint-disable-next-line
     const el: any = findDOMNode(this)
@@ -31,7 +31,13 @@ class BeagleId extends Component<{ id: string }> {
   }
 
   render() {
-    return this.props.children
+    const { className } = this.props
+    let childrenWithClass = this.props.children
+    if (className) 
+      childrenWithClass = Children.map(this.props.children, (child) => (
+        isValidElement(child)) ? cloneElement(child, { className }) : child)
+
+    return childrenWithClass
   }
 }
 
