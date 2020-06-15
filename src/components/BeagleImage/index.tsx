@@ -45,10 +45,12 @@ const BeagleImage: FC<BeagleImageInterface> = ({
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
 
-  return (<StyledFigure className={className} style={style} >
-    <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
-      src={source} />
-  </StyledFigure>)
+  return (
+    <StyledFigure className={className} style={style} >
+      <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
+        src={source} />
+    </StyledFigure>
+  )
 }
 
 export default withTheme(BeagleImage)
