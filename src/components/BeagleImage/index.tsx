@@ -18,7 +18,7 @@ import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent, ImageContentMode } from '../types'
 import withTheme from '../utils/withTheme'
-import { StyledImage } from './styled'
+import { StyledImage, StyledFigure } from './styled'
 
 export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   url: string,
@@ -45,8 +45,10 @@ const BeagleImage: FC<BeagleImageInterface> = ({
     ? url
     : beagleContext.getView().getUrlBuilder().build(url)
 
-  return <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
-    src={source} className={className} style={style} />
+  return (<StyledFigure className={className} style={style} >
+    <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
+      src={source} />
+  </StyledFigure>)
 }
 
 export default withTheme(BeagleImage)

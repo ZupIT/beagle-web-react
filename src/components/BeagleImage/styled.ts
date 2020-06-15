@@ -21,5 +21,15 @@ export interface StyledImageInterface {
 }
 
 export const StyledImage = styled.img<StyledImageInterface>`
-  object-fit: ${({ contentMode }) => contentMode }
+  object-fit: ${({ contentMode }) => contentMode };
+  width: inherit;
+  height: inherit;
+  min-width: inherit;
+  min-height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+`
+
+export const StyledFigure = styled.figure`
+  margin: 0;
 `
