@@ -51,10 +51,9 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       <StyleContentItens>
         {
           Children.map(children, (childId, index) => {
-            if (index === active) {
-              let item: ReactNode
-              if (isValidElement(childId) && childId.props && childId.props.children)
-                item = childId.props.children
+            if (index === active && isValidElement(childId) && childId.props &&
+            childId.props.children) {
+              const item: ReactNode = childId.props.children
               const childrenItens = item && Children.map(item, (child) => (
                 isValidElement(child)) ? cloneElement(child, { className: 'active' }) : child)
               return childrenItens
