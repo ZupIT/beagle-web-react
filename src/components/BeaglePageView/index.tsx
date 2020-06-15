@@ -16,7 +16,7 @@
 
 import React, {
   FC, useState,
-  cloneElement, Children, isValidElement,
+  cloneElement, Children, isValidElement, ReactNode,
 } from 'react'
 import { BeagleDefaultComponent, PageIndicator } from '../types'
 import {
@@ -50,10 +50,17 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       </StyledLeftArrow>
       <StyleContentItens>
         {
-          Children.map(children, (child, index) => (
-            (isValidElement(child) && index === active) ?
-              cloneElement(child, { className: 'active' }) : child
-          ))
+          Children.map(children, (childId, index) => {
+            if (index === active) {
+              let item: ReactNode
+              if (isValidElement(childId) && childId.props && childId.props.children)
+                item = childId.props.children
+              const childrenItens = item && Children.map(item, (child) => (
+                isValidElement(child)) ? cloneElement(child, { className: 'active' }) : child)
+              return childrenItens
+            } else 
+              return childId
+          })
         }
       </StyleContentItens>
       <StyledRightArrow onClick={nextSlide}>
