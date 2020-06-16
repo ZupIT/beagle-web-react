@@ -17,6 +17,7 @@
 import React, { FC, useContext } from 'react'
 import { BeagleComponent } from '../../../types'
 import tabContext from '../context'
+import { ImagePath } from '../../BeagleImage'
 import {
   StyledBeagleTabItem,
   StyledBeagleTabItemHeader,
@@ -24,7 +25,6 @@ import {
   StyledSelected,
   StyledBeagleTabItemContent,
 } from './styled'
-import { ImagePath } from '../../BeagleImage'
 
 export interface BeagleTabItemInterface extends BeagleComponent {
   title?: string,
@@ -37,7 +37,7 @@ const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   const componentsService = useContext(tabContext)
   const path: ImagePath = {
     _beagleImagePath_: 'local',
-    url: icon || ''
+    url: icon || '',
   }
 
   return (
