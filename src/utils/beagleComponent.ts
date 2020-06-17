@@ -37,6 +37,6 @@ export const getComponentByCaseInsentiveKey = <Schema> (
   name: ComponentName<Schema>
 ) => {
   const lowercaseKeyMap = getLowercaseMapOfKeys(components) || {}
-  const originalKey = lowercaseKeyMap[(name as string).toLowerCase()]
+  const originalKey = name && lowercaseKeyMap[(name as string).toLowerCase()]
   return components[originalKey]
 }
