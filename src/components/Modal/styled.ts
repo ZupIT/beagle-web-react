@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { BeagleTheme } from '../commons.styled'
 
 export const StyledModal = styled.div`
-  background: rgba(0, 0, 0, 0.6);
+  background: ${BeagleTheme.darkGray};
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +15,6 @@ export const StyledModal = styled.div`
   > div {
     background-color: #FFF;
     border-radius: 25px;
-    width: 800px;
-    padding: 20px;
+    padding: 30px;
   }
 `
