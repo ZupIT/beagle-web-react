@@ -20,9 +20,15 @@ import { BeagleDefaultComponent, ImageContentMode } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledImage, StyledFigure } from './styled'
 
-export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
+export type ImageMode = 'local' | 'remote'
+
+export interface ImagePath {
+  _beagleImagePath_: ImageMode,
   url: string,
-  mode: 'Network' | 'Local',
+}
+
+export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
+  path: ImagePath,
   contentMode?: ImageContentMode,
 }
 
@@ -35,15 +41,14 @@ const contentModeMap = {
 
 const BeagleImage: FC<BeagleImageInterface> = ({
   className,
-  mode,
-  url,
+  path,
   beagleContext,
   style,
   contentMode,
 }) => {
-  const source = (mode === 'Local' || !beagleContext)
-    ? url
-    : beagleContext.getView().getUrlBuilder().build(url)
+  const source = (path._beagleImagePath_ === 'local' || !beagleContext)
+    ? path.url
+    : beagleContext.getView().getUrlBuilder().build(path.url)
 
   return (
     <StyledFigure className={className} style={style} >

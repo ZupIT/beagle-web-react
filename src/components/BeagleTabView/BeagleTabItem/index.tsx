@@ -17,6 +17,7 @@
 import React, { FC, useContext } from 'react'
 import { BeagleComponent } from '../../../types'
 import tabContext from '../context'
+import { ImagePath } from '../../BeagleImage'
 import {
   StyledBeagleTabItem,
   StyledBeagleTabItemHeader,
@@ -34,11 +35,15 @@ const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   const { title, icon, beagleContext, children } = props
   const id = beagleContext.getElementId()
   const componentsService = useContext(tabContext)
+  const path: ImagePath = {
+    _beagleImagePath_: 'local',
+    url: icon || '',
+  }
 
   return (
     <StyledBeagleTabItem>
       <StyledBeagleTabItemHeader onClick={() => componentsService.setActiveTab(id)}>
-        {icon && <StyledBeagleImage mode='Local' url={icon}
+        {icon && <StyledBeagleImage path={path}
           beagleContext={beagleContext}></StyledBeagleImage>}
         {title}
       </StyledBeagleTabItemHeader>
