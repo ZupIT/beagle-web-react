@@ -15,20 +15,16 @@
 */
 
 import React, { FC, useEffect } from 'react'
-import { filterBooleanArray } from '../../utils/array'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledContainer } from './styled'
 
 export interface BeagleContainerInterface extends BeagleDefaultComponent {
-	styleId?: string,
-	className?: string,
   onInit?: () => void,
-  style?: React.CSSProperties,
 }
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, onInit, className, styleId, style } = props
+  const { children, onInit, className, style } = props
 
   useEffect(() => {
     if (onInit) onInit()
