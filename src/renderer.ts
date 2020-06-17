@@ -29,6 +29,8 @@ const createReactComponentTree = <Schema>(
   const { _beagleComponent_, children, id, _context_, ...props } = ui
   const Component = getComponentByCaseInsentiveKey(components, _beagleComponent_)
 
+  if (!_beagleComponent_) return createElement(Fragment)
+
   if (!Component) {
     console.error(
       `Error: Beagle could not find component ${_beagleComponent_}. This component and its children won't be rendered.`
