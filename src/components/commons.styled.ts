@@ -20,4 +20,5 @@ export const BeagleTheme = {
   swampTransparent:  'rgba(0, 27, 38, 0.1)',
   athensGray: '#F5F7F9',
   blackTransparent: 'rgba(0, 0, 0, 0.1)',
+  darkGray: 'rgba(0, 0, 0, 0.75);',
 }

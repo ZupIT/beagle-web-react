@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { BeagleTheme } from '../commons.styled'
 
 export const StyledModal = styled.div`
-  background: #F5F7F9;
+  background: ${BeagleTheme.darkGray};
   position: fixed;
   top: 0;
   left: 0;
