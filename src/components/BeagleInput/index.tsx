@@ -15,34 +15,32 @@
 */
 
 import React, { FC } from 'react'
-import { InputEvent, InputHandler, BeagleDefaultComponent } from '../types'
+import { InputEvent, InputHandler, BeagleDefaultComponent, InputType } from '../types'
 import withTheme from '../utils/withTheme'
-import { InputGroup, Label, StyledInput } from './styled'
+import { StyledInput } from './styled'
 
 export interface TextInputInterface extends BeagleDefaultComponent {
   value: string,
-  label?: string,
   placeholder?: string,
-  type?: string,
-  name?: string,
   disabled?: boolean,
-  readonly?: boolean,
+  readOnly?: boolean,
+  type?: InputType,
+  hidden?: boolean,
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
 }
 
-const TextField: FC<TextInputInterface> = ({
+const BeagleInput: FC<TextInputInterface> = ({
   value,
-  label,
   placeholder,
+  disabled,
+  readOnly,
+  type = 'TEXT',
+  hidden,
   onChange,
   onFocus,
   onBlur,
-  type,
-  disabled,
-  readonly,
-  name,
   style,
   className,
 }) => {
@@ -52,23 +50,20 @@ const TextField: FC<TextInputInterface> = ({
   }
 
   return (
-    <InputGroup>
-      {label && <Label>{label}:</Label>}
-      <StyledInput
-        value={value}
-        placeholder={placeholder}
-        onChange={handleEvent(onChange)}
-        onBlur={handleEvent(onBlur)}
-        onFocus={handleEvent(onFocus)}
-        type={type}
-        disabled={disabled}
-        readOnly={readonly}
-        name={name}
-        style={style}
-        className={className}
-      />
-    </InputGroup>
+    <StyledInput
+      value={value}
+      placeholder={placeholder}
+      disabled={disabled}
+      readOnly={readOnly}
+      type={type}
+      hidden={hidden}
+      onChange={handleEvent(onChange)}
+      onBlur={handleEvent(onBlur)}
+      onFocus={handleEvent(onFocus)}
+      style={style}
+      className={className}
+    />
   )
 }
 
-export default withTheme(TextField)
+export default withTheme(BeagleInput)
