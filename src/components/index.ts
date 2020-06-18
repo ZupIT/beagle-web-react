@@ -30,7 +30,7 @@ import BeaglePageView from './BeaglePageView'
 import LinkList from './LinkList'
 import Modal from './Modal'
 import TextArea from './TextArea'
-import TextInput from './TextInput'
+import BeagleInput from './BeagleInput'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -52,13 +52,13 @@ const beagleDefaultComponents = {
   'beagle:touchable': BeagleTouchable,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:lazycomponent': BeagleLazy,
+  'beagle:input': BeagleInput,
 }
 
 const webSpecificComponents = {
   'custom:link-list': LinkList,
   'custom:modal': Modal,
   'custom:text-area': TextArea,
-  'custom:text-input': TextInput,
 }
 
 export default {
