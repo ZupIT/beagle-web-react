@@ -27,6 +27,9 @@ const createReactComponentTree = <Schema>(
   viewId: string,
 ): JSX.Element => {
   const { _beagleComponent_, children, id, _context_, ...props } = ui
+  
+  if (!_beagleComponent_) return createElement(Fragment)
+
   const Component = getComponentByCaseInsentiveKey(components, _beagleComponent_)
 
   if (!Component) {
