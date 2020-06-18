@@ -14,23 +14,14 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { Direction, BeagleDefaultComponent } from '../types'
-import withTheme from '../utils/withTheme'
-import { StyledListView } from './styled'
-  
-export interface BeagleListViewInterface extends BeagleDefaultComponent {
+import styled from 'styled-components'
+import { Direction } from '../types'
+
+interface StyledListViewInterface {
   direction: Direction,
 }
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, className, style } = props
-
-  return (
-    <StyledListView className={className} direction={direction} style={style}>
-      {children}
-    </StyledListView>
-  )
-}
-
-export default withTheme(BeagleListView)
+export const StyledListView = styled.div<StyledListViewInterface>`
+  display: flex;
+  flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'}
+`
