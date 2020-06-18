@@ -31,6 +31,8 @@ export type InputHandler = (event: { value: string }) => void
 
 type InputElement = HTMLTextAreaElement | HTMLInputElement
 
+export type InputType = 'DATE' | 'EMAIL' | 'PASSWORD' | 'NUMBER' | 'TEXT'
+
 export type InputEvent = ChangeEvent<InputElement> | FocusEvent<InputElement>
 
 export interface BeagleDefaultComponent {

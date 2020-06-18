@@ -19,11 +19,7 @@ import BeagleText from '../BeagleText'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 
-export interface BeagleErrorInterface extends BeagleDefaultComponent {
-  className?: string,
-}
-
-const BeagleError: FC<BeagleErrorInterface> = props => {
+const BeagleError: FC<BeagleDefaultComponent> = props => {
   const { className } = props
   return (
     <div className={className}>

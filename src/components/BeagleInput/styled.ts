@@ -14,27 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
-import { BeagleDefaultComponent } from '../types'
-import withTheme from '../utils/withTheme'
-import { StyledContainer } from './styled'
+import styled from 'styled-components'
 
-export interface BeagleContainerInterface extends BeagleDefaultComponent {
-  onInit?: () => void,
-}
-
-const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, onInit, className, style } = props
-
-  useEffect(() => {
-    if (onInit) onInit()
-  }, [])
-
-  return (
-    <StyledContainer className={className} style={style}>
-      {children}
-    </StyledContainer>
-  )
-}
-
-export default withTheme(BeagleContainer)
+export const StyledInput = styled.input`
+  flex: 1;
+`
