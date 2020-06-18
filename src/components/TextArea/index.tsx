@@ -20,7 +20,7 @@ import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledTextArea } from './styled'
 
 export interface TextAreaInterface extends BeagleDefaultComponent {
-  value: string,
+  value?: string,
   label?: string,
   name?: string,
   onChange?: InputHandler,
