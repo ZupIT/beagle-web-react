@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@zup-it/beagle-web": "0.3.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "showdown": "^1.9.1"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -40,6 +41,7 @@
     "@types/lodash": "^4.14.149",
     "@types/react": "16.9.23",
     "@types/react-dom": "16.9.5",
+    "@types/showdown": "^1.9.3",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
