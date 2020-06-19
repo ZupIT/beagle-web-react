@@ -27,7 +27,7 @@ import BeagleSimpleForm from './BeagleSimpleForm'
 import BeagleTabView from './BeagleTabView'
 import BeagleTabItem from './BeagleTabView/BeagleTabItem'
 import BeaglePageView from './BeaglePageView'
-import LinkList from './LinkList'
+import Markdown from './Markdown'
 import Modal from './Modal'
 import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
@@ -56,7 +56,7 @@ const beagleDefaultComponents = {
 }
 
 const webSpecificComponents = {
-  'custom:link-list': LinkList,
+  'custom:markdown': Markdown,
   'custom:modal': Modal,
   'custom:text-area': TextArea,
 }
