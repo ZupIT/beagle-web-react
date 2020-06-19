@@ -16,6 +16,7 @@
 
 import React, { FC } from 'react'
 import { BeagleAnalytics } from '@zup-it/beagle-web'
+import { ClickEvent } from '@zup-it/beagle-web/types'
 import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
@@ -23,7 +24,8 @@ import { StyledButton } from './styled'
 
 export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
 	text: string,
-	onPress?: () => void,
+  onPress?: () => void,
+  clickAnalyticsEvent: ClickEvent,
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
@@ -32,6 +34,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   onPress,
   style,
   beagleContext,
+  clickAnalyticsEvent,
 }) => {
   const element = beagleContext.getElement()
   const isSubmitButton = (
@@ -41,12 +44,12 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   )
   const type = isSubmitButton ? 'submit' : 'button'
   const handlePress = () => {
-    BeagleAnalytics.getAnalytics().trackEventOnClick({ category: 'Bubble' })
+    clickAnalyticsEvent && BeagleAnalytics.getAnalytics().trackEventOnClick(clickAnalyticsEvent)
     isSubmitButton ? undefined : onPress
   }
 
   return (
-    <StyledButton style={style} className={className} onClick={handlePress} type={type}>
+    <StyledButton style={style} className={className} onClick={() => handlePress()} type={type}>
       {text}
     </StyledButton>
   )
