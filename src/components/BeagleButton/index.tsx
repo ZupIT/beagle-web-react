@@ -25,7 +25,7 @@ import { StyledButton } from './styled'
 export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
 	text: string,
   onPress?: () => void,
-  clickAnalyticsEvent: ClickEvent,
+  clickAnalyticsEvent?: ClickEvent,
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
