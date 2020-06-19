@@ -34,7 +34,9 @@ const Markdown: FC<MarkdownInterface> = ({ text, style, className }) => {
       return
     }
 
-    htmlContainer.current.innerHTML = converter.makeHtml(text)
+    htmlContainer.current.innerHTML = converter
+      .makeHtml(text)
+      .replace(/<a ([^>]*)>/g, '<a target="_blank" $1>')
   }
 
   useEffect(convertMarkdownToHTML, [text])
