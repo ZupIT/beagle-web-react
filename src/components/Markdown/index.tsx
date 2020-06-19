@@ -14,27 +14,32 @@
   * limitations under the License.
 */
 
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useRef, useMemo } from 'react'
+import { Converter } from 'showdown'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
+import { Container } from './styled'
 
-interface LinkItem {
+export interface MarkdownInterface extends BeagleDefaultComponent {
   text: string,
-  url?: string,
-  onPress?: () => {},
 }
 
-export interface LinkListInterface extends BeagleDefaultComponent {
-  items: LinkItem[],
+const Markdown: FC<MarkdownInterface> = ({ text, style, className }) => {
+  const htmlContainer = useRef() as React.MutableRefObject<HTMLDivElement>
+  const converter = useMemo(() => new Converter(), [])
+
+  function convertMarkdownToHTML() {
+    if (!text) {
+      htmlContainer.current.innerHTML = ''
+      return
+    }
+
+    htmlContainer.current.innerHTML = converter.makeHtml(text)
+  }
+
+  useEffect(convertMarkdownToHTML, [text])
+
+  return <Container style={style} className={className} ref={htmlContainer} />
 }
 
-function linkItemToJSX({ text, url = '#', onPress }: LinkItem, key: number) {
-  return <li key={`${key}`}><a href={url} onClick={onPress}>{text}</a></li>
-}
-
-const LinkList: FC<LinkListInterface> = ({ items, style, className }) => {
-  const listContent = useMemo(() => items.map(linkItemToJSX), items)
-  return <ul style={style} className={className}>{listContent}</ul>
-}
-
-export default withTheme(LinkList)
+export default withTheme(Markdown)
