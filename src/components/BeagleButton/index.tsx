@@ -45,11 +45,11 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   const type = isSubmitButton ? 'submit' : 'button'
   const handlePress = () => {
     clickAnalyticsEvent && BeagleAnalytics.getAnalytics().trackEventOnClick(clickAnalyticsEvent)
-    isSubmitButton ? undefined : onPress
+    return isSubmitButton ? undefined : onPress && onPress()
   }
 
   return (
-    <StyledButton style={style} className={className} onClick={() => handlePress()} type={type}>
+    <StyledButton style={style} className={className} onClick={handlePress} type={type}>
       {text}
     </StyledButton>
   )
