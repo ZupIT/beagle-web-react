@@ -42,9 +42,11 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     && element.onPress
     && element.onPress._beagleAction_ === 'beagle:submitForm'
   )
+  const beagleAnalytics = BeagleAnalytics.getAnalytics()
   const type = isSubmitButton ? 'submit' : 'button'
   const handlePress = () => {
-    clickAnalyticsEvent && BeagleAnalytics.getAnalytics().trackEventOnClick(clickAnalyticsEvent)
+    if (clickAnalyticsEvent && beagleAnalytics)
+      BeagleAnalytics.getAnalytics().trackEventOnClick(clickAnalyticsEvent)
     return isSubmitButton ? undefined : onPress && onPress()
   }
 

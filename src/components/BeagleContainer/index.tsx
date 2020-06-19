@@ -28,13 +28,14 @@ export interface BeagleContainerInterface extends BeagleDefaultComponent {
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
   const { children, onInit, className, style, screenAnalyticsEvent } = props
+  const beagleAnalytics = BeagleAnalytics.getAnalytics()
 
   useEffect(() => {
-    if (screenAnalyticsEvent)
-      BeagleAnalytics.getAnalytics().trackEventOnScreenAppeared(screenAnalyticsEvent)
+    if (screenAnalyticsEvent && beagleAnalytics)
+      beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
     if (onInit) onInit()
     return () => {
-      screenAnalyticsEvent &&
+      if (screenAnalyticsEvent && beagleAnalytics)
         BeagleAnalytics.getAnalytics().trackEventOnScreenDisappeared(screenAnalyticsEvent)
     }
   }, [])
