@@ -40,7 +40,7 @@ import createReactComponentTree from './renderer'
 interface BeagleRemoteViewType extends LoadParams {
   id?: string,
   viewRef?: MutableRefObject<BeagleView | undefined>,
-  onCreateBeagleView?: (view: BeagleView) => void
+  onCreateBeagleView?: (view: BeagleView) => void,
 }
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
