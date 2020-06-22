@@ -15,19 +15,29 @@
 */
 
 import React, { FC, useEffect } from 'react'
+import { BeagleAnalytics } from '@zup-it/beagle-web'
+import { ScreenEvent } from '@zup-it/beagle-web/types'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledContainer } from './styled'
 
 export interface BeagleContainerInterface extends BeagleDefaultComponent {
   onInit?: () => void,
+  screenAnalyticsEvent?: ScreenEvent,
 }
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, onInit, className, style } = props
+  const { children, onInit, className, style, screenAnalyticsEvent } = props
+  const beagleAnalytics = BeagleAnalytics.getAnalytics()
 
   useEffect(() => {
+    if (screenAnalyticsEvent && beagleAnalytics)
+      beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
     if (onInit) onInit()
+    return () => {
+      if (screenAnalyticsEvent && beagleAnalytics)
+        beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)
+    }
   }, [])
 
   return (
