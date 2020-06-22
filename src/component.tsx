@@ -40,6 +40,7 @@ import createReactComponentTree from './renderer'
 interface BeagleRemoteViewType extends LoadParams {
   id?: string,
   viewRef?: MutableRefObject<BeagleView | undefined>,
+  onCreateBeagleView?: (view: BeagleView) => void,
 }
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
@@ -51,7 +52,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
-  const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {  
+  const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {
     if (!eventHandler)
       throw new Error(
         'Couldn\'t find an Event Handler! This is probably a bug within the Beagle library, please report'
@@ -88,6 +89,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
 
   useEffect(() => {
     BeagleContext.registerView(`${viewID}`, beagleView)
+    loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
     return () => BeagleContext.unregisterView(`${viewID}`)
   }, [])
 
