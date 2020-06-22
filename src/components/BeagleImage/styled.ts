@@ -28,6 +28,7 @@ export const StyledImage = styled.img<StyledImageInterface>`
   min-height: inherit;
   max-width: inherit;
   max-height: inherit;
+  border-radius: inherit;
 `
 
 export const StyledFigure = styled.figure`
