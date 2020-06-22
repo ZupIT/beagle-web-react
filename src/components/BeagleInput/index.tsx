@@ -17,7 +17,6 @@
 import React, { FC } from 'react'
 import { InputEvent, InputHandler, BeagleDefaultComponent, InputType } from '../types'
 import withTheme from '../utils/withTheme'
-import { StyledInput } from './styled'
 
 export interface TextInputInterface extends BeagleDefaultComponent {
   value: string,
@@ -50,7 +49,7 @@ const BeagleInput: FC<TextInputInterface> = ({
   }
 
   return (
-    <StyledInput
+    <input
       value={value}
       placeholder={placeholder}
       disabled={disabled}
