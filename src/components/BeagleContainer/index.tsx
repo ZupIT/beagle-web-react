@@ -36,7 +36,7 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
     if (onInit) onInit()
     return () => {
       if (screenAnalyticsEvent && beagleAnalytics)
-        BeagleAnalytics.getAnalytics().trackEventOnScreenDisappeared(screenAnalyticsEvent)
+        beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)
     }
   }, [])
 
