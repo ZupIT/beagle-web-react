@@ -73,7 +73,7 @@ export const StyledItemList = styled.li<StyledItemInterface>`
     (pageIndicator && pageIndicator.unselectedColor) || BeagleTheme.swampTransparent}
 `
 
-export const StyleContentItens = styled.div`
+export const StyleContentItems = styled.div`
   margin: 0 30px;
   > :not(.active) { 
     display: none; 
