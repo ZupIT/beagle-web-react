@@ -27,14 +27,17 @@ export const StyledBeagleTabItemHeader = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  min-width: 20px;
+  min-height: 15px;
+
+  &:hover {
+    background-color: ${BeagleTheme.swampTransparent};
+  }
 `
 
 export const StyledBeagleImage= styled(BeagleImage) `
   max-width: 80px;
   max-height: 80px;
-  &:hover {
-    background-color: ${BeagleTheme.swampTransparent};
-  }
 `
 export const StyledBeagleTabItemContent = styled.div`
   display: flex;
