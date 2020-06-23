@@ -18,4 +18,5 @@ import styled from 'styled-components'
 
 export const StyledBeagleTouchable = styled.div`
   cursor: pointer;
+  display: contents;
 `
