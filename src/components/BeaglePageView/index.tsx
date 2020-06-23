@@ -20,7 +20,7 @@ import React, {
 } from 'react'
 import { BeagleDefaultComponent, PageIndicator } from '../types'
 import {
-  StyledBeaglePageView, StyledLeftArrow, StyleContentItens,
+  StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
   StyledRightArrow, StyledItemList, StyledOrderList,
 } from './styled'
 import { KeyBoardArrow } from './KeyboardArrowLeft'
@@ -29,10 +29,8 @@ export interface BeaglePageViewInterface extends BeagleDefaultComponent {
   pageIndicator?: PageIndicator,
 }
 
-const BeaglePageView: FC<BeaglePageViewInterface> = props => {
-  const { children, pageIndicator } = props
+const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }) => {
   const [active, setActive] = useState(0)
-
   const numberChildren = Children.count(children)
 
   const backSlide = () => {
@@ -43,38 +41,48 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
     if (active < numberChildren - 1) setActive(active + 1)
   }
 
+  const bullets = pageIndicator ? (
+    <StyledOrderList>
+      {
+        Children.map(children, (child, index) => (
+          <StyledItemList onClick={() => setActive(index)} selected={index === active}
+            pageIndicator={pageIndicator}>
+          </StyledItemList>
+        ))
+      }
+    </StyledOrderList>
+  ): null
+
   return (
     <StyledBeaglePageView>
       <StyledLeftArrow onClick={backSlide} >
         <KeyBoardArrow />
       </StyledLeftArrow>
-      <StyleContentItens>
+
+      <StyleContentItems>
         {
           Children.map(children, (childId, index) => {
-            if (index === active && isValidElement(childId) && childId.props &&
-            childId.props.children) {
+            if (
+              index === active
+              && isValidElement(childId)
+              && childId.props
+              && childId.props.children
+            ) {
               const item: ReactNode = childId.props.children
-              const childrenItens = item && Children.map(item, (child) => (
+              const childrenItems = item && Children.map(item, (child) => (
                 isValidElement(child)) ? cloneElement(child, { className: 'active' }) : child)
-              return childrenItens
-            } else 
-              return childId
+              return childrenItems
+            }
+            return childId
           })
         }
-      </StyleContentItens>
+      </StyleContentItems>
+
       <StyledRightArrow onClick={nextSlide}>
         <KeyBoardArrow />
       </StyledRightArrow>
 
-      <StyledOrderList>
-        {
-          Children.map(children, (child, index) => (
-            <StyledItemList onClick={() => setActive(index)} selected={index === active}
-              pageIndicator={pageIndicator}>
-            </StyledItemList>
-          ))
-        }
-      </StyledOrderList>
+      {bullets}
     </StyledBeaglePageView>
   )
 }
