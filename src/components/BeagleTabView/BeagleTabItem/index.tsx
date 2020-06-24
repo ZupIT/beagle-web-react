@@ -28,22 +28,18 @@ import {
 
 export interface BeagleTabItemInterface extends BeagleComponent {
   title?: string,
-  icon?: string,
+  icon?: ImagePath,
 }
 
 const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   const { title, icon, beagleContext, children } = props
   const id = beagleContext.getElementId()
   const componentsService = useContext(tabContext)
-  const path: ImagePath = {
-    _beagleImagePath_: 'local',
-    url: icon || '',
-  }
 
   return (
     <StyledBeagleTabItem>
       <StyledBeagleTabItemHeader onClick={() => componentsService.setActiveTab(id)}>
-        {icon && <StyledBeagleImage path={path}
+        {icon && <StyledBeagleImage path={icon}
           beagleContext={beagleContext}></StyledBeagleImage>}
         {title}
       </StyledBeagleTabItemHeader>
