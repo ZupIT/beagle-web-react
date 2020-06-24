@@ -27,9 +27,15 @@ export interface ImagePath {
   url: string,
 }
 
+export interface Acessibility {
+  accessible: boolean,
+  accessibilityLabel?: string,
+}
+
 export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   path: ImagePath,
   contentMode?: ImageContentMode,
+  accessibility?: Acessibility,
 }
 
 const contentModeMap = {
@@ -45,6 +51,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   beagleContext,
   style,
   contentMode,
+  accessibility,
 }) => {
   const source = (path._beagleImagePath_ === 'local' || !beagleContext)
     ? path.url
@@ -53,7 +60,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   return (
     <StyledFigure className={className} style={style} >
       <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
-        src={source} />
+        src={source} alt={accessibility && accessibility.accessibilityLabel} />
     </StyledFigure>
   )
 }
