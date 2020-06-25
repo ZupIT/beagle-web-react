@@ -26,7 +26,7 @@ const createReactComponentTree = <Schema>(
   ui: BeagleUIElement<Schema>,
   viewId: string,
 ): JSX.Element => {
-  const { _beagleComponent_, children, id, _context_, ...props } = ui
+  const { _beagleComponent_, children, id, context, ...props } = ui
   
   if (!_beagleComponent_) return createElement(Fragment)
 
