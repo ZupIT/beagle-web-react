@@ -37,6 +37,7 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
+    return onPress && onPress()
   }
   
   return (
