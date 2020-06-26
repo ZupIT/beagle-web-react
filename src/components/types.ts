@@ -20,7 +20,7 @@ export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
 export type Direction =  'VERTICAL' | 'HORIZONTAL'
 
-export type ImageContentMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
+export type ImageMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
 
 export interface PageIndicator {
   selectedColor: string,
