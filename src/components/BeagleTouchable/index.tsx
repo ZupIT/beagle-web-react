@@ -15,18 +15,36 @@
 */
 
 import React, { FC } from 'react'
+import { ClickEvent } from '@zup-it/beagle-web/types'
+import { BeagleAnalytics } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'
 
 export interface BeagleTouchableInterface extends BeagleDefaultComponent {
   onPress: () => void,
+  clickAnalyticsEvent?: ClickEvent,
 }
 
-const BeagleTouchable: FC<BeagleTouchableInterface> = ({ onPress, className, style, children }) => (
-  <StyledBeagleTouchable className={className} onClick={onPress} style={style}>
-    {children}
-  </StyledBeagleTouchable>
-)
+const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
+  onPress,
+  clickAnalyticsEvent,
+  className,
+  style,
+  children,
+}) => {
+  const beagleAnalytics = BeagleAnalytics.getAnalytics()
+  const handlePress = () => {
+    if (clickAnalyticsEvent && beagleAnalytics)
+      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
+    return onPress && onPress()
+  }
+  
+  return (
+    <StyledBeagleTouchable className={className} onClick={handlePress} style={style}>
+      {children}
+    </StyledBeagleTouchable>
+  )
+}
 
 export default withTheme(BeagleTouchable)
