@@ -26,6 +26,7 @@ interface StyledItemInterface {
 export const StyledBeaglePageView = styled.div`
   display: block;
   position: relative;
+  min-height: 50px;
 `
 
 export const StyledLeftArrow = styled.span`
