@@ -17,11 +17,11 @@
 import styled from 'styled-components'
 
 export interface StyledImageInterface {
-  contentMode?: string,
+  mode?: string,
 }
 
 export const StyledImage = styled.img<StyledImageInterface>`
-  object-fit: ${({ contentMode }) => contentMode };
+  object-fit: ${({ mode }) => mode };
   width: inherit;
   height: inherit;
   min-width: inherit;
