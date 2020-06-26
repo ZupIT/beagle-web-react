@@ -16,29 +16,29 @@
 
 import React, { FC } from 'react'
 import { BeagleComponent } from '../../types'
-import { BeagleDefaultComponent, ImageContentMode } from '../types'
+import { BeagleDefaultComponent, ImageMode } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledImage, StyledFigure } from './styled'
 
-export type ImageMode = 'local' | 'remote'
+export type ImagePathMode = 'local' | 'remote'
 
 export interface ImagePath {
-  _beagleImagePath_: ImageMode,
+  _beagleImagePath_: ImagePathMode,
   url: string,
 }
 
-export interface Acessibility {
+export interface Accessibility {
   accessible: boolean,
   accessibilityLabel?: string,
 }
 
 export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
   path: ImagePath,
-  contentMode?: ImageContentMode,
-  accessibility?: Acessibility,
+  mode?: ImageMode,
+  accessibility?: Accessibility,
 }
 
-const contentModeMap = {
+const modeMap = {
   FIT_XY: 'fill',
   CENTER_CROP: 'none',
   CENTER: 'contain',
@@ -50,7 +50,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   path,
   beagleContext,
   style,
-  contentMode,
+  mode,
   accessibility,
 }) => {
   const source = (path._beagleImagePath_ === 'local' || !beagleContext)
@@ -59,7 +59,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
 
   return (
     <StyledFigure className={className} style={style} >
-      <StyledImage contentMode={(contentMode && contentModeMap[contentMode]) || 'cover'}
+      <StyledImage mode={(mode && modeMap[mode]) || 'cover'}
         src={source} alt={accessibility && accessibility.accessibilityLabel} />
     </StyledFigure>
   )
