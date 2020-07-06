@@ -31,6 +31,7 @@ import Markdown from './Markdown'
 import Modal from './Modal'
 import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
+import BeagleWebView from './BeagleWebView'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -53,6 +54,7 @@ const beagleDefaultComponents = {
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:lazycomponent': BeagleLazy,
   'beagle:input': BeagleInput,
+  'beagle:webview': BeagleWebView,
 }
 
 const webSpecificComponents = {
