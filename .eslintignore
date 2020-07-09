@@ -2,3 +2,4 @@
 /dist
 /bin
 /__tests__
+/coverage
