@@ -123,4 +123,5 @@ You should see the screen with the text present in the text attribute in the jso
 [If you want to find out how to debug beagle-react locally check this file](/docs/debug_local.md)
 
 # License
-Beagle React is [Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)
+Beagle React is Apache licensed.
+<!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)-->
