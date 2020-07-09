@@ -3,3 +3,4 @@
 /bin
 /__tests__
 /coverage
+jest.config.js
