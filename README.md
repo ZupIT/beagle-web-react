@@ -119,7 +119,8 @@ You should see the screen with the text present in the text attribute in the jso
 
 `Well done, you created your first screen with Beagle!`
 
-### [If you want to find out how to debug beagle-react locally check this file](/docs/debug_local.md)
+### Debugging beagle-react locally
+[If you want to find out how to debug beagle-react locally check this file](/docs/debug_local.md)
 
 # License
 Beagle React is [Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)
