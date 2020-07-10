@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "outDir": "./dist/",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"],
+      "@core/*": ["core/*"],
+      "@hooks/*": ["hooks/*"],
+      "@routes/*": ["routes/*"],
+    },
+  },
+  "include": [
+    "src/**/*",
+    "stub/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "src/custom.d.ts"
+  ]
+}
