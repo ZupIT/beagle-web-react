@@ -1,0 +1,21 @@
+{
+    "_beagleComponent_": "beagle:container",
+    "children": [
+        {
+            "_beagleComponent_":"beagle:text",
+            "text":"Hello Beagle"
+        },
+       {
+            "_beagleComponent_":"beagle:text",
+            "style":{
+              "padding":{
+                "top":{
+                  "value":10,
+                  "type": "REAL"
+                }
+              }
+            },
+            "text":"Beagle ís a cross-platform framework which provices usage of the server Driven UI concept,natively in iOS, Android and Web applications. By using Beagle, your team could easily change application's layout and data by just changing backend code"
+        }
+    ]
+}
