@@ -1,21 +1,100 @@
 {
     "_beagleComponent_": "beagle:container",
+    "direction": "HORIZONTAL",
+    "style": {
+        "flex": {
+            "flex-direction": "row"
+        }
+    },
+   
+    
     "children": [
         {
-            "_beagleComponent_":"beagle:text",
-            "text":"Hello Beagle"
-        },
-       {
-            "_beagleComponent_":"beagle:text",
-            "style":{
-              "padding":{
-                "top":{
-                  "value":10,
-                  "type": "REAL"
+            "_beagleComponent_":"beagle:image",
+            "path": {
+                "_beagleImagePath_": "remote",
+                "url": "https://i.ibb.co/SQjM10N/5e666d594f66c9c1e9c3ce74-Logo-RGB2.png"
+              } ,
+                "style": {
+                "size": {
+                  "height": {
+                    "value": 40,
+                    "type": "REAL"
+                  },
+                  "width": {
+                    "value": 82,
+                    "type": "REAL"
+                  }
+                },
+                "flex": {
+                    "marginLeft":{
+                        "value": 270,
+                        "type": "REAL"
+                    }
                 }
               }
-            },
-            "text":"Beagle is a cross-platform framework which provides usage of the server Driven UI concept,natively in iOS, Android and Web applications. By using Beagle, your team could easily change application's layout and data by just changing backend code"
-        }
+            
+        },
+        {
+            "_beagleComponent_": "beagle:listView",
+            "direction": "HORIZONTAL",
+            "style": {
+                "flex": {
+                  "justifyContent": "CENTER",
+                  "marginLeft":{
+                      "value": 850,
+                      "type": "REAL"
+                  },
+                  "marginTop":{
+                    "value": 20,
+                    "type": "REAL"
+                }
+
+
+                }
+              },
+            "children": [
+              {
+                "_beagleComponent_": "beagle:text",
+                "text": "Produtos",
+                "alignment": "RIGHT",
+                "style": {
+                    "flex": {
+                    "marginRight":{
+                        "value": 35,
+                        "type": "REAL"
+                    }
+                    }
+                }
+              },
+
+              {
+                "_beagleComponent_": "beagle:text",
+                "text": "Github",
+                "alignment": "RIGHT",
+                "style": {
+                    "flex": {
+                    "marginRight":{
+                        "value": 35,
+                        "type": "REAL"
+                    }
+                    }
+                }
+              },
+              {
+                "_beagleComponent_": "beagle:text",
+                "text": "Docs",
+                "alignment": "RIGHT",
+                "style": {
+                    "flex": {
+                    "marginRight":{
+                        "value": 35,
+                        "type": "REAL"
+                    }
+                    }
+                }
+              }
+            ]
+          }
     ]
 }
