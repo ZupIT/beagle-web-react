@@ -54,6 +54,7 @@
                 }
               },
             "children": [
+               
               {
                 "_beagleComponent_": "beagle:text",
                 "text": "Produtos",
@@ -67,6 +68,17 @@
                     }
                 }
               },
+            
+              {
+                "_beagleComponent_": "beagle:touchable",
+                "onPress": [
+                    {
+                        "_beagleAction_": "beagle:sendRequest",
+                          "url": "https://github.com/ZupIT/beagle"
+                        
+                      }
+                ],
+                   "children": [ 
 
               {
                 "_beagleComponent_": "beagle:text",
@@ -80,7 +92,10 @@
                     }
                     }
                 }
-              },
+              }
+            ]
+        },
+        
               {
                 "_beagleComponent_": "beagle:text",
                 "text": "Docs",
