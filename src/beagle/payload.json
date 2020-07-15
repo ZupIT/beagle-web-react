@@ -1,115 +1,439 @@
 {
-    "_beagleComponent_": "beagle:container",
-    "direction": "HORIZONTAL",
-    "style": {
+  "_beagleComponent_": "beagle:container",
+  "style": {
+    "fontSize": 20,
+    "fontFamily": "Lato,sans-serif"
+ 
+  },
+
+  "children": [
+    {
+      "_beagleComponent_": "beagle:container",
+      "direction": "HORIZONTAL",
+      "style": {
         "flex": {
-            "flex-direction": "row"
+          "flex-direction": "row"
         }
-    },
-   
-    
-    "children": [
+      },
+      "children": [
         {
-            "_beagleComponent_":"beagle:image",
-            "path": {
-                "_beagleImagePath_": "remote",
-                "url": "https://i.ibb.co/SQjM10N/5e666d594f66c9c1e9c3ce74-Logo-RGB2.png"
-              } ,
-                "style": {
-                "size": {
-                  "height": {
-                    "value": 40,
-                    "type": "REAL"
-                  },
-                  "width": {
-                    "value": 82,
+          "_beagleComponent_": "beagle:image",
+          "path": {
+            "_beagleImagePath_": "remote",
+            "url": "https://i.ibb.co/SQjM10N/5e666d594f66c9c1e9c3ce74-Logo-RGB2.png"
+          },
+          "style": {
+            "size": {
+              "height": {
+                "value": 40,
+                "type": "REAL"
+              },
+              "width": {
+                "value": 85,
+                "type": "REAL"
+              }
+            },
+            "flex": {
+              "marginLeft": {
+                "value": 270,
+                "type": "REAL"
+              }
+            }
+          }
+        },
+        {
+          "_beagleComponent_": "beagle:listView",
+          "direction": "HORIZONTAL",
+          "style": {
+            "flex": {
+              "justifyContent": "CENTER",
+              "marginLeft": {
+                "value": 850,
+                "type": "REAL"
+              },
+              "marginTop": {
+                "value": 20,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Produtos",
+              "alignment": "RIGHT",
+              "style": {
+                "flex": {
+                  "marginRight": {
+                    "value": 35,
                     "type": "REAL"
                   }
-                },
-                "flex": {
-                    "marginLeft":{
-                        "value": 270,
-                        "type": "REAL"
-                    }
                 }
               }
-            
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Github",
+              "alignment": "RIGHT",
+              "style": {
+                "flex": {
+                  "marginRight": {
+                    "value": 35,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Docs",
+              "alignment": "RIGHT",
+              "style": {
+                "flex": {
+                  "marginRight": {
+                    "value": 35,
+                    "type": "REAL"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "beagle:container",
+      "direction": "HORIZONTAL",
+      "style": {
+        "flex": {
+          "flex-direction": "row",
+          "alignItems": "CENTER",
+          "flex-wrap": "nowrap"
+        },
+        "backgroundColor": "#1d1e22"
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "vertical",
+          "style": {
+            "flex": {
+              "alignItems": "right",
+              "justifyContent": "CENTER",
+              "marginLeft": {
+                "value": 250,
+                "type": "REAL"
+              }
+            },
+            "size": {
+              "height": {
+                "value": 400,
+                "type": "REAL"
+              },
+              "width": {
+                "value": 500,
+                "type": "REAL"
+              }
+            },
+            "padding": {
+              "all": {
+                "value": 40,
+                "type": "REAL"
+              }
+            },
+            "line-height": {
+              "value": 100,
+              "type": "REAL"
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+          
+              "text": "Framework que atualiza UI via backend",
+              "textColor": "White",
+              "alignment": "left",
+              "style":{
+               
+                "flex": {
+                  "fontWeight": 600,
+                  "fontSize": 45,
+                  "marginBottom": {
+                    "value": 25,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "O Beagle é uma plataforma Server-Driven para iOS, Android e Web que facilita a construção de telas por meio de um backend, permitindo que telas e fluxos nativos sejam alterados utilizando apenas JSON.",
+              "textColor": "white",
+              "alignment": "left",
+               "style":{
+              "flex": {
+             
+                "marginBottom": {
+                  "value": 25,
+                  "type": "REAL"
+                }
+              }
+            }
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "HORIZONTAL",
+              "style": {
+                "flex": {
+                  "flex-direction": "row"
+                
+                }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:button",
+                  "style": {
+                    "background": "#e07b04",
+                    "color": "white",
+                    "margin": 10,
+                 
+                    "fontWeight": 700,
+                    "letterSpacing": 2.4,
+                    "padding": {
+                      "left": {
+                        "value": 30,
+                        "type": "REAL"
+                      },
+                      "right": {
+                        "value": 30,
+                        "type": "REAL"
+                      },
+                      "top": {
+                        "value": 10,
+                        "type": "REAL"
+                      },
+                      "bottom": {
+                        "value": 10,
+                        "type": "REAL"
+                      }
+                 
+                      
+                        
+                    },
+                    "flex": {
+                      "marginRight": {
+                        "value": 15,
+                        "type": "REAL"
+                       
+                      },
+                      "fontSize": 20
+                    }
+                    
+                  },
+                  "text": "Download",
+                  "onPress": [
+                    {
+                      "_beagleAction_": "beagle:alert",
+                      "message": "Download"
+                    }
+                  ]
+                },
+                {
+                  "_beagleComponent_": "beagle:button",
+                  "style": {
+                    "background": "#85b237",
+                    "color": "white",
+                    "margin": 10,
+                    "fontSize": 40,
+                    "fontWeight": 900,
+                    "letterSpacing": 2.4,
+                    "padding": {
+                      "left": {
+                        "value": 30,
+                        "type": "REAL"
+                      },
+                      "right": {
+                        "value": 30,
+                        "type": "REAL"
+                      }
+                    },
+                    "flex": {
+                      "fontSize": 20
+                    }
+                    
+                  },
+                  "text": "Comece agora",
+                  "onPress": [
+                    {
+                      "_beagleAction_": "beagle:alert",
+                      "message": "Comece agora"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
-            "_beagleComponent_": "beagle:listView",
-            "direction": "HORIZONTAL",
-            "style": {
-                "flex": {
-                  "justifyContent": "CENTER",
-                  "marginLeft":{
-                      "value": 850,
-                      "type": "REAL"
-                  },
-                  "marginTop":{
-                    "value": 20,
-                    "type": "REAL"
-                }
-
-
-                }
+          "_beagleComponent_": "beagle:image",
+          "path": {
+            "_beagleImagePath_": "remote",
+            "url": "https://i.ibb.co/vZxD2WV/framework-ilustration.png"
+          },
+          "style": {
+            "size": {
+              "height": {
+                "value": 450,
+                "type": "REAL"
               },
-            "children": [
-               
-              {
-                "_beagleComponent_": "beagle:text",
-                "text": "Produtos",
-                "alignment": "RIGHT",
-                "style": {
-                    "flex": {
-                    "marginRight":{
-                        "value": 35,
-                        "type": "REAL"
-                    }
-                    }
-                }
+              "width": {
+                "value": 600,
+                "type": "REAL"
+              }
+            },
+            "flex": {
+              "marginLeft": {
+                "value": 250,
+                "type": "REAL"
               },
-            
-              {
-                "_beagleComponent_": "beagle:touchable",
-                "onPress": [
-                    {
-                        "_beagleAction_": "beagle:sendRequest",
-                          "url": "https://github.com/ZupIT/beagle"
-                        
-                      }
-                ],
-                   "children": [ 
-
-              {
-                "_beagleComponent_": "beagle:text",
-                "text": "Github",
-                "alignment": "RIGHT",
-                "style": {
-                    "flex": {
-                    "marginRight":{
-                        "value": 35,
-                        "type": "REAL"
-                    }
-                    }
-                }
+              "marginTop": {
+                "value": 100,
+                "type": "REAL"
+              },
+              "marginBottom": {
+                "value": 100,
+                "type": "REAL"
               }
-            ]
-        },
-        
-              {
-                "_beagleComponent_": "beagle:text",
-                "text": "Docs",
-                "alignment": "RIGHT",
-                "style": {
-                    "flex": {
-                    "marginRight":{
-                        "value": 35,
-                        "type": "REAL"
-                    }
-                    }
-                }
-              }
-            ]
+            }
           }
-    ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "beagle:container",
+      "style": {
+        "flex": {
+          "alignItems": "CENTER",
+          "marginTop": {
+            "value": 50,
+            "type": "REAL"
+          }
+        }
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "size": {
+              "width": {
+                "value": 1380,
+                "type": "REAL"
+              }
+            }
+          },
+        
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Como funciona?",
+              "alignment": "center",
+              "style":{
+              "flex": {
+                "fontWeight": 600,
+                "fontSize": 45,
+                "marginBottom": {
+                  "value": 30,
+                  "type": "REAL"
+                }
+              }
+            }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja.",
+              "alignment": "center",
+              "style":{
+              "flex": {
+                "fontSize": 25
+               
+              }
+            }
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "size": {
+              "height": {
+                "value": 500,
+                "type": "REAL"
+              },
+              "width": {
+                "value": 850,
+                "type": "REAL"
+              },
+              "marginTop": {
+                "value": 40,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:tabview",
+          
+              "children": [
+                {
+                  "title": "Mobile",
+                  "child": {
+                    "_beagleComponent_": "beagle:image",
+                    "path": {
+                      "_beagleImagePath_": "remote",
+                      "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
+                    },
+                    "style": {
+                      "size": {
+                        "height": {
+                          "value": 394,
+                          "type": "REAL"
+                        },
+                        "width": {
+                          "value": 800,
+                          "type": "REAL"
+
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "Web",
+                  "child": {
+                    "_beagleComponent_": "beagle:image",
+                    "path": {
+                      "_beagleImagePath_": "remote",
+                      "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
+                    },
+                    "style": {
+                      "size": {
+                        "height": {
+                          "value": 394,
+                          "type": "REAL"
+                        },
+                        "width": {
+                          "value": 800,
+                          "type": "REAL"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
