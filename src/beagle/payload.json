@@ -3,16 +3,14 @@
   "style": {
     "fontSize": 20,
     "fontFamily": "Lato,sans-serif"
- 
   },
-
   "children": [
     {
       "_beagleComponent_": "beagle:container",
       "direction": "HORIZONTAL",
       "style": {
         "flex": {
-          "flex-direction": "row"
+          "flexDirection": "row"
         }
       },
       "children": [
@@ -106,16 +104,16 @@
       "direction": "HORIZONTAL",
       "style": {
         "flex": {
-          "flex-direction": "row",
+          "flexDirection": "row",
           "alignItems": "CENTER",
-          "flex-wrap": "nowrap"
+          "flexWrap": "nowrap"
         },
         "backgroundColor": "#1d1e22"
       },
       "children": [
         {
           "_beagleComponent_": "beagle:container",
-          "direction": "vertical",
+          "direction": "VERTICAL",
           "style": {
             "flex": {
               "alignItems": "right",
@@ -149,12 +147,10 @@
           "children": [
             {
               "_beagleComponent_": "beagle:text",
-          
               "text": "Framework que atualiza UI via backend",
               "textColor": "White",
               "alignment": "left",
-              "style":{
-               
+              "style": {
                 "flex": {
                   "fontWeight": 600,
                   "fontSize": 45,
@@ -170,23 +166,21 @@
               "text": "O Beagle é uma plataforma Server-Driven para iOS, Android e Web que facilita a construção de telas por meio de um backend, permitindo que telas e fluxos nativos sejam alterados utilizando apenas JSON.",
               "textColor": "white",
               "alignment": "left",
-               "style":{
-              "flex": {
-             
-                "marginBottom": {
-                  "value": 25,
-                  "type": "REAL"
+              "style": {
+                "flex": {
+                  "marginBottom": {
+                    "value": 25,
+                    "type": "REAL"
+                  }
                 }
               }
-            }
             },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "HORIZONTAL",
               "style": {
                 "flex": {
-                  "flex-direction": "row"
-                
+                  "flexDirection": "row"
                 }
               },
               "children": [
@@ -196,7 +190,6 @@
                     "background": "#e07b04",
                     "color": "white",
                     "margin": 10,
-                 
                     "fontWeight": 700,
                     "letterSpacing": 2.4,
                     "padding": {
@@ -216,19 +209,14 @@
                         "value": 10,
                         "type": "REAL"
                       }
-                 
-                      
-                        
                     },
                     "flex": {
                       "marginRight": {
                         "value": 15,
                         "type": "REAL"
-                       
                       },
                       "fontSize": 20
                     }
-                    
                   },
                   "text": "Download",
                   "onPress": [
@@ -260,7 +248,6 @@
                     "flex": {
                       "fontSize": 20
                     }
-                    
                   },
                   "text": "Comece agora",
                   "onPress": [
@@ -331,33 +318,31 @@
               }
             }
           },
-        
           "children": [
             {
               "_beagleComponent_": "beagle:text",
               "text": "Como funciona?",
               "alignment": "center",
-              "style":{
-              "flex": {
-                "fontWeight": 600,
-                "fontSize": 45,
-                "marginBottom": {
-                  "value": 30,
-                  "type": "REAL"
+              "style": {
+                "flex": {
+                  "fontWeight": 600,
+                  "fontSize": 45,
+                  "marginBottom": {
+                    "value": 30,
+                    "type": "REAL"
+                  }
                 }
               }
-            }
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja.",
               "alignment": "center",
-              "style":{
-              "flex": {
-                "fontSize": 25
-               
+              "style": {
+                "flex": {
+                  "fontSize": 25
+                }
               }
-            }
             }
           ]
         },
@@ -382,7 +367,6 @@
           "children": [
             {
               "_beagleComponent_": "beagle:tabview",
-          
               "children": [
                 {
                   "title": "Mobile",
@@ -401,7 +385,6 @@
                         "width": {
                           "value": 800,
                           "type": "REAL"
-
                         }
                       }
                     }
@@ -428,6 +411,148 @@
                       }
                     }
                   }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "beagle:container",
+      "direction": "HORIZONTAL",
+      "style": {
+        "flex": {
+          "flexDirection": "row",
+          "justifyContent": "CENTER",
+          "alignItems": "CENTER"
+        },
+        "backgroundColor": "#1c1c1e",
+        "size": {
+          "height": {
+            "value": 350,
+            "type": "REAL"
+          }
+        }
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": " VERTICAL",
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Um playground para você explorar o Beagle",
+              "textColor": "white",
+              "style": {
+                "flex":{
+                  "fontWeight": 600,
+                  "fontSize": 40
+                },
+                "margin": {
+                  "top": {
+                    "value": 30,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
+              "textColor": "white",
+              "style": {
+                "margin": {
+                  "top": {
+                    "value": 30,
+                    "type": "REAL"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "flex": {
+              "alignItems": "CENTER",
+              "justifyContent": "CENTER"
+            },
+            "size": {
+              "height": {
+                "value": 200,
+                "type": "REAL"
+              }
+            },
+            "margin": {
+              "left": {
+                "value": 200,
+                "type": "REAL"
+              },
+              "top": {
+                "value": 50,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:image",
+              "path": {
+                "_beagleImagePath_": "remote",
+                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+              },
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:button",
+              "style": {
+                "background": "#e07b04",
+                "color": "white",
+                "margin": 10,
+                "fontWeight": 700,
+                "letterSpacing": 2.4,
+                "padding": {
+                  "left": {
+                    "value": 40,
+                    "type": "REAL"
+                  },
+                  "right": {
+                    "value": 40,
+                    "type": "REAL"
+                  },
+                  "top": {
+                    "value": 8,
+                    "type": "REAL"
+                  },
+                  "bottom": {
+                    "value": 8,
+                    "type": "REAL"
+                  }
+                },
+                "flex": {
+                  "fontSize": 20
+                },
+                "margin": {
+                  "top": {
+                    "value": 30,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "text": "Testar agora",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:alert",
+                  "message": "Download"
                 }
               ]
             }
