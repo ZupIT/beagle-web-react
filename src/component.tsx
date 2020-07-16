@@ -48,7 +48,8 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(loadParams.id)
   let eventHandler: EventHandler | null = null
-  
+  let view: BeagleView
+
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
@@ -67,12 +68,17 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     errorListener.forEach(error => console.error(error))
   }
 
+  const updateView = () => (view.updateWithTree({ sourceTree: view.getTree() }))
+
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
     
     const view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
     view.addErrorListener(handleError)
+    
+    beagleService.globalContext.subscribe(updateView)
+
     if (loadParams.viewRef) loadParams.viewRef.current = view
 
     return view
@@ -96,7 +102,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const renderComponents = () => {
     if (!uiTree || !viewID) return <></>
     const components = beagleService.getConfig().components
-    
+
     return createReactComponentTree(components, uiTree, viewID)
   }
 
