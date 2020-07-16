@@ -68,12 +68,12 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     errorListener.forEach(error => console.error(error))
   }
 
-  const updateView = () => (view.updateWithTree({ sourceTree: view.getTree() }))
+  const updateView = () => (view && view.updateWithTree({ sourceTree: view.getTree() }))
 
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
     
-    const view = beagleService.createView(loadParams.path)
+    view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
     view.addErrorListener(handleError)
     
