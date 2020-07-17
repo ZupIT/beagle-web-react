@@ -589,7 +589,7 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "flexDirection":"row"
+              "flexDirection": "row"
             }
           },
           "children": [
@@ -622,26 +622,24 @@
                   }
                 },
                 {
-                "_beagleComponent_": "beagle:text",
-                "text": "Sincronize componentes e layouts por BFF",
-                "style": {
-                  "flex": {
-                    "fontWeight": 550,
-                    "fontSize": 22,
-                    "marginTop": {
-                      "value": 80,
-                      "type": "REAL"
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Sincronize componentes e layouts por BFF",
+                  "style": {
+                    "flex": {
+                      "fontWeight": 550,
+                      "fontSize": 22,
+                      "marginTop": {
+                        "value": 80,
+                        "type": "REAL"
+                      }
                     }
                   }
-                }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
                   "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend).",
                   "style": {}
-                  }
-
-
+                }
               ]
             },
             {
@@ -690,7 +688,7 @@
                   "_beagleComponent_": "beagle:text",
                   "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store.",
                   "style": {}
-                  }
+                }
               ]
             },
             {
@@ -710,7 +708,7 @@
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/DLJFTZH/migre-illustration.png" 
+                    "url": "https://i.ibb.co/DLJFTZH/migre-illustration.png"
                   },
                   "style": {
                     "size": {
@@ -738,12 +736,12 @@
                       }
                     }
                   }
-                  },
-                  {
-                    "_beagleComponent_": "beagle:text",
-                    "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
-                    "style": {}
-                    }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
+                  "style": {}
+                }
               ]
             }
           ]
@@ -793,6 +791,44 @@
           ]
         }
       ]
+    },
+    {
+      "_beagleComponent_": "beagle:container",
+      "style": {
+        "flex": {
+          "alignItems": "CENTER",
+          "justifyContent": "CENTER"
+        },
+        "size": {
+          "width": {
+            "value": 100,
+            "type": "PERCENT"
+          },
+          "height": {
+            "value": 450,
+            "type": "REAL"
+          }
+        },
+        "backgroundColor": "#1c1c1e"
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:image",
+          "path": {
+            "_beagleImagePath_": "remote",
+            "url": "https://i.ibb.co/K5GSNG3/zup-logo.png"
+          },
+          "style": {
+            "size": {
+              "width": {
+                "value": 200,
+                "type": "REAL"
+              }
+            }
+          }
+        }
+      ]
     }
+
   ]
 }
