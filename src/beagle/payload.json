@@ -114,6 +114,20 @@
                   }
                 }
               }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Português",
+              "alignment": "RIGHT",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "marginRight": {
+                    "value": 35,
+                    "type": "REAL"
+                  }
+                }
+              }
             }
           ]
         }
@@ -953,7 +967,7 @@
             },
             "size": {
               "width": {
-                "value": 500,
+                "value": 700,
                 "type": "REAL"
               }
             }
@@ -963,12 +977,12 @@
               "_beagleComponent_": "beagle:image",
               "path": {
                 "_beagleImagePath_": "remote",
-                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+                "url": "https://i.ibb.co/s9DQx43/5ecbf16922f3206fb99996a6-Charles-branco.png"
               },
               "style": {
                 "size": {
                   "width": {
-                    "value": 200,
+                    "value": 350,
                     "type": "REAL"
                   }
                 },
@@ -984,12 +998,12 @@
               "_beagleComponent_": "beagle:image",
               "path": {
                 "_beagleImagePath_": "remote",
-                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+                "url": "https://i.ibb.co/WsvVHYv/5e99e4ffce1b940d288dd1de-ritchie2-2x.png"
               },
               "style": {
                 "size": {
                   "width": {
-                    "value": 200,
+                    "value": 300,
                     "type": "REAL"
                   }
                 }
