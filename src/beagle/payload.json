@@ -2,19 +2,7 @@
   "_beagleComponent_": "beagle:container",
   "style": {
     "fontSize": 20,
-    "fontFamily": "Lato,sans-serif",
-    "padding": {
-      "all": {
-        "value": 0,
-        "type": "REAL"
-      }
-    },
-    "margin": {
-      "all": {
-        "value": 0,
-        "type": "REAL"
-      }
-    }
+    "fontFamily": "Lato,sans-serif"
   },
   "children": [
     {
@@ -44,12 +32,7 @@
                 "type": "REAL"
               }
             },
-            "flex": {
-              "marginLeft": {
-                "value": 270,
-                "type": "REAL"
-              }
-            }
+            "marginLeft": "270px"
           }
         },
         {
@@ -57,16 +40,10 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "justifyContent": "CENTER",
-              "marginLeft": {
-                "value": 850,
-                "type": "REAL"
-              },
-              "marginTop": {
-                "value": 20,
-                "type": "REAL"
-              }
-            }
+              "justifyContent": "CENTER"
+            },
+            "marginLeft": "850px",
+            "marginTop": "20px"
           },
           "children": [
             {
@@ -75,16 +52,10 @@
               "alignment": "RIGHT",
               "style": {
                 "flex": {
-                  "fontSize": 15,
-                  "marginRight": {
-                    "value": 35,
-                    "type": "REAL"
-                  },
-                  "marginBottom": {
-                    "value": 30,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 15
+                },
+                "marginRight": "35px",
+                "marginBottom": "30px"
               }
             },
             {
@@ -93,12 +64,9 @@
               "alignment": "RIGHT",
               "style": {
                 "flex": {
-                  "fontSize": 15,
-                  "marginRight": {
-                    "value": 35,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 15
+                },
+                "marginRight": "35px"
               }
             },
             {
@@ -107,12 +75,9 @@
               "alignment": "RIGHT",
               "style": {
                 "flex": {
-                  "fontSize": 15,
-                  "marginRight": {
-                    "value": 35,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 15
+                },
+                "marginRight": "35px"
               }
             },
             {
@@ -121,12 +86,9 @@
               "alignment": "RIGHT",
               "style": {
                 "flex": {
-                  "fontSize": 15,
-                  "marginRight": {
-                    "value": 35,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 15
+                },
+                "marginRight": "35px"
               }
             }
           ]
@@ -138,7 +100,7 @@
       "direction": "HORIZONTAL",
       "style": {
         "flex": {
-          "flexDirection": "row",
+          "flexDirection": "ROW",
           "alignItems": "CENTER",
           "flexWrap": "nowrap"
         },
@@ -150,13 +112,10 @@
           "direction": "VERTICAL",
           "style": {
             "flex": {
-              "alignItems": "right",
-              "justifyContent": "CENTER",
-              "marginLeft": {
-                "value": 250,
-                "type": "REAL"
-              }
+              "alignItems": "RIGHT",
+              "justifyContent": "CENTER"
             },
+            "marginLeft": "250px",
             "size": {
               "height": {
                 "value": 400,
@@ -187,12 +146,9 @@
               "style": {
                 "flex": {
                   "fontWeight": 600,
-                  "fontSize": 45,
-                  "marginBottom": {
-                    "value": 25,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 45
+                },
+                "marginBottom": "25px"
               }
             },
             {
@@ -201,12 +157,7 @@
               "textColor": "white",
               "alignment": "left",
               "style": {
-                "flex": {
-                  "marginBottom": {
-                    "value": 25,
-                    "type": "REAL"
-                  }
-                }
+                "marginBottom": "25px"
               }
             },
             {
@@ -214,7 +165,7 @@
               "direction": "HORIZONTAL",
               "style": {
                 "flex": {
-                  "flexDirection": "row"
+                  "flexDirection": "ROw"
                 }
               },
               "children": [
@@ -222,8 +173,7 @@
                   "_beagleComponent_": "beagle:button",
                   "style": {
                     "background": "#e07b04",
-                    "color": "white",
-                    "margin": 10,
+                    "color": "#ffffff",
                     "fontWeight": 700,
                     "letterSpacing": 2.4,
                     "padding": {
@@ -244,11 +194,8 @@
                         "type": "REAL"
                       }
                     },
+                    "marginRight": "15px",
                     "flex": {
-                      "marginRight": {
-                        "value": 15,
-                        "type": "REAL"
-                      },
                       "fontSize": 20
                     }
                   },
@@ -265,7 +212,6 @@
                   "style": {
                     "background": "#85b237",
                     "color": "white",
-                    "margin": 10,
                     "fontSize": 40,
                     "fontWeight": 900,
                     "letterSpacing": 2.4,
@@ -312,20 +258,9 @@
                 "type": "REAL"
               }
             },
-            "flex": {
-              "marginLeft": {
-                "value": 250,
-                "type": "REAL"
-              },
-              "marginTop": {
-                "value": 100,
-                "type": "REAL"
-              },
-              "marginBottom": {
-                "value": 100,
-                "type": "REAL"
-              }
-            }
+            "marginLeft": "250px",
+            "marginTop": "100px",
+            "marginBottom": "100px"
           }
         }
       ]
@@ -360,12 +295,9 @@
               "style": {
                 "flex": {
                   "fontWeight": 600,
-                  "fontSize": 45,
-                  "marginBottom": {
-                    "value": 30,
-                    "type": "REAL"
-                  }
-                }
+                  "fontSize": 45
+                },
+                "marginBottom": "30px"
               }
             },
             {
@@ -392,10 +324,7 @@
                 "value": 850,
                 "type": "REAL"
               },
-              "marginTop": {
-                "value": 40,
-                "type": "REAL"
-              }
+              "marginTop": "40px"
             }
           },
           "children": [
@@ -457,7 +386,7 @@
       "direction": "HORIZONTAL",
       "style": {
         "flex": {
-          "flexDirection": "row",
+          "flexDirection": "ROW",
           "justifyContent": "CENTER",
           "alignItems": "CENTER"
         },
@@ -483,12 +412,7 @@
                   "fontWeight": 600,
                   "fontSize": 40
                 },
-                "margin": {
-                  "top": {
-                    "value": 30,
-                    "type": "REAL"
-                  }
-                }
+                "marginTop": "30px"
               }
             },
             {
@@ -496,12 +420,7 @@
               "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
               "textColor": "white",
               "style": {
-                "margin": {
-                  "top": {
-                    "value": 30,
-                    "type": "REAL"
-                  }
-                }
+                "marginTop": "30px"
               }
             }
           ]
@@ -551,7 +470,6 @@
               "style": {
                 "background": "#e07b04",
                 "color": "white",
-                "margin": 10,
                 "fontWeight": 700,
                 "letterSpacing": 2.4,
                 "padding": {
@@ -575,12 +493,7 @@
                 "flex": {
                   "fontSize": 20
                 },
-                "margin": {
-                  "top": {
-                    "value": 30,
-                    "type": "REAL"
-                  }
-                }
+                "marginTop": "30px"
               },
               "text": "Testar agora",
               "onPress": [
@@ -611,16 +524,10 @@
           "style": {
             "flex": {
               "fontWeight": 600,
-              "fontSize": 40,
-              "marginTop": {
-                "value": 80,
-                "type": "REAL"
-              },
-              "marginBottom": {
-                "value": 80,
-                "type": "REAL"
-              }
-            }
+              "fontSize": 40
+            },
+            "marginTop": "80px",
+            "marginBottom": "80px"
           }
         },
         {
@@ -638,21 +545,16 @@
               "direction": "VERTICAL",
               "style": {
                 "flex": {
-                  "marginRight": {
-                    "value": 50,
-                    "type": "REAL"
-                  },
-                  "flex": {
-                    "alignItems": "CENTER",
-                    "justifyContent": "CENTER"
-                  }
+                  "alignItems": "CENTER",
+                  "justifyContent": "CENTER"
                 },
                 "size": {
                   "width": {
                     "value": 400,
                     "type": "REAL"
                   }
-                }
+                },
+                "marginRight": "50px"
               },
               "children": [
                 {
@@ -683,16 +585,10 @@
                       "fontWeight": 550,
                       "fontSize": 22,
                       "flexDirection": "row",
-                      "justifyContent": "CENTER",
-                      "marginTop": {
-                        "value": 50,
-                        "type": "REAL"
-                      },
-                      "marginBottom": {
-                        "value": 20,
-                        "type": "REAL"
-                      }
-                    }
+                      "justifyContent": "CENTER"
+                    },
+                    "marginTop": "50px",
+                    "marginBottom": "20px"
                   }
                 },
                 {
@@ -714,12 +610,7 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {
-                  "marginRight": {
-                    "value": 50,
-                    "type": "REAL"
-                  }
-                },
+                "marginRight": "50px",
                 "size": {
                   "width": {
                     "value": 400,
@@ -754,16 +645,10 @@
                   "style": {
                     "flex": {
                       "fontWeight": 550,
-                      "fontSize": 20,
-                      "marginTop": {
-                        "value": 50,
-                        "type": "REAL"
-                      },
-                      "marginBottom": {
-                        "value": 20,
-                        "type": "REAL"
-                      }
-                    }
+                      "fontSize": 20
+                    },
+                    "marginTop": "50px",
+                    "marginBottom": "20px"
                   }
                 },
                 {
@@ -771,7 +656,7 @@
                   "alignment": "center",
                   "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store.",
                   "style": {
-                    "flex":{
+                    "flex": {
                       "fontSize": 20,
                       "letterSpacing": 0
                     }
@@ -783,12 +668,7 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {
-                  "marginRight": {
-                    "value": 50,
-                    "type": "REAL"
-                  }
-                },
+                "marginRight": "50px",
                 "size": {
                   "width": {
                     "value": 400,
@@ -823,16 +703,10 @@
                   "style": {
                     "flex": {
                       "fontWeight": 550,
-                      "fontSize": 22,
-                      "marginTop": {
-                        "value": 50,
-                        "type": "REAL"
-                      },
-                      "marginBottom": {
-                        "value": 20,
-                        "type": "REAL"
-                      }
-                    }
+                      "fontSize": 22
+                    },
+                    "marginTop": "50px",
+                    "marginBottom": "20px"
                   }
                 },
                 {
@@ -840,7 +714,7 @@
                   "alignment": "center",
                   "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
                   "style": {
-                    "flex":{
+                    "flex": {
                       "fontSize": 20,
                       "letterSpacing": 0
                     }
@@ -855,7 +729,6 @@
           "style": {
             "background": "#85b237",
             "color": "white",
-            "margin": 10,
             "fontWeight": 700,
             "letterSpacing": 2.4,
             "padding": {
@@ -934,8 +807,8 @@
                 "type": "REAL"
               }
             },
-            "flex": {
-              "marginBottom": {
+            "margin": {
+              "Bottom": {
                 "value": 1.5,
                 "type": "PERCENT"
               }
@@ -949,8 +822,10 @@
           "style": {
             "color": "white",
             "flex": {
-              "fontSize": 30,
-              "marginBottom": {
+              "fontSize": 30
+            },
+            "margin": {
+              "Bottom": {
                 "value": 3,
                 "type": "PERCENT"
               }
@@ -986,8 +861,8 @@
                     "type": "REAL"
                   }
                 },
-                "flex": {
-                  "marginRight": {
+                "margin": {
+                  "Right": {
                     "value": 7,
                     "type": "PERCENT"
                   }
@@ -1039,8 +914,8 @@
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
           "style": {
-            "flex": {
-              "marginRight": {
+            "margin": {
+              "right": {
                 "value": 20,
                 "type": "PERCENT"
               }
@@ -1073,8 +948,8 @@
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
           "style": {
-            "flex": {
-              "marginRight": {
+            "margin": {
+              "right": {
                 "value": 20,
                 "type": "PERCENT"
               }
@@ -1095,12 +970,14 @@
               "_beagleComponent_": "beagle:text",
               "text": "Artigos",
               "style": {
-                "flex": {
-                  "fontSize": 15,
-                  "marginBottom": {
+                "margin": {
+                  "Bottom": {
                     "value": 10,
                     "type": "PERCENT"
                   }
+                },
+                "flex": {
+                  "fontSize": 15
                 }
               }
             },
@@ -1108,12 +985,14 @@
               "_beagleComponent_": "beagle:text",
               "text": "Comunidade",
               "style": {
-                "flex": {
-                  "fontSize": 15,
-                  "marginBottom": {
+                "margin": {
+                  "Bottom": {
                     "value": 10,
                     "type": "PERCENT"
                   }
+                },
+                "flex": {
+                  "fontSize": 15
                 }
               }
             },
@@ -1139,7 +1018,7 @@
                 "type": "PERCENT"
               },
               "height": {
-                "value": 138,
+                "value": 145,
                 "type": "REAL"
               }
             }
@@ -1149,13 +1028,15 @@
               "_beagleComponent_": "beagle:text",
               "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
               "style": {
-                "flex": {
-                  "fontSize": 15,
-                  "lineHeight": 1.5,
-                  "marginBottom": {
+                "margin": {
+                  "Bottom": {
                     "value": 10,
                     "type": "PERCENT"
                   }
+                },
+                "flex": {
+                  "fontSize": 15,
+                  "lineHeight": 1.5
                 }
               }
             },
@@ -1163,12 +1044,14 @@
               "_beagleComponent_": "beagle:text",
               "text": "34 2589-1800",
               "style": {
-                "flex": {
-                  "fontSize": 15,
-                  "marginBottom": {
+                "margin": {
+                  "Bottom": {
                     "value": 10,
                     "type": "PERCENT"
                   }
+                  },
+                "flex": {
+                  "fontSize": 15
                 }
               }
             },
