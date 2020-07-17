@@ -17,27 +17,19 @@
 import React, { FC } from 'react'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
+import { StyledWebView } from './styled'
 
-export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit: () => void,
+export interface BeagleWebViewInterface extends BeagleDefaultComponent {
+	url: string,
 }
 
-const Form: FC<FormInterface> = ({
-  onSubmit,
-  style,
-  className,
-  children,
-}) => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (onSubmit) onSubmit()
-  }
+const BeagleWebView: FC<BeagleWebViewInterface> = props => {
+  const { url, className, style } = props
 
   return (
-    <form onSubmit={handleSubmit} style={style} className={className}>
-      {children}
-    </form>
+    <StyledWebView className={className} style={style} src={url}>
+    </StyledWebView>
   )
 }
 
-export default withTheme(Form)
+export default withTheme(BeagleWebView)

@@ -17,7 +17,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit",
-    "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build"
+    "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build",
+    "test": "jest --coverage"
   },
   "husky": {
     "hooks": {
@@ -49,6 +50,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "json-schema": "^0.2.5",
     "nodemon": "^2.0.4",
     "react": "^16.13.0",
