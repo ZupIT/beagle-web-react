@@ -22,7 +22,8 @@
       "direction": "HORIZONTAL",
       "style": {
         "flex": {
-          "flexDirection": "row"
+          "flexDirection": "row",
+          "alignItems": "center"
         }
       },
       "children": [
@@ -613,32 +614,31 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "flexDirection":"row",
+              "flexDirection": "row",
               "alignItems": "CENTER"
             }
-           
           },
           "children": [
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                },
                 "flex": {
-                  "alignItems": "CENTER",
-                  "justifyContent": "CENTER"
-                }
-              },
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  },
+                  "flex": {
+                    "alignItems": "CENTER",
+                    "justifyContent": "CENTER"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
                     "type": "REAL"
                   }
                 }
-                
               },
               "children": [
                 {
@@ -661,49 +661,51 @@
                   }
                 },
                 {
-                "_beagleComponent_": "beagle:text",
-                "alignment": "center",
-                "text": "Sincronize componentes e layouts por BFF",
-                "style": {
-                  "flex": {
-                    "fontWeight": 550,
-                    "fontSize": 22,
-                    "flexDirection":"row",
-                    "justifyContent": "CENTER",
-                    "marginTop": {
-                      "value": 50,
-                      "type": "REAL"
-                    },
-                    "marginBottom": {
-                      "value": 20,
-                      "type": "REAL"
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Sincronize componentes e layouts por BFF",
+                  "style": {
+                    "flex": {
+                      "fontWeight": 550,
+                      "fontSize": 22,
+                      "flexDirection": "row",
+                      "justifyContent": "CENTER",
+                      "marginTop": {
+                        "value": 50,
+                        "type": "REAL"
+                      },
+                      "marginBottom": {
+                        "value": 20,
+                        "type": "REAL"
+                      }
                     }
                   }
-                }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
                   "alignment": "center",
                   "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend).",
                   "style": {
-                    "flex":{
+                    "flex": {
                       "alignItems": "CENTER",
-                      "justifyContent": "CENTER"
+                      "justifyContent": "CENTER",
+                      "fontSize": 20,
+                      "letterSpacing": 0
                     }
                   }
-                  }
-
-
+                }
               ]
             },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                }},
+                "flex": {
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
@@ -738,7 +740,7 @@
                   "style": {
                     "flex": {
                       "fontWeight": 550,
-                      "fontSize": 22,
+                      "fontSize": 20,
                       "marginTop": {
                         "value": 50,
                         "type": "REAL"
@@ -754,7 +756,12 @@
                   "_beagleComponent_": "beagle:text",
                   "alignment": "center",
                   "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store.",
-                  "style": {}
+                  "style": {
+                    "flex":{
+                      "fontSize": 20,
+                      "letterSpacing": 0
+                    }
+                  }
                 }
               ]
             },
@@ -762,10 +769,12 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                }},
+                "flex": {
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
@@ -778,7 +787,7 @@
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png" 
+                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png"
                   },
                   "style": {
                     "size": {
@@ -790,7 +799,6 @@
                         "value": 250,
                         "type": "REAL"
                       }
-                    
                     }
                   }
                 },
@@ -812,13 +820,18 @@
                       }
                     }
                   }
-                  },
-                  {
-                    "_beagleComponent_": "beagle:text",
-                    "alignment": "center",
-                    "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
-                    "style": {}
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
+                  "style": {
+                    "flex":{
+                      "fontSize": 20,
+                      "letterSpacing": 0
                     }
+                  }
+                }
               ]
             }
           ]
@@ -906,14 +919,12 @@
                 "value": 150,
                 "type": "REAL"
               }
-             
-              },
-              "flex":{
-                "marginBottom": {
-                  "value": 1.5,
-                  "type": "PERCENT"
-                }
-
+            },
+            "flex": {
+              "marginBottom": {
+                "value": 1.5,
+                "type": "PERCENT"
+              }
             }
           }
         },
@@ -923,7 +934,7 @@
           "text": "Conheça nossos outros produtos Open Source",
           "style": {
             "color": "white",
-            "flex":{
+            "flex": {
               "fontSize": 30,
               "marginBottom": {
                 "value": 3,
@@ -931,7 +942,6 @@
               }
             }
           }
-        
         },
         {
           "_beagleComponent_": "beagle:container",
@@ -962,7 +972,7 @@
                     "type": "REAL"
                   }
                 },
-                "flex":{
+                "flex": {
                   "marginRight": {
                     "value": 7,
                     "type": "PERCENT"
@@ -1012,7 +1022,6 @@
       },
       "children": [
         {
-
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
           "style": {
@@ -1035,97 +1044,81 @@
           },
           "children": [
             {
-
-          "_beagleComponent_": "beagle:text",
-               
-                  "text": "Learn To Love Growth And Change And You Will Be A Success.",
-                  "style": {
-                    "flex":{
-                      "fontSize": 15,
-                      "lineHeight":  1.5
-                        
-                    }
-                   
-                  }
-            }
-          ]
-        },
-        {
-
-          "_beagleComponent_": "beagle:container",
-          "direction": "VERTICAL",
-          "style": {
-            "flex": {
-              "marginRight": {
-                "value": 20,
-                "type": "PERCENT"
-              }
-            },
-            "size": {
-              "width": {
-                "value": 10,
-                "type": "PERCENT"
-              },
-              "height": {
-                "value": 115,
-                "type": "REAL"
-              }
-            }
-          },
-          "children": [
-            {
-
-          "_beagleComponent_": "beagle:text",
-                 
-                  "text": "Artigos",
-                  "style": {
-                    "flex":{
-                      "fontSize": 15,
-                    
-                        "marginBottom": {
-                          "value": 10,
-                          "type": "PERCENT"
-                        }
-                      
-                    }
-                  }
-            },
-            {
-
               "_beagleComponent_": "beagle:text",
-                     
-                      "text": "Comunidade",
-                      "style": {
-                        "flex":{
-                          "fontSize": 15,      
-                        "marginBottom": {
-                          "value": 10,
-                          "type": "PERCENT"
-                        }
-                        }
-                      }
-                },
-                {
-
-                  "_beagleComponent_": "beagle:text",
-                          
-                          "text": "Documentos",
-                          "style": {
-                            "flex":{
-                              "fontSize": 15
-                            }
-                          }
-                    }
+              "text": "Learn To Love Growth And Change And You Will Be A Success.",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "lineHeight": 1.5
+                }
+              }
+            }
           ]
         },
         {
-
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
           "style": {
             "flex": {
-             
+              "marginRight": {
+                "value": 20,
+                "type": "PERCENT"
+              }
             },
+            "size": {
+              "width": {
+                "value": 10,
+                "type": "PERCENT"
+              },
+              "height": {
+                "value": 115,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Artigos",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "marginBottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Comunidade",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "marginBottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Documentos",
+              "style": {
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "VERTICAL",
+          "style": {
+            "flex": {},
             "size": {
               "width": {
                 "value": 10,
@@ -1139,53 +1132,44 @@
           },
           "children": [
             {
-
-          "_beagleComponent_": "beagle:text",
-               
-                  "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
-                  "style": {
-                    "flex":{
-                      "fontSize": 15,
-                      "lineHeight":  1.5,
-                      "marginBottom": {
-                        "value": 10,
-                        "type": "PERCENT"
-                      }
-                    }
+              "_beagleComponent_": "beagle:text",
+              "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "lineHeight": 1.5,
+                  "marginBottom": {
+                    "value": 10,
+                    "type": "PERCENT"
                   }
+                }
+              }
             },
             {
-
               "_beagleComponent_": "beagle:text",
-                  
-                      "text": "34 2589-1800",
-                      "style": {
-                        "flex":{
-                          "fontSize": 15,
-                        "marginBottom": {
-                          "value": 10,
-                          "type": "PERCENT"
-                        }
-                        }
-                      }
-                },
-                {
-
-                  "_beagleComponent_": "beagle:text",
-                     
-                          "text": "beagle@zup.com.br",
-                          "style": {
-                            "flex":{
-                              
-                              "fontSize": 15
-                            }
-                          }
-                    }
+              "text": "34 2589-1800",
+              "style": {
+                "flex": {
+                  "fontSize": 15,
+                  "marginBottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "beagle@zup.com.br",
+              "style": {
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            }
           ]
         }
       ]
     }
-  
-
   ]
 }
