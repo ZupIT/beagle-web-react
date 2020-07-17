@@ -572,7 +572,17 @@
         {
           "_beagleComponent_": "beagle:text",
           "text": "Crie, teste e valide de forma rápida e segura",
-          "style": {}
+          "alignment": "center",
+          "style": {
+            "flex": {
+              "fontWeight": 600,
+              "fontSize": 40,
+              "marginTop": {
+                "value": 80,
+                "type": "REAL"
+              }
+            }
+          }
         },
         {
           "_beagleComponent_": "beagle:container",
@@ -587,7 +597,13 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {}
+                "flex": {},
+                "size": {
+                  "width": {
+                    "value": 300,
+                    "type": "REAL"
+                  }
+                }
               },
               "children": [
                 {
@@ -599,7 +615,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 200,
+                        "value": 300,
                         "type": "REAL"
                       }
                     }
@@ -608,7 +624,16 @@
                 {
                 "_beagleComponent_": "beagle:text",
                 "text": "Sincronize componentes e layouts por BFF",
-                "style": {}
+                "style": {
+                  "flex": {
+                    "fontWeight": 550,
+                    "fontSize": 22,
+                    "marginTop": {
+                      "value": 80,
+                      "type": "REAL"
+                    }
+                  }
+                }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
@@ -623,7 +648,13 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {}
+                "flex": {},
+                "size": {
+                  "width": {
+                    "value": 300,
+                    "type": "REAL"
+                  }
+                }
               },
               "children": [
                 {
@@ -635,7 +666,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 200,
+                        "value": 300,
                         "type": "REAL"
                       }
                     }
@@ -644,7 +675,16 @@
                 {
                   "_beagleComponent_": "beagle:text",
                   "text": "Altere o layout das suas aplicações sem passar pela loja",
-                  "style": {}
+                  "style": {
+                    "flex": {
+                      "fontWeight": 550,
+                      "fontSize": 22,
+                      "marginTop": {
+                        "value": 80,
+                        "type": "REAL"
+                      }
+                    }
+                  }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
@@ -657,7 +697,13 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {}
+                "flex": {},
+                "size": {
+                  "width": {
+                    "value": 300,
+                    "type": "REAL"
+                  }
+                }
               },
               "children": [
                 {
@@ -669,7 +715,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 200,
+                        "value": 300,
                         "type": "REAL"
                       }
                     }
@@ -678,7 +724,20 @@
                 {
                   "_beagleComponent_": "beagle:text",
                   "text": "Migre seu projeto para Server-Driven facilmente",
-                  "style": {}
+                  "style": {
+                    "flex": {
+                      "fontWeight": 550,
+                      "fontSize": 22,
+                      "marginTop": {
+                        "value": 80,
+                        "type": "REAL"
+                      },
+                      "marginBotton": {
+                        "value": 80,
+                        "type": "REAL"
+                      }
+                    }
+                  }
                   },
                   {
                     "_beagleComponent_": "beagle:text",
