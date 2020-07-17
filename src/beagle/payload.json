@@ -593,32 +593,31 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "flexDirection":"row",
+              "flexDirection": "row",
               "alignItems": "CENTER"
             }
-           
           },
           "children": [
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                },
                 "flex": {
-                  "alignItems": "CENTER",
-                  "justifyContent": "CENTER"
-                }
-              },
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  },
+                  "flex": {
+                    "alignItems": "CENTER",
+                    "justifyContent": "CENTER"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
                     "type": "REAL"
                   }
                 }
-                
               },
               "children": [
                 {
@@ -641,49 +640,49 @@
                   }
                 },
                 {
-                "_beagleComponent_": "beagle:text",
-                "alignment": "center",
-                "text": "Sincronize componentes e layouts por BFF",
-                "style": {
-                  "flex": {
-                    "fontWeight": 550,
-                    "fontSize": 22,
-                    "flexDirection":"row",
-                    "justifyContent": "CENTER",
-                    "marginTop": {
-                      "value": 50,
-                      "type": "REAL"
-                    },
-                    "marginBottom": {
-                      "value": 20,
-                      "type": "REAL"
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Sincronize componentes e layouts por BFF",
+                  "style": {
+                    "flex": {
+                      "fontWeight": 550,
+                      "fontSize": 22,
+                      "flexDirection": "row",
+                      "justifyContent": "CENTER",
+                      "marginTop": {
+                        "value": 50,
+                        "type": "REAL"
+                      },
+                      "marginBottom": {
+                        "value": 20,
+                        "type": "REAL"
+                      }
                     }
                   }
-                }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
                   "alignment": "center",
                   "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend).",
                   "style": {
-                    "flex":{
+                    "flex": {
                       "alignItems": "CENTER",
                       "justifyContent": "CENTER"
                     }
                   }
-                  }
-
-
+                }
               ]
             },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                }},
+                "flex": {
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
@@ -742,10 +741,12 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {"marginRight": {
-                  "value": 50,
-                  "type": "REAL"
-                }},
+                "flex": {
+                  "marginRight": {
+                    "value": 50,
+                    "type": "REAL"
+                  }
+                },
                 "size": {
                   "width": {
                     "value": 400,
@@ -758,7 +759,7 @@
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png" 
+                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png"
                   },
                   "style": {
                     "size": {
@@ -770,7 +771,6 @@
                         "value": 250,
                         "type": "REAL"
                       }
-                    
                     }
                   }
                 },
@@ -792,13 +792,13 @@
                       }
                     }
                   }
-                  },
-                  {
-                    "_beagleComponent_": "beagle:text",
-                    "alignment": "center",
-                    "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
-                    "style": {}
-                    }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
+                  "style": {}
+                }
               ]
             }
           ]
@@ -855,6 +855,7 @@
     },
     {
       "_beagleComponent_": "beagle:container",
+      "direction": "VERTICAL",
       "style": {
         "flex": {
           "alignItems": "CENTER",
@@ -887,9 +888,63 @@
               }
             }
           }
+        },
+        {
+          "_beagleComponent_": "beagle:text",
+          "alignment": "center",
+          "text": "Conheça nossos outros produtos Open Source",
+          "style": {
+            "color": "white"
+          }
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "HORIZONTAL",
+          "style": {
+            "flex": {
+              "alignItems": "CENTER"
+            },
+            "size": {
+              "width": {
+                "value": 500,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:image",
+              "path": {
+                "_beagleImagePath_": "remote",
+                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+              },
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:image",
+              "path": {
+                "_beagleImagePath_": "remote",
+                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+              },
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  }
+                }
+              }
+            }
+          ]
         }
       ]
     }
-
   ]
 }
