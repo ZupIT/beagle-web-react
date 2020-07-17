@@ -580,6 +580,10 @@
               "marginTop": {
                 "value": 80,
                 "type": "REAL"
+              },
+              "marginBottom": {
+                "value": 80,
+                "type": "REAL"
               }
             }
           }
@@ -589,67 +593,100 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "flexDirection": "row"
+              "flexDirection":"row",
+              "alignItems": "CENTER"
             }
+           
           },
           "children": [
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {},
+                "flex": {"marginRight": {
+                  "value": 50,
+                  "type": "REAL"
+                },
+                "flex": {
+                  "alignItems": "CENTER",
+                  "justifyContent": "CENTER"
+                }
+              },
                 "size": {
                   "width": {
-                    "value": 300,
+                    "value": 400,
                     "type": "REAL"
                   }
                 }
+                
               },
               "children": [
                 {
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/wRNRFZd/create-illustration.png"
+                    "url": "https://i.ibb.co/8dHgwMg/create-illustration.png"
                   },
                   "style": {
                     "size": {
                       "width": {
-                        "value": 300,
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
                         "type": "REAL"
                       }
                     }
                   }
                 },
                 {
-                  "_beagleComponent_": "beagle:text",
-                  "text": "Sincronize componentes e layouts por BFF",
-                  "style": {
-                    "flex": {
-                      "fontWeight": 550,
-                      "fontSize": 22,
-                      "marginTop": {
-                        "value": 80,
-                        "type": "REAL"
-                      }
+                "_beagleComponent_": "beagle:text",
+                "alignment": "center",
+                "text": "Sincronize componentes e layouts por BFF",
+                "style": {
+                  "flex": {
+                    "fontWeight": 550,
+                    "fontSize": 22,
+                    "flexDirection":"row",
+                    "justifyContent": "CENTER",
+                    "marginTop": {
+                      "value": 50,
+                      "type": "REAL"
+                    },
+                    "marginBottom": {
+                      "value": 20,
+                      "type": "REAL"
                     }
                   }
-                },
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend).",
-                  "style": {}
                 }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend).",
+                  "style": {
+                    "flex":{
+                      "alignItems": "CENTER",
+                      "justifyContent": "CENTER"
+                    }
+                  }
+                  }
+
+
               ]
             },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {},
+                "flex": {"marginRight": {
+                  "value": 50,
+                  "type": "REAL"
+                }},
                 "size": {
                   "width": {
-                    "value": 300,
+                    "value": 400,
                     "type": "REAL"
                   }
                 }
@@ -659,12 +696,16 @@
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/jTXVBr7/change-illustration.png"
+                    "url": "https://i.ibb.co/YNvJzFr/change-illustration.png"
                   },
                   "style": {
                     "size": {
                       "width": {
-                        "value": 300,
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
                         "type": "REAL"
                       }
                     }
@@ -672,13 +713,18 @@
                 },
                 {
                   "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
                   "text": "Altere o layout das suas aplicações sem passar pela loja",
                   "style": {
                     "flex": {
                       "fontWeight": 550,
                       "fontSize": 22,
                       "marginTop": {
-                        "value": 80,
+                        "value": 50,
+                        "type": "REAL"
+                      },
+                      "marginBottom": {
+                        "value": 20,
                         "type": "REAL"
                       }
                     }
@@ -686,6 +732,7 @@
                 },
                 {
                   "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
                   "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store.",
                   "style": {}
                 }
@@ -695,10 +742,13 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {},
+                "flex": {"marginRight": {
+                  "value": 50,
+                  "type": "REAL"
+                }},
                 "size": {
                   "width": {
-                    "value": 300,
+                    "value": 400,
                     "type": "REAL"
                   }
                 }
@@ -708,40 +758,47 @@
                   "_beagleComponent_": "beagle:image",
                   "path": {
                     "_beagleImagePath_": "remote",
-                    "url": "https://i.ibb.co/DLJFTZH/migre-illustration.png"
+                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png" 
                   },
                   "style": {
                     "size": {
                       "width": {
-                        "value": 300,
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
                         "type": "REAL"
                       }
+                    
                     }
                   }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
                   "text": "Migre seu projeto para Server-Driven facilmente",
                   "style": {
                     "flex": {
                       "fontWeight": 550,
                       "fontSize": 22,
                       "marginTop": {
-                        "value": 80,
+                        "value": 50,
                         "type": "REAL"
                       },
-                      "marginBotton": {
-                        "value": 80,
+                      "marginBottom": {
+                        "value": 20,
                         "type": "REAL"
                       }
                     }
                   }
-                },
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
-                  "style": {}
-                }
+                  },
+                  {
+                    "_beagleComponent_": "beagle:text",
+                    "alignment": "center",
+                    "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação.",
+                    "style": {}
+                    }
               ]
             }
           ]
@@ -764,11 +821,11 @@
                 "type": "REAL"
               },
               "top": {
-                "value": 8,
+                "value": 18,
                 "type": "REAL"
               },
               "bottom": {
-                "value": 8,
+                "value": 18,
                 "type": "REAL"
               }
             },
@@ -777,7 +834,11 @@
             },
             "margin": {
               "top": {
-                "value": 30,
+                "value": 80,
+                "type": "REAL"
+              },
+              "bottom": {
+                "value": 80,
                 "type": "REAL"
               }
             }
