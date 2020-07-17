@@ -19,7 +19,7 @@ import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 
 export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit?: () => void,
+  onSubmit: () => void,
 }
 
 const Form: FC<FormInterface> = ({
