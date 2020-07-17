@@ -24,23 +24,23 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
 
-    - name: checkout
-      uses: actions/checkout@v2
+      - name: install
+        run: yarn
 
-    - name: install
-      run: yarn
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
 
-    - name: setup node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-        registry-url: 'https://registry.npmjs.org'
+      - name: build
+        run: yarn build
 
-    - name: build
-      run: yarn build
-
-    - name: publish to NPM
-      run: cd dist && npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: publish to NPM
+        run: cd dist && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
