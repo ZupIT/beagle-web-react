@@ -20,7 +20,7 @@
     "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build",
     "test": "jest --coverage"
   },
-  "husky": {
+  "husky_removed": {
     "hooks": {
       "pre-commit": "sh ./bin/check-license.sh",
       "pre-push": "npm run lint"
