@@ -1,0 +1,102 @@
+{
+  "_beagleComponent_": "custom:ContentPage",
+  "children": [
+    
+    
+    
+    {
+      "_beagleComponent_": "beagle:container",
+      "style":{
+          "flex":{
+            "alignItems":"CENTER",    
+            "flexDirection": "ROW",
+            "justifyContent":"SPACE-BETWEEN"
+          },
+          "padding": {
+            "top": {
+              "value": 15,
+              "type": "REAL"
+            },
+            "bottom": {
+              "value": 15,
+              "type": "REAL"
+            }
+          },
+          "size": {
+            "width": {
+              "value": 80,
+              "type": "PERCENT"
+            }
+          }
+        },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:image",
+          "path": {
+            "_beagleImagePath_": "remote",
+            "url": "https://i.ibb.co/SQjM10N/5e666d594f66c9c1e9c3ce74-Logo-RGB2.png"
+          },
+          "style": {
+            "size": {
+              "height": {
+                "value": 40,
+                "type": "REAL"
+              },
+              "width": {
+                "value": 85,
+                "type": "REAL"
+              }
+            }
+          }
+        },
+        {
+          "_beagleComponent_": "beagle:listView",
+          "direction": "HORIZONTAL",
+          "style": {
+            "flex": {
+              "justifyContent":"SPACE-BETWEEN"
+            },
+            "size": {
+              "width": {
+                "value": 20,
+                "type": "PERCENT"
+              }
+            }
+            
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Produtos"
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Github"
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Docs"
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Português"
+            }
+          ]
+        }
+      ]
+    },
+    
+
+    {
+      "_beagleComponent_": "custom:ContentStart",
+      "children": [
+        {
+          "_beagleComponent_": "beagle:text",
+          "text": "Produtos"
+        }
+      ]
+    }
+        
+
+  ]
+}
