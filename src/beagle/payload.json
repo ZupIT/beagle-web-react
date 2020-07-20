@@ -365,11 +365,11 @@
                     "style": {
                       "size": {
                         "height": {
-                          "value": 394,
+                          "value": 600,
                           "type": "REAL"
                         },
                         "width": {
-                          "value": 800,
+                          "value": 1200,
                           "type": "REAL"
                         }
                       }
