@@ -254,11 +254,11 @@
                 "type": "REAL"
               },
               "width": {
-                "value": 600,
+                "value": 750,
                 "type": "REAL"
               }
             },
-            "marginLeft": "250px",
+            "marginLeft": "50px",
             "marginTop": "100px",
             "marginBottom": "100px"
           }
