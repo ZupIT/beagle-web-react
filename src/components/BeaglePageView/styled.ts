@@ -16,10 +16,10 @@
 
 import styled from 'styled-components'
 import { BeagleTheme } from '../commons.styled'
-import { PageIndicator } from '../types'
+import { PageIndicatorInterface } from '../types'
 
 interface StyledItemInterface {
-  pageIndicator?: PageIndicator,
+  pageIndicator?: PageIndicatorInterface,
   selected: boolean,
 }
 

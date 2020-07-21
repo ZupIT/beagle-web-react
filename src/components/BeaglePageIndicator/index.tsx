@@ -14,35 +14,22 @@
   * limitations under the License.
 */
 
-import React, {
-  FC, useState,
-  cloneElement, Children, isValidElement, ReactNode,
-} from 'react'
-import { BeagleDefaultComponent, PageIndicatorInterface } from '../types'
-import {
-  StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
-  StyledRightArrow, StyledItemList, StyledOrderList,
-} from './styled'
+import React, { FC, Children } from 'react'
+import { PageIndicatorInterface } from '../types'
+import { StyledItemList, StyledOrderList } from './styled'
 
-const BeaglePageIndicator: FC<PageIndicatorInterface> = ({ children, pageIndicator }) => {
-  const [active, setActive] = useState(0)
-  const numberChildren = Children.count(children)
+const BeaglePageIndicator: FC<PageIndicatorInterface> = ({
+  selectedColor, unselectedColor, numberOfPages, currentPage 
+}) => {
 
-  const backSlide = () => {
-    if (active > 0) setActive(active - 1)
-  }
-
-  const nextSlide = () => {
-    if (active < numberChildren - 1) setActive(active + 1)
-  }
+  const totalPages = numberOfPages ? Array(numberOfPages) : []
 
   return (
-
     <StyledOrderList>
       {
-        Children.map(children, (child, index) => (
-          <StyledItemList onClick={() => setActive(index)} selected={index === active}
-            pageIndicator={pageIndicator}>
+        Children.map(totalPages, (child, index) => (
+          <StyledItemList key={index} selected={index === currentPage}
+            selectedColor={selectedColor} unselectedColor={unselectedColor}>
           </StyledItemList>
         ))
       }
@@ -50,4 +37,4 @@ const BeaglePageIndicator: FC<PageIndicatorInterface> = ({ children, pageIndicat
   )
 }
 
-export default BeaglePageView
+export default BeaglePageIndicator

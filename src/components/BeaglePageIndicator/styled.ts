@@ -16,10 +16,10 @@
 
 import styled from 'styled-components'
 import { BeagleTheme } from '../commons.styled'
-import { PageIndicator } from '../types'
 
 interface StyledItemInterface {
-  pageIndicator?: PageIndicator,
+  selectedColor?: string,
+  unselectedColor?: string,
   selected: boolean,
 }
 
@@ -66,12 +66,11 @@ export const StyledOrderList = styled.ol`
 export const StyledItemList = styled.li<StyledItemInterface>`
   width: .625rem;
   height: .625rem;
-  cursor: pointer;
+  cursor: no-drop;
   border-radius: 50%;
   margin: 10px;
-  background-color: ${({ selected, pageIndicator }) => selected ?
-    (pageIndicator && pageIndicator.selectedColor) || BeagleTheme.swamp :
-    (pageIndicator && pageIndicator.unselectedColor) || BeagleTheme.swampTransparent}
+  background-color: ${({ selected, selectedColor, unselectedColor }) => selected ?
+    selectedColor || BeagleTheme.swamp : unselectedColor || BeagleTheme.swampTransparent}
 `
 
 export const StyleContentItems = styled.div`
