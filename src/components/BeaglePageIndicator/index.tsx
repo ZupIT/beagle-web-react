@@ -23,15 +23,8 @@ import {
   StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
   StyledRightArrow, StyledItemList, StyledOrderList,
 } from './styled'
-import { KeyBoardArrow } from './KeyboardArrowLeft'
 
-export interface BeaglePageViewInterface extends BeagleDefaultComponent {
-  pageIndicator?: PageIndicatorInterface,
-  onPageChange?: (index: number) => void,
-  currentPage?: number,
-}
-
-const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }) => {
+const BeaglePageIndicator: FC<PageIndicatorInterface> = ({ children, pageIndicator }) => {
   const [active, setActive] = useState(0)
   const numberChildren = Children.count(children)
 
@@ -43,7 +36,8 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
     if (active < numberChildren - 1) setActive(active + 1)
   }
 
-  const bullets = pageIndicator ? (
+  return (
+
     <StyledOrderList>
       {
         Children.map(children, (child, index) => (
@@ -53,39 +47,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
         ))
       }
     </StyledOrderList>
-  ): null
-
-  return (
-    <StyledBeaglePageView>
-      <StyledLeftArrow onClick={backSlide} >
-        <KeyBoardArrow />
-      </StyledLeftArrow>
-
-      <StyleContentItems>
-        {
-          Children.map(children, (childId, index) => {
-            if (
-              index === active
-              && isValidElement(childId)
-              && childId.props
-              && childId.props.children
-            ) {
-              const item: ReactNode = childId.props.children
-              const childrenItems = item && Children.map(item, (child) => (
-                isValidElement(child)) ? cloneElement(child, { className: 'active' }) : child)
-              return childrenItems
-            }
-            return childId
-          })
-        }
-      </StyleContentItems>
-
-      <StyledRightArrow onClick={nextSlide}>
-        <KeyBoardArrow />
-      </StyledRightArrow>
-
-      {bullets}
-    </StyledBeaglePageView>
   )
 }
 

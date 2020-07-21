@@ -22,9 +22,11 @@ export type Direction =  'VERTICAL' | 'HORIZONTAL'
 
 export type ImageMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
 
-export interface PageIndicator {
-  selectedColor: string,
-  unselectedColor: string,
+export interface PageIndicatorInterface {
+  selectedColor?: string,
+  unselectedColor?: string,
+  numberOfPages?: number,
+  currentPage?: number,
 }
 
 export type InputHandler = (event: { value: string }) => void
