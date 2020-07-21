@@ -16,7 +16,7 @@
 
 import React, {
   FC, useState,
-  cloneElement, Children, isValidElement, ReactNode,
+  cloneElement, Children, isValidElement, ReactNode, useEffect,
 } from 'react'
 import { BeagleDefaultComponent, PageIndicatorInterface } from '../types'
 import {
@@ -24,7 +24,6 @@ import {
   StyledRightArrow, StyledItemList, StyledOrderList,
 } from './styled'
 import { KeyBoardArrow } from './KeyboardArrowLeft'
-import { useEffect } from 'react'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
   pageIndicator?: PageIndicatorInterface,

@@ -19,7 +19,7 @@ import { PageIndicatorInterface } from '../types'
 import { StyledItemList, StyledOrderList } from './styled'
 
 const BeaglePageIndicator: FC<PageIndicatorInterface> = ({
-  selectedColor, unselectedColor, numberOfPages, currentPage 
+  selectedColor, unselectedColor, numberOfPages, currentPage, 
 }) => {
 
   const totalPages = numberOfPages ? Array(numberOfPages) : []
