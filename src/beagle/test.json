@@ -89,6 +89,7 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
+      "urlImg": "https://i.ibb.co/pLzcG1f/bg-start.jpg",
       "children": [
         {
           "_beagleComponent_": "beagle:container",

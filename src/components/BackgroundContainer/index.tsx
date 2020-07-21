@@ -1,13 +1,14 @@
 import React, { ReactNode,FC } from 'react'
-import { BackgroundContainer as StyledBackgroundContainer} from './styled'
+import { StyledBackgroundContainer } from './styled'
 
-export interface Props {
+export interface Props  {
     children?: ReactNode,
     style?: Record<string, string>,
     urlImg?: string,
   }
 
-const BackgroundContainer: FC<Props> = ({ style, children, urlImg }) => {
+const BackgroundContainer: FC<Props> = props => {
+  const {urlImg, style, children} = props
   
   return(
    <StyledBackgroundContainer urlImg={urlImg} style={style}>{children}
