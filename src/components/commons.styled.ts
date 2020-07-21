@@ -4,9 +4,20 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Lato', sans-serif;
-  }
-  .button{
     font-size: 20px;
+  }
+
+  .default-font{
+    font-size: 20px;
+  }
+  .small-font{
+    font-size: 15px;
+  }
+  .medium-font{
+    font-size: 25px;
+  }
+  .large-font{
+    font-size: 45px;
   }
 `
 

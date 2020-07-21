@@ -1,9 +1,9 @@
 {
   "_beagleComponent_": "beagle:container",
-  "style":{
+  "style": {
     "flex": {
       "alignItems": "CENTER",
-      "justifyContent":"CENTER"
+      "justifyContent": "CENTER"
     }
   },
   "children": [
@@ -69,19 +69,23 @@
           "children": [
             {
               "_beagleComponent_": "beagle:text",
+              "styleId": "small-font",
               "text": "Produtos"
             },
             {
               "_beagleComponent_": "beagle:text",
-              "text": "Github"
+              "text": "Github",
+              "styleId": "small-font"
             },
             {
               "_beagleComponent_": "beagle:text",
-              "text": "Docs"
+              "text": "Docs",
+              "styleId": "small-font"
             },
             {
               "_beagleComponent_": "beagle:text",
-              "text": "Português"
+              "text": "Português",
+              "styleId": "small-font"
             }
           ]
         }
@@ -89,6 +93,14 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
+      "style": {
+        "size": {
+          "height": {
+            "value": 600,
+            "type": "REAL"
+          }
+        }
+      },
       "urlImg": "https://i.ibb.co/pLzcG1f/bg-start.jpg",
       "children": [
         {
@@ -117,22 +129,14 @@
               "text": "Framework que atualiza UI via backend",
               "textColor": "White",
               "alignment": "left",
-              "style": {
-                "flex": {
-                  "fontWeight": 600,
-                  "fontSize": 45
-                },
-                "marginBottom": "25px"
-              }
+              "styleId": "large-font"
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "O Beagle é uma plataforma Server-Driven para iOS, Android e Web que facilita a construção de telas por meio de um backend, permitindo que telas e fluxos nativos sejam alterados utilizando apenas JSON.",
               "textColor": "white",
               "alignment": "left",
-              "style": {
-                "marginBottom": "25px"
-              }
+              "styleId": "default-font"
             },
             {
               "_beagleComponent_": "beagle:container",
@@ -145,11 +149,10 @@
               "children": [
                 {
                   "_beagleComponent_": "beagle:button",
+                  "styleId": "default-font",
                   "style": {
                     "background": "#e07b04",
                     "color": "#ffffff",
-                    "fontWeight": 700,
-                    "letterSpacing": 2.4,
                     "padding": {
                       "left": {
                         "value": 30,
@@ -167,10 +170,6 @@
                         "value": 10,
                         "type": "REAL"
                       }
-                    },
-                    "marginRight": "15px",
-                    "flex": {
-                      "fontSize": 20
                     }
                   },
                   "text": "Download",
@@ -183,12 +182,10 @@
                 },
                 {
                   "_beagleComponent_": "beagle:button",
-                  "styleId":"button",
+                  "styleId": "default-font",
                   "style": {
                     "background": "#85b237",
                     "color": "white",
-                    "fontWeight": 900,
-                    "letterSpacing": 2.4,
                     "padding": {
                       "left": {
                         "value": 30,
@@ -230,6 +227,398 @@
               }
             }
           }
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "beagle:container",
+      "style": {
+        "flex": {
+          "alignItems": "CENTER",
+          "marginTop": {
+            "value": 4,
+            "type": "PERCENT"
+          }
+        }
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "styleId": "large-font",
+              "text": "Como funciona?",
+              "alignment": "center"
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja.",
+              "alignment": "center"
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "size": {
+              "height": {
+                "value": 60,
+                "type": "PERCENT"
+              },
+              "width": {
+                "value": 100,
+                "type": "PERCENT"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:tabview",
+              "children": [
+                {
+                  "title": "Mobile",
+                  "child": {
+                    "_beagleComponent_": "beagle:image",
+                    "path": {
+                      "_beagleImagePath_": "remote",
+                      "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
+                    },
+                    "style": {
+                      "size": {
+                        "height": {
+                          "value": 60,
+                          "type": "PERCENT"
+                        },
+                        "width": {
+                          "value": 100,
+                          "type": "PERCENT"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "Web",
+                  "child": {
+                    "_beagleComponent_": "beagle:image",
+                    "path": {
+                      "_beagleImagePath_": "remote",
+                      "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
+                    },
+                    "style": {
+                      "size": {
+                        "height": {
+                          "value": 60,
+                          "type": "PERCENT"
+                        },
+                        "width": {
+                          "value": 100,
+                          "type": "PERCENT"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "custom:BackgroundContainer",
+      "urlImg": "https://i.ibb.co/Sw6ss2S/bg-playground.jpg",
+      "style": {
+        "size": {
+          "height": {
+            "value": 350,
+            "type": "REAL"
+          }
+        }
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "styleId": "large-font",
+              "text": "Um playground para você explorar o Beagle",
+              "textColor": "white"
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
+              "textColor": "white"
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "size": {
+              "height": {
+                "value": 200,
+                "type": "REAL"
+              }
+            },
+            "margin": {
+              "left": {
+                "value": 200,
+                "type": "REAL"
+              },
+              "top": {
+                "value": 50,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:image",
+              "path": {
+                "_beagleImagePath_": "remote",
+                "url": "https://i.ibb.co/BK8s9LD/beagle-logo.png"
+              },
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  }
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:button",
+              "styleId": "default-font",
+              "style": {
+                "background": "#e07b04",
+                "color": "white",
+                "padding": {
+                  "left": {
+                    "value": 40,
+                    "type": "REAL"
+                  },
+                  "right": {
+                    "value": 40,
+                    "type": "REAL"
+                  },
+                  "top": {
+                    "value": 8,
+                    "type": "REAL"
+                  },
+                  "bottom": {
+                    "value": 8,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "text": "Testar agora",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:alert",
+                  "message": "Download"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "custom:BackgroundContainer",
+      "urlImg": "https://i.ibb.co/cbJ5FF3/bg-create.webp",
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "flex": {
+              "flexDirection": "row"
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "styleId": "large-font",
+              "text": "Crie, teste e valide de forma rápida e segura",
+              "alignment": "center"
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 400,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "children": [
+          
+                {
+                  "_beagleComponent_": "beagle:image",
+                  "path": {
+                    "_beagleImagePath_": "remote",
+                    "url": "https://i.ibb.co/8dHgwMg/create-illustration.png"
+                  },
+                  "style": {
+                    "size": {
+                      "width": {
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
+                        "type": "REAL"
+                      }
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Sincronize componentes e layouts por BFF"
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend)."
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 400,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:image",
+                  "path": {
+                    "_beagleImagePath_": "remote",
+                    "url": "https://i.ibb.co/YNvJzFr/change-illustration.png"
+                  },
+                  "style": {
+                    "size": {
+                      "width": {
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
+                        "type": "REAL"
+                      }
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Altere o layout das suas aplicações sem passar pela loja"
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store."
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "VERTICAL",
+              "style": {
+                "size": {
+                  "width": {
+                    "value": 400,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:image",
+                  "path": {
+                    "_beagleImagePath_": "remote",
+                    "url": "https://i.ibb.co/MDpsNhh/migre-illustration.png"
+                  },
+                  "style": {
+                    "size": {
+                      "width": {
+                        "value": 400,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 250,
+                        "type": "REAL"
+                      }
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Migre seu projeto para Server-Driven facilmente"
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "alignment": "center",
+                  "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_beagleComponent_": "beagle:button",
+      "style": {
+        "background": "#85b237",
+        "color": "white",
+        "padding": {
+          "left": {
+            "value": 40,
+            "type": "REAL"
+          },
+          "right": {
+            "value": 40,
+            "type": "REAL"
+          },
+          "top": {
+            "value": 18,
+            "type": "REAL"
+          },
+          "bottom": {
+            "value": 18,
+            "type": "REAL"
+          }
+        },
+        "flex": {
+          "fontSize": 20
+        },
+        "margin": {
+          "top": {
+            "value": 80,
+            "type": "REAL"
+          },
+          "bottom": {
+            "value": 80,
+            "type": "REAL"
+          }
+        }
+      },
+      "text": "Contribua com o Beagle",
+      "onPress": [
+        {
+          "_beagleAction_": "beagle:alert",
+          "message": "Download"
         }
       ]
     }
