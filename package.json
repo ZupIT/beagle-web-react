@@ -18,7 +18,7 @@
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit",
     "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -52,6 +52,7 @@
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-styled-components": "^7.0.2",
     "json-schema": "^0.2.5",
     "nodemon": "^2.0.4",
     "react": "^16.13.0",
