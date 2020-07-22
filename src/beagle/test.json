@@ -93,14 +93,12 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
-      
       "style": {
-        "flex":{
+        "flex": {
           "flexWrap": "WRAP",
-          "justifyContent":"CENTER",
+          "justifyContent": "CENTER",
           "alignItems": "CENTER",
-           "flexDirection":"ROW"
-
+          "flexDirection": "ROW"
         }
       },
       "urlImg": "https://i.ibb.co/pLzcG1f/bg-start.jpg",
@@ -123,14 +121,13 @@
                 "value": 4,
                 "type": "PERCENT"
               },
-              "top":{
+              "top": {
                 "value": 8,
                 "type": "PERCENT"
               },
-              "bottom":{
+              "bottom": {
                 "value": 1,
                 "type": "PERCENT"
-              
               }
             }
           },
@@ -141,14 +138,13 @@
               "textColor": "White",
               "alignment": "left",
               "styleId": "title-font",
-              "style":{
-                "margin":{
-                  "bottom":{
-                   "value": 35,
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 35,
                     "type": "REAL"
-                  } 
+                  }
                 }
-
               }
             },
             {
@@ -157,12 +153,12 @@
               "textColor": "white",
               "alignment": "left",
               "styleId": "default-font",
-              "style":{
-                "margin":{
-                  "bottom":{
-                   "value": 35,
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 35,
                     "type": "REAL"
-                  } 
+                  }
                 }
               }
             },
@@ -196,14 +192,12 @@
                         "type": "PERCENT"
                       }
                     },
-                  
-                      "margin":{
-                        "right":{
-                         "value": 5,
-                          "type": "PERCENT"
-                        } 
+                    "margin": {
+                      "right": {
+                        "value": 5,
+                        "type": "PERCENT"
                       }
-                    
+                    }
                   },
                   "text": "Download",
                   "onPress": [
@@ -283,28 +277,26 @@
               "styleId": "title-font",
               "text": "Como funciona?",
               "alignment": "CENTER",
-              "style":{
-                "margin":{
-                  "bottom":{
-                   "value": 35,
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 35,
                     "type": "REAL"
-                  } 
+                  }
                 }
-
               }
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja.",
               "alignment": "CENTER",
-              "style":{
-                "margin":{
-                  "bottom":{
-                   "value": 35,
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 35,
                     "type": "REAL"
-                  } 
+                  }
                 }
-
               }
             }
           ]
@@ -381,36 +373,46 @@
       "_beagleComponent_": "custom:BackgroundContainer",
       "urlImg": "https://i.ibb.co/Sw6ss2S/bg-playground.jpg",
       "style": {
-        "size": {
-          "height": {
-            "value": 350,
-            "type": "REAL"
-          }
+        "flex": {
+          "flexWrap": "WRAP",
+          "justifyContent": "CENTER",
+          "alignItems": "CENTER",
+          "flexDirection": "ROW"
         }
       },
       "children": [
         {
           "_beagleComponent_": "beagle:container",
+          "style": {
+            "size": {
+              "width": {
+                "value": 65,
+                "type": "PERCENT"
+              }
+              
+            }
+          },
           "children": [
             {
               "_beagleComponent_": "beagle:text",
-              "styleId": "title-font",
+              "styleId": "title-medium-font",
               "text": "Um playground para você explorar o Beagle",
               "textColor": "white",
-              "style":{
-                "margin":{
-                  "bottom":{
-                   "value": 15,
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 15,
                     "type": "REAL"
-                  } 
+                  }
+               
                 }
-
               }
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
               "textColor": "white"
+            
             }
           ]
         },
@@ -421,13 +423,13 @@
               "height": {
                 "value": 200,
                 "type": "REAL"
+              },
+              "width": {
+                "value": 200,
+                "type": "REAL"
               }
             },
             "margin": {
-              "left": {
-                "value": 200,
-                "type": "REAL"
-              },
               "top": {
                 "value": 50,
                 "type": "REAL"
@@ -448,16 +450,13 @@
                     "type": "REAL"
                   }
                 },
-         
-                  "margin":{
-                    "bottom":{
-                     "value": 35,
-                      "type": "REAL"
-                    } 
+                "margin": {
+                  "bottom": {
+                    "value": 35,
+                    "type": "REAL"
                   }
-  
                 }
-              
+              }
             },
             {
               "_beagleComponent_": "beagle:button",
@@ -470,7 +469,7 @@
                     "value": 100,
                     "type": "PERCENT"
                   },
-                  "height":{
+                  "height": {
                     "value": 25,
                     "type": "PERCENT"
                   }
@@ -503,7 +502,6 @@
                 "value": 80,
                 "type": "PERCENT"
               }
-
             }
           },
           "children": [
@@ -705,8 +703,6 @@
         }
       ]
     },
-
-
     {
       "_beagleComponent_": "beagle:container",
       "style": {
@@ -780,10 +776,10 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "justifyContent":"CENTER",
+              "justifyContent": "CENTER",
               "alignItems": "CENTER",
-              "flexDirection":"ROW",
-              "flexWrap":"WRAP"              
+              "flexDirection": "ROW",
+              "flexWrap": "WRAP"
             },
             "size": {
               "width": {
@@ -833,16 +829,11 @@
         }
       ]
     },
-
-
-
-
-
     {
       "_beagleComponent_": "beagle:container",
       "style": {
         "flex": {
-          "alignItems":"CENTER",
+          "alignItems": "CENTER",
           "justifyContent": "CENTER"
         },
         "size": {
@@ -864,7 +855,6 @@
         "backgroundColor": "#f6f7fa"
       },
       "children": [
-        
         {
           "_beagleComponent_": "beagle:container",
           "style": {
@@ -891,165 +881,153 @@
             "backgroundColor": "#f6f7fa"
           },
           "children": [
-
-
-
-        {
-          "_beagleComponent_": "beagle:container",
-          "direction": "VERTICAL",
-          "flex":{
-            "alignItems":"CENTER"
-          },
-          "style": {
-            "size": {
-              "width": {
-                "value": 200,
-                "type": "REAL"
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "VERTICAL",
+              "flex": {
+                "alignItems": "CENTER"
               },
-              "height": {
-                "value": 115,
-                "type": "REAL"
-              }
-            }
-          },
-          "children": [
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "Learn To Love Growth And Change And You Will Be A Success.",
               "style": {
-                "flex": {
-                  
-                }
-              }
-            }
-          ]
-        },
-
-
-
-        {
-          "_beagleComponent_": "beagle:container",
-          "direction": "VERTICAL",
-          "flex":{
-            "alignItems":"CENTER",
-            "flexDirection": "COLUMN"
-          },
-          "style": {
-            "size": {
-              "width": {
-                "value": 200,
-                "type": "REAL"
-              },
-              "height": {
-                "value": 115,
-                "type": "REAL"
-              }
-            }
-          },
-          "children": [
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "Artigos",
-              "style": {
-                "margin": {
-                  "bottom": {
-                    "value": 10,
-                    "type": "PERCENT"
-                  }
-                },
-                "flex": {
-                  "fontSize": 15
-                }
-              }
-            },
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "Comunidade",
-              "style": {
-                "margin": {
-                  "Bottom": {
-                    "value": 10,
-                    "type": "PERCENT"
-                  }
-                },
-                "flex": {
-                  "fontSize": 15
-                }
-              }
-            },
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "Documentos",
-              "style": {
-                "flex": {
-                  "fontSize": 15
-                }
-              }
-            }
-          ]
-        },
-
-
-
-
-        {
-          "_beagleComponent_": "beagle:container",
-          "direction": "VERTICAL",
-          "style": {
-            "flex": {
-              
-            },
-            "size": {
-              "width": {
-                "value": 200,
-                "type": "REAL"
-              },
-              "height": {
-                "value": 145,
-                "type": "REAL"
-              }
-            }
-          },
-          "children": [
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
-              "style": {
-                "margin": {
-                  "Bottom": {
-                    "value": 10,
-                    "type": "PERCENT"
-                  }
-                },
-                "flex": {
-                  "fontSize": 15,
-                  "lineHeight": 1.5
-                }
-              }
-            },
-            {
-              "_beagleComponent_": "beagle:text",
-              "text": "34 2589-1800",
-              "style": {
-                "margin": {
-                  "Bottom": {
-                    "value": 10,
-                    "type": "PERCENT"
-                  }
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
                   },
-                "flex": {
-                  "fontSize": 15
+                  "height": {
+                    "value": 115,
+                    "type": "REAL"
+                  }
                 }
-              }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Learn To Love Growth And Change And You Will Be A Success.",
+                  "style": {
+                    "flex": {}
+                  }
+                }
+              ]
             },
             {
-              "_beagleComponent_": "beagle:text",
-              "text": "beagle@zup.com.br",
+              "_beagleComponent_": "beagle:container",
+              "direction": "VERTICAL",
+              "flex": {
+                "alignItems": "CENTER",
+                "flexDirection": "COLUMN"
+              },
               "style": {
-                "flex": {
-                  "fontSize": 15
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  },
+                  "height": {
+                    "value": 115,
+                    "type": "REAL"
+                  }
                 }
-              }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Artigos",
+                  "style": {
+                    "margin": {
+                      "bottom": {
+                        "value": 10,
+                        "type": "PERCENT"
+                      }
+                    },
+                    "flex": {
+                      "fontSize": 15
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Comunidade",
+                  "style": {
+                    "margin": {
+                      "Bottom": {
+                        "value": 10,
+                        "type": "PERCENT"
+                      }
+                    },
+                    "flex": {
+                      "fontSize": 15
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Documentos",
+                  "style": {
+                    "flex": {
+                      "fontSize": 15
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "VERTICAL",
+              "style": {
+                "flex": {},
+                "size": {
+                  "width": {
+                    "value": 200,
+                    "type": "REAL"
+                  },
+                  "height": {
+                    "value": 145,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
+                  "style": {
+                    "margin": {
+                      "Bottom": {
+                        "value": 10,
+                        "type": "PERCENT"
+                      }
+                    },
+                    "flex": {
+                      "fontSize": 15,
+                      "lineHeight": 1.5
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "34 2589-1800",
+                  "style": {
+                    "margin": {
+                      "Bottom": {
+                        "value": 10,
+                        "type": "PERCENT"
+                      }
+                    },
+                    "flex": {
+                      "fontSize": 15
+                    }
+                  }
+                },
+                {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "beagle@zup.com.br",
+                  "style": {
+                    "flex": {
+                      "fontSize": 15
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
@@ -1057,8 +1035,3 @@
     }
   ]
 }
-
-  ]
-}
-
-
