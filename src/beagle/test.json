@@ -662,8 +662,16 @@
             "value": 20,
             "type": "PERCENT"
           }
-          
-
+        },
+        "padding": {
+          "top": {
+            "value": 80,
+            "type": "REAL"
+          },
+          "bottom": {
+            "value": 117,
+            "type": "REAL"
+          }
         },
         "backgroundColor": "#1c1c1e"
       },
@@ -711,13 +719,15 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
+              "justifyContent":"CENTER",
               "alignItems": "CENTER",
               "flexDirection":"ROW",
               "flexWrap":"WRAP"              
             },
             "size": {
+
               "width": {
-                "value": 40,
+                "value": 100,
                 "type": "PERCENT"
               }
             }
@@ -732,13 +742,13 @@
               "style": {
                 "size": {
                   "width": {
-                    "value": 60,
-                    "type": "PERCENT"
+                    "value": 280,
+                    "type": "REAL"
                   }
                 },
                 "margin": {
                   "Right": {
-                    "value": 1,
+                    "value": 3,
                     "type": "PERCENT"
                   }
                 }
@@ -753,8 +763,8 @@
               "style": {
                 "size": {
                   "width": {
-                    "value": 60,
-                    "type": "PERCENT"
+                    "value": 280,
+                    "type": "REAL"
                   }
                 }
               }
@@ -762,12 +772,184 @@
           ]
         }
       ]
+    },
+
+
+
+
+
+    {
+      "_beagleComponent_": "beagle:container",
+      "style": {
+        "flex": {
+          "alignItems":"CENTER",
+          "justifyContent": "SPACE-BETWEEN"
+        },
+        "size": {
+          "width": {
+            "value": 100,
+            "type": "PERCENT"
+          },
+          "height": {
+            "value": 350,
+            "type": "REAL"
+          }
+        },
+        "backgroundColor": "#f6f7fa"
+      },
+      "children": [
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "VERTICAL",
+          "style": {
+            "size": {
+              "width": {
+                "value": 10,
+                "type": "PERCENT"
+              },
+              "height": {
+                "value": 115,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Learn To Love Growth And Change And You Will Be A Success.",
+              "style": {
+                "flex": {
+                  
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "VERTICAL",
+          "style": {
+            "size": {
+              "width": {
+                "value": 10,
+                "type": "PERCENT"
+              },
+              "height": {
+                "value": 115,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Artigos",
+              "style": {
+                "margin": {
+                  "bottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                },
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Comunidade",
+              "style": {
+                "margin": {
+                  "Bottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                },
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Documentos",
+              "style": {
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            }
+          ]
+        },
+
+
+
+
+        {
+          "_beagleComponent_": "beagle:container",
+          "direction": "VERTICAL",
+          "style": {
+            "flex": {},
+            "size": {
+              "width": {
+                "value": 10,
+                "type": "PERCENT"
+              },
+              "height": {
+                "value": 145,
+                "type": "REAL"
+              }
+            }
+          },
+          "children": [
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
+              "style": {
+                "margin": {
+                  "Bottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                },
+                "flex": {
+                  "fontSize": 15,
+                  "lineHeight": 1.5
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "34 2589-1800",
+              "style": {
+                "margin": {
+                  "Bottom": {
+                    "value": 10,
+                    "type": "PERCENT"
+                  }
+                  },
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            },
+            {
+              "_beagleComponent_": "beagle:text",
+              "text": "beagle@zup.com.br",
+              "style": {
+                "flex": {
+                  "fontSize": 15
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
-
-
-
-
-
+    
 
   ]
 }
+
+
