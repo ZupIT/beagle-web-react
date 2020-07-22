@@ -280,14 +280,32 @@
           "children": [
             {
               "_beagleComponent_": "beagle:text",
-              "styleId": "large-font",
+              "styleId": "title-font",
               "text": "Como funciona?",
-              "alignment": "CENTER"
+              "alignment": "CENTER",
+              "style":{
+                "margin":{
+                  "bottom":{
+                   "value": 35,
+                    "type": "REAL"
+                  } 
+                }
+
+              }
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja.",
-              "alignment": "CENTER"
+              "alignment": "CENTER",
+              "style":{
+                "margin":{
+                  "bottom":{
+                   "value": 35,
+                    "type": "REAL"
+                  } 
+                }
+
+              }
             }
           ]
         },
@@ -376,9 +394,18 @@
           "children": [
             {
               "_beagleComponent_": "beagle:text",
-              "styleId": "large-font",
+              "styleId": "title-font",
               "text": "Um playground para você explorar o Beagle",
-              "textColor": "white"
+              "textColor": "white",
+              "style":{
+                "margin":{
+                  "bottom":{
+                   "value": 15,
+                    "type": "REAL"
+                  } 
+                }
+
+              }
             },
             {
               "_beagleComponent_": "beagle:text",
@@ -420,8 +447,17 @@
                     "value": 200,
                     "type": "REAL"
                   }
+                },
+         
+                  "margin":{
+                    "bottom":{
+                     "value": 35,
+                      "type": "REAL"
+                    } 
+                  }
+  
                 }
-              }
+              
             },
             {
               "_beagleComponent_": "beagle:button",
@@ -429,22 +465,14 @@
               "style": {
                 "background": "#e07b04",
                 "color": "white",
-                "padding": {
-                  "left": {
-                    "value": 40,
-                    "type": "REAL"
+                "size": {
+                  "width": {
+                    "value": 100,
+                    "type": "PERCENT"
                   },
-                  "right": {
-                    "value": 40,
-                    "type": "REAL"
-                  },
-                  "top": {
-                    "value": 8,
-                    "type": "REAL"
-                  },
-                  "bottom": {
-                    "value": 8,
-                    "type": "REAL"
+                  "height":{
+                    "value": 25,
+                    "type": "PERCENT"
                   }
                 }
               },
