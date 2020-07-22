@@ -487,6 +487,10 @@
         }
       ]
     },
+
+
+
+
     {
       "_beagleComponent_": "custom:BackgroundContainer",
       "urlImg": "https://i.ibb.co/cbJ5FF3/bg-create.webp",
@@ -502,13 +506,27 @@
                 "value": 80,
                 "type": "PERCENT"
               }
+            },
+            "padding": {
+              "top": {
+                "value": 94,
+                "type": "REAL"
+              }
             }
           },
           "children": [
             {
               "_beagleComponent_": "beagle:text",
               "styleId": "large-font",
-              "text": "Crie, teste e valide de forma rápida e segura"
+              "text": "Crie, teste e valide de forma rápida e segura",
+              "style":{
+                "margin": {
+                  "bottom": {
+                    "value": 5,
+                    "type": "PERCENT"
+                  }
+                }
+              }
             },
             {
               "_beagleComponent_": "beagle:container",
@@ -533,6 +551,12 @@
                       "width": {
                         "value": 400,
                         "type": "REAL"
+                      }
+                    },
+                    "margin": {
+                      "bottom": {
+                        "value": 5,
+                        "type": "PERCENT"
                       }
                     }
                   },
@@ -576,6 +600,12 @@
                         "value": 400,
                         "type": "REAL"
                       }
+                    },
+                    "margin": {
+                      "bottom": {
+                        "value": 5,
+                        "type": "PERCENT"
+                      }
                     }
                   },
                   "children": [
@@ -617,6 +647,12 @@
                       "width": {
                         "value": 400,
                         "type": "REAL"
+                      }
+                    },
+                    "margin": {
+                      "bottom": {
+                        "value": 2,
+                        "type": "PERCENT"
                       }
                     }
                   },
@@ -703,6 +739,10 @@
         }
       ]
     },
+
+
+
+
     {
       "_beagleComponent_": "beagle:container",
       "style": {
