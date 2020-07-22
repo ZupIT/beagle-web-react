@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { filterBooleanArray } from "../../utils/array"
+import { filterBooleanArray } from '../../utils/array'
 
 describe('filterBooleanArray', () => {
   it('should remove invalid value if found', () => {
