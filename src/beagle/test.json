@@ -725,7 +725,6 @@
               "flexWrap":"WRAP"              
             },
             "size": {
-
               "width": {
                 "value": 100,
                 "type": "PERCENT"
@@ -783,29 +782,68 @@
       "style": {
         "flex": {
           "alignItems":"CENTER",
-          "justifyContent": "SPACE-BETWEEN"
+          "justifyContent": "CENTER"
         },
         "size": {
           "width": {
             "value": 100,
             "type": "PERCENT"
+          }
+        },
+        "padding": {
+          "top": {
+            "value": 59,
+            "type": "REAL"
           },
-          "height": {
-            "value": 350,
+          "bottom": {
+            "value": 65,
             "type": "REAL"
           }
         },
         "backgroundColor": "#f6f7fa"
       },
       "children": [
+        
+        {
+          "_beagleComponent_": "beagle:container",
+          "style": {
+            "flex": {
+              "flexDirection": "ROW",
+              "justifyContent": "SPACE-BETWEEN"
+            },
+            "size": {
+              "width": {
+                "value": 80,
+                "type": "PERCENT"
+              }
+            },
+            "padding": {
+              "left": {
+                "value": 15,
+                "type": "REAL"
+              },
+              "right": {
+                "value": 15,
+                "type": "REAL"
+              }
+            },
+            "backgroundColor": "#f6f7fa"
+          },
+          "children": [
+
+
+
         {
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
+          "flex":{
+            "alignItems":"CENTER"
+          },
           "style": {
             "size": {
               "width": {
-                "value": 10,
-                "type": "PERCENT"
+                "value": 200,
+                "type": "REAL"
               },
               "height": {
                 "value": 115,
@@ -825,14 +863,21 @@
             }
           ]
         },
+
+
+
         {
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
+          "flex":{
+            "alignItems":"CENTER",
+            "flexDirection": "COLUMN"
+          },
           "style": {
             "size": {
               "width": {
-                "value": 10,
-                "type": "PERCENT"
+                "value": 200,
+                "type": "REAL"
               },
               "height": {
                 "value": 115,
@@ -890,11 +935,13 @@
           "_beagleComponent_": "beagle:container",
           "direction": "VERTICAL",
           "style": {
-            "flex": {},
+            "flex": {
+              
+            },
             "size": {
               "width": {
-                "value": 10,
-                "type": "PERCENT"
+                "value": 200,
+                "type": "REAL"
               },
               "height": {
                 "value": 145,
@@ -947,7 +994,8 @@
         }
       ]
     }
-    
+  ]
+}
 
   ]
 }
