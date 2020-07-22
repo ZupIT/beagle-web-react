@@ -42,12 +42,12 @@
           "style": {
             "size": {
               "height": {
-                "value": 5,
-                "type": "PERCENT"
+                "value": 35,
+                "type": "REAL"
               },
               "width": {
-                "value": 23,
-                "type": "PERCENT"
+                "value": 70,
+                "type": "REAl"
               }
             }
           }
@@ -61,8 +61,8 @@
             },
             "size": {
               "width": {
-                "value": 20,
-                "type": "PERCENT"
+                "value": 250,
+                "type": "REAL"
               }
             }
           },
@@ -93,12 +93,14 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
+      
       "style": {
-        "size": {
-          "height": {
-            "value": 600,
-            "type": "REAL"
-          }
+        "flex":{
+          "flexWrap": "WRAP",
+          "justifyContent":"CENTER",
+          "alignItems": "CENTER",
+           "flexDirection":"ROW"
+
         }
       },
       "urlImg": "https://i.ibb.co/pLzcG1f/bg-start.jpg",
@@ -108,18 +110,27 @@
           "style": {
             "size": {
               "height": {
-                "value": 65,
-                "type": "PERCENT"
+                "value": 550,
+                "type": "REAL"
               },
               "width": {
-                "value": 27,
-                "type": "PERCENT"
+                "value": 470,
+                "type": "REAL"
               }
             },
             "padding": {
               "all": {
-                "value": 2,
+                "value": 4,
                 "type": "PERCENT"
+              },
+              "top":{
+                "value": 8,
+                "type": "PERCENT"
+              },
+              "bottom":{
+                "value": 1,
+                "type": "PERCENT"
+              
               }
             }
           },
@@ -129,21 +140,43 @@
               "text": "Framework que atualiza UI via backend",
               "textColor": "White",
               "alignment": "left",
-              "styleId": "large-font"
+              "styleId": "title-font",
+              "style":{
+                "margin":{
+                  "bottom":{
+                   "value": 35,
+                    "type": "REAL"
+                  } 
+                }
+
+              }
             },
             {
               "_beagleComponent_": "beagle:text",
               "text": "O Beagle é uma plataforma Server-Driven para iOS, Android e Web que facilita a construção de telas por meio de um backend, permitindo que telas e fluxos nativos sejam alterados utilizando apenas JSON.",
               "textColor": "white",
               "alignment": "left",
-              "styleId": "default-font"
+              "styleId": "default-font",
+              "style":{
+                "margin":{
+                  "bottom":{
+                   "value": 35,
+                    "type": "REAL"
+                  } 
+                }
+              }
             },
             {
               "_beagleComponent_": "beagle:container",
-              "direction": "HORIZONTAL",
               "style": {
                 "flex": {
-                  "flexDirection": "ROw"
+                  "flexDirection": "ROW"
+                },
+                "size": {
+                  "height": {
+                    "value": 50,
+                    "type": "REAL"
+                  }
                 }
               },
               "children": [
@@ -153,24 +186,24 @@
                   "style": {
                     "background": "#e07b04",
                     "color": "#ffffff",
-                    "padding": {
-                      "left": {
-                        "value": 30,
-                        "type": "REAL"
+                    "size": {
+                      "height": {
+                        "value": 100,
+                        "type": "PERCENT"
                       },
-                      "right": {
-                        "value": 30,
-                        "type": "REAL"
-                      },
-                      "top": {
-                        "value": 10,
-                        "type": "REAL"
-                      },
-                      "bottom": {
-                        "value": 10,
-                        "type": "REAL"
+                      "width": {
+                        "value": 40,
+                        "type": "PERCENT"
                       }
-                    }
+                    },
+                  
+                      "margin":{
+                        "right":{
+                         "value": 5,
+                          "type": "PERCENT"
+                        } 
+                      }
+                    
                   },
                   "text": "Download",
                   "onPress": [
@@ -186,14 +219,14 @@
                   "style": {
                     "background": "#85b237",
                     "color": "white",
-                    "padding": {
-                      "left": {
-                        "value": 30,
-                        "type": "REAL"
+                    "size": {
+                      "height": {
+                        "value": 100,
+                        "type": "PERCENT"
                       },
-                      "right": {
-                        "value": 30,
-                        "type": "REAL"
+                      "width": {
+                        "value": 52,
+                        "type": "PERCENT"
                       }
                     }
                   },
@@ -218,12 +251,12 @@
           "style": {
             "size": {
               "height": {
-                "value": 85,
+                "value": 50,
                 "type": "PERCENT"
               },
               "width": {
-                "value": 60,
-                "type": "PERCENT"
+                "value": 600,
+                "type": "REAL"
               }
             }
           }

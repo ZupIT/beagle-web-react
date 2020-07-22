@@ -19,6 +19,11 @@ export default createGlobalStyle`
   .large-font{
     font-size: 45px;
   }
+
+  .title-font{
+    font-weight: 600;
+    font-size: 45px;
+  }
 `
 
 export const Body = styled.div`

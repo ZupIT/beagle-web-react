@@ -13,5 +13,6 @@ export const StyledBackgroundContainer = styled.div<StyledDiv>`
     display:flex;
     align-items: center;
     justify-content : center;
-    
+    min-width:320px;
+
 `
