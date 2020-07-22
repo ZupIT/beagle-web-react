@@ -26,13 +26,22 @@ import {
 import { KeyBoardArrow } from './KeyboardArrowLeft'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
   pageIndicator?: PageIndicatorInterface,
   onPageChange?: (index: number) => void,
   currentPage?: number,
 }
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
-  children, onPageChange, currentPage, pageIndicator,
+  children, onPageChange, currentPage, 
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator,
 }) => {
   const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
