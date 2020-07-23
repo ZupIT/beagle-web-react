@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit",
     "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -27,9 +27,10 @@
     }
   },
   "dependencies": {
-    "@zup-it/beagle-web": "1.0.1",
+    "@zup-it/beagle-web": "1.0.2",
     "lodash": "^4.17.15",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "styled-components": "^5.1.1"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -51,11 +52,11 @@
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-styled-components": "^7.0.2",
     "json-schema": "^0.2.5",
     "nodemon": "^2.0.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "styled-components": "^5.1.0",
     "ts-jest": "25.2.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"

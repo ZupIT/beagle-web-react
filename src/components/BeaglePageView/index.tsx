@@ -16,9 +16,9 @@
 
 import React, {
   FC, useState,
-  cloneElement, Children, isValidElement, ReactNode,
+  cloneElement, Children, isValidElement, ReactNode, useEffect,
 } from 'react'
-import { BeagleDefaultComponent, PageIndicator } from '../types'
+import { BeagleDefaultComponent, PageIndicatorInterface } from '../types'
 import {
   StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
   StyledRightArrow, StyledItemList, StyledOrderList,
@@ -26,19 +26,45 @@ import {
 import { KeyBoardArrow } from './KeyboardArrowLeft'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
-  pageIndicator?: PageIndicator,
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator?: PageIndicatorInterface,
+  onPageChange?: (index: number) => void,
+  currentPage?: number,
 }
 
-const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }) => {
-  const [active, setActive] = useState(0)
+const BeaglePageView: FC<BeaglePageViewInterface> = ({
+  children, onPageChange, currentPage, 
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator,
+}) => {
+  const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
 
+  useEffect(() => {
+    if (pageIndicator)
+      console.log(`The page view you are using is deprecated. 
+      This will be removed in a future version; please refactor this component 
+      using new context features.`)
+  }, [])
+
+  const updatePage = (newPageIndex: number) => {
+    if (onPageChange) onPageChange(newPageIndex)
+    setActive(newPageIndex)
+  }
+
   const backSlide = () => {
-    if (active > 0) setActive(active - 1)
+    if (active > 0) updatePage(active - 1)
   }
 
   const nextSlide = () => {
-    if (active < numberChildren - 1) setActive(active + 1)
+    if (active < numberChildren - 1)
+      updatePage(active + 1)
   }
 
   const bullets = pageIndicator ? (
@@ -51,7 +77,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
         ))
       }
     </StyledOrderList>
-  ): null
+  ) : null
 
   return (
     <StyledBeaglePageView>
@@ -81,7 +107,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
       <StyledRightArrow onClick={nextSlide}>
         <KeyBoardArrow />
       </StyledRightArrow>
-
       {bullets}
     </StyledBeaglePageView>
   )
