@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import createBeagleCoreUIService, { DefaultSchema } from '@zup-it/beagle-web'
+import createBeagleCoreUIService, { DefaultSchema, ErrorComponentParams } from '@zup-it/beagle-web'
 import BeagleRemoteView from './component'
 import { BeagleProvider } from './provider'
 import { BeagleConfig, BeagleUIService, BeagleComponent } from './types'
@@ -37,4 +37,5 @@ export {
   BeagleConfig,
   BeagleUIService,
   BeagleComponent,
+  ErrorComponentParams,
 }
