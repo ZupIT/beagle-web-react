@@ -35,12 +35,3 @@ export const Body = styled.div`
 `
 
 
-
-/*export const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-*/
-

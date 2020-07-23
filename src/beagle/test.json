@@ -316,55 +316,97 @@
             }
           },
           "children": [
+
+
+
+
+
             {
-              "_beagleComponent_": "beagle:tabview",
+              "_beagleComponent_": "beagle:container",
+              "context": {
+                "id": "contextTab",
+                "value": 0
+              },
               "children": [
                 {
-                  "title": "Mobile",
-                  "child": {
-                    "_beagleComponent_": "beagle:image",
-                    "path": {
-                      "_beagleImagePath_": "remote",
-                      "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
-                    },
-                    "style": {
-                      "size": {
-                        "height": {
-                          "value": 60,
-                          "type": "PERCENT"
-                        },
-                        "width": {
-                          "value": 100,
-                          "type": "PERCENT"
-                        }
-                      }
+                  "_beagleComponent_": "beagle:tabBar",
+                  "onTabSelection": [
+                    {
+                      "_beagleAction_": "beagle:setContext",
+                      "contextId": "contextTab",
+                      "value": "@{onTabSelection}"
                     }
-                  }
+                  ],
+                  "currentTab": "@{contextTab}",
+                  "items": [
+                    {
+                      "title": "Mobile"
+                    },
+                    {
+                      "title": "Web"
+                    }
+                  ]
                 },
+
+
+
                 {
-                  "title": "Web",
-                  "child": {
-                    "_beagleComponent_": "beagle:image",
-                    "path": {
-                      "_beagleImagePath_": "remote",
-                      "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
-                    },
-                    "style": {
-                      "size": {
-                        "height": {
-                          "value": 60,
-                          "type": "PERCENT"
+                  "_beagleComponent_": "beagle:tabview",
+                  "children": [
+                    {
+                      "title": "Mobile",
+                      "child": {
+                        "_beagleComponent_": "beagle:image",
+                        "path": {
+                          "_beagleImagePath_": "remote",
+                          "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
                         },
-                        "width": {
-                          "value": 100,
-                          "type": "PERCENT"
+                        "style": {
+                          "size": {
+                            "height": {
+                              "value": 60,
+                              "type": "PERCENT"
+                            },
+                            "width": {
+                              "value": 100,
+                              "type": "PERCENT"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "title": "Web",
+                      "child": {
+                        "_beagleComponent_": "beagle:image",
+                        "path": {
+                          "_beagleImagePath_": "remote",
+                          "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
+                        },
+                        "style": {
+                          "size": {
+                            "height": {
+                              "value": 60,
+                              "type": "PERCENT"
+                            },
+                            "width": {
+                              "value": 100,
+                              "type": "PERCENT"
+                            }
+                          }
                         }
                       }
                     }
-                  }
+                  ]
                 }
+
+
+
               ]
             }
+
+
+
           ]
         }
       ]
@@ -389,7 +431,6 @@
                 "value": 65,
                 "type": "PERCENT"
               }
-              
             }
           },
           "children": [
@@ -404,7 +445,6 @@
                     "value": 15,
                     "type": "REAL"
                   }
-               
                 }
               }
             },
@@ -412,7 +452,6 @@
               "_beagleComponent_": "beagle:text",
               "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
               "textColor": "white"
-            
             }
           ]
         },
@@ -487,10 +526,6 @@
         }
       ]
     },
-
-
-
-
     {
       "_beagleComponent_": "custom:BackgroundContainer",
       "urlImg": "https://i.ibb.co/cbJ5FF3/bg-create.webp",
@@ -519,7 +554,7 @@
               "_beagleComponent_": "beagle:text",
               "styleId": "large-font",
               "text": "Crie, teste e valide de forma rápida e segura",
-              "style":{
+              "style": {
                 "margin": {
                   "bottom": {
                     "value": 5,
@@ -739,10 +774,6 @@
         }
       ]
     },
-
-
-
-
     {
       "_beagleComponent_": "beagle:container",
       "style": {
