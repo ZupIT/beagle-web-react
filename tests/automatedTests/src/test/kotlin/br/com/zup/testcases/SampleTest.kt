@@ -24,22 +24,23 @@ class SampleTest() {
         driver = ChromeDriver()
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
-        driver.get(URI(UtilResources.getProperties("pageURL")).toString())
+        driver.get("http://localhost:3000/?path=button")
+
     }
 
     @Test
     fun searchVideo() {
 
-//        val homePage = HomePage(driver!!)
-//        homePage.searchVideo(UtilResources.getProperties("nameVideo"))
-//
-//        val resultPage = ResultPage(driver!!)
-//        Assert.assertTrue(resultPage.isPageOpened())
-//
-//        resultPage.selectVideo(UtilResources.getProperties("selectVideo"))
-//
-//        Assert.assertTrue(resultPage.playingVideo(UtilResources.getProperties("selectVideo"),
-//                UtilResources.getProperties("channel")))
+        val homePage = HomePage(driver!!)
+        homePage.searchVideo(UtilResources.getProperties("nameVideo"))
+
+        val resultPage = ResultPage(driver!!)
+        Assert.assertTrue(resultPage.isPageOpened())
+
+        resultPage.selectVideo(UtilResources.getProperties("selectVideo"))
+
+        Assert.assertTrue(resultPage.playingVideo(UtilResources.getProperties("selectVideo"),
+                UtilResources.getProperties("channel")))
     }
 
     @AfterTest
