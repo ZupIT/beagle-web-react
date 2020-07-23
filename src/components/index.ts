@@ -32,6 +32,7 @@ import Modal from './Modal'
 import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
 import BeagleWebView from './BeagleWebView'
+import BeaglePageIndicator from './BeaglePageIndicator'
 import BeagleTabBar from './BeagleTabBar'
 
 const libRequiredComponents = {
@@ -46,6 +47,7 @@ const beagleDefaultComponents = {
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleContainer,
   'beagle:pageview': BeaglePageView,
+  'beagle:pageindicator': BeaglePageIndicator,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
   'beagle:tabview': BeagleTabView,
