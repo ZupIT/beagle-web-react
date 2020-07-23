@@ -56,7 +56,7 @@ const beagleDefaultComponents = {
   'beagle:touchable': BeagleTouchable,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:lazycomponent': BeagleLazy,
-  'beagle:input': BeagleInput,
+  'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
 }
