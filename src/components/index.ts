@@ -32,6 +32,7 @@ import Modal from './Modal'
 import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
 import BeagleWebView from './BeagleWebView'
+import BeagleTabBar from './BeagleTabBar'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -55,6 +56,7 @@ const beagleDefaultComponents = {
   'beagle:lazycomponent': BeagleLazy,
   'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
+  'beagle:tabbar': BeagleTabBar,
 }
 
 const webSpecificComponents = {

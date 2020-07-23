@@ -24,6 +24,10 @@ export interface BeagleChildren {
   key: string,
 }
 
+/**
+ * @deprecated Since version 1.1. Will be deleted in version 2.0.
+ * Consider replacing this component for a tabBar with a pageview.
+*/
 const BeagleTabView: FC<BeagleDefaultComponent> = props => {
   const { children, className } = props
 
@@ -39,6 +43,8 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
       const firstChildren = children[0] as BeagleChildren
       tabViewContext.setActiveTab(firstChildren.key)
     }
+    console.warn(`Tabview is deprecated. This will be removed in a future version.
+    Please consider replacing this component for a tabBar with a pageview.`)
   }, [])
 
   return (
