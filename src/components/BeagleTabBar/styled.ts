@@ -14,6 +14,7 @@ export const StyledBeagleTabItem = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 10px;
+  width: 100%;
 `
 
 export const StyledBeagleTabItemContent = styled.div`
@@ -30,6 +31,10 @@ export const StyledBeagleTabItemContent = styled.div`
 `
 
 export const StyledSelected = styled.div`
-
   background-color: #df8006;
+`
+
+
+export const StyledUnselect = styled.div`
+  background-color: #c5c5c5;
 `

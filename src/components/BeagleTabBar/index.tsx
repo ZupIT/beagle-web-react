@@ -5,6 +5,7 @@ import {
   StyledBeagleTabItem,
   StyledBeagleTabItemContent,
   StyledSelected,
+  StyledUnselect,
 } from './styled'
 
 export interface ItemTitle {
@@ -37,11 +38,11 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({
     <StyledTabBar className={styleId}>
       {items.map((item, index) => (
         <StyledBeagleTabItem key={index}>
+
           <StyledBeagleTabItemContent onClick={() => changeSelectedTab(index)}>
-          
-            {item.title}
+            {index === currentTab && <StyledSelected>{item.title}</StyledSelected>}
+            {index !== currentTab && <StyledUnselect>{item.title}</StyledUnselect>}
           </StyledBeagleTabItemContent >
-          {index === currentTab && <StyledSelected></StyledSelected>}
         </StyledBeagleTabItem>
       ))}
     </StyledTabBar>
