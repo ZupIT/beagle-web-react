@@ -28,6 +28,10 @@ export default createGlobalStyle`
     font-weight: 600;
     font-size: 38px;
   }
+  .title-small-font{
+    font-weight: 550;
+    font-size: 22px;
+  }
 `
 
 export const Body = styled.div`

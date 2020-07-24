@@ -27,7 +27,7 @@
         },
         "size": {
           "width": {
-            "value": 80,
+            "value": 70,
             "type": "PERCENT"
           }
         }
@@ -42,11 +42,11 @@
           "style": {
             "size": {
               "height": {
-                "value": 35,
+                "value": 40,
                 "type": "REAL"
               },
               "width": {
-                "value": 70,
+                "value": 72,
                 "type": "REAl"
               }
             }
@@ -61,7 +61,7 @@
             },
             "size": {
               "width": {
-                "value": 250,
+                "value": 350,
                 "type": "REAL"
               }
             }
@@ -112,7 +112,7 @@
                 "type": "REAL"
               },
               "width": {
-                "value": 470,
+                "value": 500,
                 "type": "REAL"
               }
             },
@@ -528,6 +528,7 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
+      
       "urlImg": "https://i.ibb.co/cbJ5FF3/bg-create.webp",
       "children": [
         {
@@ -544,8 +545,8 @@
             },
             "padding": {
               "top": {
-                "value": 94,
-                "type": "REAL"
+                "value": 10,
+                "type": "PERCENT"
               }
             }
           },
@@ -563,17 +564,27 @@
                 }
               }
             },
+
+
+
+
+
+
+
+
+
+
             {
               "_beagleComponent_": "beagle:container",
               "direction": "HORIZONTAL",
               "style": {
                 "flex": {
-                  "justifyContent": "CENTER",
+                  "justifyContent": "SPACE-BETWEEN",
                   "flexDirection": "ROW"
                 },
                 "size": {
                   "width": {
-                    "value": 100,
+                    "value": 87,
                     "type": "PERCENT"
                   }
                 }
@@ -605,20 +616,35 @@
                       "style": {
                         "size": {
                           "width": {
-                            "value": 400,
-                            "type": "REAL"
+                            "value": 100,
+                            "type": "PERCENT"
                           },
                           "height": {
                             "value": 250,
                             "type": "REAL"
+                          }
+                        },
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
                           }
                         }
                       }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
+                      "styleId": "title-small-font",
                       "alignment": "CENTER",
-                      "text": "Sincronize componentes e layouts por BFF"
+                      "text": "Sincronize componentes e layouts por BFF",
+                      "style":{
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
+                      }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
@@ -653,20 +679,35 @@
                       "style": {
                         "size": {
                           "width": {
-                            "value": 400,
-                            "type": "REAL"
+                            "value": 100,
+                            "type": "PERCENT"
                           },
                           "height": {
                             "value": 250,
                             "type": "REAL"
+                          }
+                        },
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
                           }
                         }
                       }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
+                      "styleId": "title-small-font",
                       "alignment": "CENTER",
-                      "text": "Altere o layout das suas aplicações sem passar pela loja"
+                      "text": "Altere o layout das suas aplicações sem passar pela loja",
+                      "style":{
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
+                      }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
@@ -701,20 +742,35 @@
                       "style": {
                         "size": {
                           "width": {
-                            "value": 400,
-                            "type": "REAL"
+                            "value": 100,
+                            "type": "PERCENT"
                           },
                           "height": {
                             "value": 250,
                             "type": "REAL"
+                          }
+                        },
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
                           }
                         }
                       }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
+                      "styleId": "title-small-font",
                       "alignment": "CENTER",
-                      "text": "Migre seu projeto para Server-Driven facilmente"
+                      "text": "Migre seu projeto para Server-Driven facilmente",
+                      "style":{
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
+                      }
                     },
                     {
                       "_beagleComponent_": "beagle:text",
@@ -973,6 +1029,7 @@
               "children": [
                 {
                   "_beagleComponent_": "beagle:text",
+                  "styleId": "small-font",
                   "text": "Learn To Love Growth And Change And You Will Be A Success.",
                   "style": {
                     "flex": {}
