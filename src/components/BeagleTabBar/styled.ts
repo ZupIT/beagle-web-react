@@ -1,4 +1,9 @@
-import styled from 'styled-components'
+import styled, {css}  from 'styled-components'
+
+interface Props {
+  isActive: boolean
+  index: number
+}
 
 export const StyledTabBar = styled.div`
   display: flex;
@@ -10,12 +15,18 @@ export const StyledTabBar = styled.div`
   color: #ffffff;
 `
 
-export const StyledBeagleTabItem = styled.div`
+export const StyledBeagleTabItem = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
   width:50%;
+  ${({isActive}) => isActive ? css`
+    background-color: #df8006;
+    color:#000000;
+  `: ''};
+  border-radius: ${({index}) => index == 0 ? '50px 0px 0px 50px' : '0px 50px 50px 0px'};
 `
+
 
 export const StyledBeagleTabItemContent = styled.div`
   width:100%
@@ -27,21 +38,3 @@ export const StyledBeagleTabItemContent = styled.div`
   min-height: 15px;
 `
 
-
-export const StyledBeagleTabItemSelected = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width:50%;
-  background-color: #df8006;
-`
-
-
-export const StyledSelected = styled.div`
-  background-color: #df8006;
-`
-
-
-export const StyledUnselect = styled.div`
-  background-color: #c5c5c5;
-`

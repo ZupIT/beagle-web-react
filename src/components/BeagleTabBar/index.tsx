@@ -3,9 +3,7 @@ import { BeagleComponent } from '@zup-it/beagle-react'
 import {
   StyledTabBar,
   StyledBeagleTabItem,
-  StyledBeagleTabItemContent,
-  StyledBeagleTabItemSelected,
-
+  StyledBeagleTabItemContent
 } from './styled'
 
 export interface ItemTitle {
@@ -26,7 +24,7 @@ export interface BeagleTabBarInterface extends BeagleComponent {
 }
 
 const BeagleTabBar: FC<BeagleTabBarInterface> = ({
-  onTabSelection, currentTab, items, beagleContext, styleId,
+  onTabSelection, currentTab, items, styleId,
 }) => {
 
   const changeSelectedTab = (index: number) => {
@@ -37,12 +35,8 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({
   return (
     <StyledTabBar className={styleId}>
       {items.map((item, index) => (
-        <StyledBeagleTabItem key={index}>
-            
-          <StyledBeagleTabItemContent onClick={() => changeSelectedTab(index)}>
-          {index === currentTab && <StyledBeagleTabItemSelected>{item.title}</StyledBeagleTabItemSelected>}
-            {index !== currentTab && <StyledBeagleTabItem>{item.title}</StyledBeagleTabItem>}
-          </StyledBeagleTabItemContent >
+        <StyledBeagleTabItem  index={index} isActive={index === currentTab} key={index} onClick={() => changeSelectedTab(index)}>
+          <StyledBeagleTabItemContent>{item.title}</StyledBeagleTabItemContent >
         </StyledBeagleTabItem>
       ))}
     </StyledTabBar>
