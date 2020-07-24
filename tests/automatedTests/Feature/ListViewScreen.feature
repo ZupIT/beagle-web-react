@@ -15,6 +15,6 @@ Feature: ListView Component Validation
     Then I have a vertical list configured
 #    Then listview screen should perform the scroll action vertically
 
-#    Scenario: ScrollView 03 - listView component performs horizontal scroll correctly
+#    Scenario: ListView 03 - listView component performs horizontal scroll correctly
 #        When I have a horizontal list configured
 #        Then listview screen should perform the scroll action horizontally

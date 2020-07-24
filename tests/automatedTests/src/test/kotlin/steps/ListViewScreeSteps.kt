@@ -65,10 +65,6 @@ class ListViewScreeSteps {
         Assert.assertTrue(listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
-//    @Then("^listview screen should perform the scroll action vertically$")
-//    fun validateVerticalListScroll() {
-//
-//    }
 
     @After("@listview")
     fun driverClose() {
