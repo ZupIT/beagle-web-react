@@ -1,22 +1,20 @@
 package steps
 
 import br.com.zup.UtilResources
-import io.cucumber.java.PendingException
-import io.cucumber.java.en.Given
-import io.cucumber.java.en.Then
-import io.cucumber.java.en.When
+import io.cucumber.java.After
+import io.cucumber.java.Before
+import io.cucumber.java.en.*
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
+import org.testng.Assert
 import java.util.concurrent.TimeUnit
 
 class ImageScreenSteps {
 
     lateinit var driver: WebDriver
 
-    @BeforeTest
+    @Before("@image")
     fun setup() {
         System.setProperty(UtilResources.getProperties("nameDriver"),
                 UtilResources.getProperties("pathDriver") + UtilResources.getProperties("exeDriver"))
@@ -26,23 +24,35 @@ class ImageScreenSteps {
         driver.get("http://localhost:3000/?path=image")
     }
 
-    @AfterTest
-    fun driverClose() {
-        driver.close()
-    }
-
-
     @Given("^that I'm on the image screen$")
     fun checkImageScreen() {
 
-        throw PendingException()
+        var imageTitle = driver.findElement(By.xpath("/html/body/div/div/div/p[1]"))
+        Assert.assertTrue(imageTitle.isDisplayed)
 
     }
 
     @Then("^image screen should render all text attributes correctly$")
     fun checkImageScreenTexts() {
 
-        throw PendingException()
+        var imageText1 = driver.findElement(By.xpath("/html/body/div/div/div/p[1]"))
+        Assert.assertTrue(imageText1.text.equals("Image"))
 
+        var imageText2 = driver.findElement(By.xpath("/html/body/div/div/div/p[2]"))
+        Assert.assertTrue(imageText2.text.equals("Image with contentMode = FIT_XY"))
+
+        var imageText3 = driver.findElement(By.xpath("/html/body/div/div/div/p[3]"))
+        Assert.assertTrue(imageText3.text.equals("Image with contentMode = FIT_CENTER"))
+
+        var imageText4 = driver.findElement(By.xpath("/html/body/div/div/div/p[4]"))
+        Assert.assertTrue(imageText4.text.equals("Image with contentMode = CENTER_CROP"))
+
+        var imageText5 = driver.findElement(By.xpath("/html/body/div/div/div/p[5]"))
+        Assert.assertTrue(imageText5.text.equals("Image with contentMode = CENTER"))
+    }
+
+    @After("@image")
+    fun driverClose() {
+        driver.close()
     }
 }

@@ -1,19 +1,21 @@
 package steps
 
 import br.com.zup.UtilResources
+import io.cucumber.java.After
+import io.cucumber.java.Before
 import io.cucumber.java.PendingException
 import io.cucumber.java.en.*
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
+import org.testng.Assert
 import java.util.concurrent.TimeUnit
 
 class ListViewScreeSteps {
 
     lateinit var driver: WebDriver
 
-    @BeforeTest
+    @Before("@listview")
     fun setup() {
         System.setProperty(UtilResources.getProperties("nameDriver"),
                 UtilResources.getProperties("pathDriver") + UtilResources.getProperties("exeDriver"))
@@ -23,46 +25,54 @@ class ListViewScreeSteps {
         driver.get("http://localhost:3000/?path=listview")
     }
 
-    @AfterTest
-    fun driverClose() {
-        driver.close()
-    }
-
     @Given("^that I'm on the listview screen$")
     fun checkListViewScreen() {
-
-        throw PendingException()
-
+        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
+        Assert.assertTrue(listViewStaticVerticalText.isDisplayed)
     }
 
-    @When("^I have a vertical list configured$")
+    @Then("^I have a vertical list configured$")
     fun checkVerticalListText() {
+        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
+        Assert.assertTrue(listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
 
-        throw PendingException()
-
+        var listViewDynamicVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/p"))
+        Assert.assertTrue(listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
     }
 
     @When("^I have a horizontal list configured$")
     fun checkHorizontalListText() {
+        var listViewStaticHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
+        Assert.assertTrue(listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
 
-        throw PendingException()
-
+        var listViewDynamicHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/p"))
+        Assert.assertTrue(listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
     @Then("^listview screen should render all text attributes correctly$")
     fun checkListViewScreenTexts() {
 
-        throw PendingException()
+        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
+        Assert.assertTrue(listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
 
+        var listViewStaticHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
+        Assert.assertTrue(listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
 
+        var listViewDynamicVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/p"))
+        Assert.assertTrue(listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
+
+        var listViewDynamicHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/p"))
+        Assert.assertTrue(listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
-    @Then("^listview screen should perform the scroll action vertically$")
-    fun validateVerticalListScroll() {
+//    @Then("^listview screen should perform the scroll action vertically$")
+//    fun validateVerticalListScroll() {
+//
+//    }
 
-        throw PendingException()
-
+    @After("@listview")
+    fun driverClose() {
+        driver.close()
     }
-
 
 }
