@@ -31,6 +31,7 @@ export default createGlobalStyle`
   .title-small-font{
     font-weight: 550;
     font-size: 22px;
+    
   }
 `
 

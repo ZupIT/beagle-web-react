@@ -10,9 +10,10 @@ export const StyledTabBar = styled.div`
   align-items: center;
   justify-content: space-between;
   width:100%;
+  height:60px;
   background-color:#c5c5c5;
   border-radius:50px;
-  color: #ffffff;
+  color:#000000;
 `
 
 export const StyledBeagleTabItem = styled.div<Props>`
@@ -20,21 +21,24 @@ export const StyledBeagleTabItem = styled.div<Props>`
   align-items: center;
   justify-content: center;
   width:50%;
+  height:100%;
   ${({isActive}) => isActive ? css`
     background-color: #df8006;
-    color:#000000;
+    color: #ffffff;
   `: ''};
   border-radius: ${({index}) => index == 0 ? '50px 0px 0px 50px' : '0px 50px 50px 0px'};
 `
 
-
 export const StyledBeagleTabItemContent = styled.div`
-  width:100%
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   min-width: 20px;
   min-height: 15px;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 30px;
 `
 
