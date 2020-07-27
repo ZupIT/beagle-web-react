@@ -31,6 +31,9 @@ import Markdown from './Markdown'
 import Modal from './Modal'
 import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
+import BeagleWebView from './BeagleWebView'
+import BeaglePageIndicator from './BeaglePageIndicator'
+import BeagleTabBar from './BeagleTabBar'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -44,6 +47,7 @@ const beagleDefaultComponents = {
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleContainer,
   'beagle:pageview': BeaglePageView,
+  'beagle:pageindicator': BeaglePageIndicator,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
   'beagle:tabview': BeagleTabView,
@@ -52,7 +56,9 @@ const beagleDefaultComponents = {
   'beagle:touchable': BeagleTouchable,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:lazycomponent': BeagleLazy,
-  'beagle:input': BeagleInput,
+  'beagle:textInput': BeagleInput,
+  'beagle:webview': BeagleWebView,
+  'beagle:tabbar': BeagleTabBar,
 }
 
 const webSpecificComponents = {

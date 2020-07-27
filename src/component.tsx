@@ -33,7 +33,6 @@ import {
   replaceBindings,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
-import { BeagleError } from '@zup-it/beagle-web/errors'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'
 
@@ -64,10 +63,6 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     setUiTree(uiTreeWithValues)
   }
 
-  const handleError = (errorListener: BeagleError[]) => {
-    errorListener.forEach(error => console.error(error))
-  }
-
   const updateView = () => (view && view.updateWithTree({ sourceTree: view.getTree() }))
 
   const beagleView = useMemo<BeagleView>(() => {
@@ -75,12 +70,9 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     
     view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
-    view.addErrorListener(handleError)
-    
-    beagleService.globalContext.subscribe(updateView)
-
     if (loadParams.viewRef) loadParams.viewRef.current = view
 
+    beagleService.globalContext.subscribe(updateView)
     return view
   }, [])
 

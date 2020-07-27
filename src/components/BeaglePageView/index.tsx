@@ -16,9 +16,9 @@
 
 import React, {
   FC, useState,
-  cloneElement, Children, isValidElement, ReactNode,
+  cloneElement, Children, isValidElement, ReactNode, useEffect,
 } from 'react'
-import { BeagleDefaultComponent, PageIndicator } from '../types'
+import { BeagleDefaultComponent, PageIndicatorInterface } from '../types'
 import {
   StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
   StyledRightArrow, StyledItemList, StyledOrderList,
@@ -26,19 +26,53 @@ import {
 import { KeyBoardArrow } from './KeyboardArrowLeft'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
-  pageIndicator?: PageIndicator,
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator?: PageIndicatorInterface,
+  onPageChange?: (index: number) => void,
+  currentPage?: number,
+  showArrow?: boolean,
 }
 
-const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }) => {
-  const [active, setActive] = useState(0)
+const BeaglePageView: FC<BeaglePageViewInterface> = ({
+  children, onPageChange, currentPage, showArrow,
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator,
+}) => {
+  const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
 
+  showArrow = showArrow !== undefined ? showArrow : true
+
+  useEffect(() => {
+    if (pageIndicator)
+      console.warn(`The page view you are using is deprecated. 
+      This will be removed in a future version; please refactor this component 
+      using new context features.`)
+  }, [])
+
+  useEffect(() => {
+    if (currentPage !== undefined && currentPage !== active)
+      setActive(currentPage)
+  }, [currentPage])
+
+  const updatePage = (newPageIndex: number) => {
+    if (onPageChange) onPageChange(newPageIndex)
+    setActive(newPageIndex)
+  }
+
   const backSlide = () => {
-    if (active > 0) setActive(active - 1)
+    if (active > 0) updatePage(active - 1)
   }
 
   const nextSlide = () => {
-    if (active < numberChildren - 1) setActive(active + 1)
+    if (active < numberChildren - 1)
+      updatePage(active + 1)
   }
 
   const bullets = pageIndicator ? (
@@ -51,14 +85,23 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
         ))
       }
     </StyledOrderList>
-  ): null
+  ) : null
+
+  const rightArrow = showArrow ? (
+    <StyledRightArrow onClick={nextSlide}>
+      <KeyBoardArrow />
+    </StyledRightArrow>
+  ) : null
+
+  const leftArrow = showArrow ? (
+    <StyledLeftArrow onClick={backSlide} >
+      <KeyBoardArrow />
+    </StyledLeftArrow>
+  ) : null
 
   return (
     <StyledBeaglePageView>
-      <StyledLeftArrow onClick={backSlide} >
-        <KeyBoardArrow />
-      </StyledLeftArrow>
-
+      {leftArrow}
       <StyleContentItems>
         {
           Children.map(children, (childId, index) => {
@@ -77,11 +120,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({ children, pageIndicator }
           })
         }
       </StyleContentItems>
-
-      <StyledRightArrow onClick={nextSlide}>
-        <KeyBoardArrow />
-      </StyledRightArrow>
-
+      {rightArrow}
       {bullets}
     </StyledBeaglePageView>
   )

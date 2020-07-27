@@ -14,30 +14,12 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleDefaultComponent } from '../types'
-import withTheme from '../utils/withTheme'
+import { filterBooleanArray } from '../../utils/array'
 
-export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit: () => void,
-}
-
-const Form: FC<FormInterface> = ({
-  onSubmit,
-  style,
-  className,
-  children,
-}) => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (onSubmit) onSubmit()
-  }
-
-  return (
-    <form onSubmit={handleSubmit} style={style} className={className}>
-      {children}
-    </form>
-  )
-}
-
-export default withTheme(Form)
+describe('filterBooleanArray', () => {
+  it('should remove invalid value if found', () => {
+    const invalidArray = [true, 'a', 'teste', undefined, false]
+    const validArray = [true, 'a', 'teste']
+    expect(filterBooleanArray(invalidArray)).toStrictEqual(validArray)
+  })
+})
