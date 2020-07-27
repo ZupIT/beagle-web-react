@@ -537,11 +537,11 @@
                 }
               },
               "text": "Testar agora",
-              "onPress": [
-                {
-                  "_beagleAction_": "beagle:alert",
-                  "message": "Download"
-                }
+              "onPress": [  
+                  {
+                    "_beagleAction_": "beagle:OpenExternalUrl",
+                    "url": "https://beagle-playground.netlify.app"
+                  }
               ]
             }
           ]
@@ -843,8 +843,8 @@
               "text": "Contribua com o Beagle",
               "onPress": [
                 {
-                  "_beagleAction_": "beagle:alert",
-                  "message": "Download"
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://github.com/ZupIT/beagle/blob/master/CONTRIBUTING.md"
                 }
               ]
             }
@@ -920,6 +920,7 @@
             }
           }
         },
+
         {
           "_beagleComponent_": "beagle:container",
           "direction": "HORIZONTAL",
@@ -938,6 +939,15 @@
             }
           },
           "children": [
+            {
+              "_beagleComponent_": "beagle:touchable",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://charlescd.io"
+                }
+              ],
+              "children": [
             {
               "_beagleComponent_": "beagle:image",
               "path": {
@@ -958,7 +968,18 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "_beagleComponent_": "beagle:touchable",
+          "onPress": [
+            {
+              "_beagleAction_": "beagle:OpenExternalUrl",
+              "url": "https://ritchiecli.io"
+            }
+          ],
+          "children": [
             {
               "_beagleComponent_": "beagle:image",
               "path": {
@@ -974,6 +995,8 @@
                 }
               }
             }
+          ]
+        }
           ]
         }
       ]
