@@ -338,11 +338,6 @@
             }
           },
           "children": [
-
-
-
-
-
             {
               "_beagleComponent_": "beagle:container",
               "context": {
@@ -369,9 +364,6 @@
                     }
                   ]
                 },
-
-
-
                 {
                   "_beagleComponent_": "beagle:tabview",
                   "children": [
@@ -421,14 +413,8 @@
                     }
                   ]
                 }
-
-
-
               ]
             }
-
-
-
           ]
         }
       ]
@@ -537,11 +523,11 @@
                 }
               },
               "text": "Testar agora",
-              "onPress": [  
-                  {
-                    "_beagleAction_": "beagle:OpenExternalUrl",
-                    "url": "https://beagle-playground.netlify.app"
-                  }
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://beagle-playground.netlify.app"
+                }
               ]
             }
           ]
@@ -550,7 +536,6 @@
     },
     {
       "_beagleComponent_": "custom:BackgroundContainer",
-      
       "urlImg": "https://i.ibb.co/cbJ5FF3/bg-create.webp",
       "children": [
         {
@@ -586,16 +571,6 @@
                 }
               }
             },
-
-
-
-
-
-
-
-
-
-
             {
               "_beagleComponent_": "beagle:container",
               "direction": "HORIZONTAL",
@@ -659,7 +634,7 @@
                       "styleId": "title-small-font",
                       "alignment": "CENTER",
                       "text": "Sincronize componentes e layouts por BFF",
-                      "style":{
+                      "style": {
                         "margin": {
                           "bottom": {
                             "value": 10,
@@ -722,7 +697,7 @@
                       "styleId": "title-small-font",
                       "alignment": "CENTER",
                       "text": "Altere o layout das suas aplicações sem passar pela loja",
-                      "style":{
+                      "style": {
                         "margin": {
                           "bottom": {
                             "value": 10,
@@ -785,7 +760,7 @@
                       "styleId": "title-small-font",
                       "alignment": "CENTER",
                       "text": "Migre seu projeto para Server-Driven facilmente",
-                      "style":{
+                      "style": {
                         "margin": {
                           "bottom": {
                             "value": 10,
@@ -920,7 +895,6 @@
             }
           }
         },
-
         {
           "_beagleComponent_": "beagle:container",
           "direction": "HORIZONTAL",
@@ -948,55 +922,55 @@
                 }
               ],
               "children": [
-            {
-              "_beagleComponent_": "beagle:image",
-              "path": {
-                "_beagleImagePath_": "remote",
-                "url": "https://i.ibb.co/s9DQx43/5ecbf16922f3206fb99996a6-Charles-branco.png"
-              },
-              "style": {
-                "size": {
-                  "width": {
-                    "value": 280,
-                    "type": "REAL"
-                  }
-                },
-                "margin": {
-                  "Right": {
-                    "value": 3,
-                    "type": "PERCENT"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "_beagleComponent_": "beagle:touchable",
-          "onPress": [
-            {
-              "_beagleAction_": "beagle:OpenExternalUrl",
-              "url": "https://ritchiecli.io"
-            }
-          ],
-          "children": [
-            {
-              "_beagleComponent_": "beagle:image",
-              "path": {
-                "_beagleImagePath_": "remote",
-                "url": "https://i.ibb.co/WsvVHYv/5e99e4ffce1b940d288dd1de-ritchie2-2x.png"
-              },
-              "style": {
-                "size": {
-                  "width": {
-                    "value": 280,
-                    "type": "REAL"
+                {
+                  "_beagleComponent_": "beagle:image",
+                  "path": {
+                    "_beagleImagePath_": "remote",
+                    "url": "https://i.ibb.co/s9DQx43/5ecbf16922f3206fb99996a6-Charles-branco.png"
+                  },
+                  "style": {
+                    "size": {
+                      "width": {
+                        "value": 280,
+                        "type": "REAL"
+                      }
+                    },
+                    "margin": {
+                      "Right": {
+                        "value": 3,
+                        "type": "PERCENT"
+                      }
+                    }
                   }
                 }
-              }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:touchable",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://ritchiecli.io"
+                }
+              ],
+              "children": [
+                {
+                  "_beagleComponent_": "beagle:image",
+                  "path": {
+                    "_beagleImagePath_": "remote",
+                    "url": "https://i.ibb.co/WsvVHYv/5e99e4ffce1b940d288dd1de-ritchie2-2x.png"
+                  },
+                  "style": {
+                    "size": {
+                      "width": {
+                        "value": 280,
+                        "type": "REAL"
+                      }
+                    }
+                  }
+                }
+              ]
             }
-          ]
-        }
           ]
         }
       ]
@@ -1075,10 +1049,41 @@
                 {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
-                  "text": "Learn To Love Growth And Change And You Will Be A Success.",
+                  "text": "Learn To Love Growth And Change And You Will Be A Success."
+                },
+                {
+                  "_beagleComponent_": "beagle:container",
+                  "flex": {
+                    "flexDirection": "ROW",
+                    "justifyContent": "SPACE-BETWEEN",
+                    "alignItems": "CENTER"
+                  },
                   "style": {
-                    "flex": {}
-                  }
+                    "size": {
+                      "width": {
+                        "value": 100,
+                        "type": "PERCENT"
+                      }
+                    }
+                  },
+                  "children": [
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "twitter"
+                    },
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "facebook"
+                    },
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "medium"
+                    },
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "youtube"
+                    }
+                  ]
                 }
               ]
             },
