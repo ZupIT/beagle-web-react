@@ -47,7 +47,6 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(loadParams.id)
   let eventHandler: EventHandler | null = null
-  let view: BeagleView
 
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
@@ -57,24 +56,28 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
       throw new Error(
         'Couldn\'t find an Event Handler! This is probably a bug within the Beagle library, please report'
       )
-  
+
     const uiTreeWithActions = eventHandler.interpretEventsInTree(beagleUITree)
     const uiTreeWithValues = replaceBindings(uiTreeWithActions)
     setUiTree(uiTreeWithValues)
   }
 
-  const updateView = () => (view && view.updateWithTree({ sourceTree: view.getTree() }))
-
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
-    
-    view = beagleService.createView(loadParams.path)
+
+    const view = beagleService.createView(loadParams.path)
     view.subscribe(updateTree)
     if (loadParams.viewRef) loadParams.viewRef.current = view
-
-    beagleService.globalContext.subscribe(updateView)
     return view
   }, [])
+  
+  const updateView = () => (beagleView &&
+    beagleView.updateWithTree({ sourceTree: beagleView.getTree() })
+  )
+
+  const globalContextSubscription = useMemo<() => void>(() => (
+    beagleService.globalContext.subscribe(updateView)
+  ), [])
 
   eventHandler = useMemo(
     () => createEventHandler(beagleService.getConfig().customActions, beagleView),
@@ -88,7 +91,10 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   useEffect(() => {
     BeagleContext.registerView(`${viewID}`, beagleView)
     loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
-    return () => BeagleContext.unregisterView(`${viewID}`)
+    return () => {
+      BeagleContext.unregisterView(`${viewID}`)
+      globalContextSubscription && globalContextSubscription()
+    }
   }, [])
 
   const renderComponents = () => {
