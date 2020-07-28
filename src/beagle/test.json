@@ -801,9 +801,6 @@
                     "type": "REAL"
                   }
                 },
-                "flex": {
-                  "fontSize": 20
-                },
                 "margin": {
                   "top": {
                     "value": 80,
@@ -884,9 +881,6 @@
           "text": "Conheça nossos outros produtos Open Source",
           "style": {
             "color": "white",
-            "flex": {
-              "fontSize": 30
-            },
             "margin": {
               "Bottom": {
                 "value": 3,
@@ -1040,48 +1034,64 @@
                     "type": "REAL"
                   },
                   "height": {
-                    "value": 115,
+                    "value": 125,
                     "type": "REAL"
                   }
+                  
                 }
+            
               },
               "children": [
                 {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
-                  "text": "Learn To Love Growth And Change And You Will Be A Success."
+                  "text": "Learn To Love Growth And Change And You Will Be A Success.",
+                  "style":{  
+                      "margin": {
+                    "bottom": {
+                      "value": 10,
+                      "type": "PERCENT"
+                    }
+                  }
+                }
                 },
                 {
                   "_beagleComponent_": "beagle:container",
-                  "flex": {
-                    "flexDirection": "ROW",
-                    "justifyContent": "SPACE-BETWEEN",
-                    "alignItems": "CENTER"
-                  },
+                  "direction": "HORIZONTAL",
                   "style": {
+                    "flex": {
+                      "flexDirection": "ROW",
+                      "justifyContent": "SPACE-BETWEEN",
+                      "alignItems": "CENTER"
+
+                    },
                     "size": {
                       "width": {
-                        "value": 100,
-                        "type": "PERCENT"
+                        "value": 150,
+                        "type": "REAL"
+                      },
+                      "height": {
+                        "value": 30,
+                        "type": "REAL"
                       }
                     }
                   },
                   "children": [
                     {
                       "_beagleComponent_": "custom:Icon",
-                      "iconName": "twitter"
+                      "iconName": "Twitter"
                     },
                     {
                       "_beagleComponent_": "custom:Icon",
-                      "iconName": "facebook"
+                      "iconName": "Facebook"
                     },
                     {
                       "_beagleComponent_": "custom:Icon",
-                      "iconName": "medium"
+                      "iconName": "Medium"
                     },
                     {
                       "_beagleComponent_": "custom:Icon",
-                      "iconName": "youtube"
+                      "iconName": "Youtube"
                     }
                   ]
                 }
@@ -1116,9 +1126,6 @@
                         "value": 10,
                         "type": "PERCENT"
                       }
-                    },
-                    "flex": {
-                      "fontSize": 15
                     }
                   }
                 },
@@ -1131,20 +1138,13 @@
                         "value": 10,
                         "type": "PERCENT"
                       }
-                    },
-                    "flex": {
-                      "fontSize": 15
                     }
                   }
                 },
                 {
                   "_beagleComponent_": "beagle:text",
-                  "text": "Documentos",
-                  "style": {
-                    "flex": {
-                      "fontSize": 15
-                    }
-                  }
+                  "text": "Documentos"
+                  
                 }
               ]
             },
@@ -1155,33 +1155,72 @@
                 "flex": {},
                 "size": {
                   "width": {
-                    "value": 200,
+                    "value": 220,
                     "type": "REAL"
                   },
                   "height": {
-                    "value": 145,
+                    "value": 180,
                     "type": "REAL"
                   }
                 }
               },
               "children": [
                 {
+                  "_beagleComponent_": "beagle:container",
+                  "direction": "HORIZONTAL",
+                  "style": {
+                    "flex": {
+                      "flexDirection": "ROW",
+                      "justifyContent": "SPACE-BETWEEN"
+                    }
+                  },
+                  "children": [
+                  {
+                    "_beagleComponent_": "custom:Icon",
+                    "iconName": "Address"
+                  },
+                  {
                   "_beagleComponent_": "beagle:text",
                   "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
                   "style": {
                     "margin": {
-                      "Bottom": {
-                        "value": 10,
+                      "bottom": {
+                        "value": 3,
                         "type": "PERCENT"
                       }
                     },
-                    "flex": {
-                      "fontSize": 15,
-                      "lineHeight": 1.5
+                    "size": {
+                      "width": {
+                        "value": 190,
+                        "type": "REAL"
+                      }
                     }
                   }
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "HORIZONTAL",
+              "style": {
+                "flex": {
+                  "flexDirection": "ROW",
+                  "justifyContent": "SPACE-BETWEEN"
                 },
-                {
+               
+                  "size": {
+                    "width": {
+                      "value": 120,
+                      "type": "REAL"
+                    }
+                  }
+              },
+              "children": [
+              {
+                "_beagleComponent_": "custom:Icon",
+                "iconName": "Phone"
+              },
+              {
                   "_beagleComponent_": "beagle:text",
                   "text": "34 2589-1800",
                   "style": {
@@ -1190,21 +1229,37 @@
                         "value": 10,
                         "type": "PERCENT"
                       }
-                    },
-                    "flex": {
-                      "fontSize": 15
-                    }
-                  }
-                },
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "text": "beagle@zup.com.br",
-                  "style": {
-                    "flex": {
-                      "fontSize": 15
                     }
                   }
                 }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:container",
+              "direction": "HORIZONTAL",
+              "style": {
+                "flex": {
+                  "flexDirection": "ROW",
+                  "justifyContent": "SPACE-BETWEEN"
+                },
+                  "size": {
+                    "width": {
+                      "value": 165,
+                      "type": "REAL"
+                    }
+                  }
+              },
+              "children": [
+                {
+                  "_beagleComponent_": "custom:Icon",
+                  "iconName": "Email"
+                },
+              {
+                  "_beagleComponent_": "beagle:text",
+                  "text": "beagle@zup.com.br"
+                }
+              ]
+            }
               ]
             }
           ]

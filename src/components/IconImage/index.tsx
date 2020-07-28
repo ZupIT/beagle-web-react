@@ -1,4 +1,5 @@
-import React, {FC} from 'react'
+import React, {FC,Fragment} from 'react'
+import {IconContainer} from './styled'
 
 import Address from 'core/assets/svg/address.svg'
 import Email from 'core/assets/svg/email.svg'
@@ -24,18 +25,12 @@ const iconsMap:Record<string,string> = {
 
 const Icon: FC<Props> = props => {
     const {iconName} = props
-    const icon = iconsMap[iconName]|| ''
-    
-    
-    //console.log(iconName);
-    //console.log("icons name ---" + fac);
+    const Icon = iconsMap[iconName] || Fragment
 
     return(
-        <div><img src={icon}></img></div>
+        <IconContainer><Icon/></IconContainer>
     )
-  
   }
   
-  
-  export default Icon
+export default Icon
   
