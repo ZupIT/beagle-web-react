@@ -224,8 +224,8 @@
                   "text": "Download",
                   "onPress": [
                     {
-                      "_beagleAction_": "beagle:alert",
-                      "message": "Download"
+                      "_beagleAction_": "beagle:OpenExternalUrl",
+                      "url": "https://docs.usebeagle.io/get-started/installing-beagle"
                     }
                   ]
                 },
@@ -249,8 +249,8 @@
                   "text": "Comece agora",
                   "onPress": [
                     {
-                      "_beagleAction_": "beagle:alert",
-                      "message": "Comece agora"
+                      "_beagleAction_": "beagle:OpenExternalUrl",
+                      "url": "https://docs.usebeagle.io"
                     }
                   ]
                 }
