@@ -1076,6 +1076,8 @@
                       }
                     }
                   },
+                
+                 
                   "children": [
                     {
                       "_beagleComponent_": "custom:Icon",
