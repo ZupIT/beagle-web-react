@@ -65,7 +65,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        test-command: "cd react && yarn test --maxWorkers=2"
+        working-directory: "react"
+        test-command: "yarn test --maxWorkers=2"
 
     - name: type-check
       run: cd react && yarn build
