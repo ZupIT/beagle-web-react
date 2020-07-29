@@ -284,10 +284,7 @@
       "style": {
         "flex": {
           "alignItems": "CENTER",
-          "marginTop": {
-            "value": 4,
-            "type": "PERCENT"
-          }
+          "justifyContent":"SPACE-BETWEEN"
         }
       },
       "children": [
@@ -366,48 +363,63 @@
                   ]
                 },
                 {
-                  "_beagleComponent_": "beagle:tabview",
+                  "_beagleComponent_": "beagle:pageview",
+                  "currentPage": "@{contextTab}",
+                  "showArrow": false,
+                  "onPageChange": [
+                    {
+                      "_beagleAction_": "beagle:setContext",
+                      "contextId": "contextTab",
+                      "value": "@{onPageChange}"
+                    }
+                  ],
                   "children": [
                     {
-                      "title": "Mobile",
-                      "child": {
-                        "_beagleComponent_": "beagle:image",
-                        "path": {
-                          "_beagleImagePath_": "remote",
-                          "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
+                      "_beagleComponent_": "beagle:image",
+                      "path": {
+                        "_beagleImagePath_": "remote",
+                        "url": "https://i.ibb.co/r2Qyzmz/mobile-illustration.png"
+                      },
+                      "style": {
+                        "size": {
+                          "height": {
+                            "value": 100,
+                            "type": "PERCENT"
+                          },
+                          "width": {
+                            "value": 100,
+                            "type": "PERCENT"
+                          }
                         },
-                        "style": {
-                          "size": {
-                            "height": {
-                              "value": 60,
-                              "type": "PERCENT"
-                            },
-                            "width": {
-                              "value": 100,
-                              "type": "PERCENT"
-                            }
+                        "margin": {
+                          "top": {
+                            "value": 10,
+                            "type": "REAL"
                           }
                         }
                       }
                     },
                     {
-                      "title": "Web",
-                      "child": {
-                        "_beagleComponent_": "beagle:image",
-                        "path": {
-                          "_beagleImagePath_": "remote",
-                          "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
+                      "_beagleComponent_": "beagle:image",
+                      "path": {
+                        "_beagleImagePath_": "remote",
+                        "url": "https://i.ibb.co/j8NXwtN/web-illustration.png"
+                      },
+                      "style": {
+                        "size": {
+                          "height": {
+                            "value": 250,
+                            "type": "REAL"
+                          },
+                          "width": {
+                            "value": 300,
+                            "type": "REAL"
+                          }
                         },
-                        "style": {
-                          "size": {
-                            "height": {
-                              "value": 60,
-                              "type": "PERCENT"
-                            },
-                            "width": {
-                              "value": 100,
-                              "type": "PERCENT"
-                            }
+                        "margin": {
+                          "top": {
+                            "value": 10,
+                            "type": "REAL"
                           }
                         }
                       }
@@ -1040,23 +1052,21 @@
                     "value": 125,
                     "type": "REAL"
                   }
-                  
                 }
-            
               },
               "children": [
                 {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
                   "text": "Learn To Love Growth And Change And You Will Be A Success.",
-                  "style":{  
-                      "margin": {
-                    "bottom": {
-                      "value": 10,
-                      "type": "PERCENT"
+                  "style": {
+                    "margin": {
+                      "bottom": {
+                        "value": 10,
+                        "type": "PERCENT"
+                      }
                     }
                   }
-                }
                 },
                 {
                   "_beagleComponent_": "beagle:container",
@@ -1066,7 +1076,6 @@
                       "flexDirection": "ROW",
                       "justifyContent": "SPACE-BETWEEN",
                       "alignItems": "CENTER"
-
                     },
                     "size": {
                       "width": {
@@ -1079,8 +1088,6 @@
                       }
                     }
                   },
-                
-                 
                   "children": [
                     {
                       "_beagleComponent_": "custom:Icon",
@@ -1152,7 +1159,6 @@
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
                   "text": "Documentos"
-                  
                 }
               ]
             },
@@ -1183,96 +1189,95 @@
                     }
                   },
                   "children": [
-                  {
-                    "_beagleComponent_": "custom:Icon",
-                    "iconName": "Address"
-                  },
-                  {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "Address"
+                    },
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "Av. Rondon Pacheco, 4600 - Tibery, Uberlândia - MG,38405-142",
+                      "style": {
+                        "size": {
+                          "width": {
+                            "value": 210,
+                            "type": "REAL"
+                          },
+                          "height": {
+                            "value": 70,
+                            "type": "REAL"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "_beagleComponent_": "beagle:container",
+                  "direction": "HORIZONTAL",
                   "style": {
+                    "flex": {
+                      "flexDirection": "ROW",
+                      "justifyContent": "SPACE-BETWEEN"
+                    },
                     "size": {
                       "width": {
-                        "value": 210,
+                        "value": 130,
+                        "type": "REAL"
+                      }
+                    }
+                  },
+                  "children": [
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "Phone"
+                    },
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "34 2589-1800",
+                      "style": {
+                        "margin": {
+                          "Bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "_beagleComponent_": "beagle:container",
+                  "direction": "HORIZONTAL",
+                  "style": {
+                    "flex": {
+                      "flexDirection": "ROW",
+                      "justifyContent": "SPACE-BETWEEN"
+                    },
+                    "size": {
+                      "width": {
+                        "value": 170,
                         "type": "REAL"
                       },
                       "height": {
-                        "value": 70,
+                        "value": 100,
                         "type": "REAL"
                       }
                     }
-                  }
-                }
-              ]
-            },
-            {
-              "_beagleComponent_": "beagle:container",
-              "direction": "HORIZONTAL",
-              "style": {
-                "flex": {
-                  "flexDirection": "ROW",
-                  "justifyContent": "SPACE-BETWEEN"
-                },
-               
-                  "size": {
-                    "width": {
-                      "value": 130,
-                      "type": "REAL"
-                    }
-                  }
-              },
-              "children": [
-              {
-                "_beagleComponent_": "custom:Icon",
-                "iconName": "Phone"
-              },
-              {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "34 2589-1800",
-                  "style": {
-                    "margin": {
-                      "Bottom": {
-                        "value": 10,
-                        "type": "PERCENT"
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "_beagleComponent_": "beagle:container",
-              "direction": "HORIZONTAL",
-              "style": {
-                "flex": {
-                  "flexDirection": "ROW",
-                  "justifyContent": "SPACE-BETWEEN"
-                },
-                  "size": {
-                    "width": {
-                      "value": 170,
-                      "type": "REAL"
+                  },
+                  "children": [
+                    {
+                      "_beagleComponent_": "custom:Icon",
+                      "iconName": "Email"
                     },
-                    "height": {
-                      "value": 100,
-                      "type": "REAL"
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "beagle@zup.com.br"
                     }
-                  }
-              },
-              "children": [
-                {
-                  "_beagleComponent_": "custom:Icon",
-                  "iconName": "Email"
-                },
-              {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "beagle@zup.com.br"
+                  ]
                 }
-              ]
-            }
               ]
             }
           ]

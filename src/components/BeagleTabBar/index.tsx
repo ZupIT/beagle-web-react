@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 import { BeagleComponent } from '@zup-it/beagle-react'
+import {StyledTabImage} from './styled'
+
 import {
   StyledTabBar,
   StyledBeagleTabItem,
@@ -7,8 +9,7 @@ import {
 } from './styled'
 
 export interface ItemTitle {
-  title?: string,
-  icon?: ImagePath,
+  title?: string
 }
 
 export interface ImagePath {
@@ -20,8 +21,11 @@ export interface BeagleTabBarInterface extends BeagleComponent {
   onTabSelection?: (item: number) => void,
   currentTab?: number,
   items: ItemTitle[],
-  styleId?: string,
+  styleId?: string
 }
+
+
+
 
 const BeagleTabBar: FC<BeagleTabBarInterface> = ({
   onTabSelection, currentTab, items, styleId,
@@ -39,7 +43,11 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({
           <StyledBeagleTabItemContent>{item.title}</StyledBeagleTabItemContent >
         </StyledBeagleTabItem>
       ))}
+      
     </StyledTabBar>
+
+
+
   )
 }
 

@@ -42,3 +42,7 @@ export const StyledBeagleTabItemContent = styled.div`
   line-height: 30px;
 `
 
+export const StyledTabImage = styled.div`
+  width:500px;
+  height:500px
+`
