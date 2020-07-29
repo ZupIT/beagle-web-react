@@ -26,24 +26,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
     - name: clear cache
       run: yarn cache clean
 
+    # Checks-out beagle-web-core under $GITHUB_WORKSPACE
+    - name: clone beagle-web-core
+      uses: actions/checkout@v2
+      with:
+        repository: ZupIT/beagle-web-core
+        path: core
+
+    - name: install beagle-web-core
+      run: cd core && yarn
+
+    - name: build beagle-web-core
+      run: cd core && yarn build
+
+    - name: create link for beagle-web-core
+      run: cd core/dist && yarn link
+
+    # Checks-out beagle-react under $GITHUB_WORKSPACE
+    - name: clone beagle-react
+      uses: actions/checkout@v2
+      with:
+        path: react
+
+    - name: link beagle-react to beagle-web-core
+      run: cd react && yarn link @zup-it/beagle-web
+
     - name: install
-      run: yarn
+      run: cd react && yarn
     
     - name: lint
-      run: yarn lint
+      run: cd react && yarn lint
 
     - name: Jest Annotations & Coverage
       uses: mattallty/jest-github-action@v1.0.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        working-directory: "react"
         test-command: "yarn test --maxWorkers=2"
 
     - name: type-check
-      run: yarn build
+      run: cd react && yarn build
