@@ -301,6 +301,10 @@
                   "bottom": {
                     "value": 35,
                     "type": "REAL"
+                  },
+                  "top": {
+                    "value": 5,
+                    "type": "PERCENT"
                   }
                 }
               }
@@ -342,6 +346,19 @@
                 "id": "contextTab",
                 "value": 0
               },
+              "style":{
+                "size": {
+                  "height": {
+                    "value": 780,
+                    "type": "REAL"
+                  },
+                  "width": {
+                    "value": 90,
+                    "type": "PERCENT"
+                  }
+                }
+              },
+              
               "children": [
                 {
                   "_beagleComponent_": "beagle:tabBar",
@@ -366,6 +383,7 @@
                   "_beagleComponent_": "beagle:pageview",
                   "currentPage": "@{contextTab}",
                   "showArrow": false,
+                
                   "onPageChange": [
                     {
                       "_beagleAction_": "beagle:setContext",
@@ -391,10 +409,10 @@
                             "type": "PERCENT"
                           }
                         },
-                        "margin": {
+                        "margin":{
                           "top": {
-                            "value": 10,
-                            "type": "REAL"
+                            "value": 4,
+                            "type": "PERCENT"
                           }
                         }
                       }
@@ -408,18 +426,18 @@
                       "style": {
                         "size": {
                           "height": {
-                            "value": 250,
-                            "type": "REAL"
+                            "value": 100,
+                            "type": "PERCENT"
                           },
                           "width": {
-                            "value": 300,
-                            "type": "REAL"
+                            "value": 100,
+                            "type": "PERCENT"
                           }
                         },
-                        "margin": {
+                        "margin":{
                           "top": {
-                            "value": 10,
-                            "type": "REAL"
+                            "value": 4,
+                            "type": "PERCENT"
                           }
                         }
                       }
@@ -1090,21 +1108,53 @@
                   },
                   "children": [
                     {
+                      "_beagleComponent_": "beagle:touchable",
+                      "onPress": [
+                        {
+                          "_beagleAction_": "beagle:OpenExternalUrl",
+                          "url": "https://twitter.com/ZupInnovation"
+                        }
+                      ],
+                      "children": [
+                    {
                       "_beagleComponent_": "custom:Icon",
                       "iconName": "Twitter"
-                    },
+                    }
+                  ]
+                },
                     {
                       "_beagleComponent_": "custom:Icon",
                       "iconName": "Facebook"
                     },
                     {
+                      "_beagleComponent_": "beagle:touchable",
+                      "onPress": [
+                        {
+                          "_beagleAction_": "beagle:OpenExternalUrl",
+                          "url": "https://medium.com/zup-it"
+                        }
+                      ],
+                      "children": [
+                    {
                       "_beagleComponent_": "custom:Icon",
                       "iconName": "Medium"
-                    },
-                    {
+                    }
+                  ]},
+                  {
+                    "_beagleComponent_": "beagle:touchable",
+                    "onPress": [
+                      {
+                        "_beagleAction_": "beagle:OpenExternalUrl",
+                        "url": "https://www.youtube.com/channel/UCJWZyJ-36yNscqnnHiwjkhQ"
+                      }
+                    ],
+                    "children": [
+                  {                    
                       "_beagleComponent_": "custom:Icon",
                       "iconName": "Youtube"
                     }
+                  ]
+                }
                   ]
                 }
               ]
@@ -1130,6 +1180,15 @@
               },
               "children": [
                 {
+                  "_beagleComponent_": "beagle:touchable",
+                  "onPress": [
+                    {
+                      "_beagleAction_": "beagle:OpenExternalUrl",
+                      "url": "https://medium.com/zup-it"
+                    }
+                  ],
+                  "children": [
+                {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
                   "text": "Artigos",
@@ -1141,7 +1200,18 @@
                       }
                     }
                   }
-                },
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:touchable",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://github.com/ZupIT/beagle/blob/master/CONTRIBUTING.md"
+                }
+              ],
+              "children": [
                 {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
@@ -1154,14 +1224,27 @@
                       }
                     }
                   }
-                },
+                }
+              ]
+            },
+            {
+              "_beagleComponent_": "beagle:touchable",
+              "onPress": [
+                {
+                  "_beagleAction_": "beagle:OpenExternalUrl",
+                  "url": "https://docs.usebeagle.io"
+                }
+              ],
+              "children": [
                 {
                   "_beagleComponent_": "beagle:text",
                   "styleId": "small-font",
                   "text": "Documentos"
                 }
               ]
-            },
+            }
+          ]
+        },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",

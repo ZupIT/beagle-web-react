@@ -7,10 +7,11 @@ interface Props {
 
 export const StyledTabBar = styled.div`
   display: flex;
+  align-self: center;
   align-items: center;
   justify-content: space-between;
-  width:100%;
-  height:60px;
+  width:92%;
+  height:65px;
   background-color:#c5c5c5;
   border-radius:50px;
   color:#000000;
