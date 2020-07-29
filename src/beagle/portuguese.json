@@ -1,8 +1,26 @@
 {
     "menu":{
-        "produtos": "Produtos",
+        "products": "Produtos",
         "github": "Github",
         "docs": "Docs"
-    }
+    },
+    "useBeagle":{
+
+    },
+    "howToUseBeagle":{
+
+    },
+    "playgroundBeagle":{
+
+    },
+    "creatWithBeagle":{
+
+    },
+    "products":{
+
+    },
+    "footer":{
+
+    } 
 }
 

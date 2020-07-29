@@ -1,7 +1,7 @@
 {
     "menu":{
-        "produto": "Products",
-        "github":   "Github",
+        "products": "Products",
+        "github": "Github",
         "docs": "Docs"
     }
 }
