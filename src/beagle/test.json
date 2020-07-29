@@ -1,5 +1,22 @@
 {
   "_beagleComponent_": "beagle:container",
+  "context": {
+    "id": "client"
+  },
+  "onInit": [
+    {
+      "_beagleAction_": "beagle:sendRequest",
+      "url": "/portuguese.json",
+      "method": "GET",
+      "onSuccess": [
+        {
+          "_beagleAction_": "beagle:setContext",
+          "contextId": "client",
+          "value": "@{onSuccess.data}"
+        }
+      ]
+    }
+  ],
   "style": {
     "flex": {
       "alignItems": "CENTER",
@@ -70,7 +87,7 @@
             {
               "_beagleComponent_": "beagle:text",
               "styleId": "small-font",
-              "text": "Produtos"
+              "text": "@{client.menu.produtos}"
             },
             {
               "_beagleComponent_": "beagle:touchable",
@@ -274,7 +291,7 @@
                 "value": 100,
                 "type": "PERCENT"
               },
-              "maxWidth":{
+              "maxWidth": {
                 "value": 750,
                 "type": "REAL"
               }
@@ -288,14 +305,14 @@
       "style": {
         "flex": {
           "alignItems": "CENTER",
-          "justifyContent":"SPACE-BETWEEN"
+          "justifyContent": "SPACE-BETWEEN"
         },
-           "size": {
-            "height": {
-              "value":100,
-              "type": "PERCENT"
-            }
+        "size": {
+          "height": {
+            "value": 100,
+            "type": "PERCENT"
           }
+        }
       },
       "children": [
         {
@@ -349,7 +366,6 @@
               }
             }
           },
-         
           "children": [
             {
               "_beagleComponent_": "beagle:container",
@@ -372,8 +388,6 @@
                 "id": "contextTab",
                 "value": 0
               },
-       
-              
               "children": [
                 {
                   "_beagleComponent_": "beagle:tabBar",
@@ -423,7 +437,7 @@
                             "type": "PERCENT"
                           }
                         },
-                        "margin":{
+                        "margin": {
                           "top": {
                             "value": 4,
                             "type": "PERCENT"
@@ -448,7 +462,7 @@
                             "type": "PERCENT"
                           }
                         },
-                        "margin":{
+                        "margin": {
                           "top": {
                             "value": 4,
                             "type": "PERCENT"
@@ -1130,12 +1144,12 @@
                         }
                       ],
                       "children": [
-                    {
-                      "_beagleComponent_": "custom:Icon",
-                      "iconName": "Twitter"
-                    }
-                  ]
-                },
+                        {
+                          "_beagleComponent_": "custom:Icon",
+                          "iconName": "Twitter"
+                        }
+                      ]
+                    },
                     {
                       "_beagleComponent_": "custom:Icon",
                       "iconName": "Facebook"
@@ -1149,26 +1163,27 @@
                         }
                       ],
                       "children": [
+                        {
+                          "_beagleComponent_": "custom:Icon",
+                          "iconName": "Medium"
+                        }
+                      ]
+                    },
                     {
-                      "_beagleComponent_": "custom:Icon",
-                      "iconName": "Medium"
+                      "_beagleComponent_": "beagle:touchable",
+                      "onPress": [
+                        {
+                          "_beagleAction_": "beagle:OpenExternalUrl",
+                          "url": "https://www.youtube.com/channel/UCJWZyJ-36yNscqnnHiwjkhQ"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "_beagleComponent_": "custom:Icon",
+                          "iconName": "Youtube"
+                        }
+                      ]
                     }
-                  ]},
-                  {
-                    "_beagleComponent_": "beagle:touchable",
-                    "onPress": [
-                      {
-                        "_beagleAction_": "beagle:OpenExternalUrl",
-                        "url": "https://www.youtube.com/channel/UCJWZyJ-36yNscqnnHiwjkhQ"
-                      }
-                    ],
-                    "children": [
-                  {                    
-                      "_beagleComponent_": "custom:Icon",
-                      "iconName": "Youtube"
-                    }
-                  ]
-                }
                   ]
                 }
               ]
@@ -1202,63 +1217,63 @@
                     }
                   ],
                   "children": [
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "Artigos",
-                  "style": {
-                    "margin": {
-                      "bottom": {
-                        "value": 10,
-                        "type": "PERCENT"
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "Artigos",
+                      "style": {
+                        "margin": {
+                          "bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
                       }
                     }
-                  }
+                  ]
+                },
+                {
+                  "_beagleComponent_": "beagle:touchable",
+                  "onPress": [
+                    {
+                      "_beagleAction_": "beagle:OpenExternalUrl",
+                      "url": "https://github.com/ZupIT/beagle/blob/master/CONTRIBUTING.md"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "Comunidade",
+                      "style": {
+                        "margin": {
+                          "Bottom": {
+                            "value": 10,
+                            "type": "PERCENT"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "_beagleComponent_": "beagle:touchable",
+                  "onPress": [
+                    {
+                      "_beagleAction_": "beagle:OpenExternalUrl",
+                      "url": "https://docs.usebeagle.io"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_beagleComponent_": "beagle:text",
+                      "styleId": "small-font",
+                      "text": "Documentos"
+                    }
+                  ]
                 }
               ]
             },
-            {
-              "_beagleComponent_": "beagle:touchable",
-              "onPress": [
-                {
-                  "_beagleAction_": "beagle:OpenExternalUrl",
-                  "url": "https://github.com/ZupIT/beagle/blob/master/CONTRIBUTING.md"
-                }
-              ],
-              "children": [
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "Comunidade",
-                  "style": {
-                    "margin": {
-                      "Bottom": {
-                        "value": 10,
-                        "type": "PERCENT"
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "_beagleComponent_": "beagle:touchable",
-              "onPress": [
-                {
-                  "_beagleAction_": "beagle:OpenExternalUrl",
-                  "url": "https://docs.usebeagle.io"
-                }
-              ],
-              "children": [
-                {
-                  "_beagleComponent_": "beagle:text",
-                  "styleId": "small-font",
-                  "text": "Documentos"
-                }
-              ]
-            }
-          ]
-        },
             {
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",

@@ -9,6 +9,7 @@ build/
 # node.js
 node_modules/
 yarn.lock
+package-lock
 npm-debug.log
 yarn-error.log
 
