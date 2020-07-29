@@ -13,6 +13,9 @@ export default createGlobalStyle`
   .small-font{
     font-size: 15px;
   }
+  .button-font{
+    font-size: 20px;
+  }
   .medium-font{
     font-size: 25px;
   }

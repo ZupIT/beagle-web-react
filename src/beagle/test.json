@@ -271,7 +271,11 @@
                 "type": "PERCENT"
               },
               "width": {
-                "value": 600,
+                "value": 100,
+                "type": "PERCENT"
+              },
+              "maxWidth":{
+                "value": 750,
                 "type": "REAL"
               }
             }
@@ -285,7 +289,13 @@
         "flex": {
           "alignItems": "CENTER",
           "justifyContent":"SPACE-BETWEEN"
-        }
+        },
+           "size": {
+            "height": {
+              "value":100,
+              "type": "PERCENT"
+            }
+          }
       },
       "children": [
         {
@@ -330,34 +340,39 @@
           "style": {
             "size": {
               "height": {
-                "value": 60,
+                "value": 90,
                 "type": "PERCENT"
               },
               "width": {
-                "value": 100,
+                "value": 90,
                 "type": "PERCENT"
               }
             }
           },
+         
           "children": [
             {
               "_beagleComponent_": "beagle:container",
+              "style": {
+                "size": {
+                  "height": {
+                    "value": 100,
+                    "type": "PERCENT"
+                  },
+                  "width": {
+                    "value": 100,
+                    "type": "PERCENT"
+                  }
+                },
+                "flex": {
+                  "flexWrap": "NOWRAP"
+                }
+              },
               "context": {
                 "id": "contextTab",
                 "value": 0
               },
-              "style":{
-                "size": {
-                  "height": {
-                    "value": 780,
-                    "type": "REAL"
-                  },
-                  "width": {
-                    "value": 90,
-                    "type": "PERCENT"
-                  }
-                }
-              },
+       
               
               "children": [
                 {
@@ -383,7 +398,6 @@
                   "_beagleComponent_": "beagle:pageview",
                   "currentPage": "@{contextTab}",
                   "showArrow": false,
-                
                   "onPageChange": [
                     {
                       "_beagleAction_": "beagle:setContext",
@@ -581,7 +595,7 @@
                 "type": "PERCENT"
               }
             },
-            "padding": {
+            "margin": {
               "top": {
                 "value": 10,
                 "type": "PERCENT"
@@ -623,7 +637,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 400,
+                        "value": 320,
                         "type": "REAL"
                       }
                     },
@@ -686,7 +700,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 400,
+                        "value": 320,
                         "type": "REAL"
                       }
                     },
@@ -749,7 +763,7 @@
                   "style": {
                     "size": {
                       "width": {
-                        "value": 400,
+                        "value": 320,
                         "type": "REAL"
                       }
                     },
@@ -816,19 +830,19 @@
                 "color": "white",
                 "padding": {
                   "left": {
-                    "value": 40,
-                    "type": "REAL"
+                    "value": 4,
+                    "type": "PERCENT"
                   },
                   "right": {
-                    "value": 40,
-                    "type": "REAL"
+                    "value": 4,
+                    "type": "PERCENT"
                   },
                   "top": {
-                    "value": 18,
+                    "value": 9,
                     "type": "REAL"
                   },
                   "bottom": {
-                    "value": 18,
+                    "value": 9,
                     "type": "REAL"
                   }
                 },
@@ -844,7 +858,7 @@
                 }
               },
               "text": "Contribua com o Beagle",
-              "styleId": "medium-font",
+              "styleId": "button-font",
               "onPress": [
                 {
                   "_beagleAction_": "beagle:OpenExternalUrl",
