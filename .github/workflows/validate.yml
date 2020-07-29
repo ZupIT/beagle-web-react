@@ -30,13 +30,17 @@ jobs:
       run: yarn cache clean
 
     # Checks-out beagle-web-core under $GITHUB_WORKSPACE
-    - uses: actions/checkout@v2
+    - name: clone beagle-web-core
+      uses: actions/checkout@v2
       with:
         repository: ZupIT/beagle-web-core
         path: core
 
+    - name: cd core
+      run: cd core
+
     - name: install beagle-web-core
-      run: cd core && yarn
+      run: yarn
 
     - name: build beagle-web-core
       run: yarn build
@@ -45,12 +49,16 @@ jobs:
       run: cd dist && yarn link && cd ../..
 
     # Checks-out beagle-react under $GITHUB_WORKSPACE
-    - uses: actions/checkout@v2
+    - name: clone beagle-react
+      uses: actions/checkout@v2
       with:
         path: react
 
+    - name: cd react
+      run: cd react
+
     - name: link beagle-web-core
-      run: cd react && yarn link @zup-it/beagle-web
+      run: yarn link @zup-it/beagle-web
 
     - name: install
       run: yarn
