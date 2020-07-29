@@ -18,19 +18,36 @@
 name: Pull request validation
 
 on:
-  pull_request:
-    branches: [ master ]
+  push:
+    branches: [ ci/web-core-master ]
 
 jobs:
   validation:
     runs-on: ubuntu-latest
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
     - name: clear cache
       run: yarn cache clean
+
+    # Checks-out beagle-web-core under $GITHUB_WORKSPACE
+    - uses: actions/checkout@v2
+      with:
+        repository: ZupIT/beagle-web-core
+
+    - name: install beagle-web-core
+      run: yarn
+
+    - name: build beagle-web-core
+      run: yarn build
+
+    - name: create link for beagle-web-core
+      run: cd dist && yarn link && cd ../..
+
+    # Checks-out beagle-react under $GITHUB_WORKSPACE
+    - uses: actions/checkout@v2
+
+    - name: link beagle-web-core
+      run: yarn link @zup-it/beagle-web
 
     - name: install
       run: yarn
