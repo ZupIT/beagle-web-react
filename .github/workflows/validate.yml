@@ -18,8 +18,8 @@
 name: Pull request validation
 
 on:
-  push:
-    branches: [ ci/web-core-master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   validation:
@@ -51,7 +51,7 @@ jobs:
       with:
         path: react
 
-    - name: link beagle-web-core
+    - name: link beagle-react to beagle-web-core
       run: cd react && yarn link @zup-it/beagle-web
 
     - name: install
