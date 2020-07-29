@@ -36,7 +36,7 @@ jobs:
         path: core
 
     - name: install beagle-web-core
-      run: yarn
+      run: cd core && yarn
 
     - name: build beagle-web-core
       run: yarn build
@@ -50,7 +50,7 @@ jobs:
         path: react
 
     - name: link beagle-web-core
-      run: yarn link @zup-it/beagle-web
+      run: cd react && yarn link @zup-it/beagle-web
 
     - name: install
       run: yarn
