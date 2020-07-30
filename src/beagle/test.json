@@ -1,7 +1,7 @@
 {
   "_beagleComponent_": "beagle:container",
   "context": {
-    "id": "client"
+    "id": "page"
   },
   "onInit": [
     {
@@ -11,7 +11,7 @@
       "onSuccess": [
         {
           "_beagleAction_": "beagle:setContext",
-          "contextId": "client",
+          "contextId": "page",
           "value": "@{onSuccess.data}"
         }
       ]
@@ -87,7 +87,7 @@
             {
               "_beagleComponent_": "beagle:text",
               "styleId": "small-font",
-              "text": "@{client.menu.produtos}"
+              "text": "@{page.menu.produtos}"
             },
             {
               "_beagleComponent_": "beagle:touchable",

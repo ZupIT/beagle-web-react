@@ -5,22 +5,43 @@
         "docs": "Docs"
     },
     "useBeagle":{
-
+        "title": "Framework que atualiza UI via backend",
+        "text": "O Beagle é uma plataforma Server-Driven para iOS, Android e Web que facilita a construção de telas por meio de um backend, permitindo que telas e fluxos nativos sejam alterados utilizando apenas JSON.",
+        "button": "Comece agora"
     },
     "howToUseBeagle":{
-
+        "title": "Como funciona?",
+        "text": "A partir de telas declarativas feitas no backend, o Beagle atualiza a aplicação no frontend de forma ágil, sem ter de passar o app pela loja."
     },
     "playgroundBeagle":{
-
+        "title": "Um playground para você explorar o Beagle",
+        "text": "Teste em tempo real e explore a ferramenta direto no navegador.",
+        "button": "Testar agora"
     },
-    "creatWithBeagle":{
-
+    "createWithBeagle":{
+        "title": "Crie, teste e valide de forma rápida e segura",
+        "cardSynchronize": {
+            "title": "Sincronize componentes e layouts por BFF",
+            "text": "Acelere o ciclo de atualização e sincronização dos componentes, definindo diretamente no BFF (Backend for Frontend)."
+        },
+        "cardChange": {
+            "title": "Altere o layout das suas aplicações sem passar pela loja",
+            "text": "Mexa na interface de seus aplicativos direto no código, sem ter de subir novas versões na App Store ou Play Store."
+        },
+        "cardMigrate": {
+            "title": "Migre seu projeto para Server-Driven facilmente",
+            "text": "Transforme seus componentes nativos em Server-Driven, aos poucos, com menores riscos de quebrar sua aplicação."
+        },
+        "button": "Contribua com Beagle" 
     },
     "products":{
-
+        "title": "Conheça nossos outros produtos Open Source"
     },
     "footer":{
+        "text": "Learn To Love Growth And Change And You Will Be A Success.",
+        "articles": "Artigos",
+        "community": "Cominidade",
+        "documents": "Documentos"
 
-    } 
+    }
 }
-
