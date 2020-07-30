@@ -1,7 +1,46 @@
 {
-    "menu":{
+    "menu": {
         "products": "Products",
         "github": "Github",
         "docs": "Docs"
+    },
+    "useBeagle": {
+        "title": "Framework that updates UI through backend",
+        "text": "Beagle is a Server-Driven platform for iOS, Android and the Web that facilitates the construction of screens through a backend, allowing screens and native flows to be changed using only JSON.",
+        "button": "GET STARTED"
+    },
+    "howToUseBeagle": {
+        "title": "How it works?",
+        "text": "From declarative screens made on the backend, Beagle quickly updates the application on the frontend, without having to pass the app through the store."
+    },
+    "playgroundBeagle": {
+        "title": "A playground for you to explore the Beagle",
+        "text": "Test in real time and explore the tool right in the browser.",
+        "button": "TRY IT NOW"
+    },
+    "createWithBeagle": {
+        "title": "Create, test and validate quickly and securely",
+        "cardSynchronize": {
+            "title": "Synchronize components and layouts by BFF",
+            "text": "Speed up the update and synchronization cycle of the components, setting directly in the BFF (Backend for Frontend)."
+        },
+        "cardChange": {
+            "title": "Change the layout of your apps without going through the store",
+            "text": "Move your app's interface straight into the code, without having to upload new versions on the App Store or Play Store."
+        },
+        "cardMigrate": {
+            "title": "Migrate your project to Server-Driven easily",
+            "text": "Transform your native components into Server-Driven, piece by piece, with less risk of breaking your application."
+        },
+        "button": "CONTRIBUTE TO BEAGLE"
+    },
+    "products": {
+        "title": "Discover other ZUP`s Open Source products"
+    },
+    "footer": {
+        "text": "Learn To Love Growth And Change And You Will Be A Success.",
+        "articles": "Articles",
+        "community": "Community",
+        "documents": "Documents"
     }
 }
