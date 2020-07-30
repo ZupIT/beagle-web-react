@@ -87,7 +87,7 @@
             {
               "_beagleComponent_": "beagle:text",
               "styleId": "small-font",
-              "text": "@{page.menu.produtos}"
+              "text": "@{page.menu.products}"
             },
             {
               "_beagleComponent_": "beagle:touchable",
