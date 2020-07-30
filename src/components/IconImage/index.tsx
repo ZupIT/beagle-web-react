@@ -8,6 +8,7 @@ import Twitter from 'core/assets/svg/twitter.svg'
 import Medium from 'core/assets/svg/medium.svg'
 import Youtube from 'core/assets/svg/youtube.svg'
 import Facebook from 'core/assets/svg/facebook.svg'
+import Language from 'core/assets/svg/Language.svg'
 
 interface Props {
     iconName: string
@@ -20,7 +21,8 @@ const iconsMap:Record<string,string> = {
     Twitter,
     Medium,
     Youtube,
-    Facebook
+    Facebook,
+    Language,
 }
 
 const Icon: FC<Props> = props => {

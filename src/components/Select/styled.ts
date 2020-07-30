@@ -5,7 +5,6 @@ import { StyledProperties } from '@core/constants/theme'
 export const StyledSelect = styled.select<Select>`
   display: block;
   outline: none;
-  padding: 4px 10px;
 
   
 `

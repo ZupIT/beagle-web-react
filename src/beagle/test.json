@@ -74,11 +74,12 @@
           "direction": "HORIZONTAL",
           "style": {
             "flex": {
-              "justifyContent": "SPACE-BETWEEN"
+              "justifyContent": "SPACE-BETWEEN",
+              "flexWrap":"WRAP"
             },
             "size": {
               "width": {
-                "value": 450,
+                "value": 350,
                 "type": "REAL"
               }
             }
@@ -122,9 +123,23 @@
               ]
             },
             {
-              "_beagleComponent_": "beagle:text",
-              "text": "Português",
-              "styleId": "small-font"
+              "_beagleComponent_": "beagle:container",
+              "style": {
+                "flex": {
+                  "justifyContent": "SPACE-BETWEEN",
+                  "flexDirection": "ROW"
+                },
+                "size": {
+                  "width": {
+                    "value": 110,
+                    "type": "REAL"
+                  }
+                }
+              },
+              "children":[
+            {
+              "_beagleComponent_": "custom:Icon",
+              "iconName": "Language"
             },
             {
               "_beagleComponent_": "custom:Select",
@@ -151,8 +166,12 @@
                 }
               ]
               }
+              ]
+            }
+        
           ]
         }
+     
        
       ]
     },

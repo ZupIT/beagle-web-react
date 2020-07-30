@@ -7,7 +7,7 @@
     "useBeagle": {
         "title": "Framework that updates UI through backend",
         "text": "Beagle is a Server-Driven platform for iOS, Android and the Web that facilitates the construction of screens through a backend, allowing screens and native flows to be changed using only JSON.",
-        "button": "GET STARTED"
+        "button": "get started"
     },
     "howToUseBeagle": {
         "title": "How it works?",
@@ -32,7 +32,7 @@
             "title": "Migrate your project to Server-Driven easily",
             "text": "Transform your native components into Server-Driven, piece by piece, with less risk of breaking your application."
         },
-        "button": "CONTRIBUTE TO BEAGLE"
+        "button": "contribute to beagle"
     },
     "products": {
         "title": "Discover other ZUP`s Open Source products"
