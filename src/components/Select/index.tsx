@@ -1,7 +1,5 @@
-import React, { FC, } from 'react'
+import React, { FC, useMemo } from 'react'
 import map from 'lodash/map'
-
-
 import { StyledSelect } from './styled'
 
 interface Option {
@@ -12,7 +10,7 @@ interface Option {
 export interface Props {
 
   name: string,
-  options: Option[],
+  options: Option[ ],
   value?: string,
   style?: Record<string, string>,
   onChange: (value: any) => void,
@@ -22,12 +20,13 @@ const Select: FC<Props> = ({  name, options, style, value: initialValue, onChang
   const opts = useMemo(() => map(options, ({ name, value }) => ({ label: name, value })), [options])
 
   const handleChange = (value: any) => {
+    console.log(value)
     onChange && onChange({ value })
   }
 
   return (
-    <Group style={style}>
-      <Label>{label}:</Label>
+
+ 
       <StyledSelect
         name={name}
         onChange={event => handleChange(event.target.value)}
@@ -35,7 +34,7 @@ const Select: FC<Props> = ({  name, options, style, value: initialValue, onChang
       >
         {opts.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
       </StyledSelect>
-    </Group>
+   
   )
 }
 

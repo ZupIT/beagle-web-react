@@ -1,20 +1,25 @@
 import styled from 'styled-components'
-import Select from 'react-select'
+import Select from 'react-Select'
+import { StyledProperties } from '@core/constants/theme'
 
-export const StyledSelect = styled.select`
+export const StyledSelect = styled.select<Select>`
   display: block;
-  border-radius: 5px;
-  border: 2px solid #F2F2F3;
   outline: none;
   padding: 4px 10px;
-  transition: border 0.3s, box-shadow 0.3s;
 
-  :hover {
-    border: 2px solid #afe4ff;
-  }
-
-  :focus {
-    border: 2px solid #afe4ff;
-    box-shadow: 0 0 6px #bae4fb;
-  }
+  
 `
+
+export const Group = styled.div
+  `display: flex;
+  flex-direction: column;`
+
+
+export const Label = styled.label<StyledProperties>
+  `display: block;
+  color: #4A4A4A;
+  margin-bottom: 10px;`
+
+
+export const StyledForm = styled.form
+  `position: relative;`

@@ -78,7 +78,7 @@
             },
             "size": {
               "width": {
-                "value": 350,
+                "value": 450,
                 "type": "REAL"
               }
             }
@@ -125,9 +125,35 @@
               "_beagleComponent_": "beagle:text",
               "text": "Português",
               "styleId": "small-font"
-            }
+            },
+            {
+              "_beagleComponent_": "custom:Select",
+              "options":[{
+                "name": "Portugues",
+                "value": "/portuguese.json"
+              }, {
+                "name": "English",
+                "value": "/english.json"
+              }
+              ],
+              "onChange": [
+                {
+                  "_beagleAction_": "beagle:sendRequest",
+                  "url": "@{onChange.value}",
+                  "method": "GET",
+                  "onSuccess": [
+                    {
+                      "_beagleAction_": "beagle:setContext",
+                      "contextId": "page",
+                      "value": "@{onSuccess.data}"
+                    }
+                  ]
+                }
+              ]
+              }
           ]
         }
+       
       ]
     },
     {
