@@ -16,7 +16,8 @@
 
 import React, { FC, useEffect } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
-import { replaceBindings } from '@zup-it/beagle-web/bindings'
+import Expression from '@zup-it/beagle-web/Renderer/Expression'
+import Tree from '@zup-it/beagle-web/utils/Tree'
 import { clone } from '@zup-it/beagle-web/utils/tree-manipulation'
 import { BeagleComponent } from '../../types'
 import { Direction, BeagleDefaultComponent } from '../types'
@@ -49,11 +50,14 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     const element = beagleContext.getElement() as BeagleUIElement
     if (!element) return
 
-    element.children = dataSource.map(
-      item => replaceBindings(template, [{ id: 'item', value: item }])
-    )
+    element.children = dataSource.map((item) => {
+      const child = clone(template)
+      return Tree.replaceEach(child, component => (
+        Expression.resolveForComponent(component, [{ id: 'item', value: item }])
+      ))
+    })
 
-    beagleContext.updateWithTree({ sourceTree: element, mode: 'replace' })
+    beagleContext.getView().getRenderer().doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
   return (

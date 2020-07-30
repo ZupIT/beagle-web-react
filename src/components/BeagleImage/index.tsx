@@ -15,6 +15,7 @@
 */
 
 import React, { FC } from 'react'
+import UrlBuilder from '@zup-it/beagle-web/UrlBuilder'
 import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent, ImageMode } from '../types'
 import withTheme from '../utils/withTheme'
@@ -55,7 +56,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
 }) => {
   const source = (path._beagleImagePath_ === 'local' || !beagleContext)
     ? path.url
-    : beagleContext.getView().getUrlBuilder().build(path.url)
+    : UrlBuilder.build(path.url)
 
   return (
     <StyledFigure className={className} style={style} >

@@ -28,7 +28,7 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, beagleContext }) 
       path,
       shouldShowLoading: false,
     }
-    beagleContext && beagleContext.replace(params)
+    beagleContext && beagleContext.replaceComponent(params)
   }, [])
 
   return (
