@@ -55,14 +55,6 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     return view
   }, [])
   
-  const updateView = () => (beagleView &&
-    beagleView.updateWithTree({ sourceTree: beagleView.getTree() })
-  )
-
-  const globalContextSubscription = useMemo<() => void>(() => (
-    beagleService.globalContext.subscribe(updateView)
-  ), [])
-
   useEffect(() => {
     beagleView.fetch(loadParams)
   }, [loadParams])
@@ -72,7 +64,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
     loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
     return () => {
       BeagleContext.unregisterView(`${viewID}`)
-      globalContextSubscription && globalContextSubscription()
+      beagleView.destroy()
     }
   }, [])
 
