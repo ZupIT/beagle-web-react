@@ -47,6 +47,7 @@
             "value": 70,
             "type": "PERCENT"
           }
+          
         }
       },
       "children": [
@@ -61,10 +62,6 @@
               "height": {
                 "value": 40,
                 "type": "REAL"
-              },
-              "width": {
-                "value": 72,
-                "type": "REAl"
               }
             }
           }
@@ -337,7 +334,7 @@
                 "type": "PERCENT"
               },
               "maxWidth": {
-                "value": 750,
+                "value": 660,
                 "type": "REAL"
               }
             }
@@ -650,7 +647,7 @@
             },
             "size": {
               "width": {
-                "value": 80,
+                "value": 100,
                 "type": "PERCENT"
               }
             },
@@ -1323,7 +1320,7 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                "flex": {},
+                
                 "size": {
                   "width": {
                     "value": 250,

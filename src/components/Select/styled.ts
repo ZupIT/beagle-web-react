@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import Select from 'react-Select'
+import Select from 'react-select'
 import { StyledProperties } from '@core/constants/theme'
 
 export const StyledSelect = styled.select<Select>`
   display: block;
   outline: none;
-
+  border:none;
   
 `
 
