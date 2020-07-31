@@ -10,7 +10,7 @@ export const StyledTabBar = styled.div`
   align-self: center;
   align-items: center;
   justify-content: space-between;
-  width:92%;
+  width:100%;
   height:65px;
   background-color:#c5c5c5;
   border-radius:50px;

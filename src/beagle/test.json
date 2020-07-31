@@ -249,19 +249,27 @@
               "_beagleComponent_": "beagle:container",
               "style": {
                 "flex": {
+                  "justifyContent":"CENTER",
                   "flexDirection": "ROW"
                 },
                 "size": {
                   "height": {
-                    "value": 50,
+                    "value": 60,
                     "type": "REAL"
                   }
-                }
+                },
+                  "padding":{
+                    "all": {
+                      "value": 8,
+                      "type": "REAL"
+                    }
+                  }
+                
               },
               "children": [
                 {
                   "_beagleComponent_": "beagle:button",
-                  "styleId": "default-font",
+                  "styleId": "button-style",
                   "style": {
                     "background": "#e07b04",
                     "color": "#ffffff",
@@ -292,7 +300,7 @@
                 },
                 {
                   "_beagleComponent_": "beagle:button",
-                  "styleId": "default-font",
+                  "styleId": "button-style",
                   "style": {
                     "background": "#85b237",
                     "color": "white",
@@ -355,6 +363,10 @@
           "height": {
             "value": 100,
             "type": "PERCENT"
+          },
+          "width":{
+            "value": 72,
+            "type": "PERCENT"
           }
         }
       },
@@ -405,7 +417,7 @@
                 "type": "PERCENT"
               },
               "width": {
-                "value": 90,
+                "value": 100,
                 "type": "PERCENT"
               }
             }
@@ -426,6 +438,12 @@
                 },
                 "flex": {
                   "flexWrap": "NOWRAP"
+                },
+                "margin":{
+                  "bottom":{
+                    "value": 50,
+                    "type":"REAL"
+                  }
                 }
               },
               "context": {
@@ -450,7 +468,8 @@
                     {
                       "title": "Web"
                     }
-                  ]
+                  ],
+                  "styleId": "tab-style"
                 },
                 {
                   "_beagleComponent_": "beagle:pageview",
@@ -531,6 +550,16 @@
           "justifyContent": "CENTER",
           "alignItems": "CENTER",
           "flexDirection": "ROW"
+        },
+        "padding":{
+          "top":{
+            "value": 115,
+            "type":"REAL"
+          },
+          "bottom":{
+            "value": 115,
+            "type":"REAL"
+          }
         }
       },
       "children": [
@@ -539,7 +568,7 @@
           "style": {
             "size": {
               "width": {
-                "value": 65,
+                "value": 57,
                 "type": "PERCENT"
               }
             }
@@ -569,22 +598,25 @@
         {
           "_beagleComponent_": "beagle:container",
           "style": {
-            "size": {
-              "height": {
-                "value": 200,
-                "type": "REAL"
+            "padding":{
+              "top":{
+                "value":50,
+                "type":"REAL"
               },
-              "width": {
-                "value": 200,
-                "type": "REAL"
+              "botton":{
+                "value":10,
+                "type":"REAL"
+              },
+              "right":{
+                "value":10,
+                "type":"REAL"
               }
-            },
-            "margin": {
-              "top": {
-                "value": 50,
-                "type": "REAL"
+              ,"left":{
+                "value":10,
+                "type":"REAL"
               }
             }
+            
           },
           "children": [
             {
@@ -610,7 +642,7 @@
             },
             {
               "_beagleComponent_": "beagle:button",
-              "styleId": "default-font",
+              "styleId": "button-style",
               "style": {
                 "background": "#e07b04",
                 "color": "white",
@@ -622,6 +654,12 @@
                   "height": {
                     "value": 25,
                     "type": "PERCENT"
+                  }
+                },
+                "padding":{
+                  "all":{
+                    "value":10,
+                    "type":"REAL"
                   }
                 }
               },
@@ -653,10 +691,14 @@
                 "type": "PERCENT"
               }
             },
-            "margin": {
+            "padding": {
               "top": {
-                "value": 10,
-                "type": "PERCENT"
+                "value": 94,
+                "type": "REAL"
+              },
+              "bottom": {
+                "value": 94,
+                "type": "REAL"
               }
             }
           },
@@ -668,8 +710,8 @@
               "style": {
                 "margin": {
                   "bottom": {
-                    "value": 5,
-                    "type": "PERCENT"
+                    "value": 40,
+                    "type": "REAL"
                   }
                 }
               }
@@ -688,7 +730,7 @@
                     "type": "PERCENT"
                   },
                   "maxWidth":{
-                    "value": 1100,
+                    "value": 1300,
                     "type": "REAL"
                   }
                 }
@@ -887,6 +929,7 @@
             },
             {
               "_beagleComponent_": "beagle:button",
+              "styleId": "button-style",
               "style": {
                 "background": "#85b237",
                 "color": "white",
@@ -910,17 +953,17 @@
                 },
                 "margin": {
                   "top": {
-                    "value": 80,
+                    "value": 30,
                     "type": "REAL"
                   },
                   "bottom": {
-                    "value": 80,
+                    "value": 10,
                     "type": "REAL"
                   }
                 }
               },
               "text": "@{page.createWithBeagle.button}",
-              "styleId": "button-font",
+              "styleId": "button-style",
               "onPress": [
                 {
                   "_beagleAction_": "beagle:OpenExternalUrl",
@@ -1330,10 +1373,6 @@
                   "width": {
                     "value": 250,
                     "type": "REAL"
-                  },
-                  "height": {
-                    "value": 250,
-                    "type": "REAL"
                   }
                 }
               },
@@ -1361,11 +1400,8 @@
                           "width": {
                             "value": 210,
                             "type": "REAL"
-                          },
-                          "height": {
-                            "value": 70,
-                            "type": "REAL"
                           }
+                          
                         }
                       }
                     }
@@ -1384,7 +1420,20 @@
                         "value": 130,
                         "type": "REAL"
                       }
+                    },
+                    "padding":{
+                      "top":{
+                        "value":15,
+                        "type":"REAL"
+
+                      },
+                      "bottom":{
+                        "value":15,
+                        "type":"REAL"
+
+                      }
                     }
+                    
                   },
                   "children": [
                     {
@@ -1396,12 +1445,7 @@
                       "styleId": "small-font",
                       "text": "34 2589-1800",
                       "style": {
-                        "margin": {
-                          "Bottom": {
-                            "value": 10,
-                            "type": "PERCENT"
-                          }
-                        }
+                      
                       }
                     }
                   ]
@@ -1420,7 +1464,7 @@
                         "type": "REAL"
                       },
                       "height": {
-                        "value": 100,
+                        "value": 20,
                         "type": "REAL"
                       }
                     }

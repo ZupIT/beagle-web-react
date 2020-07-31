@@ -24,9 +24,6 @@ export interface BeagleTabBarInterface extends BeagleComponent {
   styleId?: string
 }
 
-
-
-
 const BeagleTabBar: FC<BeagleTabBarInterface> = ({
   onTabSelection, currentTab, items, styleId,
 }) => {
