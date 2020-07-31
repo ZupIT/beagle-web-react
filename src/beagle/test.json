@@ -684,8 +684,12 @@
                 },
                 "size": {
                   "width": {
-                    "value": 87,
+                    "value": 89,
                     "type": "PERCENT"
+                  },
+                  "maxWidth":{
+                    "value": 1100,
+                    "type": "REAL"
                   }
                 }
               },
