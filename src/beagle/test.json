@@ -47,7 +47,6 @@
             "value": 70,
             "type": "PERCENT"
           }
-          
         }
       },
       "children": [
@@ -72,7 +71,7 @@
           "style": {
             "flex": {
               "justifyContent": "SPACE-BETWEEN",
-              "flexWrap":"WRAP"
+              "flexWrap": "WRAP"
             },
             "size": {
               "width": {
@@ -130,46 +129,49 @@
                   "width": {
                     "value": 110,
                     "type": "REAL"
+                  },
+                  "height": {
+                    "value": 18,
+                    "type": "REAL"
                   }
                 }
               },
-              "children":[
-            {
-              "_beagleComponent_": "custom:Icon",
-              "iconName": "Language"
-            },
-            {
-              "_beagleComponent_": "custom:Select",
-              "options":[{
-                "name": "Portugues",
-                "value": "/portuguese.json"
-              }, {
-                "name": "English",
-                "value": "/english.json"
-              }
-              ],
-              "onChange": [
+              "children": [
                 {
-                  "_beagleAction_": "beagle:sendRequest",
-                  "url": "@{onChange.value}",
-                  "method": "GET",
-                  "onSuccess": [
+                  "_beagleComponent_": "custom:Icon",
+                  "iconName": "Language"
+                },
+                {
+                  "_beagleComponent_": "custom:Select",
+                  "options": [
                     {
-                      "_beagleAction_": "beagle:setContext",
-                      "contextId": "page",
-                      "value": "@{onSuccess.data}"
+                      "name": "Portugues",
+                      "value": "/portuguese.json"
+                    },
+                    {
+                      "name": "English",
+                      "value": "/english.json"
+                    }
+                  ],
+                  "onChange": [
+                    {
+                      "_beagleAction_": "beagle:sendRequest",
+                      "url": "@{onChange.value}",
+                      "method": "GET",
+                      "onSuccess": [
+                        {
+                          "_beagleAction_": "beagle:setContext",
+                          "contextId": "page",
+                          "value": "@{onSuccess.data}"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
-              }
-              ]
             }
-        
           ]
         }
-     
-       
       ]
     },
     {
@@ -1320,7 +1322,6 @@
               "_beagleComponent_": "beagle:container",
               "direction": "VERTICAL",
               "style": {
-                
                 "size": {
                   "width": {
                     "value": 250,
