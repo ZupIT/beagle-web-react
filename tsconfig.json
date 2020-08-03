@@ -8,6 +8,7 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true
