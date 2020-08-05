@@ -610,8 +610,8 @@
               "right":{
                 "value":10,
                 "type":"REAL"
-              }
-              ,"left":{
+              },
+              "left":{
                 "value":10,
                 "type":"REAL"
               }
@@ -1475,10 +1475,26 @@
                       "iconName": "Email"
                     },
                     {
+                      "_beagleComponent_": "beagle:touchable",
+                      "onPress": [
+                        {
+                          "_beagleAction_": "beagle:OpenExternalUrl",
+                          "url": "mailto:beagle@zup.com.br"
+                        }
+                      ],
+                      "children": [
+                    {
                       "_beagleComponent_": "beagle:text",
                       "styleId": "small-font",
-                      "text": "beagle@zup.com.br"
+                      "text": "beagle@zup.com.br",
+                    
+                        "textColor": "rgb(65, 90, 161);"
+                      
+
+
                     }
+                  ]
+                }
                   ]
                 }
               ]
