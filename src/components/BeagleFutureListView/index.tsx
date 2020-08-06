@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import Expression from '@zup-it/beagle-web/Renderer/Expression'
 import Tree from '@zup-it/beagle-web/utils/Tree'
@@ -49,32 +49,13 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   children,
   useParentScroll,
 }) => {
-
+  const allowedOnScrollRef = useRef(true)
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   let node: NodeType
 
   if (!scrollEndThreshold) scrollEndThreshold = 100
   if (!direction) direction = 'VERTICAL'
   if (useParentScroll === undefined) useParentScroll = false
-
-  const callOnScrollEnd = () => onScrollEnd && onScrollEnd()
-
-  const calcPercentage = () => {
-    if (!node) return
-
-    let screenPercentage: number
-    if (direction === 'VERTICAL') {
-      const scrollPosition = node.scrollTop
-      screenPercentage = (scrollPosition /
-        (node.scrollHeight - node.clientHeight)) * 100
-    } else {
-      const scrollPosition = node.scrollLeft
-      screenPercentage = (scrollPosition /
-        (node.scrollWidth - node.clientWidth)) * 100
-    }
-    
-    if (scrollEndThreshold && screenPercentage >= scrollEndThreshold) callOnScrollEnd()
-  }
 
   const hasHorizontalScroll = (nodeElement: NodeType): boolean => {
     if (!nodeElement) return false
@@ -138,7 +119,31 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     })
 
     beagleContext.getView().getRenderer().doFullRender(element, element.id)
+    allowedOnScrollRef.current = true
+
   }, [JSON.stringify(dataSource)])
+
+  const callOnScrollEnd = () => onScrollEnd && onScrollEnd()
+
+  const calcPercentage = () => {
+    if (!node) return
+
+    let screenPercentage: number
+    if (direction === 'VERTICAL') {
+      const scrollPosition = node.scrollTop
+      screenPercentage = (scrollPosition /
+        (node.scrollHeight - node.clientHeight)) * 100
+    } else {
+      const scrollPosition = node.scrollLeft
+      screenPercentage = (scrollPosition /
+        (node.scrollWidth - node.clientWidth)) * 100
+    }
+    if (scrollEndThreshold && screenPercentage >= scrollEndThreshold
+      && allowedOnScrollRef.current) {
+      allowedOnScrollRef.current = false
+      callOnScrollEnd()
+    }
+  }
 
   useEffect(() => {
     const referenceNode = getReferenceNode()
@@ -150,7 +155,6 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
 
       parent.addEventListener('scroll', calcPercentage)
       return () => parent.removeEventListener('scroll', calcPercentage)
-
     }
   }, [children])
 
