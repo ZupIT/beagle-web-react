@@ -24,6 +24,8 @@ import { Direction, BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledListView } from './styled'
 
+export type HtmlNode = (Node & ParentNode) | null
+
 export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleComponent {
   direction: Direction,
   dataSource: any[],
@@ -31,6 +33,7 @@ export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleC
   onScrollEnd?: () => void,
   scrollEndThreshold?: number,
   template: BeagleUIElement,
+  useParentScroll?: boolean,
 }
 
 const BeagleListView: FC<BeagleListViewInterface> = ({
@@ -44,6 +47,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   dataSource,
   beagleContext,
   children,
+  useParentScroll,
 }) => {
 
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -52,6 +56,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   const callOnScrollEnd = () => onScrollEnd && onScrollEnd()
 
   const calcPercentage = () => {
+    console.log('no calcPercentage')
     let screenPercentage
     if (direction === 'VERTICAL') {
       const scrollPosition = node.scrollTop
@@ -62,21 +67,55 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       screenPercentage = (scrollPosition /
         (node.scrollWidth - node.clientWidth)) * 100
     }
-
+    console.log('screenPercentage', screenPercentage)
     if (scrollEndThreshold && screenPercentage >= scrollEndThreshold)
       callOnScrollEnd()
   }
 
-  const verifyHasSize = () => {
-    const sizeProperty = direction === 'VERTICAL' ? 'height' : 'width'
-    const parent = elementRef.current.parentNode as HTMLElement
-    return parent.style[sizeProperty] !== ''
+  const hasHorizontalScroll = (node: HTMLElement) => {
+    const overflowX = getComputedStyle(node).overflowX
+
+    const hasXscroll = overflowX !== 'visible' && overflowX !== 'hidden'
+
+    return (node.clientWidth === 0 ||
+      node.scrollWidth <= node.clientWidth ||
+      !hasXscroll)
   }
 
-  const handleParentScroll = () => {
-    const parent = elementRef.current.parentNode as HTMLElement
-    node = verifyHasSize() || direction === 'HORIZONTAL' ? parent : document.body.parentNode
-    calcPercentage()
+  const hasVerticalScroll = (node: any) => {
+    const overflowY = getComputedStyle(node).overflowY
+    const hasYscroll = overflowY !== 'visible' && overflowY !== 'hidden'
+    return (node.clientHeight === 0 ||
+      node.scrollHeight <= node.clientHeight ||
+      !hasYscroll)
+  }
+
+  const getParentNode = (nodeElement: any): any | null => {
+    if (!nodeElement) return null
+    console.log('node.nodeName', nodeElement.nodeName)
+    if (nodeElement.nodeName === 'HTML') return nodeElement
+    console.log('nodeElement.scrollHeight', nodeElement.scrollHeight)
+    console.log('nodeElement.clientHeight', nodeElement.clientHeight)
+
+    if (direction === 'VERTICAL' && hasVerticalScroll(nodeElement) ||
+      direction === 'HORIZONTAL' && hasHorizontalScroll(nodeElement)) {
+      console.log('chamando parent')
+      return getParentNode(nodeElement.parentNode)
+    }
+    console.log('chamando proprio no')
+    return nodeElement
+  }
+
+  const getReferenceNode = () => {
+    if (!elementRef || !elementRef.current)
+      return
+
+    if (useParentScroll || direction === 'HORIZONTAL') {
+      let parentNode = elementRef.current.parentNode 
+      parentNode = getParentNode(parentNode)
+      return parentNode
+    }
+    return elementRef.current
   }
 
   useEffect(() => {
@@ -84,12 +123,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
 
     if (!scrollEndThreshold) scrollEndThreshold = 100
     if (!direction) direction = 'VERTICAL'
-
-    const parent = (verifyHasSize() || direction === 'HORIZONTAL') && elementRef &&
-      elementRef.current && elementRef.current.parentNode ? elementRef.current.parentNode : window
-    parent.addEventListener('scroll', handleParentScroll)
-
-    return () => parent.removeEventListener('scroll', handleParentScroll)
+    if (useParentScroll === undefined) useParentScroll = false
   }, [])
 
   useEffect(() => {
@@ -107,16 +141,26 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     beagleContext.getView().getRenderer().doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
-  const handleComponentScroll = () => {
-    if (elementRef) {
-      node = elementRef.current as HTMLElement
-      calcPercentage()
+  useEffect(() => {
+    console.log('!!!!!!!!!!!!!!')
+    const referenceNode = getReferenceNode()
+    if (referenceNode !== node) {
+      if (node !== undefined) node.removeEventListener('scroll', calcPercentage)
+      node = referenceNode
+      console.log('node.nodeName', node.nodeName)
+      const parent = (node && node.nodeName !== 'HTML')
+        ? node : window
+
+      parent.addEventListener('scroll', calcPercentage)
+      return () => parent.removeEventListener('scroll', calcPercentage)
+
     }
-  }
+  }, [children])
 
   return (
-    <StyledListView ref={elementRef} onScroll={handleComponentScroll}
-      className={className} direction={direction} style={style}>
+    <StyledListView ref={elementRef}
+      className={className} direction={direction}
+      useParentScroll={useParentScroll} style={style}>
       {children}
     </StyledListView>
   )
