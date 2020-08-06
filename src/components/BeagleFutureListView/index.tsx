@@ -94,7 +94,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     if (!elementRef || !elementRef.current)
       return null
 
-    if (useParentScroll || direction === 'HORIZONTAL') {
+    if (useParentScroll) {
       let parentNode = elementRef.current.parentNode as NodeType
       parentNode = getParentNode(parentNode)
       return parentNode as NodeType
@@ -138,7 +138,8 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       screenPercentage = (scrollPosition /
         (node.scrollWidth - node.clientWidth)) * 100
     }
-    if (scrollEndThreshold && screenPercentage >= scrollEndThreshold
+    
+    if (scrollEndThreshold && Math.ceil(screenPercentage) >= scrollEndThreshold
       && allowedOnScrollRef.current) {
       allowedOnScrollRef.current = false
       callOnScrollEnd()
@@ -150,6 +151,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     if (referenceNode !== node) {
       if (node !== undefined && node !== null) node.removeEventListener('scroll', calcPercentage)
       node = referenceNode
+
       const parent = (node && node.nodeName !== 'HTML')
         ? node : window
 
