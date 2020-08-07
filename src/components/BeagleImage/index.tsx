@@ -14,9 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import UrlBuilder from '@zup-it/beagle-web/UrlBuilder'
-import { BeagleComponent } from '../../types'
+import React, { FC, useContext } from 'react'
+import BeagleServiceContext from '../../provider'
 import { BeagleDefaultComponent, ImageMode } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledImage, StyledFigure } from './styled'
@@ -33,7 +32,7 @@ export interface Accessibility {
   accessibilityLabel?: string,
 }
 
-export interface BeagleImageInterface extends BeagleComponent, BeagleDefaultComponent {
+export interface BeagleImageInterface extends BeagleDefaultComponent {
   path: ImagePath,
   mode?: ImageMode,
   accessibility?: Accessibility,
@@ -49,14 +48,15 @@ const modeMap = {
 const BeagleImage: FC<BeagleImageInterface> = ({
   className,
   path,
-  beagleContext,
   style,
   mode,
   accessibility,
 }) => {
-  const source = (path._beagleImagePath_ === 'local' || !beagleContext)
+  const beagleService = useContext(BeagleServiceContext)
+  const urlBuilder = beagleService && beagleService.urlBuilder
+  const source = (path._beagleImagePath_ === 'local' || !urlBuilder)
     ? path.url
-    : UrlBuilder.build(path.url)
+    : urlBuilder.build(path.url)
 
   return (
     <StyledFigure className={className} style={style} >

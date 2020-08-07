@@ -14,9 +14,9 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleAnalytics } from '@zup-it/beagle-web'
-import { ClickEvent } from '@zup-it/beagle-web/types'
+import React, { FC, useContext } from 'react'
+import { ClickEvent } from '@zup-it/beagle-web'
+import BeagleServiceContext from '../../provider'
 import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
@@ -36,17 +36,19 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   beagleContext,
   clickAnalyticsEvent,
 }) => {
+  const beagleService = useContext(BeagleServiceContext)
   const element = beagleContext.getElement()
   const isSubmitButton = (
     element
     && element.onPress
     && element.onPress._beagleAction_ === 'beagle:submitForm'
   )
-  const beagleAnalytics = BeagleAnalytics.getAnalytics()
+  const beagleAnalytics = beagleService && beagleService.analytics
   const type = isSubmitButton ? 'submit' : 'button'
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
-      BeagleAnalytics.getAnalytics().trackEventOnClick(clickAnalyticsEvent)
+      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
+
     return isSubmitButton ? undefined : onPress && onPress()
   }
 

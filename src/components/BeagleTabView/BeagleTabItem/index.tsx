@@ -39,8 +39,7 @@ const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
   return (
     <StyledBeagleTabItem>
       <StyledBeagleTabItemHeader onClick={() => componentsService.setActiveTab(id)}>
-        {icon && <StyledBeagleImage path={icon}
-          beagleContext={beagleContext}></StyledBeagleImage>}
+        {icon && <StyledBeagleImage path={icon} />}
         {title}
       </StyledBeagleTabItemHeader>
       {id === componentsService.activeTab &&
