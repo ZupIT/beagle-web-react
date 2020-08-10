@@ -48,7 +48,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
     
-    const view = beagleService.createView(loadParams.path)
+    const view = beagleService.createView()
     view.subscribe(setUiTree)
     if (loadParams.viewRef) loadParams.viewRef.current = view
 
