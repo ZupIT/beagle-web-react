@@ -13,8 +13,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-import { BeagleConfig } from '@zup-it/beagle-web'
-import { ComponentName } from '@zup-it/beagle-web'
+import { BeagleConfig, ComponentName } from '@zup-it/beagle-web'
 
 function createMapOfKeys<Schema> (components: BeagleConfig<Schema>['components']) {
   const keys = Object.keys(components)

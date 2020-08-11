@@ -21,8 +21,8 @@ import {
   DefaultSchema,
   DataContext,
   ErrorComponentParams,
+  ViewContentManager,
 } from '@zup-it/beagle-web'
-import { ViewContentManager } from '@zup-it/beagle-web'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
   components: {
