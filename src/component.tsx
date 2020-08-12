@@ -25,7 +25,6 @@ import React, {
 import {
   LoadParams,
   BeagleView,
-  BeagleContext,
   BeagleUIElement,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
@@ -49,7 +48,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
     
-    const view = beagleService.createView(loadParams.path)
+    const view = beagleService.createView()
     view.subscribe(setUiTree)
     if (loadParams.viewRef) loadParams.viewRef.current = view
 
@@ -61,16 +60,16 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   }, [loadParams])
 
   useEffect(() => {
-    BeagleContext.registerView(`${viewID}`, beagleView)
+    beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)
     loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
-    return () => BeagleContext.unregisterView(`${viewID}`)
+    return () => beagleService.viewContentManagerMap.unregister(`${viewID}`)
   }, [])
 
   const renderComponents = () => {
     if (!uiTree || !viewID) return <></>
     const components = beagleService.getConfig().components
     
-    return createReactComponentTree(components, uiTree, viewID)
+    return createReactComponentTree(components, uiTree, viewID, beagleService.viewContentManagerMap)
   }
 
   return renderComponents()

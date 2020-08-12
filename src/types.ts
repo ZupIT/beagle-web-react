@@ -17,14 +17,12 @@
 import { FC } from 'react'
 import {
   BeagleConfig as BeagleCoreConfig,
-  BeagleUIService as BeagleCoreUIService,
+  BeagleService as BeagleCoreService,
   DefaultSchema,
-  LoadParams,
-  IdentifiableBeagleUIElement,
-  BeagleView,
+  DataContext,
   ErrorComponentParams,
+  ViewContentManager,
 } from '@zup-it/beagle-web'
-import { BeagleContext } from '@zup-it/beagle-web/types'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
   components: {
@@ -35,19 +33,16 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
   },
 }
 
-export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreUIService<Schema> {
+export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreService {
   getConfig: () => BeagleConfig<Schema>,
 }
 
-export { BeagleContext }
+export type BeagleContext = ViewContentManager
 
-export interface BeagleComponent<T = any> {
-  beagleContext: BeagleContext<T>,
+export interface BeagleComponent {
+  beagleContext: BeagleContext,
 }
 
-export interface DataContext {
-  id: string,
-  value?: any,
-}
+export { DataContext }
 
 export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>
