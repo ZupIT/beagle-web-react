@@ -62,7 +62,10 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   useEffect(() => {
     beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)
     loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
-    return () => beagleService.viewContentManagerMap.unregister(`${viewID}`)
+    return () => {
+      beagleService.viewContentManagerMap.unregister(`${viewID}`)
+      beagleView.destroy()
+    }
   }, [])
 
   const renderComponents = () => {
