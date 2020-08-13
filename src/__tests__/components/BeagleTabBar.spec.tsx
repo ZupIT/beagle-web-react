@@ -33,7 +33,6 @@ beforeAll(() => {
   onTabSelectionMock = jest.fn(()=>'submited')
   wrapper = mount(<BeagleTabBar 
     items={itemTitleMock} 
-    beagleContext={beagleContextMock} 
     onTabSelection={onTabSelectionMock}/>)
 })
 

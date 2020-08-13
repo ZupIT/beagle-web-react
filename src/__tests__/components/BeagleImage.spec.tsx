@@ -41,8 +41,7 @@ beforeAll(() => {
   wrapper = mount(<BeagleImage 
     className="Test Class" 
     style={mockStyle} 
-    path={mockPath} 
-    beagleContext={beagleContextMock}/>)
+    path={mockPath} />)
 })
 
 test('Beagle snapshot image', () => {
