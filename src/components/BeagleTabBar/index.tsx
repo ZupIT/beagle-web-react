@@ -15,7 +15,6 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleComponent } from '../../types'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { ImagePath } from '../BeagleImage'
@@ -32,16 +31,14 @@ export interface ItemTitle {
   icon?: ImagePath,
 }
 
-export interface BeagleTabBarInterface extends BeagleComponent, BeagleDefaultComponent {
+export interface BeagleTabBarInterface extends BeagleDefaultComponent {
   onTabSelection?: (item: number) => void,
   currentTab?: number,
   items: ItemTitle[],
   styleId?: string,
 }
 
-const BeagleTabBar: FC<BeagleTabBarInterface> = ({
-  onTabSelection, currentTab, items, beagleContext,
-}) => {
+const BeagleTabBar: FC<BeagleTabBarInterface> = ({ onTabSelection, currentTab, items }) => {
 
   const changeSelectedTab = (index: number) => {
     if (!onTabSelection) return
@@ -49,7 +46,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({
   }
 
   const tabImage = (item: ItemTitle) => item.icon ? (
-    <StyledBeagleImage path={item.icon} beagleContext={beagleContext}></StyledBeagleImage>
+    <StyledBeagleImage path={item.icon}></StyledBeagleImage>
   ) : null
 
   return (

@@ -14,9 +14,9 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { ClickEvent } from '@zup-it/beagle-web/types'
-import { BeagleAnalytics } from '@zup-it/beagle-web'
+import BeagleServiceContext from '../../provider'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'
@@ -33,7 +33,8 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
   style,
   children,
 }) => {
-  const beagleAnalytics = BeagleAnalytics.getAnalytics()
+  const beagleService = useContext(BeagleServiceContext)
+  const beagleAnalytics = beagleService && beagleService.analytics
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
