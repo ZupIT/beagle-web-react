@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot lazy 1`] = `ShallowWrapper {}`;
+exports[`Beagle snapshot lazy 1`] = `
+<BeagleLazy
+  beagleContext={null}
+  path="pathtest"
+>
+  <div />
+</BeagleLazy>
+`;

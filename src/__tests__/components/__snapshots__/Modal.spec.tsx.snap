@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot Modal 1`] = `ReactWrapper {}`;
+exports[`Beagle snapshot Modal 1`] = `
+<ComponentWithTheme
+  isOpen={true}
+  onClose={[MockFunction]}
+>
+  <Modal
+    className=""
+    isOpen={true}
+    onClose={[MockFunction]}
+  >
+    <styled.div
+      className=""
+      onClick={[Function]}
+    >
+      <div
+        className="sc-AxjAm jChYyt"
+        onClick={[Function]}
+      />
+    </styled.div>
+  </Modal>
+</ComponentWithTheme>
+`;

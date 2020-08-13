@@ -1,3 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot Input 1`] = `ReactWrapper {}`;
+exports[`Beagle snapshot Input 1`] = `
+<ComponentWithTheme
+  disabled={false}
+  hidden={false}
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onFocus={[MockFunction]}
+  placeholder="Testing"
+  readOnly={false}
+  type="TEXT"
+  value="Testing"
+>
+  <BeagleInput
+    className=""
+    disabled={false}
+    hidden={false}
+    onBlur={[MockFunction]}
+    onChange={[MockFunction]}
+    onFocus={[MockFunction]}
+    placeholder="Testing"
+    readOnly={false}
+    type="TEXT"
+    value="Testing"
+  >
+    <input
+      className=""
+      disabled={false}
+      hidden={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Testing"
+      readOnly={false}
+      type="TEXT"
+      value="Testing"
+    />
+  </BeagleInput>
+</ComponentWithTheme>
+`;

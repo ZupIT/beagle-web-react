@@ -1,3 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot TabBar 1`] = `ReactWrapper {}`;
+exports[`Beagle snapshot TabBar 1`] = `
+<ComponentWithTheme
+  beagleContext={null}
+  items={
+    Array [
+      Object {
+        "title": "Title A",
+      },
+      Object {
+        "title": "Title B",
+      },
+      Object {
+        "title": "Title C",
+      },
+    ]
+  }
+  onTabSelection={[MockFunction]}
+>
+  <BeagleTabBar
+    beagleContext={null}
+    className=""
+    items={
+      Array [
+        Object {
+          "title": "Title A",
+        },
+        Object {
+          "title": "Title B",
+        },
+        Object {
+          "title": "Title C",
+        },
+      ]
+    }
+    onTabSelection={[MockFunction]}
+  >
+    <styled.div>
+      <div
+        className="sc-AxiKw dPWazA"
+      >
+        <styled.div
+          key="0"
+        >
+          <div
+            className="sc-AxhCb kOGcQs"
+          >
+            <styled.div
+              onClick={[Function]}
+            >
+              <div
+                className="sc-AxhUy kHJxlU"
+                onClick={[Function]}
+              >
+                Title A
+              </div>
+            </styled.div>
+          </div>
+        </styled.div>
+        <styled.div
+          key="1"
+        >
+          <div
+            className="sc-AxhCb kOGcQs"
+          >
+            <styled.div
+              onClick={[Function]}
+            >
+              <div
+                className="sc-AxhUy kHJxlU"
+                onClick={[Function]}
+              >
+                Title B
+              </div>
+            </styled.div>
+          </div>
+        </styled.div>
+        <styled.div
+          key="2"
+        >
+          <div
+            className="sc-AxhCb kOGcQs"
+          >
+            <styled.div
+              onClick={[Function]}
+            >
+              <div
+                className="sc-AxhUy kHJxlU"
+                onClick={[Function]}
+              >
+                Title C
+              </div>
+            </styled.div>
+          </div>
+        </styled.div>
+      </div>
+    </styled.div>
+  </BeagleTabBar>
+</ComponentWithTheme>
+`;

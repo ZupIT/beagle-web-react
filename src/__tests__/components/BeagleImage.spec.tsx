@@ -18,7 +18,7 @@
 import * as React from 'react'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount, shallow } from 'enzyme'
+import { configure, mount } from 'enzyme'
 import { CSSProperties } from 'styled-components'
 import { BeagleContext } from '../../types'
 import BeagleImage, { ImagePath } from '../../components/BeagleImage'
@@ -48,11 +48,3 @@ beforeAll(() => {
 test('Beagle snapshot image', () => {
   expect(wrapper).toMatchSnapshot()
 })
-
-test('Should validate props', () => {
-  const props: any = wrapper.props()
-  expect(props.className).toEqual('Test Class')
-  expect(props.path).toEqual(mockPath)
-  expect(props.beagleContext).toEqual(beagleContextMock)
-})
-

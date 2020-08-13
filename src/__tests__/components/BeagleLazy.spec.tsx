@@ -17,7 +17,7 @@
 // Link.react.test.js
 import * as React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow } from 'enzyme'
+import { configure, mount } from 'enzyme'
 import { mock } from 'jest-mock-extended'
 import BeagleLazy from '../../components/BeagleLazy'
 import { BeagleContext } from '../../types'
@@ -28,7 +28,7 @@ let beagleContextMock: any
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   beagleContextMock = mock<BeagleContext>()
-  wrapper = shallow(<BeagleLazy path="pathtest" beagleContext={beagleContextMock}/>)
+  wrapper = mount(<BeagleLazy path="pathtest" beagleContext={beagleContextMock}/>)
 })
 
 test('Beagle snapshot lazy', () => {

@@ -40,10 +40,3 @@ beforeAll(() => {
 test('Beagle snapshot list view', () => {
   expect(wrapper).toMatchSnapshot()
 })
-
-test('Should validate props', () => {
-  const props: any = wrapper.props()
-  expect(props.className).toEqual('Test Class')
-  expect(props.style).toEqual(mockStyle)
-  expect(props.direction).toEqual(directionMock)
-})

@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot list view 1`] = `ShallowWrapper {}`;
+exports[`Beagle snapshot list view 1`] = `
+<BeagleListView
+  className="Test Class"
+  direction="HORIZONTAL"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+/>
+`;

@@ -32,8 +32,3 @@ test('Beagle snapshot Error', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-test('Should validate props', () => {
-  const props: any = wrapper.props()
-  expect(props.className).toEqual('Test Class')
-})
-

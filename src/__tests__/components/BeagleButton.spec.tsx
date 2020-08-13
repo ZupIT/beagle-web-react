@@ -18,7 +18,7 @@
 import * as React from 'react'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow, ShallowWrapper } from 'enzyme'
+import { configure, mount, ReactWrapper, shallow, ShallowWrapper } from 'enzyme'
 import { CSSProperties } from 'styled-components'
 import { BeagleContext } from '../../types'
 import BeagleButton from '../../components/BeagleButton'
@@ -29,44 +29,27 @@ const mockStyle: CSSProperties = {
 }
 let beagleContextMock: any
 let wrapper: ShallowWrapper
-
+const handleButtonClickMock = jest.fn()
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   beagleContextMock = mock<BeagleContext>()
-  wrapper = shallow(<BeagleButton 
-    text='Text Button' 
-    className="Test Class" 
-    style={mockStyle} 
-    beagleContext={beagleContextMock} />)
-
+  
+  wrapper = shallow(<BeagleButton
+    text='Text Button'
+    className="Test Class"
+    style={mockStyle}
+    beagleContext={beagleContextMock}
+    onPress={handleButtonClickMock}
+  />)
 })
 
 test('Beagle snapshot button', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-test('Should validate props', () => {
-  const props: any = wrapper.props()
-
-  expect(props.text).toEqual('Text Button')
-  expect(props.className).toEqual('Test Class')
-  expect(props.style).toEqual(mockStyle)
-  expect(props.beagleContext).toEqual(beagleContextMock)
-})
 
 test('Should call on click handler', () => {
-  const props: any = wrapper.props()
-  const handleButtonClickMock = jest.fn(props.onClick)
-  wrapper = shallow(
-    <BeagleButton
-      text='Text Button'
-      className="Test Class"
-      style={mockStyle}
-      beagleContext={beagleContextMock}
-      onPress={handleButtonClickMock}
-    />)
-
   wrapper.simulate('press')
   expect(handleButtonClickMock).toHaveBeenCalledTimes(1)
 })

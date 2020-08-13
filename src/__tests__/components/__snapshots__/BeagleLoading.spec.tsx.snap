@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot Loading 1`] = `ShallowWrapper {}`;
+exports[`Beagle snapshot Loading 1`] = `
+<BeagleLoading
+  className="Test Class"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+/>
+`;

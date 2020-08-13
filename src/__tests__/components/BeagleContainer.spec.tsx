@@ -22,7 +22,6 @@ import { configure, mount } from 'enzyme'
 import { CSSProperties } from 'styled-components'
 import { BeagleContext } from '../../types'
 import BeagleContainer from '../../components/BeagleContainer'
-import BeagleText from '../../components/BeagleText'
 
 let beagleContextMock: any
 let wrapper: any
@@ -42,11 +41,4 @@ beforeAll(() => {
 
 test('Beagle snapshot container', () => {
   expect(wrapper).toMatchSnapshot()
-})
-
-test('Should validate props', () => {
-  const props: any = wrapper.props()
-
-  expect(props.className).toEqual('Test Class')
-  expect(props.style).toEqual(mockStyle)
 })
