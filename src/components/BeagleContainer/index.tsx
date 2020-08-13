@@ -42,7 +42,7 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
   }, [])
 
   return (
-    <StyledContainer className={className} style={style}>
+    <StyledContainer className={`${className} container`} style={style}>
       {children}
     </StyledContainer>
   )
