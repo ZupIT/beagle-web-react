@@ -2,7 +2,6 @@
 
 exports[`Beagle snapshot TabBar 1`] = `
 <ComponentWithTheme
-  beagleContext={null}
   items={
     Array [
       Object {
@@ -19,7 +18,6 @@ exports[`Beagle snapshot TabBar 1`] = `
   onTabSelection={[MockFunction]}
 >
   <BeagleTabBar
-    beagleContext={null}
     className=""
     items={
       Array [

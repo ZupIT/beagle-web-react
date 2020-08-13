@@ -2,7 +2,6 @@
 
 exports[`Beagle snapshot image 1`] = `
 <ComponentWithTheme
-  beagleContext={null}
   className="Test Class"
   path={
     Object {
@@ -18,7 +17,6 @@ exports[`Beagle snapshot image 1`] = `
   }
 >
   <BeagleImage
-    beagleContext={null}
     className="Test Class"
     path={
       Object {
