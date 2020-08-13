@@ -36,46 +36,42 @@ export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleC
 }
 
 const BeagleListView: FC<BeagleListViewInterface> = ({
-  direction,
+  direction = 'VERTICAL',
   className,
   style,
   template,
   onInit,
   onScrollEnd,
-  scrollEndThreshold,
+  scrollEndThreshold = 100,
   dataSource,
   beagleContext,
   children,
-  useParentScroll,
+  useParentScroll = false,
 }) => {
   const allowedOnScrollRef = useRef(true)
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   let node: NodeType
-
-  if (!scrollEndThreshold) scrollEndThreshold = 100
-  if (!direction) direction = 'VERTICAL'
-  if (useParentScroll === undefined) useParentScroll = false
 
   const hasHorizontalScroll = (nodeElement: NodeType): boolean => {
     if (!nodeElement) return false
 
     const overflowX = getComputedStyle(nodeElement).overflowX
 
-    const hasXscroll = overflowX !== 'visible' && overflowX !== 'hidden'
+    const hasXScroll = overflowX !== 'visible' && overflowX !== 'hidden'
 
     return (nodeElement.clientWidth === 0 ||
       nodeElement.scrollWidth <= nodeElement.clientWidth ||
-      !hasXscroll)
+      !hasXScroll)
   }
 
   const hasVerticalScroll = (nodeElement: NodeType): boolean => {
     if (!nodeElement) return false
 
     const overflowY = getComputedStyle(nodeElement).overflowY
-    const hasYscroll = overflowY !== 'visible' && overflowY !== 'hidden'
+    const hasYScroll = overflowY !== 'visible' && overflowY !== 'hidden'
     return (nodeElement.clientHeight === 0 ||
       nodeElement.scrollHeight <= nodeElement.clientHeight ||
-      !hasYscroll)
+      !hasYScroll)
   }
 
   const getParentNode = (nodeElement: NodeType): NodeType => {
