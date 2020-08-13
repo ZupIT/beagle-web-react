@@ -21,6 +21,7 @@ import BeagleLoading from './BeagleLoading'
 import BeagleError from './BeagleError'
 import BeagleImage from './BeagleImage'
 import BeagleListView from './BeagleListView'
+import BeagleFutureListView from './BeagleFutureListView'
 import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
 import BeagleSimpleForm from './BeagleSimpleForm'
@@ -44,6 +45,7 @@ const beagleDefaultComponents = {
   'beagle:button': BeagleButton,
   'beagle:text': BeagleText,
   'beagle:listview': BeagleListView,
+  'beagle:futurelistview': BeagleFutureListView,
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleContainer,
   'beagle:pageview': BeaglePageView,

@@ -19,9 +19,15 @@ import { Direction } from '../types'
 
 interface StyledListViewInterface {
   direction: Direction,
+  useParentScroll?: boolean,
 }
 
 export const StyledListView = styled.div<StyledListViewInterface>`
   display: flex;
-  flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'}
+  flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
+  overflow: ${({ useParentScroll }) => useParentScroll ? '' : 'auto'};
+
+  .container {
+    overflow: visible;
+  }
 `

@@ -17,14 +17,12 @@
 import { FC } from 'react'
 import {
   BeagleConfig as BeagleCoreConfig,
-  BeagleUIService as BeagleCoreUIService,
+  BeagleService as BeagleCoreService,
   DefaultSchema,
-  LoadParams,
-  IdentifiableBeagleUIElement,
-  BeagleView,
+  DataContext,
   ErrorComponentParams,
+  ViewContentManager,
 } from '@zup-it/beagle-web'
-import { UpdateWithTreeParams } from '@zup-it/beagle-web/types'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
   components: {
@@ -35,27 +33,16 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
   },
 }
 
-export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreUIService<Schema> {
+export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreService {
   getConfig: () => BeagleConfig<Schema>,
 }
 
-export interface BeagleContext<T = any> {
-  replace: (params: LoadParams<T>) => Promise<void>,
-  append: (params: LoadParams<T>) => Promise<void>,
-  prepend: (params: LoadParams<T>) => Promise<void>,
-  updateWithTree: (params: Omit<UpdateWithTreeParams<T>, 'elementId'>) => void,
-  getElementId: () => string,
-  getElement: () => IdentifiableBeagleUIElement<T> | null,
-  getView: () => BeagleView<T>,
+export type BeagleContext = ViewContentManager
+
+export interface BeagleComponent {
+  beagleContext: BeagleContext,
 }
 
-export interface BeagleComponent<T = any> {
-  beagleContext: BeagleContext<T>,
-}
-
-export interface DataContext {
-  id: string,
-  value?: any,
-}
+export { DataContext }
 
 export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>

@@ -14,9 +14,9 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
-import { BeagleAnalytics } from '@zup-it/beagle-web'
-import { ScreenEvent } from '@zup-it/beagle-web/types'
+import React, { FC, useEffect, useContext } from 'react'
+import { ScreenEvent } from '@zup-it/beagle-web'
+import BeagleServiceContext from '../../provider'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledContainer } from './styled'
@@ -27,8 +27,9 @@ export interface BeagleContainerInterface extends BeagleDefaultComponent {
 }
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
+  const beagleService = useContext(BeagleServiceContext)
   const { children, onInit, className, style, screenAnalyticsEvent } = props
-  const beagleAnalytics = BeagleAnalytics.getAnalytics()
+  const beagleAnalytics = beagleService && beagleService.analytics
 
   useEffect(() => {
     if (screenAnalyticsEvent && beagleAnalytics)
@@ -41,7 +42,7 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
   }, [])
 
   return (
-    <StyledContainer className={className} style={style}>
+    <StyledContainer className={`${className} container`} style={style}>
       {children}
     </StyledContainer>
   )

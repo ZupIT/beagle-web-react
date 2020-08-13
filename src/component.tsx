@@ -24,16 +24,10 @@ import React, {
 } from 'react'
 import {
   LoadParams,
-  IdentifiableBeagleUIElement,
   BeagleView,
-  BeagleContext,
   BeagleUIElement,
-  createEventHandler,
-  EventHandler,
-  replaceBindings,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
-import { BeagleError } from '@zup-it/beagle-web/errors'
 import BeagleProvider from './provider'
 import createReactComponentTree from './renderer'
 
@@ -47,52 +41,38 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(loadParams.id)
-  let eventHandler: EventHandler | null = null
   
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
-  const updateTree = (beagleUITree: IdentifiableBeagleUIElement) => {
-    if (!eventHandler)
-      throw new Error(
-        'Couldn\'t find an Event Handler! This is probably a bug within the Beagle library, please report'
-      )
-  
-    const uiTreeWithActions = eventHandler.interpretEventsInTree(beagleUITree)
-    const uiTreeWithValues = replaceBindings(uiTreeWithActions)
-    setUiTree(uiTreeWithValues)
-  }
-
   const beagleView = useMemo<BeagleView>(() => {
     if (!loadParams.id) setViewID(uniqueId())
     
-    const view = beagleService.createView(loadParams.path)
-    view.subscribe(updateTree)
+    const view = beagleService.createView()
+    view.subscribe(setUiTree)
     if (loadParams.viewRef) loadParams.viewRef.current = view
 
     return view
   }, [])
 
-  eventHandler = useMemo(
-    () => createEventHandler(beagleService.getConfig().customActions, beagleView),
-    [beagleView],
-  )
-
   useEffect(() => {
-    beagleView.updateWithFetch(loadParams)
+    beagleView.fetch(loadParams)
   }, [loadParams])
 
   useEffect(() => {
-    BeagleContext.registerView(`${viewID}`, beagleView)
+    beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)
     loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
-    return () => BeagleContext.unregisterView(`${viewID}`)
+    return () => {
+      beagleService.viewContentManagerMap.unregister(`${viewID}`)
+      beagleView.destroy()
+    }
   }, [])
 
   const renderComponents = () => {
     if (!uiTree || !viewID) return <></>
     const components = beagleService.getConfig().components
     
-    return createReactComponentTree(components, uiTree, viewID)
+    return createReactComponentTree(components, uiTree, viewID, beagleService.viewContentManagerMap)
   }
 
   return renderComponents()
