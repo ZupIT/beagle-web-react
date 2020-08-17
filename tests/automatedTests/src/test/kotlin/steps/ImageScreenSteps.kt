@@ -1,6 +1,7 @@
 package steps
 
 import br.com.zup.UtilResources
+import br.com.zup.screens.ScreenFactory
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.en.*
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit
 class ImageScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@image")
     fun setup() {
@@ -22,6 +24,9 @@ class ImageScreenSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=image")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
     @Given("^that I'm on the image screen$")
@@ -34,9 +39,9 @@ class ImageScreenSteps {
 
     @Then("^image screen should render all text attributes correctly$")
     fun checkImageScreenTexts() {
+        var imageScreen = screenFactory.getImageScreen()
 
-        var imageText1 = driver.findElement(By.xpath("/html/body/div/div/div/p[1]"))
-        Assert.assertTrue(imageText1.text.equals("Image"))
+        Assert.assertTrue(imageScreen.imageText1?.text.equals("Image"))
 
         var imageText2 = driver.findElement(By.xpath("/html/body/div/div/div/p[2]"))
         Assert.assertTrue(imageText2.text.equals("Image with contentMode = FIT_XY"))
