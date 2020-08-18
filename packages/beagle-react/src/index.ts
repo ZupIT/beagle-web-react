@@ -15,8 +15,8 @@
 */
 
 import createBeagleCoreUIService, { DefaultSchema, ErrorComponentParams } from '@zup-it/beagle-web'
-import { BeagleConfig, BeagleUIService, BeagleComponent } from '../../common/types'
-import { BeagleProvider } from '../../common/provider'
+import { BeagleConfig, BeagleUIService, BeagleComponent } from 'common/types'
+import { BeagleProvider } from 'common/provider'
 import BeagleRemoteView from './render/component'
 import defaultComponents from './components'
 

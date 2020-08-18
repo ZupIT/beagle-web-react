@@ -15,8 +15,8 @@
 */
 
 import React, { FC } from 'react'
-import useBeagleUI from '../../../common/useComponent'
-import { BeagleRemoteViewType } from '../../../common/types'
+import useBeagleUI from 'common/useComponent'
+import { BeagleRemoteViewType } from 'common/types'
 import createReactComponentTree from './renderer'
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {

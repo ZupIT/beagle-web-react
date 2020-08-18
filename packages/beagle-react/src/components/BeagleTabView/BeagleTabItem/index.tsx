@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useContext } from 'react'
-import { BeagleComponent } from '../../../../../common/types'
+import { BeagleComponent } from 'common/types'
 import tabContext from '../context'
 import { ImagePath } from '../../BeagleImage'
 import {

@@ -15,7 +15,7 @@
 */
 
 import React, { FC } from 'react'
-import { filterBooleanArray } from '../../../../common/utils/array'
+import { filterBooleanArray } from 'common/utils/array'
 
 export interface InputProps {
   className?: string,

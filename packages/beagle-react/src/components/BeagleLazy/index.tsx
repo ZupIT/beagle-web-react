@@ -16,7 +16,7 @@
 
 import React, { FC, useEffect } from 'react'
 import { LoadParams } from '@zup-it/beagle-web'
-import { BeagleComponent } from '../../../../common/types'
+import { BeagleComponent } from 'common/types'
 
 export interface BeagleLazyInterface extends BeagleComponent {
   path: string,

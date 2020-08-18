@@ -17,8 +17,8 @@
 import { Fragment, FC, createElement } from 'react'
 import { map } from 'lodash'
 import { BeagleUIElement, ViewContentManagerMap } from '@zup-it/beagle-web'
-import { BeagleConfig } from '../../../common/types'
-import { getComponentByCaseInsensitiveKey } from '../../../common/utils/beagleComponent'
+import { BeagleConfig } from 'common/types'
+import { getComponentByCaseInsensitiveKey } from 'common/utils/beagleComponent'
 import BeagleId from './BeagleId'
 
 const createReactComponentTree = <Schema>(

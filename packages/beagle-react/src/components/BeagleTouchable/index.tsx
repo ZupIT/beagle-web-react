@@ -16,7 +16,7 @@
 
 import React, { FC, useContext } from 'react'
 import { ClickEvent } from '@zup-it/beagle-web/types'
-import BeagleServiceContext from '../../../../common/provider'
+import BeagleServiceContext from 'common/provider'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'

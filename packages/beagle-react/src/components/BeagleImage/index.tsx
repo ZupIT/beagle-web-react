@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useContext } from 'react'
-import BeagleServiceContext from '../../../../common/provider'
+import BeagleServiceContext from 'common/provider'
 import { BeagleDefaultComponent, ImageMode } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledImage, StyledFigure } from './styled'
