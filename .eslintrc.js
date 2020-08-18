@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -31,19 +30,22 @@ module.exports = {
   ],
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
-    'prettier/prettier': 'off',
     curly: ["error", "multi"],
+    indent: ['error', 2],
+    quotes: ['error', 'single', { avoidEscape: true }],
+    semi: ['error', 'never'],
+
+    'prettier/prettier': 'off',
     'max-len': ['error', { code: 100, ignorePattern: maxLengthIgnorePattern }],
     'arrow-body-style': ["error", "as-needed"],
     'eol-last': ['error', 'always'],
-    quotes: ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'always-multiline'],
     'comma-spacing': ['error', { before: false, after: true }],
-    'semi': ['error', 'never'],
     'space-in-parens': ['error', 'never'],
     'keyword-spacing': ["error", { before: true, after: true }],
     'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
+    
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 'off',
     'import/order': ['warn', {
@@ -54,6 +56,8 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'react/require-default-props': 'off',
+    'react/prop-types': 'off',
+    
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -63,7 +67,10 @@ module.exports = {
       singleline: { delimiter: 'comma', requireLast: false }
     }],
     '@typescript-eslint/no-unused-vars': 'off',
-    'react/prop-types': 'off',
-    'indent': ['error', 2],
-  }
+  },
+  "settings": {
+    "react": {
+      "version": "detect",
+    },
+  },
 }

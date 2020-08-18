@@ -1,8 +1,23 @@
-node_modules
+# Publish
 dist
-.idea
+
+# OSX
 .DS_Store
+
+# IDE's
+.vscode
+.idea
+
+# node.js
 package-lock.json
-yarn.lock
+node_modules
+npm-debug.log
 yarn-error.log
-coverage/
+yarn.lock
+
+# yalc
+.yalc/
+yalc.lock
+
+# Tests
+coverage

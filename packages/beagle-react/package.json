@@ -1,0 +1,41 @@
+{
+  "name": "@zup-it/beagle-react",
+  "version": "1.0.1",
+  "main": "beagle-react/src/index.js",
+  "typings": "beagle-react/src/index.d.ts",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "private": false,
+  "scripts": {
+    "clean": "rm -fr dist",
+    "copy-files": "node bin/copy-files",
+    "build": "yarn clean && tsc --declaration && yarn copy-files",
+    "watch": "yarn nodemon --watch src -e ts,tsx --exec yarn build",
+    "publish:local": "yarn build && yalc publish dist",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "react-dom": "^16.13.1",
+    "showdown": "^1.9.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/react-dom": "^16.9.8",
+    "@types/showdown": "^1.9.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "dist"
+  }
+}
