@@ -14,18 +14,27 @@
   * limitations under the License.
 */
 
-import styled from 'styled-components'
-import { Direction } from '../types'
+import { BeagleUIElement } from '@zup-it/beagle-web'
+import { BeagleComponent } from '../../types'
+import { Direction, BeagleDefaultComponent } from '../types'
 
-interface StyledListViewInterface {
+export type NodeType = HTMLElement | null
+
+export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleComponent {
   direction: Direction,
+  dataSource: any[],
+  iteratorName?: string,
+  onInit?: () => void,
+  onScrollEnd?: () => void,
+  scrollEndThreshold?: number,
+  template: BeagleUIElement,
   useParentScroll?: boolean,
 }
 
-export const StyledListView = styled.div<StyledListViewInterface>`
-  display: flex;
-  flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
-  overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
-  width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
-  height: ${({ direction }) => direction === 'VERTICAL' ? '100%' : 'auto'};
-`
+export interface ScrollInterface {
+  direction: Direction,
+  onScrollEnd?: () => void,
+  scrollEndThreshold: number,
+  useParentScroll: boolean,
+  elementRef: React.MutableRefObject<HTMLDivElement>,
+}

@@ -26,6 +26,7 @@ export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleCom
 	text: string,
   onPress?: () => void,
   clickAnalyticsEvent?: ClickEvent,
+  disabled?: boolean,
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
@@ -35,6 +36,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   beagleContext,
   clickAnalyticsEvent,
+  disabled,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const element = beagleContext.getElement()
@@ -53,7 +55,13 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   }
 
   return (
-    <StyledButton style={style} className={className} onClick={handlePress} type={type}>
+    <StyledButton
+      style={style}
+      className={className}
+      onClick={handlePress}
+      type={type}
+      disabled={disabled}
+    >
       {text}
     </StyledButton>
   )
