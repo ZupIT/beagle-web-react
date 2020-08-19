@@ -54,7 +54,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     element.children = dataSource.map((item, index) => {
       const child = Tree.clone(template)
       child._implicitContexts_ = [{ id: iteratorName, value: item }]
-      child.id = `${beagleContext.getElement().id}_${index}`
+      child.id = child.id || `${beagleContext.getElement().id}_${index}`
       return child
     })
 
