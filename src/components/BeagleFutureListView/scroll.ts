@@ -68,7 +68,10 @@ function useScroll(props: ScrollInterface, deps: any[]) {
     return (elementRef.current as NodeType)
   }
 
-  const callOnScrollEnd = () => onScrollEnd && onScrollEnd()
+  const callOnScrollEnd = () => {
+    if (allowedOnScrollRef.current && onScrollEnd) onScrollEnd()
+    allowedOnScrollRef.current = false
+  }
 
   const calcPercentage = () => {
     if (!node) return
@@ -83,31 +86,32 @@ function useScroll(props: ScrollInterface, deps: any[]) {
       screenPercentage = (scrollPosition /
         (node.scrollWidth - node.clientWidth)) * 100
     }
-    
-    if (scrollEndThreshold && Math.ceil(screenPercentage) >= scrollEndThreshold
-      && allowedOnScrollRef.current) {
-      allowedOnScrollRef.current = false
-      callOnScrollEnd()
-    }
+
+    const isOverThreshold = scrollEndThreshold && Math.ceil(screenPercentage) >= scrollEndThreshold
+    if (isOverThreshold) callOnScrollEnd()
   }
 
-  const allowOnScrollEnd = () => allowedOnScrollRef.current = true
+  const canScrollContent = (element: HTMLElement) => (
+    direction === 'HORIZONTAL'
+      ? element.scrollWidth > element.clientWidth
+      : element.scrollHeight > element.clientHeight
+  )
 
   useEffect(() => {
+    allowedOnScrollRef.current = true
     const referenceNode = getReferenceNode()
     if (referenceNode !== node) {
       if (node !== undefined && node !== null) node.removeEventListener('scroll', calcPercentage)
       node = referenceNode
 
-      const parent = (node && node.nodeName !== 'HTML')
-        ? node : window
+      const parent = (node && node.nodeName !== 'HTML') ? node : window
+
+      if (!canScrollContent(parent instanceof Window ? document.body : parent)) callOnScrollEnd()
 
       parent.addEventListener('scroll', calcPercentage)
       return () => parent.removeEventListener('scroll', calcPercentage)
     }
   }, deps)
-
-  return { allowOnScrollEnd }
 }
 
 export default useScroll

@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
@@ -37,9 +37,9 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   useParentScroll = false,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
-  const { allowOnScrollEnd } = useScroll(
+  useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll },
-    [children],
+    [Children.count(children)],
   )
 
   useEffect(() => {
@@ -59,7 +59,6 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     })
 
     beagleContext.getView().getRenderer().doFullRender(element, element.id)
-    allowOnScrollEnd()
   }, [JSON.stringify(dataSource)])
 
   return (
