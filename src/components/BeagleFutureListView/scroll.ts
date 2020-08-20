@@ -18,8 +18,15 @@ import { useEffect, useRef } from 'react'
 import { ScrollInterface, NodeType } from './types'
 
 function useScroll(props: ScrollInterface, deps: any[]) {
-  const { direction, onScrollEnd, scrollEndThreshold, useParentScroll, elementRef } = props
   const allowedOnScrollRef = useRef(true)
+  const {
+    direction,
+    onScrollEnd,
+    scrollEndThreshold,
+    useParentScroll,
+    elementRef,
+    hasRendered,
+  } = props
   
   let node: NodeType
 
@@ -98,6 +105,7 @@ function useScroll(props: ScrollInterface, deps: any[]) {
   )
 
   useEffect(() => {
+    if (!hasRendered) return
     allowedOnScrollRef.current = true
     const referenceNode = getReferenceNode()
     if (referenceNode !== node) {

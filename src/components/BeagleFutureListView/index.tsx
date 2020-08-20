@@ -37,8 +37,9 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   useParentScroll = false,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
+  const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
   useScroll(
-    { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll },
+    { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
   )
 

@@ -37,4 +37,5 @@ export interface ScrollInterface {
   scrollEndThreshold: number,
   useParentScroll: boolean,
   elementRef: React.MutableRefObject<HTMLDivElement>,
+  hasRendered: boolean,
 }
