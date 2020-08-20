@@ -25,7 +25,10 @@
     "check-types": "lerna run check-types",
     "publish:local": "lerna run publish:local",
     "clean": "lerna run clean",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "check-test-types": "lerna run check-test-types",
+    "watch": "lerna run watch",
+    "test": "jest ./packages/common/__tests__/"
   },
   "dependencies": {
     "@zup-it/beagle-web": "1.0.1"

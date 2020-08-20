@@ -1,5 +1,5 @@
-# [Beagle React](https://docs.usebeagle.io/v/v1.0-en/get-started/installing-beagle/web#react)
-Beagle React is a Zup's open source library for using [Beagle](https://docs.usebeagle.io/v/v1.0-en/) in a [React](https://reactjs.org) based project.
+# [Beagle React Native](https://docs.usebeagle.io/v/v1.0-en/get-started/installing-beagle/web#react)
+Beagle React Native is a Zup's open source library for using [Beagle](https://docs.usebeagle.io/v/v1.0-en/) in a [React Native](https://reactnative.dev/) based project.
 
 # Getting started
 
@@ -10,19 +10,19 @@ To follow the installation process, navigate to the root of your react project a
 If you use Yarn:
 
 ```
-yarn add @zup-it/beagle-react
+yarn add @zup-it/beagle-react-native
 ```
 
 If you use npm:
 
 ```
-npm install --save @zup-it/beagle-react
+npm install --save @zup-it/beagle-react-native
 ```
 
-```Well done! Your library was installed. Now, you can keep following to find out more of how to use Beagle on React.```
+```Well done! Your library was installed. Now, you can keep following to find out more of how to use Beagle on React Native.```
 
 ## Usage configurations
-After you finished the installation,  you need to make **Beagle's usage configuration for React's framework**. To do so, you just have to follow these steps:
+After you finished the installation,  you need to make **Beagle's usage configuration for React Native framework**. To do so, you just have to follow these steps:
 
 
 ### Step 1: JSON creation to be rendered
@@ -68,7 +68,8 @@ import { createBeagleUIService } from '@zup-it/beagle-react'
 
 export default createBeagleUIService({
   baseUrl: "",
-  components: {}
+  components: {},
+  customStorage: AsyncStorage,
 })
 ```
 
@@ -79,7 +80,7 @@ Then, open the component file where you want the JSON to be rendered and change 
 ```
 import React from 'react';
 import './App.css';
-import { BeagleProvider, BeagleRemoteView } from '@zup-it/beagle-react';
+import { BeagleProvider, BeagleRemoteView } from '@zup-it/beagle-react-native';
 import BeagleService from './beagle/beagle-service';
 
 function App() {
@@ -123,5 +124,5 @@ You should see the screen with the text present in the text attribute in the jso
 [If you want to find out how to debug beagle-react locally check this file](/docs/debug_local.md)
 
 # License
-Beagle React is Apache licensed.
+Beagle React Native is Apache licensed.
 <!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)-->
