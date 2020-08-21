@@ -17,6 +17,7 @@
 import createBeagleCoreUIService, { DefaultSchema, ErrorComponentParams } from '@zup-it/beagle-web'
 import { BeagleConfig, BeagleUIService, BeagleComponent } from 'common/types'
 import { BeagleProvider } from 'common/provider'
+import { AsyncStorage } from 'react-native'
 import BeagleRemoteView from './render/component'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Schema>) {
@@ -25,6 +26,8 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Sche
     components: {
       ...config.components,
     },
+    // @ts-ignore
+    customStorage: config.customStorage || AsyncStorage,
   })
 }
 

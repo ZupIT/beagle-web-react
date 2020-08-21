@@ -14,18 +14,18 @@
   * limitations under the License.
 */
 
-import { Fragment, FC, createElement } from 'react'
+import { Fragment, FC, createElement, ComponentClass } from 'react'
 import { map } from 'lodash'
 import { BeagleUIElement, ViewContentManagerMap } from '@zup-it/beagle-web'
-import { BeagleConfig } from 'common/types'
-import { getComponentByCaseInsensitiveKey } from 'common/utils/beagleComponent'
-import BeagleId from './BeagleId'
+import { BeagleConfig } from './types'
+import { getComponentByCaseInsensitiveKey } from './utils/beagleComponent'
 
 const createReactComponentTree = <Schema>(
   components: BeagleConfig<Schema>['components'],
   ui: BeagleUIElement<Schema>,
   viewId: string,
   contentManagerMap: ViewContentManagerMap,
+  BeagleId: FC<{ id: string }> | ComponentClass<{ id: string }>
 ): JSX.Element => {
   const { _beagleComponent_, children, id, context, ...props } = ui
   
@@ -42,7 +42,7 @@ const createReactComponentTree = <Schema>(
 
   const beagleContext = contentManagerMap.get(viewId, id)
   const componentChildren = map(children, child =>
-    createReactComponentTree(components, child, viewId, contentManagerMap))
+    createReactComponentTree(components, child, viewId, contentManagerMap, BeagleId))
   const componentProps = { ...props, key: id, beagleContext }
 
   return createElement(BeagleId, { id, key: id }, [
