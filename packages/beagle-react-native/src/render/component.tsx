@@ -15,13 +15,13 @@
 */
 
 import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
+import useComponent from 'common/useComponent'
 import { BeagleRemoteViewType } from 'common/types'
 import createReactComponentTree from 'common/renderer'
 import BeagleId from './BeagleId'
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
+  const { beagleService, uiTree, viewID } = useComponent(loadParams)
 
   const components = beagleService.getConfig().components
   const contentManagerMap = beagleService.viewContentManagerMap
