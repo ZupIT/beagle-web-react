@@ -16,7 +16,7 @@
 
 import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
-import { Tree } from '@zup-it/beagle-web'
+import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
 import useScroll from './scroll'
 import { StyledListView } from './styled'
@@ -32,7 +32,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   scrollEndThreshold = 100,
   dataSource,
   iteratorName = 'item',
-  beagleContext,
+  viewContentManager,
   children,
   useParentScroll = false,
   _key,
@@ -51,10 +51,15 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
 
   useEffect(() => {
     if (!Array.isArray(dataSource)) return
-    const element = beagleContext.getElement() as BeagleUIElement
+
+    if (!viewContentManager) {
+      return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
+    }
+
+    const element = viewContentManager.getElement() as BeagleUIElement
     if (!element) return
-    const listViewTag = beagleContext.getElement()._beagleComponent_.toLowerCase()
-    const listViewId = beagleContext.getElement().id
+    const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
+    const listViewId = viewContentManager.getElement().id
 
     element.children = dataSource.map((item, index) => {
       const templateTree = Tree.clone(template)
@@ -72,7 +77,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       return templateTree
     })
 
-    beagleContext.getView().getRenderer().doFullRender(element, element.id)
+    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
   return (
