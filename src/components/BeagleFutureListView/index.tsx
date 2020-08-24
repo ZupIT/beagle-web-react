@@ -35,6 +35,8 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   beagleContext,
   children,
   useParentScroll = false,
+  _key,
+  __suffix__,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
@@ -51,12 +53,23 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     if (!Array.isArray(dataSource)) return
     const element = beagleContext.getElement() as BeagleUIElement
     if (!element) return
+    const listViewTag = beagleContext.getElement()._beagleComponent_.toLowerCase()
+    const listViewId = beagleContext.getElement().id
 
     element.children = dataSource.map((item, index) => {
-      const child = Tree.clone(template)
-      child._implicitContexts_ = [{ id: iteratorName, value: item }]
-      child.id = child.id || `${beagleContext.getElement().id}_${index}`
-      return child
+      const templateTree = Tree.clone(template)
+      const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
+      const suffix = __suffix__ || ''
+      templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
+      Tree.forEach(templateTree, (component, componentIndex) => {
+        const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
+        component.id = `${baseId}:${iterationKey}`
+        if (component._beagleComponent_.toLowerCase() === listViewTag) {
+          component.__suffix__ = `${suffix}:${iterationKey}`
+        }
+      })
+      
+      return templateTree
     })
 
     beagleContext.getView().getRenderer().doFullRender(element, element.id)

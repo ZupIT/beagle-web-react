@@ -29,6 +29,10 @@ export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleC
   scrollEndThreshold?: number,
   template: BeagleUIElement,
   useParentScroll?: boolean,
+  /* the property "key" is not allowed in React. Since this is not a rule for Beagle, every time
+  Beagle receives "key", it transforms it into "_key" */
+  _key?: string,
+  __suffix__?: string,
 }
 
 export interface ScrollInterface {
