@@ -21,4 +21,11 @@ class ScreenFactory(
         }
     }
 
+    fun getButtonScreen(): ButtonScreen {
+        when(platform) {
+            Platform.react -> return ReactButtonScreen(driver)
+            Platform.angular -> return AngularButtonScreen(driver)
+        }
+    }
+
 }

@@ -2,8 +2,8 @@ package br.com.zup.screens
 
 import org.openqa.selenium.WebElement
 
-interface ImageScreen {
+interface ButtonScreen {
 
-    val imageText1: WebElement?
+    val buttonDefault: WebElement?
 
 }

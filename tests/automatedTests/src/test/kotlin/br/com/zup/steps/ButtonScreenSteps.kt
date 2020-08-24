@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit
 class ButtonScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@button")
     fun setup() {
@@ -22,41 +23,41 @@ class ButtonScreenSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=button")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
 
     @Given("that I'm on the button screen")
     fun checkButtonScreen() {
-       var buttonDefault = driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_2']"))
-            Assert.assertTrue(buttonDefault.isDisplayed)
+        var buttonScreen = screenFactory.getButtonScreen()
+
+        Assert.assertTrue(buttonScreen.buttonDefault?.isDisplayed)
     }
 
     @When("I click on button")
     fun clickOnButton() {
-        driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_2']")).click()
+        var buttonScreen = screenFactory.getButtonScreen()
+
+        buttonScreen.buttonDefault?.click()
     }
 
     @Then("all my button components should render their respective text attributes correctly")
     fun renderTextAttributeCorrectly() {
+        var buttonScreen = screenFactory.getButtonScreen()
 
-        var buttonDefault = driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_2']"))
-             Assert.assertTrue(buttonDefault.text.equals("Button"))
-
-        var buttonWithStyle = driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_3']"))
-        Assert.assertTrue(buttonWithStyle.text.equals("Button with style"))
-
-        var buttonWithAppearance = driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_4']"))
-        Assert.assertTrue(buttonWithAppearance.text.equals("Button with Appearance"))
-
-        var buttonWithAppearanceAndStyle = driver.findElement(By.xpath("//button[@data-beagle-id='_beagle_5']"))
-        Assert.assertTrue(buttonWithAppearanceAndStyle.text.equals("Button with Appearance and style"))
-
+        Assert.assertTrue(buttonScreen.buttonDefault.text.equals("Button"))
+        Assert.assertTrue(buttonScreen.buttonWithStyle.text.equals("Button with style"))
+        Assert.assertTrue(buttonScreen.buttonWithAppearance.text.equals("Button with Appearance"))
+        Assert.assertTrue(buttonScreen.buttonWithAppearanceAndStyle.text.equals("Button with Appearance and style"))
     }
 
     @Then("component should render the action attribute correctly")
     fun renderActionAttributeCorrectly() {
-        var actionClickText = driver.findElement(By.xpath("/html/body/div/div/p"))
-        Assert.assertTrue(actionClickText.text.equals("You clicked right"))
+        var buttonScreen = screenFactory.getButtonScreen()
+
+        Assert.assertTrue(buttonScreen.actionClickText.text.equals("You clicked right"))
     }
 
     @After("@button")

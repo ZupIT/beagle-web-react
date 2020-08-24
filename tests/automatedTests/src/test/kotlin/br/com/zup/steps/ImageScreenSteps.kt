@@ -31,10 +31,9 @@ class ImageScreenSteps {
 
     @Given("^that I'm on the image screen$")
     fun checkImageScreen() {
+        var imageScreen = screenFactory.getImageScreen()
 
-        var imageTitle = driver.findElement(By.xpath("/html/body/div/div/div/p[1]"))
-        Assert.assertTrue(imageTitle.isDisplayed)
-
+        Assert.assertTrue(imageScreen.imageText1?.isDisplayed)
     }
 
     @Then("^image screen should render all text attributes correctly$")
@@ -42,18 +41,10 @@ class ImageScreenSteps {
         var imageScreen = screenFactory.getImageScreen()
 
         Assert.assertTrue(imageScreen.imageText1?.text.equals("Image"))
-
-        var imageText2 = driver.findElement(By.xpath("/html/body/div/div/div/p[2]"))
-        Assert.assertTrue(imageText2.text.equals("Image with contentMode = FIT_XY"))
-
-        var imageText3 = driver.findElement(By.xpath("/html/body/div/div/div/p[3]"))
-        Assert.assertTrue(imageText3.text.equals("Image with contentMode = FIT_CENTER"))
-
-        var imageText4 = driver.findElement(By.xpath("/html/body/div/div/div/p[4]"))
-        Assert.assertTrue(imageText4.text.equals("Image with contentMode = CENTER_CROP"))
-
-        var imageText5 = driver.findElement(By.xpath("/html/body/div/div/div/p[5]"))
-        Assert.assertTrue(imageText5.text.equals("Image with contentMode = CENTER"))
+        Assert.assertTrue(imageScreen.imageText2?.text.equals("Image with contentMode = FIT_XY"))
+        Assert.assertTrue(imageScreen.imageText3?.text.equals("Image with contentMode = FIT_CENTER"))
+        Assert.assertTrue(imageScreen.imageText4?.text.equals("Image with contentMode = CENTER_CROP"))
+        Assert.assertTrue(imageScreen.imageText5?.text.equals("Image with contentMode = CENTER"))
     }
 
     @After("@image")
