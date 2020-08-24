@@ -21,15 +21,11 @@ which is not recommended by the React team. We should alter this as soon as Reac
 way to do it. */
 
 import React, { Component } from 'react'
-import { View } from 'react-native'
 
 class BeagleId extends Component<{ id: string }> {
   render() {
-    const { id } = this.props
     return (
-      <View data-beagle-id={id}>
-        {this.props.children}
-      </View>
+        this.props.children
     )
   }
 }

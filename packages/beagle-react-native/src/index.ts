@@ -18,12 +18,14 @@ import createBeagleCoreUIService, { DefaultSchema, ErrorComponentParams } from '
 import { BeagleConfig, BeagleUIService, BeagleComponent } from 'common/types'
 import { BeagleProvider } from 'common/provider'
 import BeagleRemoteView from './render/component'
+import defaultComponents from './components'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Schema>) {
   return createBeagleCoreUIService<Schema>({
     ...config,
     components: {
       ...config.components,
+      ...defaultComponents
     },
   })
 }

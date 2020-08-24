@@ -14,19 +14,26 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+import BeagleText from "./BeagleText"
+import BeagleError from "./BeagleError"
+import BeagleContainer from "./BeagleContainer"
+import BeagleImage from "./BeagleImage"
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
 
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+
+const libRequiredComponents = {
+  'custom:error': BeagleError,
+  'custom:loading': BeagleText,
 }
 
-export default BeagleRemoteView
+const beagleDefaultComponents = {
+  'beagle:text': BeagleText,
+  'beagle:container': BeagleContainer,
+  'beagle:image': BeagleImage
+}
+
+
+export default {
+  ...libRequiredComponents,
+  ...beagleDefaultComponents,
+}

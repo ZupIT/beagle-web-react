@@ -13,20 +13,24 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
+import { BeagleDefaultComponent } from './types'
 
-import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+export type ImageMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
+export type ImagePathMode = 'local' | 'remote'
 
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+export interface ImagePath {
+  _beagleImagePath_: ImagePathMode,
+  url: string,
 }
 
-export default BeagleRemoteView
+export interface Accessibility {
+  accessible: boolean,
+  accessibilityLabel?: string,
+}
+
+export interface BeagleImageInterface extends BeagleDefaultComponent {
+  path: ImagePath,
+  mode?: ImageMode,
+  accessibility?: Accessibility,
+}

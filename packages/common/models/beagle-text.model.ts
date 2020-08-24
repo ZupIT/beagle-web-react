@@ -13,20 +13,15 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
+import { BeagleDefaultComponent } from "./types"
 
-import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
+export type MobileAlignment = "auto" | "center" | "left" | "right"
 
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+export interface BeagleTextInterface extends BeagleDefaultComponent {
+  text: string,
+  textColor?: string,
+  alignment?: TextAlignment,
 }
 
-export default BeagleRemoteView

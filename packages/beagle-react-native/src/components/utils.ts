@@ -14,19 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+import { kebabCase } from "lodash";
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
-
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+export function convertCssStylesToString(cssStyles: React.CSSProperties) {
+  return Object.entries({ ...cssStyles }).map(val => `${kebabCase(val[0])}:${val[1]};`).join("")
 }
-
-export default BeagleRemoteView

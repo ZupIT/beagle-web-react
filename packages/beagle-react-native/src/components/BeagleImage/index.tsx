@@ -1,0 +1,52 @@
+/*
+  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *  http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
+
+import React, { FC } from 'react'
+import { ImageURISource, ImageResizeMode, ImageStyle } from 'react-native'
+import { BeagleImageInterface } from 'common/models'
+import { StyledImage } from './styled'
+
+const modeMap: Record<string, ImageResizeMode> = {
+  FIT_XY: 'stretch',
+  CENTER_CROP: 'cover',
+  CENTER: 'contain',
+  FIT_CENTER: 'center',
+}
+
+const BeagleImage: FC<BeagleImageInterface> = props => {
+  const { path, mode, accessibility, style } = props
+  const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
+
+  const defaultImgStyle: ImageStyle = {
+    flex: 1,
+    resizeMode: imgResize,
+    height: style && style.height ? style.height.toString().replace("px", "") : '100%',
+    width: style && style.width ? style.width.toString().replace("px", "") : '100%'
+  }
+
+  //TO DO: Add support to dynamic local images
+
+  const imgSource: ImageURISource = {
+    uri: path && path.url
+  }
+
+  console.log('IMAGE', props)
+  return (
+    <StyledImage source={imgSource} style={defaultImgStyle} {...accessibility} cssStyles={style} />
+  )
+}
+
+export default BeagleImage

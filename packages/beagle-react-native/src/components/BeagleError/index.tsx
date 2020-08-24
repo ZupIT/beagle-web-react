@@ -15,18 +15,17 @@
 */
 
 import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+import BeagleText from '../BeagleText'
+import { BeagleDefaultComponent } from '../../../../beagle-react/src/components/types'
+import { SafeAreaView } from 'react-native'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
-
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+const BeagleError: FC<BeagleDefaultComponent> = props => {
+  return (
+    <SafeAreaView>
+      <BeagleText text="Sorry!" textColor="#CF0000" />
+      <BeagleText text="An unexpected error happened while loading your page." />
+    </SafeAreaView>
+  )
 }
 
-export default BeagleRemoteView
+export default BeagleError

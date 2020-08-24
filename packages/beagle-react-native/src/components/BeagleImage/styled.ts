@@ -14,19 +14,13 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+import styled from 'styled-components/native'
+import { convertCssStylesToString } from '../utils'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
-
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+interface StyledImageInterface {
+  cssStyles?: React.CSSProperties
 }
 
-export default BeagleRemoteView
+export const StyledImage = styled.Image<StyledImageInterface>`
+${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''};
+`

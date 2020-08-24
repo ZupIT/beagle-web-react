@@ -15,18 +15,17 @@
 */
 
 import React, { FC } from 'react'
-import useBeagleUI from 'common/useComponent'
-import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from './renderer'
+import { BeagleTextInterface } from 'common/models'
+import { StyledText } from './styled'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const { beagleService, uiTree, viewID } = useBeagleUI(loadParams)
 
-  const components = beagleService.getConfig().components
-  const contentManagerMap = beagleService.viewContentManagerMap
-  
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap)
+const BeagleText: FC<BeagleTextInterface> = props => {
+  const { text, textColor, alignment, style } = props
+  return (
+    <StyledText textColor={textColor} alignment={alignment} cssStyles={style} style={{ flex: 1 }}>
+      {text}
+    </StyledText>
+  )
 }
 
-export default BeagleRemoteView
+export default BeagleText
