@@ -22,13 +22,13 @@ export interface BeagleLazyInterface extends BeagleComponent {
   path: string,
 }
 
-const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, beagleContext }) => {
+const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
   useEffect(() => {
     const params: LoadParams = {
       path,
       shouldShowLoading: false,
     }
-    beagleContext && beagleContext.replaceComponent(params)
+    viewContentManager && viewContentManager.replaceComponent(params)
   }, [])
 
   return (

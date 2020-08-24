@@ -21,7 +21,7 @@ import {
   DefaultSchema,
   DataContext,
   ErrorComponentParams,
-  ViewContentManager,
+  ViewContentManager as CoreViewContentManager,
 } from '@zup-it/beagle-web'
 
 export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
@@ -37,10 +37,10 @@ export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreServi
   getConfig: () => BeagleConfig<Schema>,
 }
 
-export type BeagleContext = ViewContentManager
+export type ViewContentManager = CoreViewContentManager
 
 export interface BeagleComponent {
-  beagleContext: BeagleContext,
+  viewContentManager?: ViewContentManager,
 }
 
 export { DataContext }
