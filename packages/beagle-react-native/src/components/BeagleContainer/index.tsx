@@ -15,7 +15,7 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleDefaultComponent } from '../../../../beagle-react/src/components/types'
+import { BeagleDefaultComponent } from 'common/models'
 import { StyledView } from './styled'
 
 const BeagleContainer: FC<BeagleDefaultComponent> = props => {

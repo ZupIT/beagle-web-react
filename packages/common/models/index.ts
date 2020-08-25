@@ -15,3 +15,5 @@
 */
 export * from './beagle-image.model'
 export * from './beagle-text.model'
+export * from './beagle-button.model'
+export * from './types'

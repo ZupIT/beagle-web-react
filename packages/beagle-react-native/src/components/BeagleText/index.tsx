@@ -22,7 +22,7 @@ import { StyledText } from './styled'
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, textColor, alignment, style } = props
   return (
-    <StyledText textColor={textColor} alignment={alignment} cssStyles={style} style={{ flex: 1 }}>
+    <StyledText textColor={textColor} alignment={alignment} cssStyles={style}>
       {text}
     </StyledText>
   )

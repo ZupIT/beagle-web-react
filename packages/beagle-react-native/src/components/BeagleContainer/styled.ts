@@ -15,7 +15,6 @@
 */
 
 import styled from 'styled-components/native'
-import { TextAlignment, MobileAlignment } from 'common/models'
 import { convertCssStylesToString } from '../utils'
 
 interface StyledViewInterface {

@@ -14,18 +14,26 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import BeagleText from '../BeagleText'
-import { BeagleDefaultComponent } from 'common/models'
-import { SafeAreaView } from 'react-native'
+import styled from 'styled-components/native'
+import { convertCssStylesToString } from '../utils'
+import { BeagleTheme } from '../../../../common/utils/commons.styled'
 
-const BeagleError: FC<BeagleDefaultComponent> = () => {
-  return (
-    <SafeAreaView style={{flex:3}}>
-      <BeagleText text="Sorry!" textColor="#CF0000" />
-      <BeagleText text="An unexpected error happened while loading your page." />
-    </SafeAreaView>
-  )
+interface StyledButtonInterface {
+  cssStyles?: React.CSSProperties
 }
 
-export default BeagleError
+export const StyledView = styled.View<StyledButtonInterface>`
+border: 1px solid ${BeagleTheme.swampLight};
+line-height: 40px;
+min-height: 50px
+background: transparent;
+display: flex;
+text-align: center;
+margin: 5px;
+padding: 0 16px;
+border-radius: 5px;
+color: #FFFFFF;
+justify-content: center
+align-items: center
+${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''};
+`
