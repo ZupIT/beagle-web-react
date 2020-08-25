@@ -15,7 +15,7 @@
 */
 
 import React, { FC } from 'react'
-import { ImageURISource, ImageResizeMode, ImageStyle } from 'react-native'
+import { ImageURISource, ImageResizeMode, ImageStyle, SafeAreaView } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
 import { StyledImage } from './styled'
 
@@ -30,11 +30,15 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   const { path, mode, accessibility, style } = props
   const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
 
+  const parseSizes = (size: string) =>  /px/.test(size) ? Number(size.replace('px', '')) : size
+  const parsedWidth = style && style.width && parseSizes(style.width.toString())
+  const parsedHeight = style && style.height && parseSizes(style.height.toString())
+
   const defaultImgStyle: ImageStyle = {
     flex: 1,
     resizeMode: imgResize,
-    height: style && style.height ? style.height.toString().replace("px", "") : '100%',
-    width: style && style.width ? style.width.toString().replace("px", "") : '100%'
+    height: parsedHeight || "100%",
+    width: parsedWidth || "100%"
   }
 
   //TO DO: Add support to dynamic local images
@@ -45,7 +49,9 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
 
   console.log('IMAGE', props)
   return (
-    <StyledImage source={imgSource} style={defaultImgStyle} {...accessibility} cssStyles={style} />
+    <SafeAreaView style={{ flex: 1 }}>
+      <StyledImage source={imgSource} style={defaultImgStyle} {...accessibility} cssStyles={style} />
+    </SafeAreaView>
   )
 }
 
