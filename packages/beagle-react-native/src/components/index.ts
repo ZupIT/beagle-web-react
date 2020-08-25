@@ -20,6 +20,7 @@ import BeagleContainer from "./BeagleContainer"
 import BeagleImage from "./BeagleImage"
 import BeagleButton from "./BeagleButton"
 import BeagleLoading from "./BeagleLoading"
+import BeagleListView from "./BeagleListView"
 
 
 
@@ -32,7 +33,8 @@ const beagleDefaultComponents = {
   'beagle:text': BeagleText,
   'beagle:container': BeagleContainer,
   'beagle:image': BeagleImage,
-  'beagle:button': BeagleButton
+  'beagle:button': BeagleButton,
+  'beagle:listview': BeagleListView
 }
 
 

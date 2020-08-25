@@ -47,7 +47,6 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
     uri: path && path.url
   }
 
-  console.log('IMAGE', props)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StyledImage source={imgSource} style={defaultImgStyle} {...accessibility} cssStyles={style} />

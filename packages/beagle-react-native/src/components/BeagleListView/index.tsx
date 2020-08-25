@@ -13,8 +13,21 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-export * from './beagle-image.model'
-export * from './beagle-text.model'
-export * from './beagle-button.model'
-export * from './beagle-listview.model'
-export * from './types'
+
+import React, { FC } from 'react'
+import { BeagleListViewInterface } from 'common/models'
+import { ScrollView } from 'react-native'
+
+const BeagleListView: FC<BeagleListViewInterface> = props => {
+  const { children, direction } = props
+
+  const horizontal = direction && direction === 'HORIZONTAL' 
+
+  return (
+      <ScrollView style={{flex:1}} horizontal={horizontal}>
+        {children}
+      </ScrollView>
+  )
+}
+
+export default BeagleListView
