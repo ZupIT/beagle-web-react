@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
     "module": "es6",
     "target": "esnext",
-    "outDir": "./dist/",
     "preserveConstEnums": true,
     "removeComments": true,
-    "sourceMap": true,
     "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "sourceMap": true
   },
-  "include": [
-    "src/**/*",
-  ],
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

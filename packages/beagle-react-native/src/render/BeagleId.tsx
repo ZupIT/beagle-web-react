@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,11 +14,18 @@
   * limitations under the License.
 */
 
-const { copyFileSync } = require('fs')
+/* The only purpose of this component is to add an id to the tag of each component rendered
+by Beagle. If the component renders multiple children, the id will be added to the first one only.
+Unfortunately, we can't do it without a class component or without the use of ReactDOM.findNode,
+which is not recommended by the React team. We should alter this as soon as React provides a better
+way to do it. */
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-]
+import React, { FC } from 'react'
 
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+const BeagleId: FC<{ id: string }> = ({ children }) => (
+  <>
+    {children}
+  </>
+)
+
+export default BeagleId

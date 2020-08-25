@@ -26,7 +26,7 @@ files_without_header=()
 # if [[ $ORIGIN_URL = https://github.com/ZupIT/beagle-web-react.git* ]] ; then
 
 # Retrieve the list of newly added files
-newly_added_files=($(git diff --name-only --diff-filter=A --cached))
+newly_added_files=($(git diff --name-only --diff-filter=A --cached ':(exclude)*.json' ':(exclude)*.md'))
 if [ -n "$newly_added_files" ]; then
   # Check for Copyright statement
   for newly_added_file in $newly_added_files; do

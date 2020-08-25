@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,11 +14,28 @@
   * limitations under the License.
 */
 
-const { copyFileSync } = require('fs')
+import React, { FC, useEffect } from 'react'
+import { LoadParams } from '@zup-it/beagle-web'
+import { BeagleComponent } from 'common/types'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-]
+export interface BeagleLazyInterface extends BeagleComponent {
+  path: string,
+}
 
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, beagleContext }) => {
+  useEffect(() => {
+    const params: LoadParams = {
+      path,
+      shouldShowLoading: false,
+    }
+    beagleContext && beagleContext.replaceComponent(params)
+  }, [])
+
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}
+
+export default BeagleLazy
