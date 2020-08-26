@@ -21,6 +21,9 @@ import BeagleImage from "./BeagleImage"
 import BeagleButton from "./BeagleButton"
 import BeagleLoading from "./BeagleLoading"
 import BeagleListView from "./BeagleListView"
+import BeagleModal from "./BeagleModal"
+import BeagleTextInput from "./BeagleInput"
+import BeagleTextArea from "./BeagleTextArea"
 
 
 
@@ -34,11 +37,18 @@ const beagleDefaultComponents = {
   'beagle:container': BeagleContainer,
   'beagle:image': BeagleImage,
   'beagle:button': BeagleButton,
-  'beagle:listview': BeagleListView
+  'beagle:listview': BeagleListView,
+  'beagle:textInput':BeagleTextInput,
+  'beagle:text-area': BeagleTextArea
+}
+
+const webSpecificComponents = {
+  'custom:modal': BeagleModal
 }
 
 
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
+  ...webSpecificComponents
 }

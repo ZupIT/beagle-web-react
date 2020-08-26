@@ -13,10 +13,16 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-export * from './beagle-image.model'
-export * from './beagle-text.model'
-export * from './beagle-button.model'
-export * from './beagle-listview.model'
-export * from './beagle-modal.model'
-export * from './beagle-input.model'
-export * from './types'
+
+import styled from 'styled-components/native'
+import { convertCssStylesToString } from '../utils'
+
+interface StyledTextInputInterface {
+  cssStyles?: React.CSSProperties
+}
+
+export const StyledTextInput = styled.TextInput<StyledTextInputInterface>`
+border: 1px solid
+margin: 5px
+${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''};
+`

@@ -16,17 +16,17 @@
 
 import React, { FC } from 'react'
 import { BeagleListViewInterface } from 'common/models'
-import { ScrollView } from 'react-native'
+import { StyledScrollView } from './styled'
 
 const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction } = props
+  const { children, direction, style } = props
 
   const horizontal = direction && direction === 'HORIZONTAL' 
 
   return (
-      <ScrollView style={{flex:1}} horizontal={horizontal}>
+      <StyledScrollView style={{flex:1}} horizontal={horizontal} cssStyles={style}>
         {children}
-      </ScrollView>
+      </StyledScrollView>
   )
 }
 
