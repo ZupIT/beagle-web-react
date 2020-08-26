@@ -15,17 +15,11 @@
   * limitations under the License.
 */
 
-const { copyFileSync, existsSync, mkdirSync } = require('fs')
-const dir = './dist/docs';
-
-if (!existsSync(dir)) {
-  mkdirSync(dir)
-}
+const { copyFileSync } = require('fs')
 
 const filesToCopy = [
   { src: 'package.json', dest: './dist/package.json' },
   { src: 'README.md', dest: './dist/README.md' },
-  { src: 'docs/debug_local.md', dest: './dist/docs/debug_local.md' }
 ]
 
 filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))

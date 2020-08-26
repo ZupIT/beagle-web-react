@@ -20,14 +20,12 @@ Unfortunately, we can't do it without a class component or without the use of Re
 which is not recommended by the React team. We should alter this as soon as React provides a better
 way to do it. */
 
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 
-class BeagleId extends Component<{ id: string }> {
-  render() {
-    return (
-        this.props.children
-    )
-  }
-}
+const BeagleId: FC<{ id: string }> = ({ children }) => (
+  <>
+    {children}
+  </>
+)
 
 export default BeagleId

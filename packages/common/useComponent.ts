@@ -23,7 +23,7 @@ import { uniqueId } from 'lodash'
 import BeagleProvider from './provider'
 import { BeagleRemoteViewType } from './types'
 
-function useBeagleUI(loadParams: BeagleRemoteViewType) {
+function useComponent(loadParams: BeagleRemoteViewType) {
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(loadParams.id)
@@ -61,4 +61,4 @@ function useBeagleUI(loadParams: BeagleRemoteViewType) {
   }
 }
 
-export default useBeagleUI
+export default useComponent
