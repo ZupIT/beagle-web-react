@@ -19,12 +19,14 @@ import { BeagleConfig, BeagleUIService, BeagleComponent } from 'common/types'
 import { BeagleProvider } from 'common/provider'
 import { AsyncStorage } from 'react-native'
 import BeagleRemoteView from './render/component'
+import defaultComponents from './components/index'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Schema>) {
   return createBeagleCoreUIService<Schema>({
     ...config,
     components: {
       ...config.components,
+      ...defaultComponents
     },
     // @ts-ignore
     customStorage: config.customStorage || AsyncStorage,
