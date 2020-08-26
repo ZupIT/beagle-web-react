@@ -18,12 +18,10 @@ import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
 import { ActivityIndicator, View } from 'react-native'
 
-const BeagleLoading: FC<BeagleDefaultComponent> = props => {
-  return (
-    <View style={{flex:1}}>
-      <ActivityIndicator style={{flex:1}} size="large" />
-    </View>
-  )
-}
+const BeagleLoading: FC<BeagleDefaultComponent> = props => (
+  <View style={{ flex:1 }}>
+    <ActivityIndicator style={{ flex:1 }} size="large" />
+  </View>
+)
 
 export default BeagleLoading

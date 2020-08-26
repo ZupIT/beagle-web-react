@@ -16,9 +16,9 @@
 
 import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
-import { StyledView } from './styled'
 import { BeagleButtonInterface } from 'common/models'
-import { Text, Pressable } from "react-native";
+import { Text, Pressable } from 'react-native'
+import { StyledView } from './styled'
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
   text,

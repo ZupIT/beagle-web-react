@@ -18,7 +18,7 @@ import styled from 'styled-components/native'
 import { convertCssStylesToString } from '../utils'
 
 interface StyledImageInterface {
-  cssStyles?: React.CSSProperties
+  cssStyles?: React.CSSProperties,
 }
 
 export const StyledImage = styled.Image<StyledImageInterface>`

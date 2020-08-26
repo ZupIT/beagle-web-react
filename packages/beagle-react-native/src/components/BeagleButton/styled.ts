@@ -19,7 +19,7 @@ import { convertCssStylesToString } from '../utils'
 import { BeagleTheme } from '../../../../common/utils/commons.styled'
 
 interface StyledButtonInterface {
-  cssStyles?: React.CSSProperties
+  cssStyles?: React.CSSProperties,
 }
 
 export const StyledView = styled.View<StyledButtonInterface>`

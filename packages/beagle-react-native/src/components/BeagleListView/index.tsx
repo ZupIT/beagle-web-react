@@ -24,9 +24,9 @@ const BeagleListView: FC<BeagleListViewInterface> = props => {
   const horizontal = direction && direction === 'HORIZONTAL' 
 
   return (
-      <StyledScrollView style={{flex:1}} horizontal={horizontal} cssStyles={style}>
-        {children}
-      </StyledScrollView>
+    <StyledScrollView style={{ flex:1 }} horizontal={horizontal} cssStyles={style}>
+      {children}
+    </StyledScrollView>
   )
 }
 

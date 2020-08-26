@@ -18,7 +18,7 @@ import styled from 'styled-components/native'
 import { convertCssStylesToString } from '../utils'
 
 interface StyledViewInterface {
-  cssStyles?: React.CSSProperties
+  cssStyles?: React.CSSProperties,
 }
 
 export const StyledView = styled.View<StyledViewInterface>`

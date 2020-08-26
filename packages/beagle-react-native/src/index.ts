@@ -26,7 +26,7 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Sche
     ...config,
     components: {
       ...config.components,
-      ...defaultComponents
+      ...defaultComponents,
     },
     // @ts-ignore
     customStorage: config.customStorage || AsyncStorage,

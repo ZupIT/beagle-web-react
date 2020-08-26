@@ -14,8 +14,8 @@
   * limitations under the License.
 */
 
-import { kebabCase } from "lodash";
+import { kebabCase } from 'lodash'
 
 export function convertCssStylesToString(cssStyles: React.CSSProperties) {
-  return Object.entries({ ...cssStyles }).map(val => `${kebabCase(val[0])}:${val[1]};`).join("")
+  return Object.entries({ ...cssStyles }).map(val => `${kebabCase(val[0])}:${val[1]};`).join('')
 }

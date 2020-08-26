@@ -16,12 +16,31 @@
 
 import React, { FC } from 'react'
 import { BeagleModalInterface } from 'common/models'
-import { StyledView } from './styled'
 import { StyleSheet, Modal } from 'react-native'
+import { StyledView } from './styled'
 
 const BeagleModal: FC<BeagleModalInterface> = props => {
   const { onClose, isOpen, style, children } = props
 
+  const styles = StyleSheet.create({
+    modalView: {
+      flex: 3,
+      margin: 20,
+      backgroundColor: 'white',
+      borderRadius: 20,
+      padding: 35,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+  })
+  
   return (
     <Modal
       animationType="slide"
@@ -34,24 +53,5 @@ const BeagleModal: FC<BeagleModalInterface> = props => {
     </Modal>
   )
 }
-
-const styles = StyleSheet.create({
-  modalView: {
-    flex: 3,
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-  }
-});
 
 export default BeagleModal

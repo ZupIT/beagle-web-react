@@ -15,17 +15,15 @@
 */
 
 import React, { FC } from 'react'
-import BeagleText from '../BeagleText'
 import { BeagleDefaultComponent } from 'common/models'
 import { SafeAreaView } from 'react-native'
+import BeagleText from '../BeagleText'
 
-const BeagleError: FC<BeagleDefaultComponent> = () => {
-  return (
-    <SafeAreaView style={{flex:3}}>
-      <BeagleText text="Sorry!" textColor="#CF0000" />
-      <BeagleText text="An unexpected error happened while loading your page." />
-    </SafeAreaView>
-  )
-}
+const BeagleError: FC<BeagleDefaultComponent> = () => (
+  <SafeAreaView style={{ flex:3 }}>
+    <BeagleText text="Sorry!" textColor="#CF0000" />
+    <BeagleText text="An unexpected error happened while loading your page." />
+  </SafeAreaView>
+)
 
 export default BeagleError

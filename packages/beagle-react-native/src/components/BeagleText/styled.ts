@@ -21,18 +21,20 @@ import { convertCssStylesToString } from '../utils'
 interface StyledTextInterface {
   textColor?: string,
   alignment?: TextAlignment,
-  cssStyles?: React.CSSProperties
+  cssStyles?: React.CSSProperties,
 }
 
 const alignMap: Record<string, MobileAlignment> = {
   auto: 'auto',
   center: 'center',
-  left: "left",
+  left: 'left',
   right: 'right',
 }
 
 export const StyledText = styled.Text<StyledTextInterface>`
 color: ${({ textColor }) => textColor ? textColor : '#000000'};
-text-align: ${({ alignment }) => alignment && alignment != 'INHERIT' ? alignMap[alignment.toLowerCase()] : 'auto'};
+text-align: ${({ alignment }) => alignment && alignment != 'INHERIT' ?
+    alignMap[alignment.toLowerCase()] :
+    'auto'};
 ${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''};
 `

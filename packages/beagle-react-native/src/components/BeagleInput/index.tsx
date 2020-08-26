@@ -16,7 +16,11 @@
 
 import React, { FC } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
-import { TextInputProps, NativeSyntheticEvent, StyleSheet, TextInputFocusEventData } from 'react-native'
+import { 
+  TextInputProps, 
+  NativeSyntheticEvent, 
+  StyleSheet, 
+  TextInputFocusEventData } from 'react-native'
 import { StyledTextInput } from './styled'
 
 const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
@@ -53,8 +57,8 @@ const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
 
   const inputStyles = StyleSheet.create({
     hidden:{
-      opacity: hidden && hidden === true ?  0 : 1
-    }
+      opacity: hidden && hidden === true ?  0 : 1,
+    },
   })
 
   return (

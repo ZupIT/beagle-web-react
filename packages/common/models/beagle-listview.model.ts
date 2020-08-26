@@ -1,4 +1,4 @@
-import { BeagleDefaultComponent, Direction } from "./types";
+import { BeagleDefaultComponent, Direction } from './types'
 
 export interface BeagleListViewInterface extends BeagleDefaultComponent {
   direction: Direction,

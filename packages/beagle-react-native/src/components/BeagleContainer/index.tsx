@@ -22,7 +22,7 @@ const BeagleContainer: FC<BeagleDefaultComponent> = props => {
   const { children, style } = props
   
   return (
-    <StyledView cssStyles={style} style={{flex:1}}>
+    <StyledView cssStyles={style} style={{ flex:1 }}>
       {children}
     </StyledView>
   )

@@ -14,16 +14,16 @@
   * limitations under the License.
 */
 
-import BeagleText from "./BeagleText"
-import BeagleError from "./BeagleError"
-import BeagleContainer from "./BeagleContainer"
-import BeagleImage from "./BeagleImage"
-import BeagleButton from "./BeagleButton"
-import BeagleLoading from "./BeagleLoading"
-import BeagleListView from "./BeagleListView"
-import BeagleModal from "./BeagleModal"
-import BeagleTextInput from "./BeagleInput"
-import BeagleTextArea from "./BeagleTextArea"
+import BeagleText from './BeagleText'
+import BeagleError from './BeagleError'
+import BeagleContainer from './BeagleContainer'
+import BeagleImage from './BeagleImage'
+import BeagleButton from './BeagleButton'
+import BeagleLoading from './BeagleLoading'
+import BeagleListView from './BeagleListView'
+import BeagleModal from './BeagleModal'
+import BeagleTextInput from './BeagleInput'
+import BeagleTextArea from './BeagleTextArea'
 
 
 
@@ -39,16 +39,16 @@ const beagleDefaultComponents = {
   'beagle:button': BeagleButton,
   'beagle:listview': BeagleListView,
   'beagle:textInput':BeagleTextInput,
-  'beagle:text-area': BeagleTextArea
+  'beagle:text-area': BeagleTextArea,
 }
 
 const webSpecificComponents = {
-  'custom:modal': BeagleModal
+  'custom:modal': BeagleModal,
 }
 
 
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents
+  ...webSpecificComponents,
 }

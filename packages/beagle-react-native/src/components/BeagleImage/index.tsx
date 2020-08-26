@@ -37,19 +37,22 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   const defaultImgStyle: ImageStyle = {
     flex: 1,
     resizeMode: imgResize,
-    height: parsedHeight || "100%",
-    width: parsedWidth || "100%"
+    height: parsedHeight || '100%',
+    width: parsedWidth || '100%',
   }
 
   //TO DO: Add support to dynamic local images
 
   const imgSource: ImageURISource = {
-    uri: path && path.url
+    uri: path && path.url,
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StyledImage source={imgSource} style={defaultImgStyle} {...accessibility} cssStyles={style} />
+      <StyledImage source={imgSource} 
+        style={defaultImgStyle} 
+        {...accessibility} 
+        cssStyles={style} />
     </SafeAreaView>
   )
 }

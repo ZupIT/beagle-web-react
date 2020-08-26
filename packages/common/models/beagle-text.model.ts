@@ -13,11 +13,11 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-import { BeagleDefaultComponent } from "./types"
+import { BeagleDefaultComponent } from './types'
 
 export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 
-export type MobileAlignment = "auto" | "center" | "left" | "right"
+export type MobileAlignment = 'auto' | 'center' | 'left' | 'right'
 
 export interface BeagleTextInterface extends BeagleDefaultComponent {
   text: string,

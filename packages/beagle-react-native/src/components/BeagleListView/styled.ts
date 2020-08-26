@@ -18,7 +18,7 @@ import styled from 'styled-components/native'
 import { convertCssStylesToString } from '../utils'
 
 interface StyledScrollViewInterface {
-  cssStyles?: React.CSSProperties
+  cssStyles?: React.CSSProperties,
 }
 
 export const StyledScrollView = styled.ScrollView<StyledScrollViewInterface>`
