@@ -2,12 +2,11 @@ package br.com.zup.screens
 
 import org.openqa.selenium.WebElement
 
-interface ImageScreen {
+interface ListViewScreen {
 
-    val imageText1: WebElement?
-    val imageText2: WebElement?
-    val imageText3: WebElement?
-    val imageText4: WebElement?
-    val imageText5: WebElement?
+    val listViewStaticVerticalText: WebElement?
+    val listViewDynamicVerticalText: WebElement?
+    val listViewStaticHorizontalText: WebElement?
+    val listViewDynamicHorizontalText: WebElement?
 
 }

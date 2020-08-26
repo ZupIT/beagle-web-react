@@ -6,22 +6,19 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class ReactButtonScreen(private val driver: WebDriver): ButtonScreen {
+class ReactListViewScreen(private val driver: WebDriver): ListViewScreen {
 
-    @FindBy(xpath = "//button[@data-beagle-id='_beagle_2']")
-    override val buttonDefault: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div[1]/p")
+    override val listViewStaticVerticalText: WebElement? = null
 
-    @FindBy(xpath = "//button[@data-beagle-id='_beagle_3']")
-    override val buttonWithStyle: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div[3]/p")
+    override val listViewDynamicVerticalText: WebElement? = null
 
-    @FindBy(xpath = "//button[@data-beagle-id='_beagle_4']")
-    override val buttonWithAppearance: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div[2]/p")
+    override val listViewStaticHorizontalText: WebElement? = null
 
-    @FindBy(xpath = "//button[@data-beagle-id='_beagle_5']")
-    override val buttonWithAppearanceAndStyle: WebElement? = null
-
-    @FindBy(xpath = "/html/body/div/div/p")
-    override val actionClickText: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div[4]/p")
+    override val listViewDynamicHorizontalText: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)

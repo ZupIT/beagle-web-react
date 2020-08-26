@@ -6,19 +6,19 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class ReactListViewScreen(private val driver: WebDriver): ListViewScreen {
+class ReactPageViewScreen(private val driver: WebDriver): PageViewScreen {
 
-    @FindBy(xpath = "/html/body/div/div/div/div[1]/p")
-    override val listViewStaticVerticalText: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div/p[1]")
+    override val page1Text: WebElement? = null
 
-    @FindBy(xpath = "/html/body/div/div/div/div[3]/p")
-    override val listViewDynamicVerticalText: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div/p[2]")
+    override val page2Text: WebElement? = null
 
-    @FindBy(xpath = "/html/body/div/div/div/div[2]/p")
-    override val listViewStaticHorizontalText: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/div/p[3]")
+    override val page3Text: WebElement? = null
 
-    @FindBy(xpath = "/html/body/div/div/div/div[4]/p")
-    override val listViewDynamicHorizontalText: WebElement? = null
+    @FindBy(xpath = "/html/body/div/div/div/span[2]")
+    override val pageIndicator: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)

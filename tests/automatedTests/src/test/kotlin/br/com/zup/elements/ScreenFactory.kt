@@ -28,4 +28,31 @@ class ScreenFactory(
         }
     }
 
+    fun getListViewScreen(): ListViewScreen {
+        when(platform) {
+            Platform.react -> return ReactListViewScreen(driver)
+            Platform.angular -> return AngularListViewScreen(driver)
+        }
+    }
+
+    fun getPageViewScreen(): PageViewScreen {
+        when(platform) {
+            Platform.react -> return ReactPageViewScreen(driver)
+            Platform.angular -> return AngularPageViewScreen(driver)
+        }
+    }
+
+    fun getTabViewScreen(): TabViewScreen {
+        when(platform) {
+            Platform.react -> return ReactTabViewScreen(driver)
+            Platform.angular -> return AngularTabViewScreen(driver)
+        }
+    }
+
+    fun getTouchableScreen(): TouchableScreen {
+        when(platform) {
+            Platform.react -> return ReactTouchableScreen(driver)
+            Platform.angular -> return AngularTouchableScreen(driver)
+        }
+    }
 }

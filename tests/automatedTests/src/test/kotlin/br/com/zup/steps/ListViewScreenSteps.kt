@@ -11,9 +11,10 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.testng.Assert
 import java.util.concurrent.TimeUnit
 
-class ListViewScreeSteps {
+class ListViewScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@listview")
     fun setup() {
@@ -23,46 +24,43 @@ class ListViewScreeSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=listview")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
+
 
     @Given("^that I'm on the listview screen$")
     fun checkListViewScreen() {
-        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-        Assert.assertTrue(listViewStaticVerticalText.isDisplayed)
+        var listViewScreen = screenFactory.getListViewScreen()
+
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.isDisplayed)
     }
 
     @Then("^I have a vertical list configured$")
     fun checkVerticalListText() {
-        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-        Assert.assertTrue(listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
+        var listViewScreen = screenFactory.getListViewScreen()
 
-        var listViewDynamicVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/p"))
-        Assert.assertTrue(listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
     }
 
     @When("^I have a horizontal list configured$")
     fun checkHorizontalListText() {
-        var listViewStaticHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
-        Assert.assertTrue(listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
+        var listViewScreen = screenFactory.getListViewScreen()
 
-        var listViewDynamicHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/p"))
-        Assert.assertTrue(listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
     @Then("^listview screen should render all text attributes correctly$")
     fun checkListViewScreenTexts() {
+        var listViewScreen = screenFactory.getListViewScreen()
 
-        var listViewStaticVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-        Assert.assertTrue(listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
-
-        var listViewStaticHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
-        Assert.assertTrue(listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
-
-        var listViewDynamicVerticalText = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/p"))
-        Assert.assertTrue(listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
-
-        var listViewDynamicHorizontalText = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/p"))
-        Assert.assertTrue(listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
 
@@ -70,5 +68,5 @@ class ListViewScreeSteps {
     fun driverClose() {
         driver.close()
     }
-
 }
+

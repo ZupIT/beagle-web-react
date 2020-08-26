@@ -15,13 +15,6 @@ Feature: Button Component Validation
     When I click on button
     Then component should render the action attribute correctly
 
-#    Examples:
-#      |buttonText                       |
-#      |Button                           |
-#      |BUTTON WITH STYLE                |
-#      |Button with Appearance           |
-#           |Button with Style and Appearance |
-
 
 # Snapshot Test
 #    Scenario: Button 02 - Button component renders style attribute correctly

@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class AngularButtonScreen(private val driver: WebDriver): ButtonScreen {
+class AngularListViewScreen(private val driver: WebDriver): ListViewScreen {
 
     @FindBy(id = "search-icon-legacy")
-    override val imageText1: WebElement? = null
+    override val listViewText: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)

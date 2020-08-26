@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 class PageViewScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@pageview")
     fun setup() {
@@ -23,31 +24,28 @@ class PageViewScreenSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=pageview")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
 
     @Given("^that I'm on the pageview screen$")
     fun checkTabViewScreen() {
-        var page1Text = driver.findElement(By.xpath("/html/body/div/div/div/div/p[1]"))
-        Assert.assertTrue(page1Text.isDisplayed)
+        var pageViewScreen = screenFactory.getPageViewScreen()
+
+        Assert.assertTrue(pageViewScreen.page1Text.isDisplayed)
     }
 
     @Then("^my pageview components should render their respective pages attributes correctly$")
     fun checkTabViewRendersTabs() {
+        var pageViewScreen = screenFactory.getPageViewScreen()
 
-        var page1Text = driver.findElement(By.xpath("/html/body/div/div/div/div/p[1]"))
-        Assert.assertTrue(page1Text.text.equals("Page 1"))
-
-        driver.findElement(By.xpath("/html/body/div/div/div/span[2]")).click()
-
-        var page2Text = driver.findElement(By.xpath("/html/body/div/div/div/div/p[2]"))
-        Assert.assertTrue(page2Text.text.equals("Page 2"))
-
-        driver.findElement(By.xpath("/html/body/div/div/div/span[2]")).click()
-
-        var page3Text = driver.findElement(By.xpath("/html/body/div/div/div/div/p[3]"))
-        Assert.assertTrue(page3Text.text.equals("Page 3"))
-
+        Assert.assertTrue(pageViewScreen.page1Text.text.equals("Page 1"))
+        pageViewScreen.pageIndicator.click()
+        Assert.assertTrue(pageViewScreen.page2Text.text.equals("Page 2"))
+        pageViewScreen.pageIndicator.click()
+        Assert.assertTrue(pageViewScreen.page3Text.text.equals("Page 3"))
     }
 
     @After("@pageview")

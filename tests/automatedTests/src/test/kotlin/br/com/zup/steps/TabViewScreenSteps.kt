@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 class TabViewScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@tabview")
     fun setup() {
@@ -23,61 +24,45 @@ class TabViewScreenSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=tabview")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
 
     @Given("^that I'm on the tabview screen$")
     fun checkTabViewScreen() {
+        var tabViewScreen = screenFactory.getTabViewScreen()
 
-        var tab1Text = driver.findElement(By.xpath("/html/body/div/div/div/div[1]"))
-        Assert.assertTrue(tab1Text.isDisplayed)
+        Assert.assertTrue(tabViewScreen.tab1Text.isDisplayed)
 
     }
 
     @Then("^my tabview components should render their respective tabs attributes correctly$")
     fun checkTabViewRendersTabs() {
+        var tabViewScreen = screenFactory.getTabViewScreen()
 
-        var tab1Text = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]"))
-        Assert.assertTrue(tab1Text.text.equals("Tab 1"))
-
-        var tab1Text2 = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[3]/div/p[1]"))
-        Assert.assertTrue(tab1Text2.text.equals("Welcome to Tab 1"))
-
-        var tab1Text3 = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[3]/div/p[2]"))
-        Assert.assertTrue(tab1Text3.text.equals("This is Tab1's second text"))
+        Assert.assertTrue(tabViewScreen.tab1Text.text.equals("Tab 1"))
+        Assert.assertTrue(tabViewScreen.tab1Text2.text.equals("Welcome to Tab 1"))
+        Assert.assertTrue(tabViewScreen.tab1Text3.text.equals("This is Tab1's second text"))
 
 
-        driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div")).click()
-        var tab2Text = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div"))
-        Assert.assertTrue(tab2Text.text.equals("Tab 2"))
-
-        var tab2Text2 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[3]/div/p[1]"))
-        Assert.assertTrue(tab2Text2.text.equals("Welcome to Tab 2"))
-
-        var tab2Text3 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[3]/div/p[2]"))
-        Assert.assertTrue(tab2Text3.text.equals("This is Tab2's second text"))
+        tabViewScreen.tab2Text.click()
+        Assert.assertTrue(tabViewScreen.tab2Text.text.equals("Tab 2"))
+        Assert.assertTrue(tabViewScreen.tab2Text2.text.equals("Welcome to Tab 2"))
+        Assert.assertTrue(tabViewScreen.tab2Text3.text.equals("This is Tab2's second text"))
 
 
-        driver.findElement(By.xpath("/html/body/div/div/div/div[3]/div")).click()
-        var tab3Text = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/div"))
-        Assert.assertTrue(tab3Text.text.equals("Tab 3"))
-
-        var tab3Text2 = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/div[3]/div/p[1]"))
-        Assert.assertTrue(tab3Text2.text.equals("Welcome to Tab 3"))
-
-        var tab3Text3 = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/div[3]/div/p[2]"))
-        Assert.assertTrue(tab3Text3.text.equals("This is Tab3's second text"))
+        tabViewScreen.tab3Text.click()
+        Assert.assertTrue(tabViewScreen.tab3Text.text.equals("Tab 3"))
+        Assert.assertTrue(tabViewScreen.tab3Text2.text.equals("Welcome to Tab 3"))
+        Assert.assertTrue(tabViewScreen.tab3Text3.text.equals("This is Tab3's second text"))
 
 
-        driver.findElement(By.xpath("/html/body/div/div/div/div[4]/div")).click()
-        var tab4Text = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/div"))
-        Assert.assertTrue(tab4Text.text.equals("Tab 4"))
-
-        var tab4Text2 = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/div[3]/div/p[1]"))
-        Assert.assertTrue(tab4Text2.text.equals("Welcome to Tab 4"))
-
-        var tab4Text3 = driver.findElement(By.xpath("/html/body/div/div/div/div[4]/div[3]/div/p[2]"))
-        Assert.assertTrue(tab4Text3.text.equals("This is Tab4's second text"))
+        tabViewScreen.tab4Text.click()
+        Assert.assertTrue(tabViewScreen.tab4Text.text.equals("Tab 4"))
+        Assert.assertTrue(tabViewScreen.tab4Text2.text.equals("Welcome to Tab 4"))
+        Assert.assertTrue(tabViewScreen.tab4Text3.text.equals("This is Tab4's second text"))
     }
 
     @After("@tabview")
@@ -85,3 +70,5 @@ class TabViewScreenSteps {
         driver.close()
     }
 }
+
+

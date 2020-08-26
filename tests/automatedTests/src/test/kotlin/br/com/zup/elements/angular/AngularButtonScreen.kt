@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory
 class AngularButtonScreen(private val driver: WebDriver): ButtonScreen {
 
     @FindBy(id = "search-icon-legacy")
-    override val imageText1: WebElement? = null
+    override val buttonText: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)

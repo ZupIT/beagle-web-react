@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 class TouchableScreenSteps {
 
     lateinit var driver: WebDriver
+    lateinit var screenFactory: ScreenFactory
 
     @Before("@touchable")
     fun setup() {
@@ -23,56 +24,53 @@ class TouchableScreenSteps {
         driver.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage()?.window()?.maximize()
         driver.get("http://localhost:3000/?path=touchable")
+
+        //TODO get platform from run param
+        screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
 
     @Given("^that I'm on the touchable screen$")
     fun checkImageScreen() {
-        var textWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-            Assert.assertTrue(textWithTouchableText.isDisplayed)
+        var touchableScreen = screenFactory.getTouchableScreen()
+
+            Assert.assertTrue(touchableScreen.textWithTouchableText.isDisplayed)
     }
 
     @And("^I have a text with touchable configured$")
     fun checkTextWithTouchable() {
-        var textWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-            Assert.assertTrue(textWithTouchableText.text.equals("Text with Touchable"))
+        var touchableScreen = screenFactory.getTouchableScreen()
+            Assert.assertTrue(touchableScreen.textWithTouchableText.text.equals("Text with Touchable"))
     }
 
     @And("^I have an image with touchable configured$")
     fun checkImageWithTouchable() {
-        var imageWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
-        Assert.assertTrue(imageWithTouchableText.text.equals("Image with Touchable"))
+        var touchableScreen = screenFactory.getTouchableScreen()
+        Assert.assertTrue(touchableScreen.imageWithTouchableText.text.equals("Image with Touchable"))
     }
 
     @When("^I click on touchable text Click here!$")
     fun clickOnTouchableText() {
-
-        var clickHereTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/p"))
-        Assert.assertTrue(clickHereTouchableText.text.equals("Click here!"))
-
-        driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/p")).click()
+        var touchableScreen = screenFactory.getTouchableScreen()
+        Assert.assertTrue(touchableScreen.clickHereTouchableText.text.equals("Click here!"))
+        touchableScreen.clickHereTouchableText.click()
     }
 
     @Then("^touchable screen should render all text attributes correctly$")
     fun checkTouchableScreenTexts() {
+        var touchableScreen = screenFactory.getTouchableScreen()
 
-        var textWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/p"))
-        Assert.assertTrue(textWithTouchableText.text.equals("Text with Touchable"))
-
-        var clickHereTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/p"))
-        Assert.assertTrue(clickHereTouchableText.text.equals("Click here!"))
-
-        var imageWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/p"))
-        Assert.assertTrue(imageWithTouchableText.text.equals("Image with Touchable"))
-
-        var networkImageWithTouchableText = driver.findElement(By.xpath("/html/body/div/div/div/div[3]/p"))
-        Assert.assertTrue(networkImageWithTouchableText.text.equals("NetworkImage with Touchable"))
+        Assert.assertTrue(touchableScreen.textWithTouchableText.text.equals("Text with Touchable"))
+        Assert.assertTrue(touchableScreen.clickHereTouchableText.text.equals("Click here!"))
+        Assert.assertTrue(touchableScreen.imageWithTouchableText.text.equals("Image with Touchable"))
+        Assert.assertTrue(touchableScreen.networkImageWithTouchableText.text.equals("NetworkImage with Touchable"))
     }
 
     @Then("touchable component should render the action attribute correctly")
     fun renderActionAttributeCorrectly() {
-        var actionClickText = driver.findElement(By.xpath("/html/body/div/div/p"))
-        Assert.assertTrue(actionClickText.text.equals("You clicked right"))
+        var touchableScreen = screenFactory.getTouchableScreen()
+
+        Assert.assertTrue(touchableScreen.actionClickText.text.equals("You clicked right"))
     }
 
     @After("@touchable")

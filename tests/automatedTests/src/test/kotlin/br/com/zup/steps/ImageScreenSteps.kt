@@ -29,6 +29,7 @@ class ImageScreenSteps {
         screenFactory = ScreenFactory(platform = ScreenFactory.Platform.react, driver = driver)
     }
 
+
     @Given("^that I'm on the image screen$")
     fun checkImageScreen() {
         var imageScreen = screenFactory.getImageScreen()
