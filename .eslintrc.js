@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-const singleLineString = `^\\s*[^\\s]*'([^']|(\\\\'))*',?;?$`
+const singleLineString = `^\\s*[^']*'([^']|(\\\\'))*'\\)*,?;?$`
 const doubleQuoted = singleLineString.replace(/'/g, '"')
 const template = singleLineString.replace(/'/g, '`')
 
@@ -30,7 +30,7 @@ module.exports = {
   ],
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
-    curly: ["error", "multi"],
+    curly: 'off',
     indent: ['error', 2],
     quotes: ['error', 'single', { avoidEscape: true }],
     semi: ['error', 'never'],

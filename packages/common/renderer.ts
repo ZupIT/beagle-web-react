@@ -27,6 +27,13 @@ const createReactComponentTree = <Schema>(
   contentManagerMap: ViewContentManagerMap,
   BeagleId: FC<{ id: string }> | ComponentClass<{ id: string }>
 ): JSX.Element => {
+  /* the property "key" is not allowed in React. Since this is not a rule for Beagle, every time
+  Beagle receives "key", it transforms it into "_key" */
+  if (ui.key) {
+    ui._key = ui.key
+    delete ui.key
+  }
+
   const { _beagleComponent_, children, id, context, ...props } = ui
   
   if (!_beagleComponent_) return createElement(Fragment)
@@ -40,10 +47,10 @@ const createReactComponentTree = <Schema>(
     return createElement(Fragment)
   }
 
-  const beagleContext = contentManagerMap.get(viewId, id)
+  const viewContentManager = contentManagerMap.get(viewId, id)
   const componentChildren = map(children, child =>
     createReactComponentTree(components, child, viewId, contentManagerMap, BeagleId))
-  const componentProps = { ...props, key: id, beagleContext }
+  const componentProps = { ...props, key: id, viewContentManager }
 
   return createElement(BeagleId, { id, key: id }, [
     createElement(Component as FC<any>, componentProps, componentChildren),
