@@ -1,22 +1,21 @@
 package br.com.zup.elements.angular
 
-import br.com.zup.elements.ImageScreen
+import br.com.zup.elements.TouchableScreen
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class AngularImageScreen(private val driver: WebDriver): ImageScreen {
+class AngularTouchableScreen(private val driver: WebDriver): TouchableScreen {
 
-    override val imageText1: WebElement?
+    override val textWithTouchableText: WebElement?
         get() = TODO("Not yet implemented")
-    override val imageText2: WebElement?
+    override val imageWithTouchableText: WebElement?
         get() = TODO("Not yet implemented")
-    override val imageText3: WebElement?
+    override val clickHereTouchableText: WebElement?
         get() = TODO("Not yet implemented")
-    override val imageText4: WebElement?
+    override val networkImageWithTouchableText: WebElement?
         get() = TODO("Not yet implemented")
-    override val imageText5: WebElement?
+    override val actionClickText: WebElement?
         get() = TODO("Not yet implemented")
 
     init {

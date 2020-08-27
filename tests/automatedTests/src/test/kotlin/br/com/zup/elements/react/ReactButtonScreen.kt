@@ -1,6 +1,6 @@
-package br.com.zup.screens.react
+package br.com.zup.elements.react
 
-import br.com.zup.screens.ImageScreen
+import br.com.zup.elements.ButtonScreen
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy

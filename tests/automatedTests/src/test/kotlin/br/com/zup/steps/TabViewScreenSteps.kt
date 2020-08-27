@@ -1,6 +1,7 @@
-package steps
+package br.com.zup.steps
 
-import br.com.zup.UtilResources
+import br.com.zup.elements.ScreenFactory
+import br.com.zup.utils.UtilResources
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.PendingException
@@ -34,7 +35,7 @@ class TabViewScreenSteps {
     fun checkTabViewScreen() {
         var tabViewScreen = screenFactory.getTabViewScreen()
 
-        Assert.assertTrue(tabViewScreen.tab1Text.isDisplayed)
+        Assert.assertTrue(tabViewScreen.tab1Text?.isDisplayed ?: false)
 
     }
 
@@ -42,27 +43,27 @@ class TabViewScreenSteps {
     fun checkTabViewRendersTabs() {
         var tabViewScreen = screenFactory.getTabViewScreen()
 
-        Assert.assertTrue(tabViewScreen.tab1Text.text.equals("Tab 1"))
-        Assert.assertTrue(tabViewScreen.tab1Text2.text.equals("Welcome to Tab 1"))
-        Assert.assertTrue(tabViewScreen.tab1Text3.text.equals("This is Tab1's second text"))
+        Assert.assertTrue(tabViewScreen.tab1Text?.text.equals("Tab 1"))
+        Assert.assertTrue(tabViewScreen.tab1Text2?.text.equals("Welcome to Tab 1"))
+        Assert.assertTrue(tabViewScreen.tab1Text3?.text.equals("This is Tab1's second text"))
 
 
-        tabViewScreen.tab2Text.click()
-        Assert.assertTrue(tabViewScreen.tab2Text.text.equals("Tab 2"))
-        Assert.assertTrue(tabViewScreen.tab2Text2.text.equals("Welcome to Tab 2"))
-        Assert.assertTrue(tabViewScreen.tab2Text3.text.equals("This is Tab2's second text"))
+        tabViewScreen.tab2Text?.click()
+        Assert.assertTrue(tabViewScreen.tab2Text?.text.equals("Tab 2"))
+        Assert.assertTrue(tabViewScreen.tab2Text2?.text.equals("Welcome to Tab 2"))
+        Assert.assertTrue(tabViewScreen.tab2Text3?.text.equals("This is Tab2's second text"))
 
 
-        tabViewScreen.tab3Text.click()
-        Assert.assertTrue(tabViewScreen.tab3Text.text.equals("Tab 3"))
-        Assert.assertTrue(tabViewScreen.tab3Text2.text.equals("Welcome to Tab 3"))
-        Assert.assertTrue(tabViewScreen.tab3Text3.text.equals("This is Tab3's second text"))
+        tabViewScreen.tab3Text?.click()
+        Assert.assertTrue(tabViewScreen.tab3Text?.text.equals("Tab 3"))
+        Assert.assertTrue(tabViewScreen.tab3Text2?.text.equals("Welcome to Tab 3"))
+        Assert.assertTrue(tabViewScreen.tab3Text3?.text.equals("This is Tab3's second text"))
 
 
-        tabViewScreen.tab4Text.click()
-        Assert.assertTrue(tabViewScreen.tab4Text.text.equals("Tab 4"))
-        Assert.assertTrue(tabViewScreen.tab4Text2.text.equals("Welcome to Tab 4"))
-        Assert.assertTrue(tabViewScreen.tab4Text3.text.equals("This is Tab4's second text"))
+        tabViewScreen.tab4Text?.click()
+        Assert.assertTrue(tabViewScreen.tab4Text?.text.equals("Tab 4"))
+        Assert.assertTrue(tabViewScreen.tab4Text2?.text.equals("Welcome to Tab 4"))
+        Assert.assertTrue(tabViewScreen.tab4Text3?.text.equals("This is Tab4's second text"))
     }
 
     @After("@tabview")

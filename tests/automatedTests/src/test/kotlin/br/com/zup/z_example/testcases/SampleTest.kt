@@ -1,15 +1,14 @@
-package br.com.zup.testcases
+package br.com.zup.z_example.testcases
 
-import br.com.zup.UtilResources
-import br.com.zup.webpages.HomePage
-import br.com.zup.webpages.ResultPage
+import br.com.zup.utils.UtilResources
+import br.com.zup.z_example.webpages.HomePage
+import br.com.zup.z_example.webpages.ResultPage
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.testng.Assert
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.net.URI
 import java.util.concurrent.TimeUnit
 
 class SampleTest() {

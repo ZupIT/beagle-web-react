@@ -1,6 +1,7 @@
-package steps
+package br.com.zup.steps
 
-import br.com.zup.UtilResources
+import br.com.zup.elements.ScreenFactory
+import br.com.zup.utils.UtilResources
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.en.*
@@ -33,7 +34,7 @@ class ButtonScreenSteps {
     fun checkButtonScreen() {
         var buttonScreen = screenFactory.getButtonScreen()
 
-        Assert.assertTrue(buttonScreen.buttonDefault?.isDisplayed)
+        Assert.assertTrue(buttonScreen.buttonDefault?.isDisplayed ?: false)
     }
 
     @When("I click on button")
@@ -47,17 +48,17 @@ class ButtonScreenSteps {
     fun renderTextAttributeCorrectly() {
         var buttonScreen = screenFactory.getButtonScreen()
 
-        Assert.assertTrue(buttonScreen.buttonDefault.text.equals("Button"))
-        Assert.assertTrue(buttonScreen.buttonWithStyle.text.equals("Button with style"))
-        Assert.assertTrue(buttonScreen.buttonWithAppearance.text.equals("Button with Appearance"))
-        Assert.assertTrue(buttonScreen.buttonWithAppearanceAndStyle.text.equals("Button with Appearance and style"))
+        Assert.assertTrue(buttonScreen.buttonDefault?.text.equals("Button"))
+        Assert.assertTrue(buttonScreen.buttonWithStyle?.text.equals("Button with style"))
+        Assert.assertTrue(buttonScreen.buttonWithAppearance?.text.equals("Button with Appearance"))
+        Assert.assertTrue(buttonScreen.buttonWithAppearanceAndStyle?.text.equals("Button with Appearance and style"))
     }
 
     @Then("component should render the action attribute correctly")
     fun renderActionAttributeCorrectly() {
         var buttonScreen = screenFactory.getButtonScreen()
 
-        Assert.assertTrue(buttonScreen.actionClickText.text.equals("You clicked right"))
+        Assert.assertTrue(buttonScreen.actionClickText?.text.equals("You clicked right"))
     }
 
     @After("@button")

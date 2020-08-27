@@ -1,6 +1,7 @@
-package steps
+package br.com.zup.steps
 
-import br.com.zup.UtilResources
+import br.com.zup.elements.ScreenFactory
+import br.com.zup.utils.UtilResources
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.PendingException
@@ -34,33 +35,33 @@ class ListViewScreenSteps {
     fun checkListViewScreen() {
         var listViewScreen = screenFactory.getListViewScreen()
 
-        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.isDisplayed)
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText?.isDisplayed ?: false)
     }
 
     @Then("^I have a vertical list configured$")
     fun checkVerticalListText() {
         var listViewScreen = screenFactory.getListViewScreen()
 
-        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
-        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText?.text.equals("Static VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText?.text.equals("Dynamic VERTICAL ListView"))
     }
 
     @When("^I have a horizontal list configured$")
     fun checkHorizontalListText() {
         var listViewScreen = screenFactory.getListViewScreen()
 
-        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
-        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText?.text.equals("Static HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText?.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
     @Then("^listview screen should render all text attributes correctly$")
     fun checkListViewScreenTexts() {
         var listViewScreen = screenFactory.getListViewScreen()
 
-        Assert.assertTrue(listViewScreen.listViewStaticVerticalText.text.equals("Static VERTICAL ListView"))
-        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText.text.equals("Static HORIZONTAL ListView"))
-        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText.text.equals("Dynamic VERTICAL ListView"))
-        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText.text.equals("Dynamic HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticVerticalText?.text.equals("Static VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewStaticHorizontalText?.text.equals("Static HORIZONTAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicVerticalText?.text.equals("Dynamic VERTICAL ListView"))
+        Assert.assertTrue(listViewScreen.listViewDynamicHorizontalText?.text.equals("Dynamic HORIZONTAL ListView"))
     }
 
 

@@ -1,4 +1,4 @@
-package br.com.zup.webpages
+package br.com.zup.z_example.webpages
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement

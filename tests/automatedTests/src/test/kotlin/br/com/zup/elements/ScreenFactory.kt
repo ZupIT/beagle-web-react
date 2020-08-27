@@ -1,7 +1,7 @@
-package br.com.zup.screens
+package br.com.zup.elements
 
-import br.com.zup.screens.angular.AngularImageScreen
-import br.com.zup.screens.react.ReactImageScreen
+import br.com.zup.elements.angular.*
+import br.com.zup.elements.react.*
 import org.openqa.selenium.WebDriver
 
 class ScreenFactory(

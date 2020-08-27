@@ -1,7 +1,7 @@
-package steps
+package br.com.zup.steps
 
-import br.com.zup.UtilResources
-import br.com.zup.screens.ScreenFactory
+import br.com.zup.elements.ScreenFactory
+import br.com.zup.utils.UtilResources
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.en.*
@@ -34,7 +34,7 @@ class ImageScreenSteps {
     fun checkImageScreen() {
         var imageScreen = screenFactory.getImageScreen()
 
-        Assert.assertTrue(imageScreen.imageText1?.isDisplayed)
+        Assert.assertTrue(imageScreen.imageText1?.isDisplayed ?: false)
     }
 
     @Then("^image screen should render all text attributes correctly$")

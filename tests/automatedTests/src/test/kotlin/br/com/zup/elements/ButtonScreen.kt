@@ -1,4 +1,4 @@
-package br.com.zup.screens
+package br.com.zup.elements
 
 import org.openqa.selenium.WebElement
 
