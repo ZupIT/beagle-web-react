@@ -14,17 +14,40 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleDefaultComponent } from 'common/models'
-import { StyledView } from './styled'
+import React, { FC, useEffect, useContext } from 'react'
+import { BeagleContainerInterface } from 'common/models'
+import { View, StyleSheet } from 'react-native'
+import BeagleServiceContext from 'common/provider'
+import { removeInvalidCssProperties } from '../../components/utils'
 
-const BeagleContainer: FC<BeagleDefaultComponent> = props => {
-  const { children, style } = props
-  
+const BeagleContainer: FC<BeagleContainerInterface> = props => {
+  const beagleService = useContext(BeagleServiceContext)
+  const { children, style, onInit, screenAnalyticsEvent } = props
+  const beagleAnalytics = beagleService && beagleService.analytics
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles:{
+      flex: style && style.flex ? Number(style.flex) : 1,
+    }
+  })
+
+  useEffect(() => {
+    if (screenAnalyticsEvent && beagleAnalytics)
+      beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
+    if (onInit) onInit()
+    return () => {
+      if (screenAnalyticsEvent && beagleAnalytics)
+        beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)
+    }
+  }, [])
+
   return (
-    <StyledView cssStyles={style} style={{ flex:1 }}>
+    <View  style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
       {children}
-    </StyledView>
+    </View>
   )
 }
 

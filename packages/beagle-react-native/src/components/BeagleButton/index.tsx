@@ -17,8 +17,8 @@
 import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
-import { Text, Pressable } from 'react-native'
-import { StyledView } from './styled'
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
   text,
@@ -38,16 +38,37 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
-
     return isSubmitButton ? undefined : onPress && onPress()
   }
 
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
+      flex: style && style.flex ? Number(style.flex) : 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center',
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: "#000000",
+      borderStyle: 'solid',
+      minHeight: 60,
+      margin: 5
+    },
+    touchable:{
+      flex:1
+    }
+  })
   return (
-    <Pressable onPress={handlePress} style={{ flex: 1 }}>
-      <StyledView cssStyles={style}>
+    <TouchableOpacity onPress={handlePress} style={styleSheet.touchable}>
+      <View style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
         <Text>{text}</Text>
-      </StyledView>
-    </Pressable>
+      </View>
+    </TouchableOpacity>
   )
 }
 

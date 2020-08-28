@@ -15,16 +15,45 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleTextInterface } from 'common/models'
-import { StyledText } from './styled'
+import { BeagleTextInterface, MobileAlignment } from 'common/models'
+import { removeInvalidCssProperties } from '../../components/utils'
+import { Text, StyleSheet } from 'react-native'
 
+const alignMap: Record<string, MobileAlignment> = {
+  auto: 'auto',
+  center: 'center',
+  left: 'left',
+  right: 'right',
+}
 
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, textColor, alignment, style } = props
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  const parsedAlignment = alignment && alignment != 'INHERIT' ?
+    alignMap[alignment.toLowerCase()] :
+    'auto'
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
+      flex: style && style.flex ? Number(style.flex) : 1,
+      color: textColor || "#000000",
+      textAlign: parsedAlignment
+    }
+  })
+
+  
+
+
   return (
-    <StyledText textColor={textColor} alignment={alignment} cssStyles={style}>
+    <Text
+      style={{
+        ...styleSheet.fromBffStyles,
+        ...styleSheet.defaultStyles
+      }}>
       {text}
-    </StyledText>
+    </Text>
   )
 }
 

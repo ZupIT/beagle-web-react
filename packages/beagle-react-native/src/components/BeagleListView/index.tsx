@@ -16,17 +16,36 @@
 
 import React, { FC } from 'react'
 import { BeagleListViewInterface } from 'common/models'
-import { StyledScrollView } from './styled'
+import { ScrollView, StyleSheet } from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleListView: FC<BeagleListViewInterface> = props => {
   const { children, direction, style } = props
 
-  const horizontal = direction && direction === 'HORIZONTAL' 
+  const horizontal = direction && direction === 'HORIZONTAL'
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
+      flex: style && style.flex ? Number(style.flex) : 1,
+      borderWidth: 1,
+      borderColor: "#000000",
+      borderStyle: 'solid'
+    },
+  })
 
   return (
-    <StyledScrollView style={{ flex:1 }} horizontal={horizontal} cssStyles={style}>
+    <ScrollView
+      style={
+        {
+          ...styleSheet.defaultStyles,
+          ...styleSheet.fromBffStyles
+        }}
+      horizontal={horizontal}>
       {children}
-    </StyledScrollView>
+    </ScrollView>
   )
 }
 

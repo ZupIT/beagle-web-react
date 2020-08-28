@@ -16,14 +16,17 @@
 
 import React, { FC } from 'react'
 import { BeagleModalInterface } from 'common/models'
-import { StyleSheet, Modal } from 'react-native'
-import { StyledView } from './styled'
+import { StyleSheet, Modal, View } from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleModal: FC<BeagleModalInterface> = props => {
   const { onClose, isOpen, style, children } = props
-
-  const styles = StyleSheet.create({
-    modalView: {
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
       flex: 3,
       margin: 20,
       backgroundColor: 'white',
@@ -40,16 +43,16 @@ const BeagleModal: FC<BeagleModalInterface> = props => {
       elevation: 5,
     },
   })
-  
+
   return (
     <Modal
       animationType="slide"
       transparent={true}
       onDismiss={onClose}
       visible={isOpen}>
-      <StyledView style={styles.modalView} cssStyles={style}>
+      <View style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         {children}
-      </StyledView>
+      </View>
     </Modal>
   )
 }

@@ -15,3 +15,7 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   onFocus?: InputHandler,
   onBlur?: InputHandler,
 }
+
+export interface InputInterface extends BeagleTextInputInterface {
+  isMultiline? : boolean
+}

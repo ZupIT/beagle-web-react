@@ -14,13 +14,10 @@
   * limitations under the License.
 */
 
-import styled from 'styled-components/native'
-import { convertCssStylesToString } from '../utils'
+import { BeagleDefaultComponent } from "./types";
+import { ScreenEvent } from "@zup-it/beagle-web";
 
-interface StyledViewInterface {
-  cssStyles?: React.CSSProperties,
+export interface BeagleContainerInterface extends BeagleDefaultComponent {
+  onInit?: () => void,
+  screenAnalyticsEvent?: ScreenEvent,
 }
-
-export const StyledView = styled.View<StyledViewInterface>`
-${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''}
-`

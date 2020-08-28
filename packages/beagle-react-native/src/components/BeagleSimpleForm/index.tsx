@@ -14,26 +14,18 @@
   * limitations under the License.
 */
 
-import styled from 'styled-components/native'
-import { convertCssStylesToString } from '../utils'
-import { BeagleTheme } from '../../../../common/utils/commons.styled'
+import React, { FC } from 'react'
+import { BeagleDefaultComponent } from 'common/models'
+import { View } from 'react-native'
 
-interface StyledButtonInterface {
-  cssStyles?: React.CSSProperties,
+
+const BeagleText: FC<BeagleDefaultComponent> = props => {
+  const { children, style } = props
+  return (
+    <View>
+      {children}
+    </View>
+  )
 }
 
-export const StyledView = styled.View<StyledButtonInterface>`
-border: 1px solid ${BeagleTheme.swampLight};
-line-height: 40px;
-min-height: 50px
-background: transparent;
-display: flex;
-text-align: center;
-margin: 5px;
-padding: 0 16px;
-border-radius: 5px;
-color: #FFFFFF;
-justify-content: center
-align-items: center
-${({ cssStyles }) => cssStyles ? convertCssStylesToString(cssStyles) : ''};
-`
+export default BeagleText

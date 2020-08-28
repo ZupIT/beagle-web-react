@@ -15,15 +15,17 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleTextInputInterface, InputHandler } from 'common/models'
-import { 
-  TextInputProps, 
-  NativeSyntheticEvent, 
-  StyleSheet, 
-  TextInputFocusEventData } from 'react-native'
-import { StyledTextInput } from './styled'
+import { InputHandler, InputInterface } from 'common/models'
+import {
+  TextInputProps,
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInputFocusEventData,
+  TextInput
+} from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
-const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
+const BeagleTextInput: FC<InputInterface> = props => {
   const { value,
     placeholder,
     disabled,
@@ -32,7 +34,8 @@ const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
     onChange,
     onFocus,
     onBlur,
-    style } = props
+    style,
+    isMultiline } = props
 
   let previousInputValue: string
 
@@ -41,7 +44,7 @@ const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
     console.log(previousInputValue)
     return handler && handler({ value: previousInputValue })
   }
-  
+
   function handleOnFocus(_e: NativeSyntheticEvent<TextInputFocusEventData>) {
     console.log(previousInputValue)
     return onFocus && onFocus({ value: previousInputValue })
@@ -50,20 +53,43 @@ const BeagleTextInput: FC<BeagleTextInputInterface> = props => {
   const inputProps: TextInputProps = {
     value: value,
     placeholder: placeholder,
+    //onChangeText
     onChange: handleEvent(onChange),
     onFocus: handleOnFocus,
     onEndEditing: handleEvent(onBlur),
+    // editable: !!disabled || !readOnly,
+    multiline: isMultiline || false
   }
 
-  const inputStyles = StyleSheet.create({
-    hidden:{
-      opacity: hidden && hidden === true ?  0 : 1,
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
+      flex: style && style.flex ? Number(style.flex) : 1,
+      borderWidth: 1,
+      borderColor: "#000000",
+      borderStyle: 'solid',
+      margin: 5,
+      maxHeight: isMultiline ? 100 : 50
+    },
+    hidden: {
+      opacity: hidden && hidden === true ? 0 : 1,
     },
   })
 
   return (
-    <StyledTextInput {...inputProps} cssStyles={style} style={inputStyles.hidden}>
-    </StyledTextInput>
+    <TextInput
+      {...inputProps}
+      style={
+        {
+          ...styleSheet.defaultStyles,
+          ...styleSheet.fromBffStyles,
+          ...styleSheet.hidden
+        }}>
+    </TextInput>
   )
 }
 
