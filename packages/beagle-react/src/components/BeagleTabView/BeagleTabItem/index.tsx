@@ -32,8 +32,8 @@ export interface BeagleTabItemInterface extends BeagleComponent {
 }
 
 const BeagleTabItem: FC<BeagleTabItemInterface> = props => {
-  const { title, icon, beagleContext, children } = props
-  const id = beagleContext.getElementId()
+  const { title, icon, viewContentManager, children } = props
+  const id = viewContentManager ? viewContentManager.getElementId() : ''
   const componentsService = useContext(tabContext)
 
   return (

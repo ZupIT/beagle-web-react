@@ -39,4 +39,8 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: ${BeagleTheme.swampTransparent};
   }
+  &:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
 `
