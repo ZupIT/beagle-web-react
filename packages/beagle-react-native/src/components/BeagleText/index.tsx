@@ -16,8 +16,8 @@
 
 import React, { FC } from 'react'
 import { BeagleTextInterface, MobileAlignment } from 'common/models'
-import { removeInvalidCssProperties } from '../../components/utils'
 import { Text, StyleSheet } from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
 const alignMap: Record<string, MobileAlignment> = {
   auto: 'auto',
@@ -38,9 +38,9 @@ const BeagleText: FC<BeagleTextInterface> = props => {
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,
-      color: textColor || "#000000",
-      textAlign: parsedAlignment
-    }
+      color: textColor || '#000000',
+      textAlign: parsedAlignment,
+    },
   })
 
   
@@ -50,7 +50,7 @@ const BeagleText: FC<BeagleTextInterface> = props => {
     <Text
       style={{
         ...styleSheet.fromBffStyles,
-        ...styleSheet.defaultStyles
+        ...styleSheet.defaultStyles,
       }}>
       {text}
     </Text>

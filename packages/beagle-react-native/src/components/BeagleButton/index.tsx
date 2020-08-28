@@ -54,14 +54,14 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       alignContent: 'center',
       borderRadius: 5,
       borderWidth: 1,
-      borderColor: "#000000",
+      borderColor: '#000000',
       borderStyle: 'solid',
       minHeight: 60,
-      margin: 5
+      margin: 5,
     },
     touchable:{
-      flex:1
-    }
+      flex:1,
+    },
   })
   return (
     <TouchableOpacity onPress={handlePress} style={styleSheet.touchable}>

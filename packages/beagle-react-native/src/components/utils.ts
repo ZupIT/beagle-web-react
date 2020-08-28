@@ -59,12 +59,10 @@ const VALID_CSS_PROPERTIES = [
   'backgroundColor',
 ]
 
-export function convertCssStylesToString(cssStyles: React.CSSProperties) {
-  return Object.entries({ ...cssStyles }).map(val => `${kebabCase(val[0])}:${val[1]};`).join('')
-}
-
-export function removeInvalidCssProperties(style: Record<string, any> | React.CSSProperties): Record<string, any> {
-  if(!style) return {}
+export function removeInvalidCssProperties(
+  style: Record<string, any> | React.CSSProperties): Record<string, any> {
+    
+  if (!style) return {}
   return Object.entries({ ...style })
     .filter(([key, value]) => VALID_CSS_PROPERTIES.includes(key) && !/auto|inherit/gmi.test(value))
     .map(([key, value]) => [key, value.replace(/px/gmi, '')])

@@ -17,5 +17,5 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
 }
 
 export interface InputInterface extends BeagleTextInputInterface {
-  isMultiline? : boolean
+  isMultiline? : boolean,
 }

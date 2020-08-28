@@ -31,7 +31,7 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
     },
     defaultStyles:{
       flex: style && style.flex ? Number(style.flex) : 1,
-    }
+    },
   })
 
   useEffect(() => {

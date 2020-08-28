@@ -21,7 +21,7 @@ import {
   NativeSyntheticEvent,
   StyleSheet,
   TextInputFocusEventData,
-  TextInput
+  TextInput,
 } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
 
@@ -58,7 +58,7 @@ const BeagleTextInput: FC<InputInterface> = props => {
     onFocus: handleOnFocus,
     onEndEditing: handleEvent(onBlur),
     // editable: !!disabled || !readOnly,
-    multiline: isMultiline || false
+    multiline: isMultiline || false,
   }
 
   const parsedStyles = removeInvalidCssProperties(style ? style : {})
@@ -70,10 +70,10 @@ const BeagleTextInput: FC<InputInterface> = props => {
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,
       borderWidth: 1,
-      borderColor: "#000000",
+      borderColor: '#000000',
       borderStyle: 'solid',
       margin: 5,
-      maxHeight: isMultiline ? 100 : 50
+      maxHeight: isMultiline ? 100 : 50,
     },
     hidden: {
       opacity: hidden && hidden === true ? 0 : 1,
@@ -87,7 +87,7 @@ const BeagleTextInput: FC<InputInterface> = props => {
         {
           ...styleSheet.defaultStyles,
           ...styleSheet.fromBffStyles,
-          ...styleSheet.hidden
+          ...styleSheet.hidden,
         }}>
     </TextInput>
   )

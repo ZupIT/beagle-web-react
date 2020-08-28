@@ -31,8 +31,8 @@ const BeagleListView: FC<BeagleListViewInterface> = props => {
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,
       borderWidth: 1,
-      borderColor: "#000000",
-      borderStyle: 'solid'
+      borderColor: '#000000',
+      borderStyle: 'solid',
     },
   })
 
@@ -41,7 +41,7 @@ const BeagleListView: FC<BeagleListViewInterface> = props => {
       style={
         {
           ...styleSheet.defaultStyles,
-          ...styleSheet.fromBffStyles
+          ...styleSheet.fromBffStyles,
         }}
       horizontal={horizontal}>
       {children}

@@ -18,11 +18,9 @@ import React, { FC } from 'react'
 import { BeagleTextInputInterface } from 'common/models'
 import BeagleTextInput from '../BeagleInput'
 
-const BeagleTextArea: FC<BeagleTextInputInterface> = props => {
-  return (
-    <BeagleTextInput {...props} isMultiline>
-    </BeagleTextInput>
-  )
-}
+const BeagleTextArea: FC<BeagleTextInputInterface> = props => (
+  <BeagleTextInput {...props} isMultiline>
+  </BeagleTextInput>
+)
 
 export default BeagleTextArea

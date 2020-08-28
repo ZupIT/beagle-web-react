@@ -39,7 +39,7 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
       resizeMode: imgResize,
       height: parsedStyles.height || '100%',
       width: parsedStyles.width || '100%',
-    }
+    },
   })
 
   //TO DO: Add support to dynamic local images - mobileID
