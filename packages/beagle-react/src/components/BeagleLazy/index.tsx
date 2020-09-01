@@ -28,7 +28,11 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManage
       path,
       shouldShowLoading: false,
     }
-    viewContentManager && viewContentManager.replaceComponent(params)
+    viewContentManager && viewContentManager.getView().fetch(
+      params,
+      viewContentManager.getElementId(),
+      'replaceComponent',
+    )
   }, [])
 
   return (
