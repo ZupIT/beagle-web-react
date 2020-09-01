@@ -13,12 +13,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-export * from './beagle-image.model'
-export * from './beagle-text.model'
-export * from './beagle-button.model'
-export * from './beagle-listview.model'
-export * from './beagle-modal.model'
-export * from './beagle-input.model'
-export * from './beagle-container.model'
-export * from './beagle-touchable.model'
-export * from './types'
+
+import React, { FC } from 'react'
+import { BeagleDefaultComponent } from 'common/models'
+import BeagleLoading from '../../components/BeagleLoading'
+
+const BeagleSpinner: FC<BeagleDefaultComponent> = () => (
+  <BeagleLoading></BeagleLoading>
+)
+
+export default BeagleSpinner

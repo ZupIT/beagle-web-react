@@ -24,6 +24,9 @@ import BeagleListView from './BeagleListView'
 import BeagleModal from './BeagleModal'
 import BeagleTextInput from './BeagleInput'
 import BeagleTextArea from './BeagleTextArea'
+import BeagleTouchable from './BeagleTouchable'
+import BeagleWebView from './BeagleWebview'
+import BeagleSpinner from './BeagleSpinner'
 
 
 
@@ -40,6 +43,8 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:textInput':BeagleTextInput,
   'beagle:text-area': BeagleTextArea,
+  'beagle:touchable': BeagleTouchable,
+  'beagle:spinner':BeagleSpinner
 }
 
 const webSpecificComponents = {

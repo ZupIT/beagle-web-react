@@ -16,12 +16,42 @@
 
 import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
-import { ActivityIndicator, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View} from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
-const BeagleLoading: FC<BeagleDefaultComponent> = props => (
-  <View style={{ flex:1 }}>
-    <ActivityIndicator style={{ flex:1 }} size="large" />
-  </View>
-)
+const BeagleLoading: FC<BeagleDefaultComponent> = props => {
+  const { style } = props
+  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  
+  const styleSheet = StyleSheet.create({
+    fromBffStyles: {
+      ...parsedStyles,
+    },
+    defaultStyles: {
+      flex: style && style.flex ? Number(style.flex) : 1,
+    },
+    container: {
+      flex: 1,
+      justifyContent: "center"
+    },
+    horizontal: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      padding: 10
+    }
+  })
+
+  return (
+    <View style={[styleSheet.container, styleSheet.horizontal]}>
+       <ActivityIndicator 
+       animating={true} 
+       color="#125285" 
+       style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }} 
+       size="large" />
+    </View>
+   
+  )
+  
+}
 
 export default BeagleLoading

@@ -43,9 +43,6 @@ const BeagleText: FC<BeagleTextInterface> = props => {
     },
   })
 
-  
-
-
   return (
     <Text
       style={{
