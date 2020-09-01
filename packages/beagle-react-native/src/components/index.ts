@@ -25,7 +25,6 @@ import BeagleModal from './BeagleModal'
 import BeagleTextInput from './BeagleInput'
 import BeagleTextArea from './BeagleTextArea'
 import BeagleTouchable from './BeagleTouchable'
-import BeagleWebView from './BeagleWebview'
 import BeagleSpinner from './BeagleSpinner'
 
 
