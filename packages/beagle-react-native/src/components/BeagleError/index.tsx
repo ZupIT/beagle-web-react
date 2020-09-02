@@ -16,13 +16,12 @@
 
 import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
-import { View } from 'react-native'
-import BeagleText from '../BeagleText'
+import { View, Text } from 'react-native'
 
 const BeagleError: FC<BeagleDefaultComponent> = () => (
   <View style={{ flex:3 }}>
-    <BeagleText text="Sorry!" textColor="#CF0000" />
-    <BeagleText text="An unexpected error happened while loading your page." />
+    <Text style={{color:'#CF0000'}}>Sorry!</Text>
+    <Text>An unexpected error happened while loading your page.</Text>
   </View>
 )
 

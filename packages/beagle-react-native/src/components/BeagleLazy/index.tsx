@@ -13,16 +13,29 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-export * from './beagle-image.model'
-export * from './beagle-text.model'
-export * from './beagle-button.model'
-export * from './beagle-listview.model'
-export * from './beagle-modal.model'
-export * from './beagle-input.model'
-export * from './beagle-container.model'
-export * from './beagle-touchable.model'
-export * from './beagle-tabbar.model'
-export * from './beagle-pageview.model'
-export * from './beagle-pageindicator.model'
-export * from './beagle-lazy.model'
-export * from './types'
+
+import React, { FC, useEffect } from 'react'
+import { LoadParams } from '@zup-it/beagle-web'
+import { View } from 'react-native'
+import { BeagleLazyInterface } from 'common/models'
+
+
+const BeagleLazy: FC<BeagleLazyInterface> = (props) => {
+  const { path, children, beagleContext } = props
+  
+  useEffect(() => {
+    const params: LoadParams = {
+      path,
+      shouldShowLoading: false,
+    }
+    beagleContext && beagleContext.replaceComponent(params)
+  }, [])
+
+  return (
+    <View>
+      {children}
+    </View>
+  )
+}
+
+export default BeagleLazy

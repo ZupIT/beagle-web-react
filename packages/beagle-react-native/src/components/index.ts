@@ -26,6 +26,10 @@ import BeagleTextInput from './BeagleInput'
 import BeagleTextArea from './BeagleTextArea'
 import BeagleTouchable from './BeagleTouchable'
 import BeagleSpinner from './BeagleSpinner'
+import BeagleTabBar from './BeagleTabBar'
+import BeaglePageView from './BeaglePageView'
+import BeaglePageIndicator from './PageIndicator'
+import BeagleLazy from './BeagleLazy'
 
 
 
@@ -43,7 +47,11 @@ const beagleDefaultComponents = {
   'beagle:textInput':BeagleTextInput,
   'beagle:text-area': BeagleTextArea,
   'beagle:touchable': BeagleTouchable,
-  'beagle:spinner':BeagleSpinner
+  'beagle:spinner':BeagleSpinner,
+  'beagle:tabbar':BeagleTabBar,
+  'beagle:pageview':BeaglePageView,
+  'beagle:pageIndicator': BeaglePageIndicator,
+  'beagle:lazycomponent':BeagleLazy
 }
 
 const webSpecificComponents = {

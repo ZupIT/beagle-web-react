@@ -13,16 +13,18 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-export * from './beagle-image.model'
-export * from './beagle-text.model'
-export * from './beagle-button.model'
-export * from './beagle-listview.model'
-export * from './beagle-modal.model'
-export * from './beagle-input.model'
-export * from './beagle-container.model'
-export * from './beagle-touchable.model'
-export * from './beagle-tabbar.model'
-export * from './beagle-pageview.model'
-export * from './beagle-pageindicator.model'
-export * from './beagle-lazy.model'
-export * from './types'
+
+import { BeagleDefaultComponent } from "./types";
+import { ImagePath } from "./beagle-image.model";
+
+export interface ItemTitle {
+  title?: string,
+  icon?: ImagePath,
+}
+
+export interface BeagleTabBarInterface extends BeagleDefaultComponent {
+  onTabSelection?: (item: number) => void,
+  currentTab?: number,
+  items: ItemTitle[],
+  styleId?: string,
+}

@@ -41,12 +41,10 @@ const BeagleTextInput: FC<InputInterface> = props => {
 
   const handleEvent = (handler?: InputHandler) => (e: NativeSyntheticEvent<any>) => {
     previousInputValue = e.nativeEvent.text
-    console.log(previousInputValue)
     return handler && handler({ value: previousInputValue })
   }
 
   function handleOnFocus(_e: NativeSyntheticEvent<TextInputFocusEventData>) {
-    console.log(previousInputValue)
     return onFocus && onFocus({ value: previousInputValue })
   }
 

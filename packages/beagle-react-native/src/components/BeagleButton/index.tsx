@@ -57,10 +57,12 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       borderColor: '#000000',
       borderStyle: 'solid',
       minHeight: 60,
+      maxHeight: 60,
       margin: 5,
     },
     touchable:{
       flex:1,
+      height:"100%"
     },
   })
   return (
