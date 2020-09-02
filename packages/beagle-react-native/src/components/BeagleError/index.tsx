@@ -20,7 +20,7 @@ import { View, Text } from 'react-native'
 
 const BeagleError: FC<BeagleDefaultComponent> = () => (
   <View style={{ flex:3 }}>
-    <Text style={{color:'#CF0000'}}>Sorry!</Text>
+    <Text style={{ color:'#CF0000' }}>Sorry!</Text>
     <Text>An unexpected error happened while loading your page.</Text>
   </View>
 )

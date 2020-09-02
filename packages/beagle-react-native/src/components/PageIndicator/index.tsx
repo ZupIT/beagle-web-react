@@ -23,10 +23,10 @@ const BeaglePageIndicator: FC<PageIndicatorInterface> = props => {
 
   const styleSheet = StyleSheet.create({
     container: {
-      justifyContent: "center",
-      alignItems: "center",
-      alignContent: "center",
-      flexDirection: "row"
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center',
+      flexDirection: 'row',
     },
     bullets: {
       height: 10,
@@ -34,15 +34,15 @@ const BeaglePageIndicator: FC<PageIndicatorInterface> = props => {
       borderRadius: 50,
       borderStyle: 'solid',
       borderWidth: 1,
-      borderColor: "#000000",
-      margin: 5
+      borderColor: '#000000',
+      margin: 5,
     },
     selected: {
-      backgroundColor: selectedColor || "#000000"
+      backgroundColor: selectedColor || '#000000',
     },
     unselected: {
-      backgroundColor: unselectedColor || "#FFFFFF"
-    }
+      backgroundColor: unselectedColor || '#FFFFFF',
+    },
   })
 
   const totalPages = numberOfPages ? Array(numberOfPages) : []
@@ -50,15 +50,13 @@ const BeaglePageIndicator: FC<PageIndicatorInterface> = props => {
   return (
     <View style={styleSheet.container}>
       {
-        Children.map(totalPages, (child, index) => {
-          return (
-            <View
-              key={index}
-              style={[styleSheet.bullets,
+        Children.map(totalPages, (child, index) => (
+          <View
+            key={index}
+            style={[styleSheet.bullets,
               index === currentPage ? styleSheet.selected : styleSheet.unselected]}>
-            </View>
-          )
-        })
+          </View>
+        ))
       }
     </View>
   )

@@ -14,8 +14,8 @@
   * limitations under the License.
 */
 
-import { BeagleDefaultComponent } from "./types";
-import { ImagePath } from "./beagle-image.model";
+import { BeagleDefaultComponent } from './types'
+import { ImagePath } from './beagle-image.model'
 
 export interface ItemTitle {
   title?: string,

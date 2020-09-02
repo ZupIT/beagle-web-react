@@ -17,8 +17,8 @@
 import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleTouchableInterface } from 'common/models'
-import { removeInvalidCssProperties } from '../../components/utils'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
+import { removeInvalidCssProperties } from '../../components/utils'
 
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
@@ -45,7 +45,7 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
       flex: style && style.flex ? Number(style.flex) : 1,
       justifyContent: 'center',
       alignItems: 'center',
-      alignContent: 'center'
+      alignContent: 'center',
     },
     touchable:{
       flex: style && style.flex ? Number(style.flex) : 1,

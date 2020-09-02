@@ -16,7 +16,7 @@
 
 import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
-import { ActivityIndicator, StyleSheet, View} from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleLoading: FC<BeagleDefaultComponent> = props => {
@@ -32,22 +32,22 @@ const BeagleLoading: FC<BeagleDefaultComponent> = props => {
     },
     container: {
       flex: 1,
-      justifyContent: "center"
+      justifyContent: 'center',
     },
     horizontal: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      padding: 10
-    }
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      padding: 10,
+    },
   })
 
   return (
     <View style={[styleSheet.container, styleSheet.horizontal]}>
-       <ActivityIndicator 
-       animating={true} 
-       color="#125285" 
-       style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }} 
-       size="large" />
+      <ActivityIndicator 
+        animating={true} 
+        color="#125285" 
+        style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }} 
+        size="large" />
     </View>
    
   )

@@ -51,7 +51,7 @@ const beagleDefaultComponents = {
   'beagle:tabbar':BeagleTabBar,
   'beagle:pageview':BeaglePageView,
   'beagle:pageIndicator': BeaglePageIndicator,
-  'beagle:lazycomponent':BeagleLazy
+  'beagle:lazycomponent':BeagleLazy,
 }
 
 const webSpecificComponents = {

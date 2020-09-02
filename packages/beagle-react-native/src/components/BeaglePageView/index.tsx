@@ -23,15 +23,14 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
 import BeaglePageIndicator from '../../components/PageIndicator'
 
-const BeaglePageView: FC<BeaglePageViewInterface> = props => {
-  let {
-    children, onPageChange, currentPage, showArrow, style,
-    /**
-     * @deprecated Since version 1.1. Will be deleted in version 2.0.
-     * Use pageIndicator as a component instead.
-    */
-    pageIndicator,
-  } = props
+const BeaglePageView: FC<BeaglePageViewInterface> = ({
+  children, onPageChange, currentPage, showArrow, style,
+  /**
+   * @deprecated Since version 1.1. Will be deleted in version 2.0.
+   * Use pageIndicator as a component instead.
+  */
+  pageIndicator,
+}) => {
 
   const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
@@ -47,16 +46,16 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       alignContent: 'center',
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'row'
+      flexDirection: 'row',
     },
     hide: {
-      display: "none"
+      display: 'none',
     },
     bulletsContainer: {
       width: '100%',
       alignContent: 'center',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     bullets: {
       height: 10,
@@ -64,11 +63,11 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
       borderRadius: 50,
       borderStyle: 'solid',
       borderWidth: 1,
-      borderColor: "#000000"
+      borderColor: '#000000',
     },
     selected: {
-      backgroundColor: "#000000"
-    }
+      backgroundColor: '#000000',
+    },
   })
 
   showArrow = showArrow !== undefined ? showArrow : true
@@ -130,7 +129,8 @@ const BeaglePageView: FC<BeaglePageViewInterface> = props => {
                 const item: ReactNode = childId.props.children
                 const childrenItems = item && Children.map(item, (child) => (
                   isValidElement(child)) ?
-                  cloneElement(child, { style: { ...child.props.style, ...styleSheet.hide } }) : child)
+                  cloneElement(child,
+                    { style: { ...child.props.style, ...styleSheet.hide } }) : child)
                 return childrenItems
               }
               return childId

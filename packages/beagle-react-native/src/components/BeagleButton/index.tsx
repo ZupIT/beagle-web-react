@@ -62,7 +62,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     },
     touchable:{
       flex:1,
-      height:"100%"
+      height:'100%',
     },
   })
   return (

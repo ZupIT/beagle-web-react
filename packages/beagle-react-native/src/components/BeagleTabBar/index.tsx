@@ -38,42 +38,43 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
       flex: style && style.flex ? Number(style.flex) : 1,
     },
     tabContainer: {
-      width: "100%",
-      flexDirection: "row",
-      alignContent: "center",
-      justifyContent: "flex-start",
+      width: '100%',
+      flexDirection: 'row',
+      alignContent: 'center',
+      justifyContent: 'flex-start',
       paddingHorizontal: 10,
-      height: "12%",
-      alignItems: "center",
+      height: '12%',
+      alignItems: 'center',
     },
     tab: {
-      alignItems: "center",
-      alignContent: "center",
-      justifyContent: "center",
-      margin: 5
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+      margin: 5,
     },
     selectedTab: {
-      backgroundColor: "#125285",
-      width: "100%",
+      backgroundColor: '#125285',
+      width: '100%',
       height: 3,
-      marginTop: 3
-    }
+      marginTop: 3,
+    },
   })
 
   return (
     <View style={styleSheet.tabContainer}>
       {
-        items.map((item: ItemTitle, index) => {
-          return (
-            <TouchableOpacity key={index} onPress={() => changeSelectedTab(index)}>
-              <View style={styleSheet.tab}>
-                {item.icon && <BeagleImage path={item.icon} style={{ height: "40", width: "40" }}></BeagleImage>}
-                <Text>{item.title}</Text>
-                {index === currentTab && <View style={styleSheet.selectedTab}></View>}
-              </View>
-            </TouchableOpacity>
-          )
-        })
+        items.map((item: ItemTitle, index) => (
+          <TouchableOpacity key={index} onPress={() => changeSelectedTab(index)}>
+            <View style={styleSheet.tab}>
+              {item.icon && <BeagleImage
+                path={item.icon}
+                style={{ height: '40', width: '40' }}>
+              </BeagleImage>}
+              <Text>{item.title}</Text>
+              {index === currentTab && <View style={styleSheet.selectedTab}></View>}
+            </View>
+          </TouchableOpacity>
+        ))
       }
     </View>
   )

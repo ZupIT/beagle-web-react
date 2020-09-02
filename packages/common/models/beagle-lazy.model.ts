@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { BeagleComponent } from "../types";
+import { BeagleComponent } from '../types'
 
 export interface BeagleLazyInterface extends BeagleComponent {
   path: string,
