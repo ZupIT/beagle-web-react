@@ -18,16 +18,10 @@ import React, { FC, useContext } from 'react'
 import { ClickEvent, ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleComponent } from 'common/types'
+import { BeagleButtonInterface } from 'common/models'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
-
-export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
-	text: string,
-  onPress?: () => void,
-  clickAnalyticsEvent?: ClickEvent,
-  disabled?: boolean,
-}
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false

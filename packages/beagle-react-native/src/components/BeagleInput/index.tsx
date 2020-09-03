@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { InputHandler, InputInterface } from 'common/models'
 import {
   TextInputProps,
@@ -22,41 +22,54 @@ import {
   StyleSheet,
   TextInputFocusEventData,
   TextInput,
+  KeyboardType,
 } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
 
-const BeagleTextInput: FC<InputInterface> = props => {
-  const { value,
-    placeholder,
-    disabled,
-    readOnly,
-    hidden,
-    onChange,
-    onFocus,
-    onBlur,
-    style,
-    isMultiline } = props
+const keyboardTypes: Record<string, KeyboardType> = {
+  NUMBER: 'numeric',
+  EMAIL: 'email-address',
+}
 
-  let previousInputValue: string
+const BeagleTextInput: FC<InputInterface> = ({
+  value: initialValue,
+  placeholder,
+  disabled,
+  readOnly,
+  type = 'TEXT',
+  hidden,
+  onChange,
+  onFocus,
+  onBlur,
+  style,
+  className,
+  isMultiline,
+}) => {
 
-  const handleEvent = (handler?: InputHandler) => (e: NativeSyntheticEvent<any>) => {
-    previousInputValue = e.nativeEvent.text
-    return handler && handler({ value: previousInputValue })
+  const [value, setValue] = useState(initialValue)
+  console.log(disabled, readOnly, !disabled && !readOnly)
+
+  const handleEvent = (handler?: InputHandler) => (text: string) => {
+    setValue(text)
+    return handler && handler({ value: text })
   }
 
-  function handleOnFocus(_e: NativeSyntheticEvent<TextInputFocusEventData>) {
-    return onFocus && onFocus({ value: previousInputValue })
-  }
+  const handleOnFocus = (_e: NativeSyntheticEvent<TextInputFocusEventData>) =>
+    onFocus && onFocus({ value })
+
+  const handleOnBlur = (_e: NativeSyntheticEvent<TextInputFocusEventData>) =>
+    onBlur && onBlur({ value })
 
   const inputProps: TextInputProps = {
     value: value,
     placeholder: placeholder,
-    //onChangeText
-    onChange: handleEvent(onChange),
+    onChangeText: handleEvent(onChange),
     onFocus: handleOnFocus,
-    onEndEditing: handleEvent(onBlur),
-    // editable: !!disabled || !readOnly,
-    multiline: isMultiline || false,
+    onBlur: handleOnBlur,
+    editable: !disabled && !readOnly,
+    multiline: !!isMultiline,
+    secureTextEntry: type === 'PASSWORD',
+    keyboardType: keyboardTypes[type] || 'default',
   }
 
   const parsedStyles = removeInvalidCssProperties(style ? style : {})
@@ -81,12 +94,11 @@ const BeagleTextInput: FC<InputInterface> = props => {
   return (
     <TextInput
       {...inputProps}
-      style={
-        {
-          ...styleSheet.defaultStyles,
-          ...styleSheet.fromBffStyles,
-          ...styleSheet.hidden,
-        }}>
+      style={{
+        ...styleSheet.defaultStyles,
+        ...styleSheet.fromBffStyles,
+        ...styleSheet.hidden,
+      }}>
     </TextInput>
   )
 }

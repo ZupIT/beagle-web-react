@@ -17,10 +17,7 @@
 import React, { FC, useEffect } from 'react'
 import { LoadParams, BeagleChildren } from '@zup-it/beagle-web'
 import { BeagleComponent } from 'common/types'
-
-export interface BeagleLazyInterface extends BeagleComponent {
-  path: string,
-}
+import { BeagleLazyInterface } from 'common/models'
 
 const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
   useEffect(() => {
