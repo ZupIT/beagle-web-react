@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { BeagleModalInterface } from 'common/models'
 import { StyleSheet, Modal, View } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
@@ -44,11 +44,16 @@ const BeagleModal: FC<BeagleModalInterface> = props => {
     },
   })
 
+  useEffect(()=>{
+    if(!isOpen && onClose){
+      onClose()
+    }
+  },[isOpen])
+
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      onDismiss={onClose}
       visible={isOpen}>
       <View style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         {children}
