@@ -19,16 +19,17 @@ import { LoadParams } from '@zup-it/beagle-web'
 import { View } from 'react-native'
 import { BeagleLazyInterface } from 'common/models'
 
-
-const BeagleLazy: FC<BeagleLazyInterface> = (props) => {
-  const { path, children, beagleContext } = props
-  
+const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
   useEffect(() => {
     const params: LoadParams = {
       path,
       shouldShowLoading: false,
     }
-    beagleContext && beagleContext.replaceComponent(params)
+    viewContentManager && viewContentManager.getView().fetch(
+      params,
+      viewContentManager.getElementId(),
+      'replaceComponent',
+    )
   }, [])
 
   return (

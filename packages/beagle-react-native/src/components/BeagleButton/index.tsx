@@ -18,27 +18,30 @@ import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { ViewContentManager } from 'common/types'
 import { removeInvalidCssProperties } from '../../components/utils'
+
+function isSubmitButton(contentManager?: ViewContentManager) {
+  if (!contentManager) return false
+  const element = contentManager.getElement()
+  return element.onPress && element.onPress._beagleAction_ === 'beagle:submitForm'
+}
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
   text,
   onPress,
   style,
-  beagleContext,
+  viewContentManager,
   clickAnalyticsEvent,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
-  const element = beagleContext.getElement()
-  const isSubmitButton = (
-    element
-    && element.onPress
-    && element.onPress._beagleAction_ === 'beagle:submitForm'
-  )
+  const isSubmit = isSubmitButton(viewContentManager)
   const beagleAnalytics = beagleService && beagleService.analytics
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
-    return isSubmitButton ? undefined : onPress && onPress()
+
+    return isSubmit ? undefined : onPress && onPress()
   }
 
   const parsedStyles = removeInvalidCssProperties(style ? style : {})

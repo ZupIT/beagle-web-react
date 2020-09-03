@@ -15,17 +15,18 @@
 */
 
 import React, { FC, useContext } from 'react'
-import { ClickEvent } from '@zup-it/beagle-web'
+import { ClickEvent, ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleComponent } from 'common/types'
+import { BeagleButtonInterface } from 'common/models'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
 
-export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
-	text: string,
-  onPress?: () => void,
-  clickAnalyticsEvent?: ClickEvent,
+function isSubmitButton(contentManager?: ViewContentManager) {
+  if (!contentManager) return false
+  const element = contentManager.getElement()
+  return element.onPress && element.onPress._beagleAction_ === 'beagle:submitForm'
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
@@ -33,27 +34,29 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   className,
   onPress,
   style,
-  beagleContext,
+  viewContentManager,
   clickAnalyticsEvent,
+  disabled,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
-  const element = beagleContext.getElement()
-  const isSubmitButton = (
-    element
-    && element.onPress
-    && element.onPress._beagleAction_ === 'beagle:submitForm'
-  )
+  const isSubmit = isSubmitButton(viewContentManager)
   const beagleAnalytics = beagleService && beagleService.analytics
-  const type = isSubmitButton ? 'submit' : 'button'
+  const type = isSubmit ? 'submit' : 'button'
   const handlePress = () => {
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
 
-    return isSubmitButton ? undefined : onPress && onPress()
+    return isSubmit ? undefined : onPress && onPress()
   }
 
   return (
-    <StyledButton style={style} className={className} onClick={handlePress} type={type}>
+    <StyledButton
+      style={style}
+      className={className}
+      onClick={handlePress}
+      type={type}
+      disabled={disabled}
+    >
       {text}
     </StyledButton>
   )
