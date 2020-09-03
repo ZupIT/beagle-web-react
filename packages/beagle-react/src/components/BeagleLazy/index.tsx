@@ -15,20 +15,24 @@
 */
 
 import React, { FC, useEffect } from 'react'
-import { LoadParams } from '@zup-it/beagle-web'
+import { LoadParams, BeagleChildren } from '@zup-it/beagle-web'
 import { BeagleComponent } from 'common/types'
 
 export interface BeagleLazyInterface extends BeagleComponent {
   path: string,
 }
 
-const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, beagleContext }) => {
+const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
   useEffect(() => {
     const params: LoadParams = {
       path,
       shouldShowLoading: false,
     }
-    beagleContext && beagleContext.replaceComponent(params)
+    viewContentManager && viewContentManager.getView().fetch(
+      params,
+      viewContentManager.getElementId(),
+      'replaceComponent',
+    )
   }, [])
 
   return (
@@ -37,5 +41,7 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, beagleContext }) 
     </div>
   )
 }
+
+BeagleChildren({ property: 'initialState' })(BeagleLazy)
 
 export default BeagleLazy

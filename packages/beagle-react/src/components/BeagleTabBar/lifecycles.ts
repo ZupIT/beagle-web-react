@@ -14,9 +14,11 @@
   * limitations under the License.
 */
 
-import styled from 'styled-components'
-
-export const StyledContainer = styled.div`
-	display: flex;
-  flex-direction: column;
-`
+export function transformItems(tabBar: Record<string, any>) {
+  if (!Array.isArray(tabBar.items)) return
+  tabBar.children = tabBar.items.map(item => ({
+    _beagleComponent_: 'beagle:tabitem',
+    id: `${tabBar.id}_${item.title}`,
+    ...item,
+  }))
+}
