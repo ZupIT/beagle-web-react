@@ -22,7 +22,7 @@ import { CSSProperties } from 'styled-components'
 import BeagleLoading from '../../components/BeagleLoading'
 
 let wrapper: any
-const mockStyle: CSSProperties = {
+const mockStyle: React.CSSProperties = {
   height: '100',
   width: '50',
 }

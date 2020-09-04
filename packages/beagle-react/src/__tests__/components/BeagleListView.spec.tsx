@@ -18,13 +18,12 @@
 import * as React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
-import { CSSProperties } from 'styled-components'
 import BeagleListView from '../../components/BeagleListView'
 import { Direction } from '../../components/types'
 
 let wrapper: any
 const directionMock: Direction = 'HORIZONTAL'
-const mockStyle: CSSProperties = {
+const mockStyle: React.CSSProperties = {
   height: '100',
   width: '50',
 }

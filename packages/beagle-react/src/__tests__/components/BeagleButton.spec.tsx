@@ -19,11 +19,10 @@ import * as React from 'react'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow, ShallowWrapper } from 'enzyme'
-import { CSSProperties } from 'styled-components'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleButton from '../../components/BeagleButton'
 
-const mockStyle: CSSProperties = {
+const mockStyle: React.CSSProperties = {
   height: '100',
   width: '50',
 }
