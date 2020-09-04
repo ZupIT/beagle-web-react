@@ -14,11 +14,11 @@
   * limitations under the License.
 */
 
-import { BeagleUIElement } from '@zup-it/beagle-web'
+import { IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
 
-export function transformItems(tabView: Record<string, any>) {
+export function transformItems(tabView: IdentifiableBeagleUIElement) {
   if (!Array.isArray(tabView.children)) return
-  tabView.children.forEach((child: BeagleUIElement) => {
+  tabView.children.forEach((child) => {
     child._beagleComponent_ = 'beagle:tabitem'
   })
 }
