@@ -41,8 +41,6 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
   }
 
   useEffect(() => {
-    // @ts-ignore
-    console.log('=>', JSON.stringify(props.viewContentManager.getView().getTree(), null, 2))
     if (children && Array.isArray(children) && children[0]) {
       const firstChildren = children[0] as BeagleChildren
       tabViewContext.setActiveTab(firstChildren.key)
