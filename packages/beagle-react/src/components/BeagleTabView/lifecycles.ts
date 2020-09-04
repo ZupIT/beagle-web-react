@@ -14,11 +14,11 @@
   * limitations under the License.
 */
 
-export function transformItems(tabBar: Record<string, any>) {
-  if (!Array.isArray(tabBar.items)) return
-  tabBar.children = tabBar.items.map(item => ({
-    _beagleComponent_: 'beagle:tabitem',
-    id: `${tabBar.id}_${item.title}`,
-    ...item,
-  }))
+import { BeagleUIElement } from '@zup-it/beagle-web'
+
+export function transformItems(tabView: Record<string, any>) {
+  if (!Array.isArray(tabView.children)) return
+  tabView.children.forEach((child: BeagleUIElement) => {
+    child._beagleComponent_ = 'beagle:tabitem'
+  })
 }
