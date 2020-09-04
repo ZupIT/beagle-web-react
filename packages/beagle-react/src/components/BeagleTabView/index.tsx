@@ -15,10 +15,12 @@
 */
 
 import React, { FC, useState, useEffect } from 'react'
+import { BeforeViewSnapshot } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
 import { BeagleDefaultComponent } from '../types'
 import { BeagleComponentsProvider } from './context'
 import { StyledTabView } from './styled'
+import { transformItems } from './lifecycles'
 
 export interface BeagleChildren {
   key: string,
@@ -39,6 +41,8 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
   }
 
   useEffect(() => {
+    // @ts-ignore
+    console.log('=>', JSON.stringify(props.viewContentManager.getView().getTree(), null, 2))
     if (children && Array.isArray(children) && children[0]) {
       const firstChildren = children[0] as BeagleChildren
       tabViewContext.setActiveTab(firstChildren.key)
@@ -56,4 +60,7 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
   )
 }
 
-export default withTheme(BeagleTabView)
+const TabViewWithTheme = withTheme(BeagleTabView)
+BeforeViewSnapshot(transformItems)(TabViewWithTheme)
+
+export default TabViewWithTheme
