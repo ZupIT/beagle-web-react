@@ -20,8 +20,8 @@ import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import { CSSProperties } from 'styled-components'
-import BeagleContainer from '../../components/BeagleContainer'
 import { ViewContentManager } from '@zup-it/beagle-web'
+import BeagleContainer from '../../components/BeagleContainer'
 
 let beagleContextMock: any
 let wrapper: any
