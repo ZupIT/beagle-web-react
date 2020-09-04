@@ -15,11 +15,9 @@
 */
 
 import React, { FC } from 'react'
-import { BeforeViewSnapshot } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { ImagePath } from '../BeagleImage'
-import { transformItems } from './lifecycles'
 import {
   StyledTabBar,
   StyledBeagleTabItem,
@@ -64,7 +62,5 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({ onTabSelection, currentTab, i
     </StyledTabBar>
   )
 }
-
-BeforeViewSnapshot(transformItems)(BeagleTabBar)
 
 export default withTheme(BeagleTabBar)

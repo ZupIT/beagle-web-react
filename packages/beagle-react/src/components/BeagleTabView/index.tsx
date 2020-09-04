@@ -15,10 +15,12 @@
 */
 
 import React, { FC, useState, useEffect } from 'react'
+import { logger, BeforeViewSnapshot } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
 import { BeagleDefaultComponent } from '../types'
 import { BeagleComponentsProvider } from './context'
 import { StyledTabView } from './styled'
+import { transformItems } from './lifecycles'
 
 export interface BeagleChildren {
   key: string,
@@ -43,7 +45,7 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
       const firstChildren = children[0] as BeagleChildren
       tabViewContext.setActiveTab(firstChildren.key)
     }
-    console.warn(`Tabview is deprecated. This will be removed in a future version.
+    logger.warn(`Tabview is deprecated. This will be removed in a future version.
     Please consider replacing this component for a tabBar with a pageview.`)
   }, [])
 
@@ -56,4 +58,7 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
   )
 }
 
-export default withTheme(BeagleTabView)
+const TabViewWithTheme = withTheme(BeagleTabView)
+BeforeViewSnapshot(transformItems)(TabViewWithTheme)
+
+export default TabViewWithTheme
