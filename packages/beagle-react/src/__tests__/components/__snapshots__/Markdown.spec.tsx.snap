@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot Markdown 1`] = `
+<ComponentWithTheme
+  text="#Beagle Test"
+>
+  <Markdown
+    className=""
+    text="#Beagle Test"
+  >
+    <styled.div
+      className=""
+    >
+      <div
+        className="sc-AxjAm dHeKtw"
+      />
+    </styled.div>
+  </Markdown>
+</ComponentWithTheme>
+`;

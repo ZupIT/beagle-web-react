@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot input 1`] = `
+<TextArea
+  className="test-class"
+  disabled={false}
+  name="Testing"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onFocus={[MockFunction]}
+  readonly={false}
+  value="Testing"
+/>
+`;

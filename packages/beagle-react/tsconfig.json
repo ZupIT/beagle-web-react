@@ -4,6 +4,7 @@
     "jsx": "react",
     "outDir": "./dist/",
     "baseUrl": "src",
+    "esModuleInterop": true,
     "paths": {
       "common/*": ["../../common/*"]
     }
