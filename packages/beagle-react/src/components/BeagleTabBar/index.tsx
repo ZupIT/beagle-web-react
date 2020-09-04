@@ -18,7 +18,6 @@ import React, { FC } from 'react'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { ImagePath } from '../BeagleImage'
-
 import {
   StyledTabBar,
   StyledBeagleTabItem,
