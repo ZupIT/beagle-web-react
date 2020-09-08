@@ -14,10 +14,12 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { ImageURISource, ImageResizeMode, StyleSheet, Image } from 'react-native'
+import React, { FC, useContext } from 'react'
+import { ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
+import BeagleServiceContext from 'common/provider'
 import { removeInvalidCssProperties } from '../../components/utils'
+
 
 const modeMap: Record<string, ImageResizeMode> = {
   FIT_XY: 'stretch',
@@ -28,6 +30,7 @@ const modeMap: Record<string, ImageResizeMode> = {
 
 const BeagleImage: FC<BeagleImageInterface> = props => {
   const { path, mode, accessibility, style } = props
+  const beagleService = useContext(BeagleServiceContext)
   const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
   const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
@@ -35,17 +38,21 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
       ...parsedStyles,
     },
     defaultStyles: {
-      flex: 1,
+      flex:  style && style.flex ? Number(style.flex) : 1,
       resizeMode: imgResize,
       height: parsedStyles.height || '100%',
       width: parsedStyles.width || '100%',
     },
   })
 
-  //TO DO: Add support to dynamic local images - mobileID
+  const localAssetsPath = beagleService?.getConfig().localAssetsPath
+  let imgSource: ImageSourcePropType = {}
 
-  const imgSource: ImageURISource = {
-    uri: path && path.url,
+  if (path._beagleImagePath_ === 'local' && path.mobileId) {
+    if (localAssetsPath && localAssetsPath[path.mobileId])
+      imgSource = localAssetsPath[path.mobileId]
+  } else {
+    imgSource = { uri: path && path.url }
   }
 
   return (

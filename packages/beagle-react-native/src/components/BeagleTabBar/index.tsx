@@ -47,6 +47,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
       alignItems: 'center',
     },
     tab: {
+      flex: 1,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
@@ -68,7 +69,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
             <View style={styleSheet.tab}>
               {item.icon && <BeagleImage
                 path={item.icon}
-                style={{ height: '40', width: '40' }}>
+                style={{ height: '20', width: '20' }}>
               </BeagleImage>}
               <Text>{item.title}</Text>
               {index === currentTab && <View style={styleSheet.selectedTab}></View>}

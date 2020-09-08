@@ -63,16 +63,12 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       maxHeight: 60,
       margin: 5,
     },
-    touchable:{
-      flex:1,
-      height:'100%',
-    },
   })
   return (
-    <TouchableOpacity onPress={handlePress} style={styleSheet.touchable}>
-      <View style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
-        <Text>{text}</Text>
-      </View>
+    <TouchableOpacity
+      onPress={handlePress}
+      style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
+      <Text>{text}</Text>
     </TouchableOpacity>
   )
 }

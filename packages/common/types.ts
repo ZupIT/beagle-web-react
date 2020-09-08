@@ -33,6 +33,7 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
   } & {
     [K in keyof Schema]: FC<Schema[K]>
   },
+  localAssetsPath?: Record<string, number>,
 }
 
 export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreService {
