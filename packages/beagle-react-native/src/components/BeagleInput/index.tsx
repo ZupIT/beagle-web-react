@@ -23,6 +23,7 @@ import {
   TextInputFocusEventData,
   TextInput,
   KeyboardType,
+  KeyboardAvoidingView,
 } from 'react-native'
 import { removeInvalidCssProperties } from '../../components/utils'
 
@@ -92,14 +93,14 @@ const BeagleTextInput: FC<InputInterface> = ({
   })
 
   return (
-    <TextInput
-      {...inputProps}
-      style={{
-        ...styleSheet.defaultStyles,
-        ...styleSheet.fromBffStyles,
-        ...styleSheet.hidden,
-      }}>
-    </TextInput>
+      <TextInput
+        {...inputProps}
+        style={{
+          ...styleSheet.defaultStyles,
+          ...styleSheet.fromBffStyles,
+          ...styleSheet.hidden,
+        }}>
+      </TextInput>
   )
 }
 

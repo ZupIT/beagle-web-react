@@ -20,11 +20,18 @@ import { BeagleButtonInterface } from 'common/models'
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { ViewContentManager } from 'common/types'
 import { removeInvalidCssProperties } from '../../components/utils'
+import { isArray } from 'lodash'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
   const element = contentManager.getElement()
-  return element.onPress && element.onPress._beagleAction_ === 'beagle:submitForm'
+  let isSubmit: boolean = false
+  if (element.onPress) {
+    isSubmit = isArray(element.onPress) ?
+      element.onPress.filter(value => value._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
+      element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
+  }
+  return isSubmit
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
@@ -41,7 +48,11 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
 
-    return isSubmit ? undefined : onPress && onPress()
+    return isSubmit ? submitForm() : onPress && onPress()
+  }
+
+  function submitForm(){
+    //TO DO: handle form submit
   }
 
   const parsedStyles = removeInvalidCssProperties(style ? style : {})
@@ -65,11 +76,14 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     },
   })
   return (
-    <TouchableOpacity
-      onPress={handlePress}
-      style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
-      <Text>{text}</Text>
-    </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      <TouchableOpacity
+        onPress={handlePress}
+        style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
+        <Text>{text}</Text>
+      </TouchableOpacity>
+    </View>
+
   )
 }
 

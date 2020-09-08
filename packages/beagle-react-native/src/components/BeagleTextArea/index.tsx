@@ -15,12 +15,16 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleTextInputInterface } from 'common/models'
+import { BeagleTextAreaInterface } from 'common/models'
 import BeagleTextInput from '../BeagleInput'
+import { Text } from 'react-native'
 
-const BeagleTextArea: FC<BeagleTextInputInterface> = props => (
-  <BeagleTextInput {...props} isMultiline>
-  </BeagleTextInput>
+const BeagleTextArea: FC<BeagleTextAreaInterface> = props => (
+  <>
+    {props.label && <Text>{props.label}</Text>}
+    <BeagleTextInput {...props} isMultiline>
+    </BeagleTextInput>
+  </>
 )
 
 export default BeagleTextArea

@@ -14,22 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
-import { FormInterface } from 'common/models'
-import { View } from 'react-native'
-import { Subject } from 'rxjs'
+import { BeagleDefaultComponent } from "./types";
 
-
-export const subject = new Subject()
-
-const BeagleSimpleForm: FC<FormInterface> = props => {
-  const { children, style, onSubmit } = props
-
-  return (
-    <View style={{ flex: 1 }}>
-      {children}
-    </View>
-  )
+export interface FormInterface extends BeagleDefaultComponent {
+  onSubmit: () => void,
 }
-
-export default BeagleSimpleForm
