@@ -16,6 +16,7 @@
 
 import React, { FC, useState } from 'react'
 import { InputHandler, InputInterface } from 'common/models'
+import { evaluateStringBoolean } from 'common/utils/primitive'
 import {
   TextInputProps,
   NativeSyntheticEvent,
@@ -47,7 +48,8 @@ const BeagleTextInput: FC<InputInterface> = ({
 }) => {
 
   const [value, setValue] = useState(initialValue)
-  console.log(disabled, readOnly, !disabled && !readOnly)
+  const isEditable = !evaluateStringBoolean(disabled as string)
+      && !evaluateStringBoolean(readOnly as string)
 
   const handleEvent = (handler?: InputHandler) => (text: string) => {
     setValue(text)
@@ -66,7 +68,7 @@ const BeagleTextInput: FC<InputInterface> = ({
     onChangeText: handleEvent(onChange),
     onFocus: handleOnFocus,
     onBlur: handleOnBlur,
-    editable: !disabled && !readOnly,
+    editable: isEditable,
     multiline: !!isMultiline,
     secureTextEntry: type === 'PASSWORD',
     keyboardType: keyboardTypes[type] || 'default',

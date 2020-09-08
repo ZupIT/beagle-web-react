@@ -14,16 +14,5 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleWebViewInterface } from 'common/models'
-import withTheme from '../utils/withTheme'
-import { StyledWebView } from './styled'
-
-const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = ({
-  url, className, style,
-}) => (
-  <StyledWebView className={className} style={style} src={url}>
-  </StyledWebView>
-)
-
-export default withTheme(BeagleWebView)
+export const evaluateStringBoolean = (bool: string) =>
+  bool?.toString().toLowerCase() == 'true' ? true : false

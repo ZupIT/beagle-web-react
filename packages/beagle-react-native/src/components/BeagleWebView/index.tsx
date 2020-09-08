@@ -15,15 +15,15 @@
 */
 
 import React, { FC } from 'react'
+import { WebView } from 'react-native-webview'
 import { BeagleWebViewInterface } from 'common/models'
-import withTheme from '../utils/withTheme'
-import { StyledWebView } from './styled'
+import { StyleProp, ViewStyle } from 'react-native'
 
-const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = ({
-  url, className, style,
-}) => (
-  <StyledWebView className={className} style={style} src={url}>
-  </StyledWebView>
+const BeagleWebView: FC<BeagleWebViewInterface<StyleProp<ViewStyle>>> = ({ url, style }) => (
+  <WebView
+    source={{ uri: url }}
+    style={style}
+  />
 )
 
-export default withTheme(BeagleWebView)
+export default BeagleWebView

@@ -30,6 +30,7 @@ import BeagleTabBar from './BeagleTabBar'
 import BeaglePageView from './BeaglePageView'
 import BeaglePageIndicator from './PageIndicator'
 import BeagleLazy from './BeagleLazy'
+import BeagleWebView from './BeagleWebView'
 
 
 
@@ -52,6 +53,7 @@ const beagleDefaultComponents = {
   'beagle:pageview':BeaglePageView,
   'beagle:pageIndicator': BeaglePageIndicator,
   'beagle:lazycomponent':BeagleLazy,
+  'beagle:webview': BeagleWebView,
 }
 
 const webSpecificComponents = {
