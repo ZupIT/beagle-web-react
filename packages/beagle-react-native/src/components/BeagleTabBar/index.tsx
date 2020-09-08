@@ -47,6 +47,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
       alignItems: 'center',
     },
     tab: {
+      flex: 1,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',

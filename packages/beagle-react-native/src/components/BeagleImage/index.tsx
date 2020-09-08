@@ -17,8 +17,8 @@
 import React, { FC, useContext } from 'react'
 import { ImageURISource, ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
-import BeagleServiceContext from 'common/provider'
 import { removeInvalidCssProperties } from '../../components/utils'
+import BeagleServiceContext from 'common/provider'
 
 const modeMap: Record<string, ImageResizeMode> = {
   FIT_XY: 'stretch',
@@ -37,7 +37,7 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
       ...parsedStyles,
     },
     defaultStyles: {
-      flex: 1,
+      flex:  style && style.flex ? Number(style.flex) : 1,
       resizeMode: imgResize,
       height: parsedStyles.height || '100%',
       width: parsedStyles.width || '100%',
