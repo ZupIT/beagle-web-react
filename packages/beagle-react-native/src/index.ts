@@ -30,6 +30,7 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Sche
     },
     // @ts-ignore
     customStorage: config.customStorage || AsyncStorage,
+    localAssetsPath: config.localAssetsPath || {},
   })
 }
 

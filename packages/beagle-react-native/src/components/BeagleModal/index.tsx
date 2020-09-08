@@ -45,10 +45,10 @@ const BeagleModal: FC<BeagleModalInterface> = props => {
   })
 
   useEffect(()=>{
-    if(!isOpen && onClose){
+    if (!isOpen && onClose){
       onClose()
     }
-  },[isOpen])
+  }, [isOpen])
 
   return (
     <Modal

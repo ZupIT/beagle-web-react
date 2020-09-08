@@ -93,31 +93,32 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
     <BeaglePageIndicator {...pageIndicator} />
   ) : null
 
-  const backSlide = () => {
-    if (active > 0) updatePage(active - 1)
-  }
+  //TO DO: Instead of arrows, add support to swiping gesture
 
-  const nextSlide = () => {
-    if (active < numberChildren - 1)
-      updatePage(active + 1)
-  }
+  // const backSlide = () => {
+  //   if (active > 0) updatePage(active - 1)
+  // }
 
-  const rightArrow = showArrow ? (
-    <TouchableOpacity onPress={nextSlide}>
-      <Text>Next</Text>
-    </TouchableOpacity>
-  ) : null
+  // const nextSlide = () => {
+  //   if (active < numberChildren - 1)
+  //     updatePage(active + 1)
+  // }
 
-  const leftArrow = showArrow ? (
-    <TouchableOpacity onPress={backSlide} >
-      <Text>Back</Text>
-    </TouchableOpacity>
-  ) : null
+  // const rightArrow = showArrow ? (
+  //   <TouchableOpacity onPress={nextSlide}>
+  //     <Text>Next</Text>
+  //   </TouchableOpacity>
+  // ) : null
+
+  // const leftArrow = showArrow ? (
+  //   <TouchableOpacity onPress={backSlide} >
+  //     <Text>Back</Text>
+  //   </TouchableOpacity>
+  // ) : null
 
   return (
     <>
       <View style={[styleSheet.defaultStyles, styleSheet.fromBffStyles]}>
-        {leftArrow}
         {
           Children.map(children, (childId, index) => {
             if (
@@ -137,7 +138,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
             }
           })
         }
-        {rightArrow}
       </View>
       {bullets}
     </>
