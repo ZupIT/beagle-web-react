@@ -15,10 +15,11 @@
 */
 
 import React, { FC, useContext } from 'react'
-import { ImageURISource, ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
+import { ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
-import { removeInvalidCssProperties } from '../../components/utils'
 import BeagleServiceContext from 'common/provider'
+import { removeInvalidCssProperties } from '../../components/utils'
+
 
 const modeMap: Record<string, ImageResizeMode> = {
   FIT_XY: 'stretch',
