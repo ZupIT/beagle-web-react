@@ -19,13 +19,13 @@ import { BeagleDefaultComponent } from 'common/models'
 import { View } from 'react-native'
 
 
-const BeagleText: FC<BeagleDefaultComponent> = props => {
+const BeagleSimpleForm: FC<BeagleDefaultComponent> = props => {
   const { children, style } = props
   return (
-    <View>
+    <View style={style}>
       {children}
     </View>
   )
 }
 
-export default BeagleText
+export default BeagleSimpleForm

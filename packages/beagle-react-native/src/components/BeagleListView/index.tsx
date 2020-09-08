@@ -23,10 +23,10 @@ const BeagleListView: FC<BeagleListViewInterface> = props => {
   const { children, direction, style } = props
 
   const horizontal = direction && direction === 'HORIZONTAL'
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

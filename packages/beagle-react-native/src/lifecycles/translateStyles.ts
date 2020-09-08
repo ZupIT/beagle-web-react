@@ -14,11 +14,14 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleTextInputInterface } from 'common/models'
-import BeagleTextInput from '../BeagleInput'
+import { BeagleUIElement } from '@zup-it/beagle-web'
+import { removeInvalidCssProperties } from 'components/utils'
 
-const BeagleTextArea: FC<BeagleTextInputInterface> = props => 
-  <BeagleTextInput {...props} isMultiline />
+export const translateStyles = (uiTree: BeagleUIElement) => {
+  if (uiTree.style) {
+    const rnStyles = removeInvalidCssProperties(uiTree.style)
+    uiTree.style = rnStyles
+  }
 
-export default BeagleTextArea
+  if (uiTree.children) uiTree.children.forEach(translateStyles)
+}

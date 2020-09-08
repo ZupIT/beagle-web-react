@@ -23,7 +23,7 @@ import BeagleImage from '../../components/BeagleImage'
 
 const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
   const { style, onTabSelection, currentTab, items } = props
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const changeSelectedTab = (index: number) => {
     if (!onTabSelection) return
@@ -32,7 +32,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

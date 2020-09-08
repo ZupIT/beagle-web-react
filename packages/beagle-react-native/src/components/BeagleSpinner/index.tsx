@@ -18,8 +18,6 @@ import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
 import BeagleLoading from '../../components/BeagleLoading'
 
-const BeagleSpinner: FC<BeagleDefaultComponent> = () => (
-  <BeagleLoading></BeagleLoading>
-)
+const BeagleSpinner: FC<BeagleDefaultComponent> = ({ style }) => <BeagleLoading style={style} />
 
 export default BeagleSpinner

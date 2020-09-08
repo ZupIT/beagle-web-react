@@ -24,10 +24,10 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)
   const { children, style, onInit, screenAnalyticsEvent } = props
   const beagleAnalytics = beagleService && beagleService.analytics
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles:{
       flex: style && style.flex ? Number(style.flex) : 1,

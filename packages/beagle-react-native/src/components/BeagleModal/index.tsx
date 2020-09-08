@@ -21,10 +21,10 @@ import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleModal: FC<BeagleModalInterface> = props => {
   const { onClose, isOpen, style, children } = props
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: 3,

@@ -32,16 +32,16 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   const { path, mode, accessibility, style } = props
   const beagleService = useContext(BeagleServiceContext)
   const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex:  style && style.flex ? Number(style.flex) : 1,
       resizeMode: imgResize,
-      height: parsedStyles.height || '100%',
-      width: parsedStyles.width || '100%',
+      height: style.height || '100%',
+      width: style.width || '100%',
     },
   })
 
@@ -51,14 +51,17 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   if (path._beagleImagePath_ === 'local' && path.mobileId) {
     if (localAssetsPath && localAssetsPath[path.mobileId])
       imgSource = localAssetsPath[path.mobileId]
+    if (!imgSource) throw new Error(`Beagle could not find image source ${path.mobileId}`)
   } else {
     imgSource = { uri: path && path.url }
   }
 
   return (
-    <Image source={imgSource}
+    <Image
+      source={imgSource}
       style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}
-      {...accessibility} />
+      {...accessibility}
+    />
   )
 }
 
