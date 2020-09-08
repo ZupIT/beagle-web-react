@@ -41,8 +41,8 @@ const BeagleInput: FC<InputInterface> = ({
     <input
       value={value}
       placeholder={placeholder}
-      disabled={disabled}
-      readOnly={readOnly}
+      disabled={!!disabled}
+      readOnly={!!readOnly}
       type={type}
       hidden={hidden}
       onChange={handleEvent(onChange)}

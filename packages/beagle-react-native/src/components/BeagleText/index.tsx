@@ -28,13 +28,13 @@ const alignMap: Record<string, MobileAlignment> = {
 
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, textColor, alignment, style } = props
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const parsedAlignment = alignment && alignment != 'INHERIT' ?
     alignMap[alignment.toLowerCase()] :
     'auto'
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

@@ -31,6 +31,7 @@ import BeaglePageView from './BeaglePageView'
 import BeaglePageIndicator from './PageIndicator'
 import BeagleLazy from './BeagleLazy'
 import BeagleSimpleForm from './BeagleSimpleForm'
+import BeagleWebView from './BeagleWebView'
 
 
 
@@ -45,14 +46,15 @@ const beagleDefaultComponents = {
   'beagle:image': BeagleImage,
   'beagle:button': BeagleButton,
   'beagle:listview': BeagleListView,
-  'beagle:textInput':BeagleTextInput,
+  'beagle:textInput': BeagleTextInput,
   'beagle:touchable': BeagleTouchable,
-  'beagle:spinner':BeagleSpinner,
-  'beagle:tabbar':BeagleTabBar,
-  'beagle:pageview':BeaglePageView,
+  'beagle:spinner': BeagleSpinner,
+  'beagle:tabbar': BeagleTabBar,
+  'beagle:pageview': BeaglePageView,
   'beagle:pageIndicator': BeaglePageIndicator,
-  'beagle:lazycomponent':BeagleLazy,
-  'beagle:simpleform':BeagleSimpleForm
+  'beagle:lazycomponent': BeagleLazy,
+  'beagle:simpleform': BeagleSimpleForm,
+  'beagle:webview': BeagleWebView
 }
 
 const webSpecificComponents = {

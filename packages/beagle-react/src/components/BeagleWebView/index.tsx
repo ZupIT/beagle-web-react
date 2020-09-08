@@ -15,21 +15,15 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleWebViewInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledWebView } from './styled'
 
-export interface BeagleWebViewInterface extends BeagleDefaultComponent {
-	url: string,
-}
-
-const BeagleWebView: FC<BeagleWebViewInterface> = props => {
-  const { url, className, style } = props
-
-  return (
-    <StyledWebView className={className} style={style} src={url}>
-    </StyledWebView>
-  )
-}
+const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = ({
+  url, className, style,
+}) => (
+  <StyledWebView className={className} style={style} src={url}>
+  </StyledWebView>
+)
 
 export default withTheme(BeagleWebView)

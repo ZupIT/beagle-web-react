@@ -21,11 +21,11 @@ import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleLoading: FC<BeagleDefaultComponent> = props => {
   const { style } = props
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

@@ -35,11 +35,11 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
     return onPress && onPress()
   }
 
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

@@ -55,11 +55,11 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     //TO DO: handle form submit
   }
 
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,

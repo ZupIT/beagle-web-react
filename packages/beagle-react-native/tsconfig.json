@@ -5,7 +5,9 @@
     "outDir": "./dist/",
     "baseUrl": "src",
     "paths": {
-      "common/*": ["../../common/*"]
+      "common/*": ["../../common/*"],
+      "lifecycles/*": ["./lifecycles/*"],
+      "components/*": ["./components/*"]
     }
   },
   "include": ["src/**/*"],

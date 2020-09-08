@@ -14,8 +14,9 @@
   * limitations under the License.
 */
 export type Direction =  'VERTICAL' | 'HORIZONTAL'
+import { StyleProp } from 'react-native'
 
-export interface BeagleDefaultComponent {
-  style?: React.CSSProperties,
+export interface BeagleDefaultComponent<T = React.CSSProperties | StyleProp<any>> {
+  style?: T,
   className?: string,
 }

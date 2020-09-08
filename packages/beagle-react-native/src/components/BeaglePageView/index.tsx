@@ -35,10 +35,10 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
   const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
 
-  const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
-      ...parsedStyles,
+      ...style,
     },
     defaultStyles: {
       flex: style && style.flex ? Number(style.flex) : 1,
