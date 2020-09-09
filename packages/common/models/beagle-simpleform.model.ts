@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { BeagleDefaultComponent } from "./types";
+import { BeagleDefaultComponent } from './types'
 
 export interface FormInterface extends BeagleDefaultComponent {
   onSubmit: () => void,

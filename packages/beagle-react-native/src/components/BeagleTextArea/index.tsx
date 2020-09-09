@@ -16,8 +16,8 @@
 
 import React, { FC } from 'react'
 import { BeagleTextAreaInterface } from 'common/models'
-import BeagleTextInput from '../BeagleInput'
 import { Text } from 'react-native'
+import BeagleTextInput from '../BeagleInput'
 
 const BeagleTextArea: FC<BeagleTextAreaInterface> = props => (
   <>

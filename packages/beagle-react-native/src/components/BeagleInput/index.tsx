@@ -91,14 +91,14 @@ const BeagleTextInput: FC<InputInterface> = ({
   })
 
   return (
-      <TextInput
-        {...inputProps}
-        style={{
-          ...styleSheet.defaultStyles,
-          ...styleSheet.fromBffStyles,
-          ...styleSheet.hidden,
-        }}>
-      </TextInput>
+    <TextInput
+      {...inputProps}
+      style={{
+        ...styleSheet.defaultStyles,
+        ...styleSheet.fromBffStyles,
+        ...styleSheet.hidden,
+      }}>
+    </TextInput>
   )
 }
 

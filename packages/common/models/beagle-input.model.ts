@@ -21,5 +21,5 @@ export interface InputInterface extends BeagleTextInputInterface {
 }
 
 export interface BeagleTextAreaInterface extends BeagleTextInputInterface {
-  label?: string
+  label?: string,
 }

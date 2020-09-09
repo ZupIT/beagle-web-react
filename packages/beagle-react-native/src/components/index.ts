@@ -54,7 +54,7 @@ const beagleDefaultComponents = {
   'beagle:pageIndicator': BeaglePageIndicator,
   'beagle:lazycomponent': BeagleLazy,
   'beagle:simpleform': BeagleSimpleForm,
-  'beagle:webview': BeagleWebView
+  'beagle:webview': BeagleWebView,
 }
 
 const webSpecificComponents = {

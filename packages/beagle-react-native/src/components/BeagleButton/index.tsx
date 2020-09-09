@@ -24,7 +24,7 @@ import { isArray } from 'lodash'
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
   const element = contentManager.getElement()
-  let isSubmit: boolean = false
+  let isSubmit = false
   if (element.onPress) {
     isSubmit = isArray(element.onPress) ?
       element.onPress.filter(value => value._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
