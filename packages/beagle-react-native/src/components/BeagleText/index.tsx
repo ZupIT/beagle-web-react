@@ -36,7 +36,6 @@ const BeagleText: FC<BeagleTextInterface> = props => {
       ...style,
     },
     defaultStyles: {
-      flex: style && style.flex ? Number(style.flex) : 1,
       color: textColor || '#000000',
       textAlign: parsedAlignment,
     },
