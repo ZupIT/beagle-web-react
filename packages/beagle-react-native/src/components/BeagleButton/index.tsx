@@ -27,10 +27,15 @@ function isSubmitButton(contentManager?: ViewContentManager) {
   let isSubmit = false
   if (element.onPress) {
     isSubmit = isArray(element.onPress) ?
-      element.onPress.filter(value => value._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
+      element.onPress.filter(
+        value => value._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
       element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
   }
   return isSubmit
+}
+
+function submitForm(){
+  //TO DO: handle form submit
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
@@ -50,9 +55,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     return isSubmit ? submitForm() : onPress && onPress()
   }
 
-  function submitForm(){
-    //TO DO: handle form submit
-  }
+ 
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
