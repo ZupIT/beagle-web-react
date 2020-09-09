@@ -18,6 +18,7 @@ import React, { FC, useContext } from 'react'
 import { ClickEvent, ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleComponent } from 'common/types'
+import { isArray } from 'lodash'
 import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
@@ -32,7 +33,14 @@ export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleCom
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
   const element = contentManager.getElement()
-  return element.onPress && element.onPress._beagleAction_ === 'beagle:submitForm'
+  let isSubmit = false
+  if (element.onPress){
+    isSubmit = isArray(element.onPress) ?
+      element.onPress.filter(
+        el => el._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
+      element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
+  }
+  return isSubmit
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
