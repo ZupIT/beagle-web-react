@@ -17,13 +17,11 @@
 import React, { FC } from 'react'
 import { BeagleListViewInterface } from 'common/models'
 import { ScrollView, StyleSheet } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleListView: FC<BeagleListViewInterface> = props => {
   const { children, direction, style } = props
 
   const horizontal = direction && direction === 'HORIZONTAL'
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,

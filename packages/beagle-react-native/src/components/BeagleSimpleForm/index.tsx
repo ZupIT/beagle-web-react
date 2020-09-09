@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { FormInterface } from 'common/models'
 import { View } from 'react-native'
 import { Subject } from 'rxjs'

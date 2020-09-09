@@ -17,11 +17,9 @@
 import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleLoading: FC<BeagleDefaultComponent> = props => {
   const { style } = props
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   
   const styleSheet = StyleSheet.create({
     fromBffStyles: {

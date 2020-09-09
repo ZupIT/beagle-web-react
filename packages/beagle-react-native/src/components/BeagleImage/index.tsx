@@ -18,7 +18,6 @@ import React, { FC, useContext } from 'react'
 import { ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
 import BeagleServiceContext from 'common/provider'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 
 const modeMap: Record<string, ImageResizeMode> = {
@@ -32,7 +31,7 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   const { path, mode, accessibility, style } = props
   const beagleService = useContext(BeagleServiceContext)
   const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
+  
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,
@@ -40,8 +39,8 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
     defaultStyles: {
       flex:  style && style.flex ? Number(style.flex) : 1,
       resizeMode: imgResize,
-      height: style.height || '100%',
-      width: style.width || '100%',
+      height: style && style.height || '100%',
+      width: style && style.width || '100%',
     },
   })
 

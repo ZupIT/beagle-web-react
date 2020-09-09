@@ -18,7 +18,6 @@ import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleTouchableInterface } from 'common/models'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
@@ -34,8 +33,6 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
     return onPress && onPress()
   }
-
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {

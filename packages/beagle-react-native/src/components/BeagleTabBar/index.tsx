@@ -17,13 +17,11 @@
 import React, { FC } from 'react'
 import { BeagleTabBarInterface, ItemTitle } from 'common/models'
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 import BeagleImage from '../../components/BeagleImage'
 
 
 const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
   const { style, onTabSelection, currentTab, items } = props
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const changeSelectedTab = (index: number) => {
     if (!onTabSelection) return
@@ -69,7 +67,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
             <View style={styleSheet.tab}>
               {item.icon && <BeagleImage
                 path={item.icon}
-                style={{ height: '20', width: '20' }}>
+                style={{ height: 20, width: 20 }}>
               </BeagleImage>}
               <Text>{item.title}</Text>
               {index === currentTab && <View style={styleSheet.selectedTab}></View>}

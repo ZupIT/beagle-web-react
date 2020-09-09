@@ -19,7 +19,6 @@ import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { ViewContentManager } from 'common/types'
-import { removeInvalidCssProperties } from '../../components/utils'
 import { isArray } from 'lodash'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
@@ -55,8 +54,6 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     //TO DO: handle form submit
   }
 
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
-
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,
@@ -83,7 +80,6 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
         <Text>{text}</Text>
       </TouchableOpacity>
     </View>
-
   )
 }
 

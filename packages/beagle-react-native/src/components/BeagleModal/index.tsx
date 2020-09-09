@@ -17,11 +17,9 @@
 import React, { FC, useEffect } from 'react'
 import { BeagleModalInterface } from 'common/models'
 import { StyleSheet, Modal, View } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleModal: FC<BeagleModalInterface> = props => {
   const { onClose, isOpen, style, children } = props
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,

@@ -19,8 +19,7 @@ import React, {
   cloneElement, Children, isValidElement, ReactNode, useEffect,
 } from 'react'
 import { BeaglePageViewInterface } from 'common/models'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
+import { View, StyleSheet } from 'react-native'
 import BeaglePageIndicator from '../../components/PageIndicator'
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
@@ -35,7 +34,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
   const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
 
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,

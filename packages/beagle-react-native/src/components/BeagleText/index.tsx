@@ -17,7 +17,6 @@
 import React, { FC } from 'react'
 import { BeagleTextInterface, MobileAlignment } from 'common/models'
 import { Text, StyleSheet } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const alignMap: Record<string, MobileAlignment> = {
   auto: 'auto',
@@ -28,7 +27,7 @@ const alignMap: Record<string, MobileAlignment> = {
 
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, textColor, alignment, style } = props
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
+
   const parsedAlignment = alignment && alignment != 'INHERIT' ?
     alignMap[alignment.toLowerCase()] :
     'auto'

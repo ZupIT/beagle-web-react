@@ -24,9 +24,7 @@ import {
   TextInputFocusEventData,
   TextInput,
   KeyboardType,
-  KeyboardAvoidingView,
 } from 'react-native'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const keyboardTypes: Record<string, KeyboardType> = {
   NUMBER: 'numeric',
@@ -74,8 +72,6 @@ const BeagleTextInput: FC<InputInterface> = ({
     secureTextEntry: type === 'PASSWORD',
     keyboardType: keyboardTypes[type] || 'default',
   }
-
-  // const parsedStyles = removeInvalidCssProperties(style ? style : {})
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
