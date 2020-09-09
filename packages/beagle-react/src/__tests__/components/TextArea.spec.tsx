@@ -37,7 +37,7 @@ beforeAll(() => {
   wrapper = shallow(<TextArea {...beagleTextAreaMockProps} />)
 })
 
-test('Beagle snapshot input', () => {
+test('Beagle snapshot text area', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
