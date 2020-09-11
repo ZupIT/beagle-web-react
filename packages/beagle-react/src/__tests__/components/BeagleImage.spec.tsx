@@ -15,7 +15,7 @@
 */
 
 // Link.react.test.js
-import * as React from 'react'
+import React from 'react'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'

@@ -15,7 +15,7 @@
 */
 
 // Link.react.test.js
-import * as React from 'react'
+import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow, mount } from 'enzyme'
 import Form from '../../components/BeagleSimpleForm'
