@@ -49,6 +49,10 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   })
 
   useEffect(() => {
+    onInit && onInit()
+  }, [])
+
+  useEffect(() => {
     if (!Array.isArray(dataSource)) return
 
     if (!viewContentManager) {
@@ -72,7 +76,7 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
           component.__suffix__ = `${suffix}:${iterationKey}`
         }
       })
-      
+
       return templateTree
     })
 

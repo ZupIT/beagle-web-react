@@ -34,7 +34,7 @@ function isSubmitButton(contentManager?: ViewContentManager) {
   return isSubmit
 }
 
-function submitForm(){
+function submitForm() {
   //TO DO: handle form submit
 }
 
@@ -44,6 +44,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
+  disabled
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
@@ -55,7 +56,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     return isSubmit ? submitForm() : onPress && onPress()
   }
 
- 
+
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
@@ -78,6 +79,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity
+        disabled={disabled}
         onPress={handlePress}
         style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
         <Text>{text}</Text>
