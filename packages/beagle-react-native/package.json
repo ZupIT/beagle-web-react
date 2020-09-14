@@ -25,6 +25,7 @@
     "@zup-it/beagle-web": "^1.2.0",
     "lodash": "^4.17.15",
     "react-native": "^0.63.2",
+    "react-native-swiper": "^1.6.0",
     "react-native-webview": "^10.8.3"
   },
   "peerDependencies": {
