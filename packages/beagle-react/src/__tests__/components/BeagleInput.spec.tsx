@@ -18,10 +18,11 @@
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
-import BeagleInput, { TextInputInterface } from '../../components/BeagleInput'
+import BeagleInput from '../../components/BeagleInput'
+import { BeagleTextInputInterface } from 'common/models'
 
 let wrapper: any
-const beagleInputPropsMock: TextInputInterface = {
+const beagleInputPropsMock: BeagleTextInputInterface = {
   value: 'Testing',
   placeholder: 'Testing',
   disabled: false,
