@@ -32,6 +32,7 @@ import BeaglePageIndicator from './PageIndicator'
 import BeagleLazy from './BeagleLazy'
 import BeagleSimpleForm from './BeagleSimpleForm'
 import BeagleWebView from './BeagleWebView'
+import BeagleFutureListView from './BeagleFutureListView'
 
 
 
@@ -55,6 +56,7 @@ const beagleDefaultComponents = {
   'beagle:lazycomponent': BeagleLazy,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:webview': BeagleWebView,
+  'beagle:futurelistview':BeagleFutureListView
 }
 
 const webSpecificComponents = {

@@ -15,6 +15,7 @@
 */
 
 import { kebabCase } from 'lodash'
+import { Tree, BeagleUIElement, logger, ViewContentManager } from '@zup-it/beagle-web'
 
 const VALID_CSS_PROPERTIES = [
   'top',
@@ -61,11 +62,49 @@ const VALID_CSS_PROPERTIES = [
 
 export function removeInvalidCssProperties(
   style: Record<string, any> | React.CSSProperties): Record<string, any> {
-    
+
   if (!style) return {}
   return Object.entries({ ...style })
     .filter(([key, value]) => VALID_CSS_PROPERTIES.includes(key) && !/auto|inherit/gmi.test(value))
     .map(([key, value]) => [key, value.replace(/px/gmi, '')])
     .map(([key, value]) => /^\d+$/.test(value) ? [key, Number(value)] : [key, value])
     .reduce((previous, [key, value]) => ({ ...previous, [key]: value }), {})
+}
+
+
+export function renderListViewDynamicItems(
+  dataSource: any[],
+  viewContentManager: ViewContentManager | undefined,
+  template: BeagleUIElement,
+  _key: string | undefined,
+  __suffix__: string | undefined,
+  iteratorName: string) {
+  if (!Array.isArray(dataSource)) return
+
+  if (!viewContentManager) {
+    return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
+  }
+
+  const element = viewContentManager.getElement() as BeagleUIElement
+  if (!element) return
+  const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
+  const listViewId = viewContentManager.getElement().id
+
+  element.children = dataSource.map((item, index) => {
+    const templateTree = Tree.clone(template)
+    const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
+    const suffix = __suffix__ || ''
+    templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
+    Tree.forEach(templateTree, (component, componentIndex) => {
+      const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
+      component.id = `${baseId}:${iterationKey}`
+      if (component._beagleComponent_.toLowerCase() === listViewTag) {
+        component.__suffix__ = `${suffix}:${iterationKey}`
+      }
+    })
+
+    return templateTree
+  })
+
+  viewContentManager.getView().getRenderer().doFullRender(element, element.id)
 }
