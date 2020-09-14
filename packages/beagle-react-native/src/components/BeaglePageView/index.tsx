@@ -20,8 +20,8 @@ import React, {
 } from 'react'
 import { BeaglePageViewInterface } from 'common/models'
 import { View, StyleSheet } from 'react-native'
-import BeaglePageIndicator from '../../components/PageIndicator'
 import Swiper from 'react-native-swiper'
+import BeaglePageIndicator from '../../components/PageIndicator'
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
   children, onPageChange, currentPage, showArrow, style,
@@ -38,7 +38,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,
-    }
+    },
   })
 
   showArrow = showArrow !== undefined ? showArrow : true

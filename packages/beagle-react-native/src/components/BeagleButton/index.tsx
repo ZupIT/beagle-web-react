@@ -44,7 +44,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
-  disabled
+  disabled,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)

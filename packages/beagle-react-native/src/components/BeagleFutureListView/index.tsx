@@ -16,9 +16,8 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { BeagleFutureListViewInterface } from 'common/models'
-import { ScrollView, StyleSheet, NativeScrollEvent, NativeScrollPoint } from 'react-native'
-import { Tree, logger, BeagleUIElement } from '@zup-it/beagle-web'
-import { renderListViewDynamicItems } from 'components/utils'
+import { ScrollView, StyleSheet, NativeScrollEvent } from 'react-native'
+import { renderListViewDynamicItems } from 'common/utils/listview'
 
 const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   dataSource,
@@ -34,7 +33,7 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   scrollEndThreshold = 100,
   style,
   useParentScroll,
-  viewContentManager
+  viewContentManager,
 }) => {
   const scrollRef = useRef(null)
   const horizontal = direction && direction === 'HORIZONTAL'
@@ -57,15 +56,15 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   }, [])
 
   useEffect(() => {
-   renderListViewDynamicItems(
-     dataSource,
-     viewContentManager,
-     template,
-     _key,
-     __suffix__,
-     iteratorName
-   )
-   setShoudlLoadPage(true)
+    renderListViewDynamicItems(
+      dataSource,
+      viewContentManager,
+      template,
+      _key,
+      __suffix__,
+      iteratorName
+    )
+    setShoudlLoadPage(true)
   }, [JSON.stringify(dataSource)])
 
   const hasReachedEndOfList = ({

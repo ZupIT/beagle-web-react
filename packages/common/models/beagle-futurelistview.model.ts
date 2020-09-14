@@ -15,8 +15,8 @@
 */
 
 import { BeagleUIElement } from '@zup-it/beagle-web'
-import { Direction, BeagleDefaultComponent } from './types'
 import { BeagleComponent } from '../types'
+import { Direction, BeagleDefaultComponent } from './types'
 
 export type NodeType = HTMLElement | null
 

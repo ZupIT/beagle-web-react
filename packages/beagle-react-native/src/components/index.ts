@@ -56,7 +56,7 @@ const beagleDefaultComponents = {
   'beagle:lazycomponent': BeagleLazy,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:webview': BeagleWebView,
-  'beagle:futurelistview':BeagleFutureListView
+  'beagle:futurelistview':BeagleFutureListView,
 }
 
 const webSpecificComponents = {
