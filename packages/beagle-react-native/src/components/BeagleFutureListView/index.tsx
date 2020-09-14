@@ -14,10 +14,11 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { BeagleFutureListViewInterface } from 'common/models'
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, NativeScrollEvent, NativeScrollPoint } from 'react-native'
 import { Tree, logger, BeagleUIElement } from '@zup-it/beagle-web'
+import { renderListViewDynamicItems } from 'components/utils'
 
 const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   dataSource,
@@ -30,11 +31,12 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
   iteratorName = 'item',
   onInit,
   onScrollEnd,
-  scrollEndThreshold,
+  scrollEndThreshold = 100,
   style,
   useParentScroll,
   viewContentManager
 }) => {
+  const scrollRef = useRef(null)
   const horizontal = direction && direction === 'HORIZONTAL'
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
@@ -48,44 +50,55 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
     },
   })
 
+  const [shouldLoadPage, setShoudlLoadPage] = useState(true)
+
   useEffect(() => {
-    onInit && onInit()
+    onInit && onInit() || onScrollEnd && onScrollEnd()
   }, [])
 
   useEffect(() => {
-    if (!Array.isArray(dataSource)) return
-
-    if (!viewContentManager) {
-      return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
-    }
-
-    const element = viewContentManager.getElement() as BeagleUIElement
-    if (!element) return
-    const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
-    const listViewId = viewContentManager.getElement().id
-
-    element.children = dataSource.map((item, index) => {
-      const templateTree = Tree.clone(template)
-      const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
-      const suffix = __suffix__ || ''
-      templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
-      Tree.forEach(templateTree, (component, componentIndex) => {
-        const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
-        component.id = `${baseId}:${iterationKey}`
-        if (component._beagleComponent_.toLowerCase() === listViewTag) {
-          component.__suffix__ = `${suffix}:${iterationKey}`
-        }
-      })
-
-      return templateTree
-    })
-
-    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
+   renderListViewDynamicItems(
+     dataSource,
+     viewContentManager,
+     template,
+     _key,
+     __suffix__,
+     iteratorName
+   )
+   setShoudlLoadPage(true)
   }, [JSON.stringify(dataSource)])
 
+  const hasReachedEndOfList = ({
+    contentOffset,
+    layoutMeasurement,
+    contentSize }: NativeScrollEvent) => {
+
+    let offset = contentOffset.y
+    let layoutSize = layoutMeasurement.height
+    let listSize = contentSize.height
+    if (direction === 'HORIZONTAL') {
+      offset = contentOffset.x
+      layoutSize = layoutMeasurement.width
+      listSize = contentSize.width
+    }
+    const sizeSum = offset + layoutSize
+
+    return Math.round(sizeSum)
+      >= Math.round(listSize * scrollEndThreshold / 100)
+  }
+
+  function callOnEndAction(nativeEvent: NativeScrollEvent) {
+    if (hasReachedEndOfList(nativeEvent) && shouldLoadPage) {
+      setShoudlLoadPage(false)
+      onScrollEnd && onScrollEnd() 
+    }
+  }
 
   return (
     <ScrollView
+      ref={scrollRef}
+      onScroll={({ nativeEvent }) => callOnEndAction(nativeEvent)}
+      scrollEventThrottle={1000}
       style={
         {
           ...styleSheet.defaultStyles,
