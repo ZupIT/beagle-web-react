@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot Page Indicator 1`] = `
+<BeaglePageIndicator
+  currentPage={1}
+  numberOfPages={2}
+>
+  <styled.ol>
+    <ol
+      className="sc-hKFyIo XGnCt"
+    >
+      <styled.li
+        key="0/.0"
+        selected={false}
+      >
+        <li
+          className="sc-eCApGN fZLCKp"
+          selected={false}
+        />
+      </styled.li>
+      <styled.li
+        key="1/.1"
+        selected={true}
+      >
+        <li
+          className="sc-eCApGN fEInoz"
+          selected={true}
+        />
+      </styled.li>
+    </ol>
+  </styled.ol>
+</BeaglePageIndicator>
+`;
