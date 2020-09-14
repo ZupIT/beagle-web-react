@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react-native",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "main": "beagle-react-native/src/index.js",
   "typings": "beagle-react-native/src/index.d.ts",
   "license": "Apache-2.0",
@@ -22,11 +22,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "^1.2.0",
     "lodash": "^4.17.15",
     "react-native": "^0.63.2",
     "react-native-swiper": "^1.6.0",
-    "react-native-webview": "^10.8.3"
+    "react-native-webview": "^10.8.3",
+    "@zup-it/beagle-web": "1.2.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
