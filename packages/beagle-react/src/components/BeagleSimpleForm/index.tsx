@@ -1,3 +1,4 @@
+import { FormInterface } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,12 +16,7 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
-
-export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit: () => void,
-}
 
 const Form: FC<FormInterface> = ({
   onSubmit,

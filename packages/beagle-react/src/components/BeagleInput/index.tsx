@@ -15,11 +15,11 @@
 */
 
 import React, { FC } from 'react'
-import { InputHandler, InputInterface } from 'common/models'
+import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
 
-const BeagleInput: FC<InputInterface> = ({
+const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
   placeholder,
   disabled,

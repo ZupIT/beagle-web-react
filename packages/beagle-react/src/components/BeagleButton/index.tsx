@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useContext } from 'react'
-import { ClickEvent, ViewContentManager } from '@zup-it/beagle-web'
+import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import isArray from 'lodash/isArray'

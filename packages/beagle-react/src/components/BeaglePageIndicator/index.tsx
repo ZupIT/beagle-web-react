@@ -15,7 +15,7 @@
 */
 
 import React, { FC, Children } from 'react'
-import { PageIndicatorInterface } from '../types'
+import { PageIndicatorInterface } from 'common/models'
 import { StyledItemList, StyledOrderList } from './styled'
 
 const BeaglePageIndicator: FC<PageIndicatorInterface> = ({

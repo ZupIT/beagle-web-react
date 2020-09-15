@@ -15,16 +15,12 @@
 */
 
 import React, { FC, useEffect, useRef } from 'react'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleModalInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledModal } from './styled'
 
-export interface ModalInterface extends BeagleDefaultComponent {
-  isOpen: boolean,
-  onClose: () => void,
-}
 
-const Modal: FC<ModalInterface> = ({ isOpen, onClose, style, className, children }) => {
+const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, children }) => {
   const elementRef = useRef<HTMLDivElement>()
 
   function closeOnEsc({ key }: KeyboardEvent) {

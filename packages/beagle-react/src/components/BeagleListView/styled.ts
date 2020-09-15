@@ -15,7 +15,7 @@
 */
 
 import styled from 'styled-components'
-import { Direction } from '../types'
+import { Direction } from 'common/models'
 
 interface StyledListViewInterface {
   direction: Direction,

@@ -19,7 +19,7 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
 import BeagleListView from '../../components/BeagleListView'
-import { Direction } from '../../components/types'
+import { Direction } from 'common/models'
 
 let wrapper: any
 const directionMock: Direction = 'HORIZONTAL'

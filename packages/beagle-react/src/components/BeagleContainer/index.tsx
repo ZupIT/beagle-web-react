@@ -17,14 +17,9 @@
 import React, { FC, useEffect, useContext } from 'react'
 import { ScreenEvent } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleContainerInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledContainer } from './styled'
-
-export interface BeagleContainerInterface extends BeagleDefaultComponent {
-  onInit?: () => void,
-  screenAnalyticsEvent?: ScreenEvent,
-}
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)

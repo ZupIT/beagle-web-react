@@ -1,3 +1,4 @@
+import { BeagleDefaultComponent } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -16,7 +17,6 @@
 
 import React, { FC } from 'react'
 import Spinner from '../Spinner'
-import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 import { StyledLoading } from './styled'
 

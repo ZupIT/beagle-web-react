@@ -18,23 +18,13 @@ import React, {
   FC, useState,
   cloneElement, Children, isValidElement, ReactNode, useEffect,
 } from 'react'
-import { BeagleDefaultComponent, PageIndicatorInterface } from '../types'
+import { BeaglePageViewInterface } from 'common/models'
 import {
   StyledBeaglePageView, StyledLeftArrow, StyleContentItems,
   StyledRightArrow, StyledItemList, StyledOrderList,
 } from './styled'
 import { KeyBoardArrow } from './KeyboardArrowLeft'
 
-export interface BeaglePageViewInterface extends BeagleDefaultComponent {
-  /**
-   * @deprecated Since version 1.1. Will be deleted in version 2.0.
-   * Use pageIndicator as a component instead.
-  */
-  pageIndicator?: PageIndicatorInterface,
-  onPageChange?: (index: number) => void,
-  currentPage?: number,
-  showArrow?: boolean,
-}
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
   children, onPageChange, currentPage, showArrow,

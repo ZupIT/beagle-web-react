@@ -15,7 +15,7 @@
 */
 
 import styled from 'styled-components'
-import { TextAlignment } from '../types'
+import { TextAlignment } from 'common/models'
 
 interface StyledTextInterface {
 	textColor?: string,

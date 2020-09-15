@@ -18,10 +18,11 @@
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
-import TextArea, { TextAreaInterface } from '../../components/TextArea'
+import TextArea from '../../components/TextArea'
+import { BeagleTextAreaInterface } from 'common/models'
 
 let wrapper: any
-const beagleTextAreaMockProps: TextAreaInterface = {
+const beagleTextAreaMockProps: BeagleTextAreaInterface = {
   value: 'Testing',
   name: 'Testing',
   disabled: false,

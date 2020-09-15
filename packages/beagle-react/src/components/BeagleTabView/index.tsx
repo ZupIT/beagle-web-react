@@ -16,8 +16,8 @@
 
 import React, { FC, useState, useEffect } from 'react'
 import { logger, BeforeViewSnapshot } from '@zup-it/beagle-web'
+import { BeagleDefaultComponent } from 'common/models'
 import withTheme from '../utils/withTheme'
-import { BeagleDefaultComponent } from '../types'
 import { BeagleComponentsProvider } from './context'
 import { StyledTabView } from './styled'
 import { transformItems } from './lifecycles'

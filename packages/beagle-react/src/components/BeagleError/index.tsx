@@ -15,8 +15,8 @@
 */
 
 import React, { FC } from 'react'
+import { BeagleDefaultComponent } from 'common/models'
 import BeagleText from '../BeagleText'
-import { BeagleDefaultComponent } from '../types'
 import withTheme from '../utils/withTheme'
 
 const BeagleError: FC<BeagleDefaultComponent> = props => {

@@ -4,11 +4,9 @@ export type InputHandler = (event: { value: string }) => void
 
 export type InputType = 'DATE' | 'EMAIL' | 'PASSWORD' | 'NUMBER' | 'TEXT'
 
-export interface BeagleTextInputInterface extends BeagleDefaultComponent {
+export interface BaseTextInputInterface extends BeagleDefaultComponent {
   value: string,
   placeholder?: string,
-  disabled?: boolean | string,
-  readOnly?: boolean | string,
   type?: InputType,
   hidden?: boolean,
   onChange?: InputHandler,
@@ -16,10 +14,18 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   onBlur?: InputHandler,
 }
 
-export interface InputInterface extends BeagleTextInputInterface {
-  isMultiline?: boolean,
+export interface BeagleTextInputInterface extends BaseTextInputInterface {
+  disabled?: boolean | string,
+  readOnly?: boolean | string,
 }
 
-export interface BeagleTextAreaInterface extends BeagleTextInputInterface {
+export interface BeagleTextAreaInterface extends BaseTextInputInterface {
+  disabled?: boolean,
+  readonly?: boolean,
+  name?: string,
   label?: string,
+}
+
+export interface BeagleReactNativeInputInterface extends BeagleTextInputInterface {
+  isMultiline?: boolean,
 }

@@ -20,7 +20,8 @@ import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
-import BeagleImage, { ImagePath } from '../../components/BeagleImage'
+import BeagleImage from '../../components/BeagleImage'
+import { ImagePath } from 'common/models'
 
 let beagleContextMock: any
 let wrapper: any

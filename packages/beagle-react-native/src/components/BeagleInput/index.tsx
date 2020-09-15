@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useState } from 'react'
-import { InputHandler, InputInterface } from 'common/models'
+import { BeagleReactNativeInputInterface, InputHandler } from 'common/models'
 import { evaluateStringBoolean } from 'common/utils/primitive'
 import {
   TextInputProps,
@@ -31,7 +31,7 @@ const keyboardTypes: Record<string, KeyboardType> = {
   EMAIL: 'email-address',
 }
 
-const BeagleTextInput: FC<InputInterface> = ({
+const BeagleTextInput: FC<BeagleReactNativeInputInterface> = ({
   value: initialValue,
   placeholder,
   disabled,
