@@ -15,8 +15,8 @@
 */
 
 import React, { FC } from 'react'
-import withTheme from '../utils/withTheme'
 import { FormInterface } from 'common/models'
+import withTheme from '../utils/withTheme'
 
 const Form: FC<FormInterface> = ({
   onSubmit,

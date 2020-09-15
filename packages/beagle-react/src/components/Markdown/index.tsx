@@ -16,9 +16,9 @@
 
 import React, { FC, useEffect, useRef, useMemo } from 'react'
 import { Converter } from 'showdown'
+import { BeagleDefaultComponent } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { Container } from './styled'
-import { BeagleDefaultComponent } from 'common/models'
 
 export interface MarkdownInterface extends BeagleDefaultComponent {
   text: string,
