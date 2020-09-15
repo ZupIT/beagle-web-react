@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot container 1`] = `
+<ComponentWithTheme
+  className="Test Class"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+>
+  <BeagleContainer
+    className="Test Class"
+    style={
+      Object {
+        "height": "100",
+        "width": "50",
+      }
+    }
+  >
+    <styled.div
+      className="Test Class"
+      style={
+        Object {
+          "height": "100",
+          "width": "50",
+        }
+      }
+    >
+      <div
+        className="sc-bdnylx bHHZhH Test Class"
+        style={
+          Object {
+            "height": "100",
+            "width": "50",
+          }
+        }
+      />
+    </styled.div>
+  </BeagleContainer>
+</ComponentWithTheme>
+`;

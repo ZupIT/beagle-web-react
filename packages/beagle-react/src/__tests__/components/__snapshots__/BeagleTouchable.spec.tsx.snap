@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot Touchable 1`] = `
+<BeagleTouchable
+  className=""
+  onPress={[MockFunction]}
+/>
+`;

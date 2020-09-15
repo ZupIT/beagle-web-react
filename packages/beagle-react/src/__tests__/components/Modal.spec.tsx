@@ -14,11 +14,21 @@
   * limitations under the License.
 */
 
-export function transformItems(tabBar: Record<string, any>) {
-  if (!Array.isArray(tabBar.items)) return
-  tabBar.children = tabBar.items.map(item => ({
-    _beagleComponent_: 'beagle:tabitem',
-    id: `${tabBar.id}_${item.title}`,
-    ...item,
-  }))
-}
+// Link.react.test.js
+import React from 'react'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, mount } from 'enzyme'
+import Modal from '../../components/Modal'
+
+let wrapper: any
+const onClickMock = jest.fn()
+
+
+configure({ adapter: new Adapter() })
+beforeAll(() => {
+  wrapper = mount(<Modal  onClose={onClickMock} isOpen={true}/>)
+})
+
+test('Beagle snapshot Modal', () => {
+  expect(wrapper).toMatchSnapshot()
+})

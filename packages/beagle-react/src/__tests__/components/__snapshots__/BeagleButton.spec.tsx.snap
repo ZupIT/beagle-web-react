@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot button 1`] = `
+<BeagleButton
+  className="Test Class"
+  onPress={[MockFunction]}
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+  text="Text Button"
+  viewContentManager={null}
+/>
+`;

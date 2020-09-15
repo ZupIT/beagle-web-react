@@ -50,6 +50,6 @@ jobs:
         run: yarn build
 
       - name: publish to NPM
-        run: lerna publish from-package
+        run: yarn lerna publish from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
