@@ -14,24 +14,15 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { FormInterface } from 'common/models'
 import { View } from 'react-native'
-import { Subject } from 'rxjs'
 
-
-export const formSubject = new Subject()
 
 const BeagleSimpleForm: FC<FormInterface> = props => {
   const { children, style, onSubmit } = props
 
-  useEffect(() => {
-    const subscription = formSubject.subscribe(
-      val => val === 'submit' && onSubmit && onSubmit())
-    return function cleanup() {
-      subscription.unsubscribe()
-    }
-  })
+  //TO DO: Handle Form Submit Action
 
   return (
     <View style={{ flex: 1 }}>
