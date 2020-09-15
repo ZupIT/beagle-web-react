@@ -57,9 +57,6 @@ const beagleDefaultComponents = {
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:webview': BeagleWebView,
   'beagle:futurelistview':BeagleFutureListView,
-}
-
-const webSpecificComponents = {
   'custom:modal': BeagleModal,
   'custom:text-area': BeagleTextArea,
 }
@@ -68,5 +65,4 @@ const webSpecificComponents = {
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents,
 }
