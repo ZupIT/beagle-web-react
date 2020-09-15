@@ -19,8 +19,8 @@ import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import isArray from 'lodash/isArray'
-import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
+import withTheme from '../utils/withTheme'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
