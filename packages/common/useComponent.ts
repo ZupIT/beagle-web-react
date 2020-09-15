@@ -18,36 +18,62 @@ import { useState, useEffect, useContext, useMemo } from 'react'
 import {
   BeagleUIElement,
   BeagleView,
+  logger,
+  LoadParams,
 } from '@zup-it/beagle-web'
 import { uniqueId } from 'lodash'
 import BeagleProvider from './provider'
 import { BeagleRemoteViewType } from './types'
 
-function useComponent(loadParams: BeagleRemoteViewType) {
+function useComponent({
+  id,
+  viewRef,
+  route,
+  networkOptions,
+  controllerId,
+  ...deprecated
+}: BeagleRemoteViewType) {
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
-  const [viewID, setViewID] = useState(loadParams.id)
+  const [viewID, setViewID] = useState(id)
   
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   const beagleView = useMemo<BeagleView>(() => {
-    if (!loadParams.id) setViewID(uniqueId())
+    if (!id) setViewID(uniqueId())
     
-    const view = beagleService.createView()
+    const view = beagleService.createView(networkOptions, controllerId)
     view.subscribe(setUiTree)
-    if (loadParams.viewRef) loadParams.viewRef.current = view
+    if (viewRef) viewRef.current = view
 
     return view
   }, [])
 
   useEffect(() => {
-    beagleView.fetch(loadParams)
-  }, [loadParams])
+    if (route) {
+      const navigator = beagleView.getNavigator()
+      if (navigator.isEmpty()) navigator.pushView({ url: route })
+      else navigator.resetStack({ url: route }, controllerId)
+    }
+  }, [route])
+
+  // todo: legacy code. Remove with v2.0.
+  useEffect(() => {
+    const deprecatedKeys = Object.keys(deprecated)
+
+    if (deprecatedKeys.length) {
+      logger.warn(`The following properties in the BeagleRemoteView are deprecated and will be removed in v2.0: ${deprecatedKeys.join(', ')}.\nYou should use "route" to specify the path to the first view and "navigationOptions" for further request setup.`)
+      if (route) {
+        logger.warn('You shouldn\'t mix the new BeagleRemoteView properties with the deprecated ones. All deprecated properties will be ignored.')
+      } else if (deprecated.path) {
+        beagleView.fetch(deprecated as LoadParams)
+      }
+    }
+  }, [JSON.stringify(deprecated)])
 
   useEffect(() => {
     beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)
-    loadParams.onCreateBeagleView && loadParams.onCreateBeagleView(beagleView)
     return () => {
       beagleService.viewContentManagerMap.unregister(`${viewID}`)
       beagleView.destroy()
