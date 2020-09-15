@@ -74,6 +74,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       minHeight: 60,
       maxHeight: 60,
       margin: 5,
+      minWidth: 200
     },
   })
   return (

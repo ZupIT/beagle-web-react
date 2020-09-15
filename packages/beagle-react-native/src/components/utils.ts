@@ -44,6 +44,7 @@ const VALID_CSS_PROPERTIES = [
   'aspectRatio',
   'display',
   'position',
+  'flex',
   'flexDirection',
   'flexWrap',
   'justifyContent',

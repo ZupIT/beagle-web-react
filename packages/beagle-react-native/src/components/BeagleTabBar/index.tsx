@@ -50,6 +50,7 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
       alignContent: 'center',
       justifyContent: 'center',
       margin: 5,
+      minWidth: 60
     },
     selectedTab: {
       backgroundColor: '#125285',
