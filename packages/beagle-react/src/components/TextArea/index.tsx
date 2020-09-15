@@ -1,4 +1,3 @@
-import { BeagleTextAreaInterface } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -19,6 +18,7 @@ import React, { FC } from 'react'
 import { InputEvent, InputHandler } from '../types'
 import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledTextArea } from './styled'
+import { BeagleTextAreaInterface } from 'common/models'
 
 const TextArea: FC<BeagleTextAreaInterface> = ({
   value,

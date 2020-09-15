@@ -1,4 +1,3 @@
-import { BeagleDefaultComponent } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -19,6 +18,7 @@ import React, { FC } from 'react'
 import Spinner from '../Spinner'
 import withTheme from '../utils/withTheme'
 import { StyledLoading } from './styled'
+import { BeagleDefaultComponent } from 'common/models'
 
 const BeagleLoading: FC<BeagleDefaultComponent> = props => {
   const { className, style } = props

@@ -1,4 +1,3 @@
-import { FormInterface } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -17,6 +16,7 @@ import { FormInterface } from 'common/models'
 
 import React, { FC } from 'react'
 import withTheme from '../utils/withTheme'
+import { FormInterface } from 'common/models'
 
 const Form: FC<FormInterface> = ({
   onSubmit,

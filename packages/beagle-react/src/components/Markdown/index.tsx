@@ -1,4 +1,3 @@
-import { BeagleDefaultComponent } from 'common/models'
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -19,6 +18,7 @@ import React, { FC, useEffect, useRef, useMemo } from 'react'
 import { Converter } from 'showdown'
 import withTheme from '../utils/withTheme'
 import { Container } from './styled'
+import { BeagleDefaultComponent } from 'common/models'
 
 export interface MarkdownInterface extends BeagleDefaultComponent {
   text: string,
