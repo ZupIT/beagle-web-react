@@ -6,20 +6,19 @@ export type InputType = 'DATE' | 'EMAIL' | 'PASSWORD' | 'NUMBER' | 'TEXT'
 
 export interface BaseTextInputInterface extends BeagleDefaultComponent {
   value: string,
-  placeholder?: string,
-  type?: InputType,
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
+  disabled: boolean
 }
 
 export interface BeagleTextInputInterface extends BaseTextInputInterface {
-  disabled?: boolean,
-  readOnly?: boolean,
+    readOnly?: boolean,
+    placeholder?: string,
+    type?: InputType,
 }
 
 export interface BeagleTextAreaInterface extends BaseTextInputInterface {
-  disabled?: boolean,
   readonly?: boolean,
   name?: string,
   label?: string,

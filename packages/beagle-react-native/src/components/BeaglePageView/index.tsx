@@ -15,21 +15,14 @@
 */
 
 import React, {
-  FC, useState,
-  cloneElement, Children, isValidElement, ReactNode, useEffect, useRef,
+  FC, useState, useEffect, useRef,
 } from 'react'
 import { BeaglePageViewInterface } from 'common/models'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import Swiper from 'react-native-swiper'
-import BeaglePageIndicator from '../../components/PageIndicator'
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
-  children, onPageChange, currentPage, showArrow, style,
-  /**
-   * @deprecated Since version 1.1. Will be deleted in version 2.0.
-   * Use pageIndicator as a component instead.
-  */
-  pageIndicator,
+  children, onPageChange, currentPage, showArrow, style
 }) => {
 
   const [active, setActive] = useState(currentPage || 0)
@@ -44,13 +37,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
   showArrow = showArrow !== undefined ? showArrow : true
 
   useEffect(() => {
-    if (pageIndicator)
-      console.warn(`The page view you are using is deprecated. 
-      This will be removed in a future version; please refactor this component 
-      using new context features.`)
-  }, [])
-
-  useEffect(() => {
     if (currentPage !== undefined && currentPage !== active) {
       setActive(currentPage)
       swiperRef.current.scrollTo(currentPage)
@@ -62,10 +48,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
     setActive(newPageIndex)
   }
 
-  const bullets = pageIndicator ? (
-    <BeaglePageIndicator {...pageIndicator} />
-  ) : null
-
   return (
     <>
       <Swiper
@@ -76,7 +58,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
         style={[styleSheet.fromBffStyles]}>
         {children}
       </Swiper>
-      {bullets}
     </>
   )
 }

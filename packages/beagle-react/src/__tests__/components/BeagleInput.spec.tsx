@@ -28,7 +28,6 @@ const beagleInputPropsMock: BeagleTextInputInterface = {
   disabled: false,
   readOnly: false,
   type: 'TEXT',
-  hidden: false,
   onChange: jest.fn(),
   onFocus: jest.fn(),
   onBlur: jest.fn(),

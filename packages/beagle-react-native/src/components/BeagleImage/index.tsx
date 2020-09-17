@@ -18,6 +18,7 @@ import React, { FC, useContext } from 'react'
 import { ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { BeagleImageInterface } from 'common/models'
 import BeagleServiceContext from 'common/provider'
+import { BeagleUIReactNativeService } from 'common/types'
 
 
 const modeMap: Record<string, ImageResizeMode> = {
@@ -29,7 +30,7 @@ const modeMap: Record<string, ImageResizeMode> = {
 
 const BeagleImage: FC<BeagleImageInterface> = props => {
   const { path, mode, accessibility, style } = props
-  const beagleService = useContext(BeagleServiceContext)
+  const beagleService = useContext(BeagleServiceContext) as BeagleUIReactNativeService
   const imgResize: ImageResizeMode = mode && modeMap[mode] || 'contain'
   
   const styleSheet = StyleSheet.create({

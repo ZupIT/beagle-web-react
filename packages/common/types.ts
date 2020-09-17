@@ -32,12 +32,19 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
     'custom:loading'?: FC<{}>,
   } & {
     [K in keyof Schema]: FC<Schema[K]>
-  },
+  }
+}
+
+export interface BeagleConfigReactNative<Schema = DefaultSchema> extends BeagleConfig<Schema>{
   localAssetsPath?: Record<string, number>,
 }
 
 export interface BeagleUIService<Schema = DefaultSchema> extends BeagleCoreService {
   getConfig: () => BeagleConfig<Schema>,
+}
+
+export interface BeagleUIReactNativeService<Schema = DefaultSchema> extends BeagleCoreService {
+  getConfig: () => BeagleConfigReactNative<Schema>,
 }
 
 export type ViewContentManager = CoreViewContentManager
