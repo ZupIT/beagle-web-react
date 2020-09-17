@@ -47,9 +47,9 @@
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lerna": "^3.22.1",
-    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "styled-components": "^5.1.0",
+    "nodemon": "^2.0.4",
     "ts-jest": "25.2.1",
     "tscpaths": "https://github.com/Tiagoperes/tscpaths.git#498769882091cfe6fd8c4067bb50843dc4ca551e",
     "typescript": "^3.8.3"
