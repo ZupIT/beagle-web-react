@@ -49,7 +49,6 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:textInput': BeagleTextInput,
   'beagle:touchable': BeagleTouchable,
-  'beagle:spinner': BeagleSpinner,
   'beagle:tabbar': BeagleTabBar,
   'beagle:pageview': BeaglePageView,
   'beagle:pageIndicator': BeaglePageIndicator,

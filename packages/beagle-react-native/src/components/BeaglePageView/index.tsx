@@ -71,7 +71,7 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
       <Swiper
         ref={swiperRef}
         loop={false}
-        onIndexChanged={(index) => updatePage(index)}
+        onIndexChanged={(index: number) => updatePage(index)}
         showsPagination={false}
         style={[styleSheet.fromBffStyles]}>
         {children}

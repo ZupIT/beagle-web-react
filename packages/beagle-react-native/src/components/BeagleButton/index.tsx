@@ -55,8 +55,6 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     return isSubmit ? submitForm() : onPress && onPress()
   }
 
-
-
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
       ...style,
@@ -81,7 +79,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       <TouchableOpacity
         disabled={disabled}
         onPress={handlePress}
-        style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
+        style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         <Text>{text}</Text>
       </TouchableOpacity>
     </View>
