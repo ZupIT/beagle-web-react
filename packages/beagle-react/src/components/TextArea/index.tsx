@@ -28,7 +28,7 @@ const TextArea: FC<BeagleTextAreaInterface> = ({
   onFocus,
   onBlur,
   disabled,
-  readonly,
+  readOnly,
   style,
   className,
 }) => {
@@ -47,7 +47,7 @@ const TextArea: FC<BeagleTextAreaInterface> = ({
         onBlur={handleEvent(onBlur)}
         onFocus={handleEvent(onFocus)}
         disabled={disabled}
-        readOnly={readonly}
+        readOnly={readOnly}
         style={style}
         className={className}
       />
