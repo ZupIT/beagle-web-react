@@ -25,7 +25,6 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   disabled,
   readOnly,
   type = 'TEXT',
-  hidden,
   onChange,
   onFocus,
   onBlur,
@@ -41,10 +40,9 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
     <input
       value={value}
       placeholder={placeholder}
-      disabled={!!disabled}
-      readOnly={!!readOnly}
+      disabled={disabled}
+      readOnly={readOnly}
       type={type}
-      hidden={hidden}
       onChange={handleEvent(onChange)}
       onBlur={handleEvent(onBlur)}
       onFocus={handleEvent(onFocus)}

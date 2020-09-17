@@ -4,7 +4,7 @@ import { BeagleDefaultComponent } from './types'
 
 
 export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleComponent {
-	text: string,
+  text: string,
   onPress?: () => void,
   clickAnalyticsEvent?: ClickEvent,
   disabled?: boolean, 

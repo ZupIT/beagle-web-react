@@ -18,7 +18,6 @@ import React, { FC, useContext } from 'react'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
-import isArray from 'lodash/isArray'
 import withTheme from '../utils/withTheme'
 import { StyledButton } from './styled'
 
@@ -28,7 +27,7 @@ function isSubmitButton(contentManager?: ViewContentManager) {
   const element = contentManager.getElement()
   let isSubmit = false
   if (element.onPress){
-    isSubmit = isArray(element.onPress) ?
+    isSubmit = Array.isArray(element.onPress) ?
       element.onPress.filter(
         el => el._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
       element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'

@@ -15,13 +15,10 @@
 */
 
 import React, { FC, useState } from 'react'
-import { BeagleReactNativeInputInterface, InputHandler } from 'common/models'
-import { evaluateStringBoolean } from 'common/utils/primitive'
+import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import {
   TextInputProps,
-  NativeSyntheticEvent,
   StyleSheet,
-  TextInputFocusEventData,
   TextInput,
   KeyboardType,
 } from 'react-native'
@@ -31,35 +28,29 @@ const keyboardTypes: Record<string, KeyboardType> = {
   EMAIL: 'email-address',
 }
 
-const BeagleTextInput: FC<BeagleReactNativeInputInterface> = ({
+const BeagleTextInput: FC<BeagleTextInputInterface> = ({
   value: initialValue,
   placeholder,
   disabled,
   readOnly,
   type = 'TEXT',
-  hidden,
   onChange,
   onFocus,
   onBlur,
   style,
-  className,
-  isMultiline,
 }) => {
 
   const [value, setValue] = useState(initialValue)
-  const isEditable = !evaluateStringBoolean(disabled as string)
-      && !evaluateStringBoolean(readOnly as string)
+  const isEditable = !disabled && !readOnly
 
   const handleEvent = (handler?: InputHandler) => (text: string) => {
     setValue(text)
     return handler && handler({ value: text })
   }
 
-  const handleOnFocus = (_e: NativeSyntheticEvent<TextInputFocusEventData>) =>
-    onFocus && onFocus({ value })
+  const handleOnFocus = () => onFocus && onFocus({ value })
 
-  const handleOnBlur = (_e: NativeSyntheticEvent<TextInputFocusEventData>) =>
-    onBlur && onBlur({ value })
+  const handleOnBlur = () => onBlur && onBlur({ value })
 
   const inputProps: TextInputProps = {
     value: value,
@@ -68,7 +59,6 @@ const BeagleTextInput: FC<BeagleReactNativeInputInterface> = ({
     onFocus: handleOnFocus,
     onBlur: handleOnBlur,
     editable: isEditable,
-    multiline: !!isMultiline,
     secureTextEntry: type === 'PASSWORD',
     keyboardType: keyboardTypes[type] || 'default',
   }
@@ -83,10 +73,7 @@ const BeagleTextInput: FC<BeagleReactNativeInputInterface> = ({
       borderColor: '#000000',
       borderStyle: 'solid',
       margin: 5,
-      maxHeight: isMultiline ? 100 : 50,
-    },
-    hidden: {
-      opacity: hidden && hidden === true ? 0 : 1,
+      maxHeight: 50,
     },
   })
 
@@ -96,7 +83,6 @@ const BeagleTextInput: FC<BeagleReactNativeInputInterface> = ({
       style={{
         ...styleSheet.defaultStyles,
         ...styleSheet.fromBffStyles,
-        ...styleSheet.hidden,
       }}>
     </TextInput>
   )

@@ -49,7 +49,7 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
     },
   })
 
-  const [shouldLoadPage, setShoudlLoadPage] = useState(true)
+  const [shouldLoadPage, setShouldLoadPage] = useState(true)
 
   useEffect(() => {
     onInit && onInit() || onScrollEnd && onScrollEnd()
@@ -64,7 +64,7 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
       __suffix__,
       iteratorName
     )
-    setShoudlLoadPage(true)
+    setShouldLoadPage(true)
   }, [JSON.stringify(dataSource)])
 
   const hasReachedEndOfList = ({
@@ -88,7 +88,7 @@ const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
 
   function callOnEndAction(nativeEvent: NativeScrollEvent) {
     if (hasReachedEndOfList(nativeEvent) && shouldLoadPage) {
-      setShoudlLoadPage(false)
+      setShouldLoadPage(false)
       onScrollEnd && onScrollEnd() 
     }
   }

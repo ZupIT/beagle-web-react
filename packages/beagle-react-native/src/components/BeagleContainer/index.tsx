@@ -18,7 +18,6 @@ import React, { FC, useEffect, useContext } from 'react'
 import { BeagleContainerInterface } from 'common/models'
 import { View, StyleSheet } from 'react-native'
 import BeagleServiceContext from 'common/provider'
-import { removeInvalidCssProperties } from '../../components/utils'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)

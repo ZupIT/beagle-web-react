@@ -17,5 +17,5 @@
 import { BeagleDefaultComponent } from './types'
 
 export interface BeagleWebViewInterface<T> extends BeagleDefaultComponent<T> {
-	url: string,
+  url: string,
 }

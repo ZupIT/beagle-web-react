@@ -50,7 +50,7 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
   })
   return (
     <TouchableOpacity onPress={handlePress} style={styleSheet.touchable}>
-      <View style={{ ...styleSheet.fromBffStyles, ...styleSheet.defaultStyles }}>
+      <View style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         {children}
       </View>
     </TouchableOpacity>

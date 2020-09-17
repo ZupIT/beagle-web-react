@@ -44,8 +44,8 @@ const BeagleText: FC<BeagleTextInterface> = props => {
   return (
     <Text
       style={{
-        ...styleSheet.fromBffStyles,
         ...styleSheet.defaultStyles,
+        ...styleSheet.fromBffStyles,
       }}>
       {text}
     </Text>

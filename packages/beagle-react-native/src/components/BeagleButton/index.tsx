@@ -19,14 +19,13 @@ import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { ViewContentManager } from 'common/types'
-import isArray from 'lodash/isArray'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
   const element = contentManager.getElement()
   let isSubmit = false
   if (element.onPress) {
-    isSubmit = isArray(element.onPress) ?
+    isSubmit = Array.isArray(element.onPress) ?
       element.onPress.filter(
         value => value._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
       element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'

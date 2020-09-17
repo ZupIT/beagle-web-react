@@ -8,15 +8,14 @@ export interface BaseTextInputInterface extends BeagleDefaultComponent {
   value: string,
   placeholder?: string,
   type?: InputType,
-  hidden?: boolean,
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
 }
 
 export interface BeagleTextInputInterface extends BaseTextInputInterface {
-  disabled?: boolean | string,
-  readOnly?: boolean | string,
+  disabled?: boolean,
+  readOnly?: boolean,
 }
 
 export interface BeagleTextAreaInterface extends BaseTextInputInterface {
@@ -26,6 +25,3 @@ export interface BeagleTextAreaInterface extends BaseTextInputInterface {
   label?: string,
 }
 
-export interface BeagleReactNativeInputInterface extends BeagleTextInputInterface {
-  isMultiline?: boolean,
-}
