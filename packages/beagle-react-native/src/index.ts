@@ -33,6 +33,7 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Sche
     customStorage: config.customStorage || AsyncStorage,
     localAssetsPath: config.localAssetsPath || {},
     lifecycles: {
+      ...config.lifecycles,
       beforeRender: (uiTree) => {
         translateStyles(uiTree)
         if (config.lifecycles?.beforeRender) config.lifecycles.beforeRender(uiTree)
