@@ -26,7 +26,7 @@ const beagleTextAreaMockProps: BeagleTextAreaInterface = {
   value: 'Testing',
   name: 'Testing',
   disabled: false,
-  readonly: false,
+  readOnly: false,
   className:'test-class',
   onChange: jest.fn(),
   onFocus: jest.fn(),

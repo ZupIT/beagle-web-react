@@ -8,7 +8,7 @@ exports[`Beagle snapshot text area 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   onFocus={[MockFunction]}
-  readonly={false}
+  readOnly={false}
   value="Testing"
 />
 `;

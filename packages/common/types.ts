@@ -32,7 +32,7 @@ export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<S
     'custom:loading'?: FC<{}>,
   } & {
     [K in keyof Schema]: FC<Schema[K]>
-  }
+  },
 }
 
 export interface BeagleConfigReactNative<Schema = DefaultSchema> extends BeagleConfig<Schema>{

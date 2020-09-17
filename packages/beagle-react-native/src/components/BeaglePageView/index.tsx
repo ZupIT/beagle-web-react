@@ -22,7 +22,7 @@ import { StyleSheet } from 'react-native'
 import Swiper from 'react-native-swiper'
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
-  children, onPageChange, currentPage, showArrow, style
+  children, onPageChange, currentPage, showArrow, style,
 }) => {
 
   const [active, setActive] = useState(currentPage || 0)
