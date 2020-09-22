@@ -15,21 +15,40 @@
 */
 
 import React, { FC, useEffect } from 'react'
-import { LoadParams, BeagleChildren } from '@zup-it/beagle-web'
+import { BeagleUIElement, BeagleChildren } from '@zup-it/beagle-web'
 import { BeagleLazyInterface } from 'common/models'
 
 const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
-  useEffect(() => {
-    const params: LoadParams = {
-      path,
+  if (!viewContentManager) {
+    throw new Error('Can\'t use the LazyComponent outside the context of Beagle.')
+  }
+
+  function getRelativePath() {
+    return path.replace(/^([^\/])/, '/$1')
+  }
+
+  function replaceChildren(tree: BeagleUIElement) {
+    const beagleView = viewContentManager!.getView()
+    const anchor = viewContentManager!.getElementId()
+    beagleView.getRenderer().doFullRender(tree, anchor, 'replace')
+  }
+
+  function fetchLazyView() {
+    /* here we are going to use the viewClient instead of making the request ourselves to take 
+    advantage of the cache system provided by Beagle */
+    const beagleView = viewContentManager!.getView()
+    const { urlBuilder, viewClient } = beagleView.getBeagleService()
+    const url = urlBuilder.build(getRelativePath())
+    viewClient.load({
+      url,
+      onChangeTree: replaceChildren,
+      retry: fetchLazyView,
       shouldShowLoading: false,
-    }
-    viewContentManager && viewContentManager.getView().fetch(
-      params,
-      viewContentManager.getElementId(),
-      'replaceComponent',
-    )
-  }, [])
+      ...beagleView.getNetworkOptions(),
+    })
+  }
+
+  useEffect(fetchLazyView, [])
 
   return (
     <div>
