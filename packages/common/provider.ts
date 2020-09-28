@@ -15,8 +15,8 @@
 */
 
 import { createContext } from 'react'
-import { BeagleUIService } from './types'
+import { BeagleUIReactNativeService, BeagleUIService } from './types'
 
-const context = createContext<BeagleUIService | null>(null)
+const context = createContext<BeagleUIService | BeagleUIReactNativeService | null>(null)
 export const BeagleProvider = context.Provider
 export default context

@@ -16,7 +16,7 @@
 
 import React, { FC, useEffect, useRef, useMemo } from 'react'
 import { Converter } from 'showdown'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleDefaultComponent } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { Container } from './styled'
 

@@ -15,12 +15,8 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleDefaultComponent } from '../types'
+import { FormInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
-
-export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit: () => void,
-}
 
 const Form: FC<FormInterface> = ({
   onSubmit,

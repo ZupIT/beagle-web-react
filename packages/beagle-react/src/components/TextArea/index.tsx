@@ -15,22 +15,12 @@
 */
 
 import React, { FC } from 'react'
-import { InputEvent, InputHandler, BeagleDefaultComponent } from '../types'
+import { BeagleTextAreaInterface } from 'common/models'
+import { InputEvent, InputHandler } from '../types'
 import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledTextArea } from './styled'
 
-export interface TextAreaInterface extends BeagleDefaultComponent {
-  value?: string,
-  label?: string,
-  name?: string,
-  onChange?: InputHandler,
-  onFocus?: InputHandler,
-  onBlur?: InputHandler,
-  disabled?: boolean,
-  readonly?: boolean,
-}
-
-const TextArea: FC<TextAreaInterface> = ({
+const TextArea: FC<BeagleTextAreaInterface> = ({
   value,
   label,
   name,
@@ -38,7 +28,7 @@ const TextArea: FC<TextAreaInterface> = ({
   onFocus,
   onBlur,
   disabled,
-  readonly,
+  readOnly,
   style,
   className,
 }) => {
@@ -57,7 +47,7 @@ const TextArea: FC<TextAreaInterface> = ({
         onBlur={handleEvent(onBlur)}
         onFocus={handleEvent(onFocus)}
         disabled={disabled}
-        readOnly={readonly}
+        readOnly={readOnly}
         style={style}
         className={className}
       />

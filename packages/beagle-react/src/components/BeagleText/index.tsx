@@ -15,15 +15,9 @@
 */
 
 import React, { FC } from 'react'
-import { TextAlignment, BeagleDefaultComponent } from '../types'
+import { BeagleTextInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledText } from './styled'
-
-export interface BeagleTextInterface extends BeagleDefaultComponent {
-	text: string,
-	textColor?: string,
-	alignment?: TextAlignment,
-}
 
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, className, textColor, alignment, style } = props

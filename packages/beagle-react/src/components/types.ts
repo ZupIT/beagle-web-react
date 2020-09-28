@@ -16,19 +16,6 @@
 
 import { ChangeEvent, FocusEvent } from 'react'
 
-export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
-
-export type Direction =  'VERTICAL' | 'HORIZONTAL'
-
-export type ImageMode = 'FIT_XY' | 'FIT_CENTER' | 'CENTER_CROP' | 'CENTER'
-
-export interface PageIndicatorInterface {
-  selectedColor?: string,
-  unselectedColor?: string,
-  numberOfPages?: number,
-  currentPage?: number,
-}
-
 export type InputHandler = (event: { value: string }) => void
 
 type InputElement = HTMLTextAreaElement | HTMLInputElement
@@ -36,8 +23,3 @@ type InputElement = HTMLTextAreaElement | HTMLInputElement
 export type InputType = 'DATE' | 'EMAIL' | 'PASSWORD' | 'NUMBER' | 'TEXT'
 
 export type InputEvent = ChangeEvent<InputElement> | FocusEvent<InputElement>
-
-export interface BeagleDefaultComponent {
-  style?: React.CSSProperties,
-  className?: string,
-}

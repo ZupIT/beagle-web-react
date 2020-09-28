@@ -15,8 +15,8 @@
 */
 
 import styled from 'styled-components'
+import { PageIndicatorInterface } from 'common/models'
 import { BeagleTheme } from '../commons.styled'
-import { PageIndicatorInterface } from '../types'
 
 interface StyledItemInterface {
   pageIndicator?: PageIndicatorInterface,

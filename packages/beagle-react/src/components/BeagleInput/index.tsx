@@ -15,28 +15,16 @@
 */
 
 import React, { FC } from 'react'
-import { InputEvent, InputHandler, BeagleDefaultComponent, InputType } from '../types'
+import { BeagleTextInputInterface, InputHandler } from 'common/models'
+import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
 
-export interface TextInputInterface extends BeagleDefaultComponent {
-  value: string,
-  placeholder?: string,
-  disabled?: boolean,
-  readOnly?: boolean,
-  type?: InputType,
-  hidden?: boolean,
-  onChange?: InputHandler,
-  onFocus?: InputHandler,
-  onBlur?: InputHandler,
-}
-
-const BeagleInput: FC<TextInputInterface> = ({
+const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
   placeholder,
   disabled,
   readOnly,
   type = 'TEXT',
-  hidden,
   onChange,
   onFocus,
   onBlur,
@@ -55,7 +43,6 @@ const BeagleInput: FC<TextInputInterface> = ({
       disabled={disabled}
       readOnly={readOnly}
       type={type}
-      hidden={hidden}
       onChange={handleEvent(onChange)}
       onBlur={handleEvent(onBlur)}
       onFocus={handleEvent(onFocus)}

@@ -15,16 +15,11 @@
 */
 
 import React, { FC, useContext } from 'react'
-import { ClickEvent } from '@zup-it/beagle-web/types'
 import BeagleServiceContext from 'common/provider'
-import { BeagleDefaultComponent } from '../types'
+import { BeagleTouchableInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'
 
-export interface BeagleTouchableInterface extends BeagleDefaultComponent {
-  onPress: () => void,
-  clickAnalyticsEvent?: ClickEvent,
-}
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
   onPress,

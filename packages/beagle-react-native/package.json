@@ -24,10 +24,13 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "react-native": "^0.63.2",
+    "react-native-swiper": "^1.6.0",
+    "react-native-webview": "^10.8.3",
     "@zup-it/beagle-web": "1.3.0-rc.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.8.0",
+    "react-native-webview": "^10.8.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.149"

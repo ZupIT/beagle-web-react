@@ -16,27 +16,9 @@
 
 import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
-import { BeagleDefaultComponent, ImageMode } from '../types'
+import { BeagleImageInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledImage, StyledFigure } from './styled'
-
-export type ImagePathMode = 'local' | 'remote'
-
-export interface ImagePath {
-  _beagleImagePath_: ImagePathMode,
-  url: string,
-}
-
-export interface Accessibility {
-  accessible: boolean,
-  accessibilityLabel?: string,
-}
-
-export interface BeagleImageInterface extends BeagleDefaultComponent {
-  path: ImagePath,
-  mode?: ImageMode,
-  accessibility?: Accessibility,
-}
 
 const modeMap = {
   FIT_XY: 'fill',

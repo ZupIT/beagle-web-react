@@ -15,13 +15,9 @@
 */
 
 import React, { FC } from 'react'
-import { Direction, BeagleDefaultComponent } from '../types'
+import { BeagleListViewInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledListView } from './styled'
-  
-export interface BeagleListViewInterface extends BeagleDefaultComponent {
-  direction: Direction,
-}
 
 const BeagleListView: FC<BeagleListViewInterface> = props => {
   const { children, direction, className, style } = props
