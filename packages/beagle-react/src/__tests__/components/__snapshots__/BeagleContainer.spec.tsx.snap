@@ -36,7 +36,11 @@ exports[`Beagle snapshot container 1`] = `
             "width": "50",
           }
         }
-      />
+      >
+        <p>
+          Something inside
+        </p>
+      </div>
     </styled.div>
   </BeagleContainer>
 </ComponentWithTheme>
