@@ -15,7 +15,6 @@
 */
 
 import { Fragment, FC, createElement, ComponentClass } from 'react'
-import { map } from 'lodash'
 import { BeagleUIElement, ViewContentManagerMap } from '@zup-it/beagle-web'
 import { BeagleConfig } from 'common/types'
 import { getComponentByCaseInsensitiveKey } from 'common/utils/beagleComponent'
@@ -47,9 +46,18 @@ const createReactComponentTree = <Schema>(
     return createElement(Fragment)
   }
 
+  function beagleComponentAsReactComponent(beagleComponent: BeagleUIElement<Schema>) {
+    return createReactComponentTree(
+      components,
+      beagleComponent,
+      viewId,
+      contentManagerMap,
+      BeagleId,
+    )
+  }
+
   const viewContentManager = contentManagerMap.get(viewId, id)
-  const componentChildren = map(children, child =>
-    createReactComponentTree(components, child, viewId, contentManagerMap, BeagleId))
+  const componentChildren = children ? children.map(beagleComponentAsReactComponent) : []
   const componentProps = { ...props, key: id, viewContentManager }
 
   return createElement(BeagleId, { id, key: id }, [
