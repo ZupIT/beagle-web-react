@@ -31,19 +31,24 @@ const mockStyle: React.CSSProperties = {
 }
 const mockPath: ImagePath = {
   _beagleImagePath_: 'local',
-  url: 'mytesteimg.png',    
+  url: 'mytesteimg.png',
 }
 
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   beagleContextMock = mock<ViewContentManager>()
-  wrapper = mount(<BeagleImage 
-    className="Test Class" 
-    style={mockStyle} 
+  wrapper = mount(<BeagleImage
+    className="Test Class"
+    style={mockStyle}
+    accessibility={{accessibilityLabel: 'Test label', accessible: true  }}
     path={mockPath} />)
 })
 
 test('Beagle snapshot image', () => {
   expect(wrapper).toMatchSnapshot()
+})
+
+test('Beagle image should have the alt', () => {
+  expect(wrapper.find('img').props().alt).toContain('Test label')
 })
