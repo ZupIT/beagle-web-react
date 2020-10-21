@@ -15,24 +15,30 @@
 */
 
 // Link.react.test.js
-import React from 'react'
-import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow } from 'enzyme'
-import BeagleTouchable from '../../components/BeagleTouchable'
+import React from 'react';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure, mount, shallow } from 'enzyme';
+import BeagleTouchable from '../../components/BeagleTouchable';
 
-let wrapper: any
-const onPressMock = jest.fn()
+let wrapper: any;
+const onPressMock = jest.fn();
 
-configure({ adapter: new Adapter() })
+configure({ adapter: new Adapter() });
 beforeAll(() => {
-  wrapper = shallow(<BeagleTouchable onPress={onPressMock}/>)
-})
+  wrapper = shallow(
+    <BeagleTouchable onPress={onPressMock}><p>Important Content</p></BeagleTouchable>
+  );
+});
 
 test('Beagle snapshot Touchable', () => {
-  expect(wrapper).toMatchSnapshot()
-})
+  expect(wrapper).toMatchSnapshot();
+});
 
 test('Should call on click handler', () => {
-  wrapper.simulate('press')
-  expect(onPressMock).toHaveBeenCalledTimes(1)
-})
+  wrapper.simulate('press');
+  expect(onPressMock).toHaveBeenCalledTimes(1);
+});
+
+test('Should render children element', () => {
+  expect(wrapper.find('p').text()).toContain('Important Content')
+});
