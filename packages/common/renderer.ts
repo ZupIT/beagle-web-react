@@ -1,18 +1,18 @@
 /*
-  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  *  http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-*/
+ * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import { Fragment, FC, createElement, ComponentClass } from 'react'
 import { map } from 'lodash'
@@ -35,7 +35,7 @@ const createReactComponentTree = <Schema>(
   }
 
   const { _beagleComponent_, children, id, context, ...props } = ui
-  
+
   if (!_beagleComponent_) return createElement(Fragment)
 
   const Component = getComponentByCaseInsensitiveKey(components, _beagleComponent_)
@@ -49,7 +49,8 @@ const createReactComponentTree = <Schema>(
 
   const viewContentManager = contentManagerMap.get(viewId, id)
   const componentChildren = map(children, child =>
-    createReactComponentTree(components, child, viewId, contentManagerMap, BeagleId))
+    createReactComponentTree(components, child, viewId, contentManagerMap, BeagleId)
+  )
   const componentProps = { ...props, key: id, viewContentManager }
 
   return createElement(BeagleId, { id, key: id }, [

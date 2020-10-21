@@ -1,18 +1,18 @@
 /*
-  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  *  http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-*/
+ * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import { useEffect, useRef } from 'react'
 import { ScrollInterface, NodeType } from './types'
@@ -37,9 +37,11 @@ function useScroll(props: ScrollInterface, deps: any[]) {
 
     const hasXScroll = overflowX !== 'visible' && overflowX !== 'hidden'
 
-    return (nodeElement.clientWidth === 0 ||
+    return (
+      nodeElement.clientWidth === 0 ||
       nodeElement.scrollWidth <= nodeElement.clientWidth ||
-      !hasXScroll)
+      !hasXScroll
+    )
   }
 
   const hasVerticalScroll = (nodeElement: NodeType): boolean => {
@@ -47,17 +49,21 @@ function useScroll(props: ScrollInterface, deps: any[]) {
 
     const overflowY = getComputedStyle(nodeElement).overflowY
     const hasYScroll = overflowY !== 'visible' && overflowY !== 'hidden'
-    return (nodeElement.clientHeight === 0 ||
+    return (
+      nodeElement.clientHeight === 0 ||
       nodeElement.scrollHeight <= nodeElement.clientHeight ||
-      !hasYScroll)
+      !hasYScroll
+    )
   }
 
   const getParentNode = (nodeElement: NodeType): NodeType => {
     if (!nodeElement) return null
     if (nodeElement.nodeName === 'HTML') return nodeElement
 
-    if (direction === 'VERTICAL' && hasVerticalScroll(nodeElement) ||
-      direction === 'HORIZONTAL' && hasHorizontalScroll(nodeElement))
+    if (
+      (direction === 'VERTICAL' && hasVerticalScroll(nodeElement)) ||
+      (direction === 'HORIZONTAL' && hasHorizontalScroll(nodeElement))
+    )
       return getParentNode(nodeElement.parentNode as HTMLElement)
 
     return nodeElement
@@ -72,7 +78,7 @@ function useScroll(props: ScrollInterface, deps: any[]) {
       return parentNode as NodeType
     }
 
-    return (elementRef.current as NodeType)
+    return elementRef.current as NodeType
   }
 
   const callOnScrollEnd = () => {
@@ -86,23 +92,20 @@ function useScroll(props: ScrollInterface, deps: any[]) {
     let screenPercentage: number
     if (direction === 'VERTICAL') {
       const scrollPosition = node.scrollTop
-      screenPercentage = (scrollPosition /
-        (node.scrollHeight - node.clientHeight)) * 100
+      screenPercentage = (scrollPosition / (node.scrollHeight - node.clientHeight)) * 100
     } else {
       const scrollPosition = node.scrollLeft
-      screenPercentage = (scrollPosition /
-        (node.scrollWidth - node.clientWidth)) * 100
+      screenPercentage = (scrollPosition / (node.scrollWidth - node.clientWidth)) * 100
     }
 
     const isOverThreshold = scrollEndThreshold && Math.ceil(screenPercentage) >= scrollEndThreshold
     if (isOverThreshold) callOnScrollEnd()
   }
 
-  const canScrollContent = (element: HTMLElement) => (
+  const canScrollContent = (element: HTMLElement) =>
     direction === 'HORIZONTAL'
       ? element.scrollWidth > element.clientWidth
       : element.scrollHeight > element.clientHeight
-  )
 
   useEffect(() => {
     if (!hasRendered) return
@@ -112,7 +115,7 @@ function useScroll(props: ScrollInterface, deps: any[]) {
       if (node !== undefined && node !== null) node.removeEventListener('scroll', calcPercentage)
       node = referenceNode
 
-      const parent = (node && node.nodeName !== 'HTML') ? node : window
+      const parent = node && node.nodeName !== 'HTML' ? node : window
 
       if (!canScrollContent(parent instanceof Window ? document.body : parent)) callOnScrollEnd()
 

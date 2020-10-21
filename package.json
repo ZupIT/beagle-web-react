@@ -23,6 +23,7 @@
   "scripts": {
     "publish": "lerna publish from-package",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format-code": "prettier --write \"./**/*.{ts, tsx, js, jsx, json}\"",
     "clean": "lerna run clean",
     "check-types": "lerna run check-types",
     "build": "lerna run build",

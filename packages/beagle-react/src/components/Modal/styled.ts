@@ -13,7 +13,7 @@ export const StyledModal = styled.div`
   justify-content: center;
 
   > div {
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 25px;
     padding: 30px;
   }

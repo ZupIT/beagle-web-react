@@ -1,26 +1,26 @@
 /*
-  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  *  http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-*/
+ * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import styled from 'styled-components'
 import { PageIndicatorInterface } from 'common/models'
 import { BeagleTheme } from '../commons.styled'
 
 interface StyledItemInterface {
-  pageIndicator?: PageIndicatorInterface,
-  selected: boolean,
+  pageIndicator?: PageIndicatorInterface
+  selected: boolean
 }
 
 export const StyledBeaglePageView = styled.div`
@@ -64,20 +64,21 @@ export const StyledOrderList = styled.ol`
 `
 
 export const StyledItemList = styled.li<StyledItemInterface>`
-  width: .625rem;
-  height: .625rem;
+  width: 0.625rem;
+  height: 0.625rem;
   cursor: pointer;
   border-radius: 50%;
   margin: 10px;
-  background-color: ${({ selected, pageIndicator }) => selected ?
-    (pageIndicator && pageIndicator.selectedColor) || BeagleTheme.swamp :
-    (pageIndicator && pageIndicator.unselectedColor) || BeagleTheme.swampTransparent}
+  background-color: ${({ selected, pageIndicator }) =>
+    selected
+      ? (pageIndicator && pageIndicator.selectedColor) || BeagleTheme.swamp
+      : (pageIndicator && pageIndicator.unselectedColor) || BeagleTheme.swampTransparent};
 `
 
 export const StyleContentItems = styled.div`
   margin: 0 30px;
-  > :not(.active) { 
-    display: none; 
+  > :not(.active) {
+    display: none;
   }
   > .active {
     display: block;

@@ -1,18 +1,18 @@
 /*
-  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  *  http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-*/
+ * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import styled from 'styled-components'
 
@@ -60,13 +60,13 @@ export const Container = styled.div`
   */
 
   code {
-    background-color: rgba(27,31,35,.05);
+    background-color: rgba(27, 31, 35, 0.05);
     border-radius: 3px;
     font-size: 85%;
     margin: 0;
     word-wrap: break-word;
-    padding: .2em .4em;
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    padding: 0.2em 0.4em;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   }
 
   pre > code {
@@ -171,7 +171,9 @@ export const Container = styled.div`
     color: #0366d6;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     border-bottom: 1px solid #eaecef;
     color: #111;
   }

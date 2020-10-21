@@ -45,7 +45,7 @@ module.exports = {
     'keyword-spacing': ["error", { before: true, after: true }],
     'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
-    
+
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 'off',
     'import/order': ['warn', {
@@ -57,15 +57,12 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'react/require-default-props': 'off',
     'react/prop-types': 'off',
-    
+
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/member-delimiter-style': ['error', {
-      multiline: { delimiter: 'comma', requireLast: true },
-      singleline: { delimiter: 'comma', requireLast: false }
-    }],
+    '@typescript-eslint/member-delimiter-style': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
   },
   "settings": {
