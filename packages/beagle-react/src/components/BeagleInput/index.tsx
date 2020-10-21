@@ -33,7 +33,10 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
 }) => {
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
-    handler({ value: event.target.value })
+
+    if (!disabled && !readOnly) {
+      handler({ value: event.target.value })
+    }
   }
 
   return (
