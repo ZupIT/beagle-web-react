@@ -61,12 +61,11 @@ test('Should call on blur handler', () => {
 })
 
 test('Should update the textarea value', () => {
-  let textAreaTextState = '';
-  function setTeste(value: string) {
-    textAreaTextState = value;
-  }
+  let textAreaTextState = ''
+  const setAreeaTextState = (value: string) => textAreaTextState = value
+
    const textAreaWrapper = mount(
-    <TextArea disabled={false} value={textAreaTextState} onChange={(e) => setTeste(e.value)} />
+    <TextArea disabled={false} value={textAreaTextState} onChange={(e) => setAreeaTextState(e.value)} />
   );
 
   expect(textAreaWrapper.props().value).not.toContain('Changed');
@@ -77,7 +76,7 @@ test('Should update the textarea value', () => {
 });
 
 test('Should not update the disabled textarea value', () => {
-  let textAreaTextState = '';
+  let textAreaTextState = ''
   function setTeste(value: string) {
     textAreaTextState = value;
   }

@@ -15,10 +15,10 @@
 */
 
 // Link.react.test.js
-import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure, mount, shallow } from 'enzyme';
-import BeagleTouchable from '../../components/BeagleTouchable';
+import React from 'react'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, mount, shallow } from 'enzyme'
+import BeagleTouchable from '../../components/BeagleTouchable'
 
 let wrapper: any;
 const onPressMock = jest.fn();

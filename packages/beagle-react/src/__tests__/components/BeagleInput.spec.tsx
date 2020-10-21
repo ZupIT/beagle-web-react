@@ -1,25 +1,24 @@
 /*
- * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *  http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
 // Link.react.test.js
-import React, { useState } from 'react';
-import Adapter from 'enzyme-adapter-react-16';
-import { configure, mount } from 'enzyme';
-import BeagleInput from '../../components/BeagleInput';
-import { BeagleTextInputInterface } from 'common/models';
+import React, { useState } from 'react'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, mount } from 'enzyme'
+import BeagleInput from '../../components/BeagleInput'
+import { BeagleTextInputInterface } from 'common/models'
 
 let wrapper: any;
 const beagleInputPropsMock: BeagleTextInputInterface = {
@@ -39,7 +38,7 @@ beforeAll(() => {
 });
 
 test('Beagle snapshot Input', () => {
-  //expect(wrapper).toMatchSnapshot()
+  expect(wrapper).toMatchSnapshot()
 });
 
 test('Should call on change handler', () => {
@@ -61,7 +60,7 @@ test('Should call on blur handler', () => {
 });
 
 test('Should update text on input', () => {
-  var inputStateValue = '';
+  var inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value;
   }
@@ -86,7 +85,7 @@ test('Should update text on input', () => {
 });
 
 test('Should not update text on disabled input', () => {
-  var inputStateValue = '';
+  var inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value;
   }
@@ -111,7 +110,7 @@ test('Should not update text on disabled input', () => {
 });
 
 test('Should not update text on readonly input', () => {
-  var inputStateValue = '';
+  var inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value;
   }
@@ -136,7 +135,7 @@ test('Should not update text on readonly input', () => {
 });
 
 test('Should not update text on readonly and disabled input', () => {
-  var inputStateValue = '';
+  var inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value;
   }
