@@ -31,7 +31,9 @@
     "react": ">=16.8.0",
     "react-native-webview": "^10.8.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "react": "16.14.0"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
