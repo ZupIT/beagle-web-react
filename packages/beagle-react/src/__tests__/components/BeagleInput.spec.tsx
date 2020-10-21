@@ -20,7 +20,7 @@ import { configure, mount } from 'enzyme'
 import BeagleInput from '../../components/BeagleInput'
 import { BeagleTextInputInterface } from 'common/models'
 
-let wrapper: any;
+let wrapper: any
 const beagleInputPropsMock: BeagleTextInputInterface = {
   value: 'Testing',
   placeholder: 'Testing',
@@ -30,39 +30,39 @@ const beagleInputPropsMock: BeagleTextInputInterface = {
   onChange: jest.fn(),
   onFocus: jest.fn(),
   onBlur: jest.fn(),
-};
+}
 
-configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = mount(<BeagleInput {...beagleInputPropsMock} />);
-});
+  wrapper = mount(<BeagleInput {...beagleInputPropsMock} />)
+})
 
 test('Beagle snapshot Input', () => {
   expect(wrapper).toMatchSnapshot()
-});
+})
 
 test('Should call on change handler', () => {
-  const props: any = wrapper.props();
-  wrapper.simulate('change', { value: 'changed' });
-  expect(props.onChange).toHaveBeenCalledTimes(1);
-});
+  const props: any = wrapper.props()
+  wrapper.simulate('change', { value: 'changed' })
+  expect(props.onChange).toHaveBeenCalledTimes(1)
+})
 
 test('Should call on focus handler', () => {
-  const props: any = wrapper.props();
-  wrapper.simulate('focus');
-  expect(props.onFocus).toHaveBeenCalledTimes(1);
-});
+  const props: any = wrapper.props()
+  wrapper.simulate('focus')
+  expect(props.onFocus).toHaveBeenCalledTimes(1)
+})
 
 test('Should call on blur handler', () => {
-  const props: any = wrapper.props();
-  wrapper.simulate('blur');
-  expect(props.onBlur).toHaveBeenCalledTimes(1);
-});
+  const props: any = wrapper.props()
+  wrapper.simulate('blur')
+  expect(props.onBlur).toHaveBeenCalledTimes(1)
+})
 
 test('Should update text on input', () => {
   var inputStateValue = ''
   function setTeste(value: string) {
-    inputStateValue = value;
+    inputStateValue = value
   }
 
   const wrapper = mount(
@@ -73,21 +73,21 @@ test('Should update text on input', () => {
       placeholder="Testing"
       type="TEXT"
       onChange={(nova) => {
-        setTeste(nova.value);
+        setTeste(nova.value)
       }}
     />
-  );
+  )
 
-  expect(wrapper.props().value).not.toContain('Changed');
-  wrapper.simulate('change', { target: { value: 'Changed' } });
-  wrapper.setProps({ value: inputStateValue });
-  expect(wrapper.props().value).toContain('Changed');
-});
+  expect(wrapper.props().value).not.toContain('Changed')
+  wrapper.simulate('change', { target: { value: 'Changed' } })
+  wrapper.setProps({ value: inputStateValue })
+  expect(wrapper.props().value).toContain('Changed')
+})
 
 test('Should not update text on disabled input', () => {
   var inputStateValue = ''
   function setTeste(value: string) {
-    inputStateValue = value;
+    inputStateValue = value
   }
 
   const wrapper = mount(
@@ -98,21 +98,21 @@ test('Should not update text on disabled input', () => {
       placeholder="Testing"
       type="TEXT"
       onChange={(nova) => {
-        setTeste(nova.value);
+        setTeste(nova.value)
       }}
     />
-  );
+  )
 
-  expect(wrapper.props().value).not.toContain('Changed');
-  wrapper.simulate('change', { target: { value: 'Changed' } });
-  wrapper.setProps({ value: inputStateValue });
-  expect(wrapper.props().value).not.toContain('Changed');
-});
+  expect(wrapper.props().value).not.toContain('Changed')
+  wrapper.simulate('change', { target: { value: 'Changed' } })
+  wrapper.setProps({ value: inputStateValue })
+  expect(wrapper.props().value).not.toContain('Changed')
+})
 
 test('Should not update text on readonly input', () => {
   var inputStateValue = ''
   function setTeste(value: string) {
-    inputStateValue = value;
+    inputStateValue = value
   }
 
   const wrapper = mount(
@@ -123,21 +123,21 @@ test('Should not update text on readonly input', () => {
       placeholder="Testing"
       type="TEXT"
       onChange={(nova) => {
-        setTeste(nova.value);
+        setTeste(nova.value)
       }}
     />
-  );
+  )
 
-  expect(wrapper.props().value).not.toContain('Changed');
-  wrapper.simulate('change', { target: { value: 'Changed' } });
-  wrapper.setProps({ value: inputStateValue });
-  expect(wrapper.props().value).not.toContain('Changed');
-});
+  expect(wrapper.props().value).not.toContain('Changed')
+  wrapper.simulate('change', { target: { value: 'Changed' } })
+  wrapper.setProps({ value: inputStateValue })
+  expect(wrapper.props().value).not.toContain('Changed')
+})
 
 test('Should not update text on readonly and disabled input', () => {
   var inputStateValue = ''
   function setTeste(value: string) {
-    inputStateValue = value;
+    inputStateValue = value
   }
 
   const wrapper = mount(
@@ -148,13 +148,13 @@ test('Should not update text on readonly and disabled input', () => {
       placeholder="Testing"
       type="TEXT"
       onChange={(nova) => {
-        setTeste(nova.value);
+        setTeste(nova.value)
       }}
     />
-  );
+  )
 
-  expect(wrapper.props().value).not.toContain('Changed');
-  wrapper.simulate('change', { target: { value: 'Changed' } });
-  wrapper.setProps({ value: inputStateValue });
-  expect(wrapper.props().value).not.toContain('Changed');
-});
+  expect(wrapper.props().value).not.toContain('Changed')
+  wrapper.simulate('change', { target: { value: 'Changed' } })
+  wrapper.setProps({ value: inputStateValue })
+  expect(wrapper.props().value).not.toContain('Changed')
+})

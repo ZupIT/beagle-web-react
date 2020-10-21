@@ -66,27 +66,27 @@ test('Should update the textarea value', () => {
 
    const textAreaWrapper = mount(
     <TextArea disabled={false} value={textAreaTextState} onChange={(e) => setAreeaTextState(e.value)} />
-  );
+  )
 
-  expect(textAreaWrapper.props().value).not.toContain('Changed');
-  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } });
-  textAreaWrapper.setProps({ value: textAreaTextState });
+  expect(textAreaWrapper.props().value).not.toContain('Changed')
+  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
+  textAreaWrapper.setProps({ value: textAreaTextState })
   textAreaWrapper.update()
-  expect(textAreaWrapper.props().value).toContain('Changed');
-});
+  expect(textAreaWrapper.props().value).toContain('Changed')
+})
 
 test('Should not update the disabled textarea value', () => {
   let textAreaTextState = ''
   function setTeste(value: string) {
-    textAreaTextState = value;
+    textAreaTextState = value
   }
    const textAreaWrapper = mount(
     <TextArea disabled={true} value={textAreaTextState} onChange={(e) => setTeste(e.value)} />
-  );
+  )
 
-  expect(textAreaWrapper.props().value).not.toContain('Changed');
-  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } });
-  textAreaWrapper.setProps({ value: textAreaTextState });
+  expect(textAreaWrapper.props().value).not.toContain('Changed')
+  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
+  textAreaWrapper.setProps({ value: textAreaTextState })
   textAreaWrapper.update()
-  expect(textAreaWrapper.props().value).not.toContain('Changed');
-});
+  expect(textAreaWrapper.props().value).not.toContain('Changed')
+})
