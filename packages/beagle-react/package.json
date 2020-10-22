@@ -20,8 +20,8 @@
     "check-types": "tsc --noEmit",
     "check-test-types": "tsc ./__tests__/** --noEmit",
     "test": "jest",
-    "link-beagle": "cd dist && yarn link && cd ../node_modules/react && yarn link && cd ../react-dom && yarn link && cd ../..",
-    "unlink-beagle": "cd dist && yarn unlink && cd ../node_modules/react && yarn unlink && cd ../react-dom && yarn unlink && cd ../.."
+    "link-beagle": "cd dist && yarn link && cd ../../../node_modules/react && yarn link && cd ../react-dom && yarn link && cd ../../packages/beagle-react",
+    "unlink-beagle": "cd dist && yarn unlink && cd ../../../node_modules/react && yarn unlink && cd ../react-dom && yarn unlink && cd ../../packages/beagle-react"
   },
   "dependencies": {
     "@zup-it/beagle-web": "1.3.0",
