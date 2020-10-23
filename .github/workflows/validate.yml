@@ -67,7 +67,6 @@ jobs:
       run: cd react && yarn lint
     
     - name: test
-      if: ${{ failure() }}
       run: cd react/packages/beagle-react && yarn test
 
     - name: test and comment
