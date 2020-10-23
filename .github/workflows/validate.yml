@@ -71,12 +71,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        working-directory: "react"
+        working-directory: "react/packages/beagle-react"
         test-command: "yarn test --maxWorkers=2"
         
     - name: tests only
       if: ${{ failure() }}
-      run: yarn test
+      run: cd react/packages/beagle-react && yarn test
 
     - name: type-check
       run: cd react && yarn build
