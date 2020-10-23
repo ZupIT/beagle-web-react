@@ -67,13 +67,17 @@ jobs:
       run: cd react && yarn lint
 
     - name: Jest Annotations & Coverage
+      continue-on-error: true
       uses: mattallty/jest-github-action@v1.0.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        coverage-comment: false
         working-directory: "react"
         test-command: "yarn test --maxWorkers=2"
+        
+    - name: tests only
+      if: failure()
+      run: yarn test
 
     - name: type-check
       run: cd react && yarn build
