@@ -67,6 +67,7 @@ jobs:
       run: cd react && yarn lint
 
     - name: Jest Annotations & Coverage
+      if: ${{ secrets.GITHUB_TOKEN != null }}
       uses: mattallty/jest-github-action@v1.0.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
