@@ -76,7 +76,7 @@ jobs:
         test-command: "yarn test --maxWorkers=2"
         
     - name: tests only
-      if: failure()
+      if: ${{ failure() }}
       run: yarn test
 
     - name: type-check
