@@ -71,6 +71,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        coverage-comment: ${{ secrets.GITHUB_TOKEN != null }} 
         working-directory: "react"
         test-command: "yarn test --maxWorkers=2"
 
