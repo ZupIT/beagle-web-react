@@ -40,7 +40,3 @@ test('Should call on click handler', () => {
   wrapper.simulate('press')
   expect(onPressMock).toHaveBeenCalledTimes(1)
 })
-
-test('Should render children element', () => {
-  expect(wrapper.find('p').text()).toContain('Important Content')
-})
