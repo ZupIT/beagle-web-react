@@ -16,7 +16,7 @@
 
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount, render, shallow } from 'enzyme'
+import { configure, mount } from 'enzyme'
 import BeagleTabBar from '../../components/BeagleTabBar'
 
 let wrapper: any
