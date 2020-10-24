@@ -78,83 +78,62 @@ test('Should update text on input', () => {
     />
   )
 
-  expect(wrapper.props().value).not.toContain('Changed')
+  expect(wrapper.find('input').prop('value')).toBe('')
   wrapper.simulate('change', { target: { value: 'Changed' } })
   wrapper.setProps({ value: inputStateValue })
-  expect(wrapper.props().value).toContain('Changed')
+  expect(wrapper.find('input').prop('value')).toBe('Changed')
 })
 
 test('Should not update text on disabled input', () => {
-  let inputStateValue = ''
-  function setTeste(value: string) {
-    inputStateValue = value
-  }
+  const onChange = jest.fn()
 
   const wrapper = mount(
     <BeagleInput
-      value={inputStateValue}
+      value=''
       disabled={true}
       readOnly={false}
       placeholder="Testing"
       type="TEXT"
-      onChange={(nova) => {
-        setTeste(nova.value)
-      }}
+      onChange={onChange}
     />
   )
 
-  expect(wrapper.props().value).not.toContain('Changed')
   wrapper.simulate('change', { target: { value: 'Changed' } })
-  wrapper.setProps({ value: inputStateValue })
-  expect(wrapper.props().value).not.toContain('Changed')
+  expect(onChange).not.toHaveBeenCalled()
 })
 
 test('Should not update text on readonly input', () => {
-  let inputStateValue = ''
-  function setTeste(value: string) {
-    inputStateValue = value
-  }
+  const onChange = jest.fn()
 
   const wrapper = mount(
     <BeagleInput
-      value={inputStateValue}
+      value=''
       disabled={false}
       readOnly={true}
       placeholder="Testing"
       type="TEXT"
-      onChange={(nova) => {
-        setTeste(nova.value)
-      }}
+      onChange={onChange}
     />
   )
 
-  expect(wrapper.props().value).not.toContain('Changed')
   wrapper.simulate('change', { target: { value: 'Changed' } })
-  wrapper.setProps({ value: inputStateValue })
-  expect(wrapper.props().value).not.toContain('Changed')
+  expect(onChange).not.toHaveBeenCalled()
 })
 
 test('Should not update text on readonly and disabled input', () => {
-  let inputStateValue = ''
-  function setTeste(value: string) {
-    inputStateValue = value
-  }
+  const onChange = jest.fn()
 
   const wrapper = mount(
     <BeagleInput
-      value={inputStateValue}
-      disabled={false}
+    value=''
+    disabled={false}
       readOnly={true}
       placeholder="Testing"
       type="TEXT"
-      onChange={(nova) => {
-        setTeste(nova.value)
-      }}
+      onChange={onChange}
     />
   )
 
-  expect(wrapper.props().value).not.toContain('Changed')
   wrapper.simulate('change', { target: { value: 'Changed' } })
-  wrapper.setProps({ value: inputStateValue })
-  expect(wrapper.props().value).not.toContain('Changed')
+  expect(onChange).not.toHaveBeenCalled()
 })
