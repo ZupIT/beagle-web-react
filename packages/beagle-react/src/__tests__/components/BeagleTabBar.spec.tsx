@@ -18,14 +18,18 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import BeagleTabBar from '../../components/BeagleTabBar'
+import { StyledBeagleTabItem, StyledSelected } from '../../components/BeagleTabBar/styled'
 
 let wrapper: any
 let tabIndex: number
-const setTabIndex = (e: number) => tabIndex = e
 
 configure({ adapter: new Adapter() })
 
 beforeAll(() => {
+  const setTabIndex = (e: number) => {
+    tabIndex = e
+  }
+
   wrapper = mount(
     <BeagleTabBar
       items={[{ title: 'First Tab' }, {title: 'Second Tab'}]}
@@ -35,32 +39,34 @@ beforeAll(() => {
   )
 })
 
-
 test('Beagle Tab Bar should render the tabs corretly', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-
 test('Beagle Tab Bar should toggle the tab', () => {
-  expect(wrapper.exists('[aria-label="First Tab"]')).toBeTruthy()
-  expect(wrapper.exists('[aria-label="Second Tab"]')).toBeTruthy()
-  expect(wrapper.exists('[aria-label="First Tab is the current Tab"]')).toBeFalsy()
-  expect(wrapper.exists('[aria-label="Second Tab is the current Tab"]')).toBeFalsy()
+  let tabs = wrapper.find(StyledBeagleTabItem)
 
-  wrapper.find('[aria-label="Second Tab"]').at(1).simulate('click')
-  wrapper.setProps({ currentTab: tabIndex })
-  expect(wrapper.exists('[aria-label="First Tab is the current Tab"]')).toBeFalsy()
-  expect(wrapper.exists('[aria-label="Second Tab is the current Tab"]')).toBeTruthy()
+  expect(tabs.length).toBe(2)
+  expect(tabs.at(0).exists(StyledSelected)).toBe(false)
+  expect(tabs.at(1).exists(StyledSelected)).toBe(false)
 
-  wrapper.find('[aria-label="First Tab"]').at(1).simulate('click')
+  tabs.at(1).find('div').at(1).simulate('click')
   wrapper.setProps({ currentTab: tabIndex })
-  expect(wrapper.exists('[aria-label="First Tab is the current Tab"]')).toBeTruthy()
-  expect(wrapper.exists('[aria-label="Second Tab is the current Tab"]')).toBeFalsy()
+  tabs = wrapper.find(StyledBeagleTabItem)
+  expect(tabs.at(0).exists(StyledSelected)).toBe(false)
+  expect(tabs.at(1).exists(StyledSelected)).toBe(true)
 
-  wrapper.find('[aria-label="Second Tab"]').at(1).simulate('click')
+  tabs.at(0).find('div').at(1).simulate('click')
   wrapper.setProps({ currentTab: tabIndex })
-  expect(wrapper.exists('[aria-label="First Tab is the current Tab"]')).toBeFalsy()
-  expect(wrapper.exists('[aria-label="Second Tab is the current Tab"]')).toBeTruthy()
+  tabs = wrapper.find(StyledBeagleTabItem)
+  expect(tabs.at(0).exists(StyledSelected)).toBe(true)
+  expect(tabs.at(1).exists(StyledSelected)).toBe(false)
+
+  tabs.at(1).find('div').at(1).simulate('click')
+  wrapper.setProps({ currentTab: tabIndex })
+  tabs = wrapper.find(StyledBeagleTabItem)
+  expect(tabs.at(0).exists(StyledSelected)).toBe(false)
+  expect(tabs.at(1).exists(StyledSelected)).toBe(true)
 })
 
 

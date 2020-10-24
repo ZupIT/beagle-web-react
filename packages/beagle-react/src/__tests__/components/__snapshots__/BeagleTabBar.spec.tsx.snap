@@ -39,11 +39,9 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
             className="sc-hKFyIo jajsUp"
           >
             <styled.div
-              aria-label="First Tab"
               onClick={[Function]}
             >
               <div
-                aria-label="First Tab"
                 className="sc-eCApGN jVtiWo"
                 onClick={[Function]}
               >
@@ -59,11 +57,9 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
             className="sc-hKFyIo jajsUp"
           >
             <styled.div
-              aria-label="Second Tab"
               onClick={[Function]}
             >
               <div
-                aria-label="Second Tab"
                 className="sc-eCApGN jVtiWo"
                 onClick={[Function]}
               >

@@ -45,16 +45,11 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({ onTabSelection, currentTab, i
     <StyledTabBar>
       {items.map((item, index) => (
         <StyledBeagleTabItem key={index}>
-          <StyledBeagleTabItemContent
-            aria-label={item.title}
-            onClick={() => changeSelectedTab(index)}
-          >
+          <StyledBeagleTabItemContent onClick={() => changeSelectedTab(index)}>
             {tabImage(item)}
             {item.title}
           </StyledBeagleTabItemContent >
-          {index === currentTab &&
-            <StyledSelected aria-label={`${item.title} is the current Tab`}></StyledSelected>
-          }
+          {index === currentTab && <StyledSelected></StyledSelected>}
         </StyledBeagleTabItem>
       ))}
     </StyledTabBar>
