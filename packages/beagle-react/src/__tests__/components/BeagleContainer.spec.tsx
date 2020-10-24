@@ -42,7 +42,3 @@ beforeAll(() => {
 test('Beagle snapshot container', () => {
   expect(wrapper).toMatchSnapshot()
 })
-
-test('Container should render the children', () => {
-  expect(wrapper.find('p').text()).toContain('Something inside')
-})

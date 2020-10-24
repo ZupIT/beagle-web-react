@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 // Link.react.test.js
-import React, { useState } from 'react'
+import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import BeagleInput from '../../components/BeagleInput'
@@ -60,7 +60,7 @@ test('Should call on blur handler', () => {
 })
 
 test('Should update text on input', () => {
-  var inputStateValue = ''
+  let inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value
   }
@@ -85,7 +85,7 @@ test('Should update text on input', () => {
 })
 
 test('Should not update text on disabled input', () => {
-  var inputStateValue = ''
+  let inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value
   }
@@ -110,7 +110,7 @@ test('Should not update text on disabled input', () => {
 })
 
 test('Should not update text on readonly input', () => {
-  var inputStateValue = ''
+  let inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value
   }
@@ -135,7 +135,7 @@ test('Should not update text on readonly input', () => {
 })
 
 test('Should not update text on readonly and disabled input', () => {
-  var inputStateValue = ''
+  let inputStateValue = ''
   function setTeste(value: string) {
     inputStateValue = value
   }

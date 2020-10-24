@@ -34,8 +34,8 @@ const mockPath: ImagePath = {
   url: 'mytesteimg.png',
 }
 
-
 configure({ adapter: new Adapter() })
+
 beforeAll(() => {
   beagleContextMock = mock<ViewContentManager>()
   wrapper = mount(<BeagleImage
@@ -47,8 +47,4 @@ beforeAll(() => {
 
 test('Beagle snapshot image', () => {
   expect(wrapper).toMatchSnapshot()
-})
-
-test('Beagle image should have the alt', () => {
-  expect(wrapper.find('img').props().alt).toContain('Test label')
 })

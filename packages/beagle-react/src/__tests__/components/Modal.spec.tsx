@@ -29,7 +29,7 @@ test('Beagle snapshot Modal', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-test('Should render a open modal with the children inside, then close, then open again', () => {
+test('Should render an open modal with the children inside, then close, then open again', () => {
   let opened = true
   const onClickOpenedMock = () => (opened = !opened)
   let wrapperOpened = mount(

@@ -30,9 +30,3 @@ beforeAll(() => {
 test('Beagle snapshot Error', () => {
   expect(wrapper).toMatchSnapshot()
 })
-
-test('Beagle error should have the correctly children text', () => {
-  expect(wrapper.text()).toContain('Sorry!')
-  expect(wrapper.text()).toContain('An unexpected error happened while loading your page.')
-})
-
