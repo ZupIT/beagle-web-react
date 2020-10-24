@@ -68,25 +68,20 @@ test('Should update the textarea value', () => {
     <TextArea disabled={false} value={textAreaTextState} onChange={(e) => setAreeaTextState(e.value)} />
   )
 
-  expect(textAreaWrapper.props().value).not.toContain('Changed')
+  expect(textAreaWrapper.find('textarea').prop('value')).toBe('')
   textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
   textAreaWrapper.setProps({ value: textAreaTextState })
   textAreaWrapper.update()
-  expect(textAreaWrapper.props().value).toContain('Changed')
+  expect(textAreaWrapper.find('textarea').prop('value')).toBe('Changed')
 })
 
 test('Should not update the disabled textarea value', () => {
-  let textAreaTextState = ''
-  function setTeste(value: string) {
-    textAreaTextState = value
-  }
-   const textAreaWrapper = mount(
-    <TextArea disabled={true} value={textAreaTextState} onChange={(e) => setTeste(e.value)} />
+  const onChange = jest.fn()
+
+  const textAreaWrapper = mount(
+    <TextArea disabled={true} value='' onChange={onChange} />
   )
 
-  expect(textAreaWrapper.props().value).not.toContain('Changed')
   textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
-  textAreaWrapper.setProps({ value: textAreaTextState })
-  textAreaWrapper.update()
-  expect(textAreaWrapper.props().value).not.toContain('Changed')
+  expect(onChange).not.toHaveBeenCalled()
 })
