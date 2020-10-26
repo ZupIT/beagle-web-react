@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect} from 'react'
+import React, { FC, useEffect } from 'react'
 import { BeagleContainerInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 import { StyledContainer } from './styled'
