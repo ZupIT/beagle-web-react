@@ -34,6 +34,7 @@ import BeagleInput from './BeagleInput'
 import BeagleWebView from './BeagleWebView'
 import BeaglePageIndicator from './BeaglePageIndicator'
 import BeagleTabBar from './BeagleTabBar'
+import BeagleScreen from './BeagleScreen'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -60,6 +61,7 @@ const beagleDefaultComponents = {
   'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
+  'beagle:screen': BeagleScreen,
 }
 
 const webSpecificComponents = {
