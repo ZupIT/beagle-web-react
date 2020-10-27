@@ -21,9 +21,10 @@ import {
   logger,
   LoadParams,
 } from '@zup-it/beagle-web'
-import { uniqueId } from 'lodash'
 import BeagleProvider from './provider'
 import { BeagleRemoteViewType } from './types'
+
+let nextId = 0
 
 function useComponent({
   id,
@@ -41,7 +42,7 @@ function useComponent({
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   const beagleView = useMemo<BeagleView>(() => {
-    if (!id) setViewID(uniqueId())
+    if (!id) setViewID(`${nextId++}`)
     
     const view = beagleService.createView(networkOptions, controllerId)
     view.subscribe(setUiTree)
