@@ -22,13 +22,12 @@ import { StyledScreen } from './styled'
 
 const BeagleScreen: FC<BeagleScreenInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)
-  const { children, onInit, className, style, screenAnalyticsEvent } = props
+  const { children, className, style, screenAnalyticsEvent } = props
   const beagleAnalytics = beagleService && beagleService.analytics
 
   useEffect(() => {
     if (screenAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
-    if (onInit) onInit()
     return () => {
       if (screenAnalyticsEvent && beagleAnalytics)
         beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)

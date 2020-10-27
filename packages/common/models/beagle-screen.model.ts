@@ -18,6 +18,5 @@ import { ScreenEvent } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from './types'
 
 export interface BeagleScreenInterface extends BeagleDefaultComponent {
-  onInit?: () => void,
   screenAnalyticsEvent?: ScreenEvent,
 }
