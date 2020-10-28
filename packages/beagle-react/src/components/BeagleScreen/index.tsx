@@ -22,7 +22,7 @@ import { StyledScreen } from './styled'
 
 const BeagleScreen: FC<BeagleScreenInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)
-  const { children, className, style, screenAnalyticsEvent } = props
+  const { children, className, screenAnalyticsEvent } = props
   const beagleAnalytics = beagleService && beagleService.analytics
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const BeagleScreen: FC<BeagleScreenInterface> = props => {
   }, [])
 
   return (
-    <StyledScreen className={className} style={style}>
+    <StyledScreen className={className}>
       {children}
     </StyledScreen>
   )
