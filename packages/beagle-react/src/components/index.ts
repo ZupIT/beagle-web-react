@@ -47,7 +47,7 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:futurelistview': BeagleFutureListView,
   'beagle:container': BeagleContainer,
-  'beagle:screencomponent': BeagleContainer,
+  'beagle:screencomponent': BeagleScreen,
   'beagle:pageview': BeaglePageView,
   'beagle:pageindicator': BeaglePageIndicator,
   'beagle:networkimage': BeagleImage,
@@ -61,7 +61,6 @@ const beagleDefaultComponents = {
   'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
-  'beagle:screen': BeagleScreen,
 }
 
 const webSpecificComponents = {

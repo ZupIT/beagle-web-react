@@ -17,12 +17,11 @@
 import React, { FC, useEffect, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleScreenInterface } from 'common/models'
-import withTheme from '../utils/withTheme'
 import { StyledScreen } from './styled'
 
 const BeagleScreen: FC<BeagleScreenInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)
-  const { children, className, screenAnalyticsEvent } = props
+  const { children, screenAnalyticsEvent } = props
   const beagleAnalytics = beagleService && beagleService.analytics
 
   useEffect(() => {
@@ -35,10 +34,10 @@ const BeagleScreen: FC<BeagleScreenInterface> = props => {
   }, [])
 
   return (
-    <StyledScreen className={className}>
+    <StyledScreen>
       {children}
     </StyledScreen>
   )
 }
 
-export default withTheme(BeagleScreen)
+export default BeagleScreen
