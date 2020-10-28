@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react-native",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "beagle-react-native/src/index.js",
   "typings": "beagle-react-native/src/index.d.ts",
   "license": "Apache-2.0",
@@ -22,7 +22,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "1.3.0",
+    "@zup-it/beagle-web": "1.4.0",
     "react-native": "^0.63.2",
     "react-native-swiper": "^1.6.0",
     "react-native-webview": "^10.8.3"

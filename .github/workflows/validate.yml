@@ -65,13 +65,17 @@ jobs:
     
     - name: lint
       run: cd react && yarn lint
+    
+    - name: test
+      run: cd react/packages/beagle-react && yarn test
 
-    - name: Jest Annotations & Coverage
+    - name: test and comment
+      continue-on-error: true
       uses: mattallty/jest-github-action@v1.0.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        working-directory: "react"
+        working-directory: "react/packages/beagle-react"
         test-command: "yarn test --maxWorkers=2"
 
     - name: type-check
