@@ -34,9 +34,7 @@ const TextArea: FC<BeagleTextAreaInterface> = ({
 }) => {
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
-    if (!disabled) {
-      handler({ value: event.target.value })
-    }
+    handler({ value: event.target.value })
   }
 
   return (

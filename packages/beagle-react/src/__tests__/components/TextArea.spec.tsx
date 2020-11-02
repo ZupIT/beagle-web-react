@@ -74,14 +74,3 @@ test('Should update the textarea value', () => {
   textAreaWrapper.update()
   expect(textAreaWrapper.find('textarea').prop('value')).toBe('Changed')
 })
-
-test('Should not update the disabled textarea value', () => {
-  const onChange = jest.fn()
-
-  const textAreaWrapper = mount(
-    <TextArea disabled={true} value='' onChange={onChange} />
-  )
-
-  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
-  expect(onChange).not.toHaveBeenCalled()
-})
