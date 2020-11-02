@@ -30,10 +30,8 @@ test('Beagle snapshot Modal', () => {
 })
 
 test('Should render an opened modal', () => {
-  let opened = true
-  const onClickOpenedMock = () => (opened = !opened)
   let wrapperOpened = mount(
-    <Modal onClose={onClickOpenedMock} isOpen={opened}>
+    <Modal onClose={jest.fn()} isOpen={true}>
       Opened modal
     </Modal>
   )
@@ -42,10 +40,8 @@ test('Should render an opened modal', () => {
 })
 
 test('Should render a closed modal', () => {
-  let closed = false
-  const onClickClosedMock = () => (closed = !closed)
   let wrapperClosed = mount(
-    <Modal onClose={onClickClosedMock} isOpen={closed}>
+    <Modal onClose={jest.fn()} isOpen={false}>
       Closed modal
     </Modal>
   )
@@ -54,10 +50,8 @@ test('Should render a closed modal', () => {
 })
 
 test('Should render an open modal with the children inside, then close, then open again', () => {
-  let opened = true
-  const onClickOpenedMock = () => (opened = !opened)
   let wrapperOpened = mount(
-    <Modal onClose={onClickOpenedMock} isOpen={opened}>
+    <Modal onClose={jest.fn()} isOpen={true}>
       Opened modal
     </Modal>
   )
