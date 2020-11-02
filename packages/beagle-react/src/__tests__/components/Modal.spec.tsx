@@ -29,6 +29,30 @@ test('Beagle snapshot Modal', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
+test('Should render an opened modal', () => {
+  let opened = true
+  const onClickOpenedMock = () => (opened = !opened)
+  let wrapperOpened = mount(
+    <Modal onClose={onClickOpenedMock} isOpen={opened}>
+      Opened modal
+    </Modal>
+  )
+
+  expect(wrapperOpened.text()).toContain('Opened modal')
+})
+
+test('Should render a closed modal', () => {
+  let closed = false
+  const onClickClosedMock = () => (closed = !closed)
+  let wrapperClosed = mount(
+    <Modal onClose={onClickClosedMock} isOpen={closed}>
+      Closed modal
+    </Modal>
+  )
+
+  expect(wrapperClosed.text()).not.toContain('Closed modal')
+})
+
 test('Should render an open modal with the children inside, then close, then open again', () => {
   let opened = true
   const onClickOpenedMock = () => (opened = !opened)
@@ -43,20 +67,4 @@ test('Should render an open modal with the children inside, then close, then ope
   expect(wrapperOpened.text()).not.toContain('Opened modal')
   wrapperOpened.setProps({ isOpen: true })
   expect(wrapperOpened.text()).toContain('Opened modal')
-})
-
-test('Should render a closed modal, then open with the children inside', () => {
-  let closed = false
-  const onClickClosedMock = () => (closed = !closed)
-  let wrapperClosed = mount(
-    <Modal onClose={onClickClosedMock} isOpen={closed}>
-      Closed modal
-    </Modal>
-  )
-
-  expect(wrapperClosed.text()).not.toContain('Closed modal')
-  wrapperClosed.setProps({ isOpen: true })
-  expect(wrapperClosed.text()).toContain('Closed modal')
-  wrapperClosed.setProps({ isOpen: false })
-  expect(wrapperClosed.text()).not.toContain('Closed modal')
 })
