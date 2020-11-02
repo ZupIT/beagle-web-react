@@ -34,7 +34,7 @@ beforeAll(() => {
     <BeagleTabBar
       items={[{ title: 'First Tab' }, {title: 'Second Tab'}]}
       currentTab={tabIndex}
-      onTabSelection={e => setTabIndex(e)}
+      onTabSelection={setTabIndex}
     />
   )
 })
