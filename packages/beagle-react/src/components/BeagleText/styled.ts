@@ -26,5 +26,5 @@ export const StyledText = styled.p<StyledTextInterface>`
 	color: ${({ textColor }) =>  textColor ? textColor : 'inherit'};
 	text-align: ${({ alignment }) => alignment ? alignment : 'inherit'};
   margin: 0;
-  white-space: pre;
+  white-space: pre-wrap;
 `
