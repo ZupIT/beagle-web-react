@@ -34,6 +34,7 @@ import BeagleInput from './BeagleInput'
 import BeagleWebView from './BeagleWebView'
 import BeaglePageIndicator from './BeaglePageIndicator'
 import BeagleTabBar from './BeagleTabBar'
+import BeagleScreen from './BeagleScreen'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -46,7 +47,7 @@ const beagleDefaultComponents = {
   'beagle:listview': BeagleListView,
   'beagle:futurelistview': BeagleFutureListView,
   'beagle:container': BeagleContainer,
-  'beagle:screencomponent': BeagleContainer,
+  'beagle:screencomponent': BeagleScreen,
   'beagle:pageview': BeaglePageView,
   'beagle:pageindicator': BeaglePageIndicator,
   'beagle:networkimage': BeagleImage,
