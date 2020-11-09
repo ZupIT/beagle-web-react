@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot Error 1`] = `
-<BeagleError
-  className="Test Class"
-/>
+<div
+  class="Test Class"
+>
+  <p
+    class="sc-bdnylx kHJGBP"
+  >
+    Sorry!
+  </p>
+  <p
+    class="sc-bdnylx fQEoWZ"
+  >
+    An unexpected error happened while loading your page.
+  </p>
+</div>
 `;

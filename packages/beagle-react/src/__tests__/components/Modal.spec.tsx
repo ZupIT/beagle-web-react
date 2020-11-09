@@ -20,15 +20,45 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import Modal from '../../components/Modal'
 
-let wrapper: any
-const onClickMock = jest.fn()
-
-
 configure({ adapter: new Adapter() })
-beforeAll(() => {
-  wrapper = mount(<Modal  onClose={onClickMock} isOpen={true}/>)
-})
 
 test('Beagle snapshot Modal', () => {
+  const onClickMock = jest.fn()
+  let wrapper =  mount(<Modal onClose={onClickMock} isOpen={true} />)
+
   expect(wrapper).toMatchSnapshot()
+})
+
+test('Should render an opened modal', () => {
+  let wrapperOpened = mount(
+    <Modal onClose={jest.fn()} isOpen={true}>
+      Opened modal
+    </Modal>
+  )
+
+  expect(wrapperOpened.text()).toContain('Opened modal')
+})
+
+test('Should render a closed modal', () => {
+  let wrapperClosed = mount(
+    <Modal onClose={jest.fn()} isOpen={false}>
+      Closed modal
+    </Modal>
+  )
+
+  expect(wrapperClosed.text()).not.toContain('Closed modal')
+})
+
+test('Should render an open modal with the children inside, then close, then open again', () => {
+  let wrapperOpened = mount(
+    <Modal onClose={jest.fn()} isOpen={true}>
+      Opened modal
+    </Modal>
+  )
+
+  expect(wrapperOpened.text()).toContain('Opened modal')
+  wrapperOpened.setProps({ isOpen: false })
+  expect(wrapperOpened.text()).not.toContain('Opened modal')
+  wrapperOpened.setProps({ isOpen: true })
+  expect(wrapperOpened.text()).toContain('Opened modal')
 })
