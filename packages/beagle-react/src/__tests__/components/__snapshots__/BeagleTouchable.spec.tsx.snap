@@ -4,5 +4,9 @@ exports[`Beagle snapshot Touchable 1`] = `
 <BeagleTouchable
   className=""
   onPress={[MockFunction]}
-/>
+>
+  <p>
+    Important Content
+  </p>
+</BeagleTouchable>
 `;

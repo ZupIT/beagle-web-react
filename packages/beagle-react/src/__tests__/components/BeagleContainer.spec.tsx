@@ -29,13 +29,14 @@ const mockStyle: React.CSSProperties = {
   width: '50',
 }
 
-
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   beagleContextMock = mock<ViewContentManager>()
-  wrapper = mount(<BeagleContainer
-    className="Test Class"
-    style={mockStyle} />)
+  wrapper = mount(
+    <BeagleContainer className="Test Class" style={mockStyle}>
+      <p>Something inside</p>
+    </BeagleContainer>
+  )
 })
 
 test('Beagle snapshot container', () => {
