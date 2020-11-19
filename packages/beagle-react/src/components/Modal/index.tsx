@@ -21,7 +21,7 @@ import { StyledModal } from './styled'
 
 
 const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, children }) => {
-  const elementRef = useRef<HTMLDivElement>()
+  const elementRef = useRef<HTMLDivElement>(null)
 
   function closeOnEsc({ key }: KeyboardEvent) {
     if (key === 'Escape') {
@@ -41,7 +41,6 @@ const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, ch
   }, [])
 
   const modal = (
-    // @ts-ignore: ref types are still wrong
     <StyledModal ref={elementRef} style={style} className={className} onClick={closeOnClickOutside}>
       {children}
     </StyledModal>

@@ -13,7 +13,6 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
-
 // Link.react.test.js
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
@@ -60,3 +59,27 @@ test('Should call on blur handler', () => {
   expect(props.onBlur).toHaveBeenCalledTimes(1)
 })
 
+test('Should update text on input', () => {
+  let inputStateValue = ''
+  function setTeste(value: string) {
+    inputStateValue = value
+  }
+
+  const wrapper = mount(
+    <BeagleInput
+      value={inputStateValue}
+      disabled={false}
+      readOnly={false}
+      placeholder="Testing"
+      type="TEXT"
+      onChange={(nova) => {
+        setTeste(nova.value)
+      }}
+    />
+  )
+
+  expect(wrapper.find('input').prop('value')).toBe('')
+  wrapper.simulate('change', { target: { value: 'Changed' } })
+  wrapper.setProps({ value: inputStateValue })
+  expect(wrapper.find('input').prop('value')).toBe('Changed')
+})
