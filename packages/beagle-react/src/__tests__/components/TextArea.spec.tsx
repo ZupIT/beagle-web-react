@@ -17,7 +17,7 @@
 // Link.react.test.js
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow } from 'enzyme'
+import { configure, mount, shallow } from 'enzyme'
 import TextArea from '../../components/TextArea'
 import { BeagleTextAreaInterface } from 'common/models'
 
@@ -60,3 +60,17 @@ test('Should call on blur handler', () => {
   expect(props.onBlur).toHaveBeenCalledTimes(1)
 })
 
+test('Should update the textarea value', () => {
+  let textAreaTextState = ''
+  const setAreeaTextState = (value: string) => textAreaTextState = value
+
+   const textAreaWrapper = mount(
+    <TextArea disabled={false} value={textAreaTextState} onChange={(e) => setAreeaTextState(e.value)} />
+  )
+
+  expect(textAreaWrapper.find('textarea').prop('value')).toBe('')
+  textAreaWrapper.find('textarea').simulate('change', { target: { value: 'Changed' } })
+  textAreaWrapper.setProps({ value: textAreaTextState })
+  textAreaWrapper.update()
+  expect(textAreaWrapper.find('textarea').prop('value')).toBe('Changed')
+})

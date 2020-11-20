@@ -2,6 +2,12 @@
 
 exports[`Beagle snapshot image 1`] = `
 <ComponentWithTheme
+  accessibility={
+    Object {
+      "accessibilityLabel": "Test label",
+      "accessible": true,
+    }
+  }
   className="Test Class"
   path={
     Object {
@@ -17,6 +23,12 @@ exports[`Beagle snapshot image 1`] = `
   }
 >
   <BeagleImage
+    accessibility={
+      Object {
+        "accessibilityLabel": "Test label",
+        "accessible": true,
+      }
+    }
     className="Test Class"
     path={
       Object {
@@ -41,7 +53,7 @@ exports[`Beagle snapshot image 1`] = `
       }
     >
       <figure
-        className="sc-gtssRu jwZSfG Test Class"
+        className="sc-gsTCUz crUlbz Test Class"
         style={
           Object {
             "height": "100",
@@ -50,11 +62,13 @@ exports[`Beagle snapshot image 1`] = `
         }
       >
         <styled.img
+          alt="Test label"
           mode="cover"
           src="mytesteimg.png"
         >
           <img
-            className="sc-bdnylx gAuNDe"
+            alt="Test label"
+            className="sc-bdfBwQ ednZQG"
             mode="cover"
             src="mytesteimg.png"
           />
