@@ -29,7 +29,8 @@ import {
   NetworkOptions,
 } from '@zup-it/beagle-web'
 
-export interface BeagleConfig<Schema = DefaultSchema> extends Omit<BeagleCoreConfig<Schema>, 'platform'> {
+export interface BeagleConfig<Schema = DefaultSchema>
+  extends Omit<BeagleCoreConfig<Schema>, 'platform'> {
   components: {
     'custom:error'?: FC<{}> | FC<ErrorComponentParams>,
     'custom:loading'?: FC<{}>,
@@ -38,7 +39,7 @@ export interface BeagleConfig<Schema = DefaultSchema> extends Omit<BeagleCoreCon
   },
 }
 
-export interface BeagleConfigReactNative<Schema = DefaultSchema> extends BeagleConfig<Schema>{
+export interface BeagleConfigReactNative<Schema = DefaultSchema> extends BeagleConfig<Schema> {
   localAssetsPath?: Record<string, number>,
 }
 
