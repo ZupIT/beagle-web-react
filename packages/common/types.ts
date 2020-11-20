@@ -29,7 +29,7 @@ import {
   NetworkOptions,
 } from '@zup-it/beagle-web'
 
-export interface BeagleConfig<Schema = DefaultSchema> extends BeagleCoreConfig<Schema> {
+export interface BeagleConfig<Schema = DefaultSchema> extends Omit<BeagleCoreConfig<Schema>, 'platform'> {
   components: {
     'custom:error'?: FC<{}> | FC<ErrorComponentParams>,
     'custom:loading'?: FC<{}>,
