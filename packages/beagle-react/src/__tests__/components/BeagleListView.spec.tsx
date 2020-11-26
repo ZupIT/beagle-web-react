@@ -33,6 +33,8 @@ beforeAll(() => {
   wrapper = shallow(<BeagleListView 
     direction={directionMock} 
     style={mockStyle} 
+    dataSource={['testA', 'testB', 'testC']}
+    template={{ _beagleComponent_: 'beagle:text', text: '@item' }}
     className='Test Class' />)
 })
 

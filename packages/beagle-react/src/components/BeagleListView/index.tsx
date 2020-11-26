@@ -14,16 +14,80 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleListViewInterface } from 'common/models'
+import React, { FC, useEffect, useRef, Children } from 'react'
+import { BeagleUIElement } from '@zup-it/beagle-web'
+import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
+import useScroll from './scroll'
 import { StyledListView } from './styled'
+import { BeagleListViewInterface } from './types'
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, className, style } = props
+const BeagleListView: FC<BeagleListViewInterface> = ({
+  direction = 'VERTICAL',
+  className,
+  style,
+  template,
+  onInit,
+  onScrollEnd,
+  scrollEndThreshold = 100,
+  dataSource,
+  iteratorName = 'item',
+  viewContentManager,
+  children,
+  useParentScroll = false,
+  _key,
+  __suffix__,
+}) => {
+  const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
+  const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
+  useScroll(
+    { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
+    [Children.count(children)],
+  )
+
+  useEffect(() => {
+    if (onInit) onInit()
+  }, [])
+
+  useEffect(() => {
+    if (!Array.isArray(dataSource)) return
+
+    if (!viewContentManager) {
+      return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
+    }
+
+    const element = viewContentManager.getElement() as BeagleUIElement
+    if (!element) return
+    const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
+    const listViewId = viewContentManager.getElement().id
+
+    element.children = dataSource.map((item, index) => {
+      const templateTree = Tree.clone(template)
+      const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
+      const suffix = __suffix__ || ''
+      templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
+      Tree.forEach(templateTree, (component, componentIndex) => {
+        const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
+        component.id = `${baseId}:${iterationKey}`
+        if (component._beagleComponent_.toLowerCase() === listViewTag) {
+          component.__suffix__ = `${suffix}:${iterationKey}`
+        }
+      })
+      
+      return templateTree
+    })
+
+    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
+  }, [JSON.stringify(dataSource)])
 
   return (
-    <StyledListView className={className} direction={direction} style={style}>
+    <StyledListView
+      ref={elementRef}
+      className={className}
+      direction={direction}
+      useParentScroll={useParentScroll}
+      style={style}
+    >
       {children}
     </StyledListView>
   )
