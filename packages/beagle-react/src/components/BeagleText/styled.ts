@@ -27,4 +27,5 @@ export const StyledText = styled.p<StyledTextInterface>`
 	text-align: ${({ alignment }) => alignment ? alignment : 'inherit'};
   margin: 0;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
 `
