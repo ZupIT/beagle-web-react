@@ -17,18 +17,16 @@
 // Link.react.test.js
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow } from 'enzyme'
+import { configure, render } from 'enzyme'
 import BeagleError from '../../components/BeagleError'
 
 let wrapper: any
 
-
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = shallow(<BeagleError className="Test Class"/>)
+  wrapper = render(<BeagleError className="Test Class"/>)
 })
 
 test('Beagle snapshot Error', () => {
   expect(wrapper).toMatchSnapshot()
 })
-

@@ -25,7 +25,11 @@ const onPressMock = jest.fn()
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = shallow(<BeagleTouchable onPress={onPressMock}/>)
+  wrapper = shallow(
+    <BeagleTouchable onPress={onPressMock}>
+      <p>Important Content</p>
+    </BeagleTouchable>
+  )
 })
 
 test('Beagle snapshot Touchable', () => {
