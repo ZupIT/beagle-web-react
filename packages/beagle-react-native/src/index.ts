@@ -29,6 +29,7 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfigReact
       ...config.components,
       ...defaultComponents,
     },
+    platform: 'React Native',
     // @ts-ignore
     customStorage: config.customStorage || AsyncStorage,
     localAssetsPath: config.localAssetsPath || {},
