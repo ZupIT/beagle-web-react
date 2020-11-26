@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot list view 1`] = `
+<BeagleListView
+  className="Test Class"
+  dataSource={
+    Array [
+      "testA",
+      "testB",
+      "testC",
+    ]
+  }
+  direction="HORIZONTAL"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+  template={
+    Object {
+      "_beagleComponent_": "beagle:text",
+      "text": "@item",
+    }
+  }
+/>
+`;
