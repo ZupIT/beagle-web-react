@@ -25,6 +25,7 @@ import defaultComponents from './components/index'
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfigReactNative<Schema>) {
   return createBeagleCoreUIService<Schema>({
     ...config,
+    platform: 'React Native',
     components: {
       ...config.components,
       ...defaultComponents,
