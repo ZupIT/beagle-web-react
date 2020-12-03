@@ -50,11 +50,11 @@ jobs:
         run: yarn build
       
       - name: prepare to publish
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" > .npmrc
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH }}
 
       - name: publish to NPM
         run: yarn lerna publish from-package --yes --registry=https://registry.npmjs.org/
         env: 
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH }}
