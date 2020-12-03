@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react-native",
-  "version": "1.5.0-rc.1",
+  "version": "1.5.0",
   "main": "beagle-react-native/src/index.js",
   "typings": "beagle-react-native/src/index.d.ts",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   ],
-  "private": false,
+  "private": true,
   "scripts": {
     "fix-aliases": "node ../../node_modules/tscpaths/cjs -p tsconfig.json -s ../ -o ./dist",
     "clean": "rm -fr dist",
@@ -22,7 +22,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "1.5.0-rc.1",
+    "@zup-it/beagle-web": "1.5.0",
     "react-native": "^0.63.2",
     "react-native-swiper": "^1.6.0",
     "react-native-webview": "^10.8.3"
