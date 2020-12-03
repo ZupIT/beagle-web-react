@@ -22,34 +22,60 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
 
     steps:
       # checkout code
       - uses: actions/checkout@v2
+
+      # get the version in package.json
+      - name: get current version
+        run: echo PACKAGE_VERSION=$(node packages/beagle-react/bin/publish/get-version) >> $GITHUB_ENV
+      
+      # check if the version in package.json is greater than the version in NPM
+  
+      - name: check if this version should be published
+        run: echo SHOULD_PUBLISH=$(node packages/beagle-react/bin/publish/should-publish) >> $GITHUB_ENV
+
+      # if it's a new version, create a new release
 
       - name: create release
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.PACKAGE_VERSION }}
+          release_name: Release v${{ env.PACKAGE_VERSION }}
+          body: |
+            Todo: release notes should go here
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
+
+      # if it's a new version, publish to NPM
 
       - name: clear cache
-        run: yarn cache clean
+        run: cd packages/beagle-react && yarn cache clean
 
       - name: install
-        run: yarn
+        if: ${{ env.SHOULD_PUBLISH == 'true' }}
+        run: cd packages/beagle-react && yarn
 
       - name: setup node
+        if: ${{ env.SHOULD_PUBLISH == 'true' }}
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: build
-        run: yarn build
+        if: ${{ env.SHOULD_PUBLISH == 'true' }}
+        run: cd packages/beagle-react && yarn build
 
       - name: publish to NPM
-        run: yarn lerna publish from-package
+        if: ${{ env.SHOULD_PUBLISH == 'true' }}
+        run: cd packages/beagle-react && cd dist && npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH }}
