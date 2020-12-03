@@ -22,27 +22,20 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    env:
-      working-directory: ./packages/beagle-react
-    
+    runs-on: ubuntu-latest  
 
     steps:
       # checkout code
       - uses: actions/checkout@v2
 
-        
-
       # get the version in package.json
       - name: get current version
-        working-directory: ${{env.working-directory}}
-        run: echo PACKAGE_VERSION=$(node bin/publish/get-version) >> $GITHUB_ENV
+        run: echo PACKAGE_VERSION=$(node packages/beagle-react/bin/publish/get-version) >> $GITHUB_ENV
       
       # check if the version in package.json is greater than the version in NPM
   
       - name: check if this version should be published
-        working-directory: ${{env.working-directory}}
-        run: echo SHOULD_PUBLISH=$(node bin/publish/should-publish) >> $GITHUB_ENV
+        run: echo SHOULD_PUBLISH=$(node packages/beagle-react/bin/publish/should-publish) >> $GITHUB_ENV
 
       # if it's a new version, create a new release
 
@@ -64,13 +57,11 @@ jobs:
       # if it's a new version, publish to NPM
 
       - name: clear cache
-        working-directory: ${{env.working-directory}}
-        run: yarn cache clean
+        run: cd packages/beagle-react && yarn cache clean
 
       - name: install
-        working-directory: ${{env.working-directory}}
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: yarn
+        run: cd packages/beagle-react && yarn
 
       - name: setup node
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
@@ -80,13 +71,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: build
-        working-directory: ${{env.working-directory}}
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: yarn build
+        run: cd packages/beagle-react && yarn build
 
       - name: publish to NPM
-        working-directory: ${{env.working-directory}}
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd dist && npm publish --access public
+        run: cd packages/beagle-react && cd dist && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH }}
