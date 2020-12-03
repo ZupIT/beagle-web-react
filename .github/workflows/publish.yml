@@ -50,7 +50,9 @@ jobs:
         run: yarn build
       
       - name: prepare to publish
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" > .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" > .npmrc
+          npm whoami
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH }}
 
