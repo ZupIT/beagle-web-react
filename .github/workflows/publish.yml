@@ -55,4 +55,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: publish to NPM
-        run: yarn lerna publish from-package
+        run: yarn lerna publish from-package --yes
