@@ -52,4 +52,4 @@ jobs:
       - name: publish to NPM
         run: yarn lerna publish from-package
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH }}
