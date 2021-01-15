@@ -24,7 +24,7 @@ if (!fs.existsSync(dir)) {
   }
 
   const beagleContent = await readFileContent(__dirname + '/boilerplate/beagle-service.ts')
-  const appContent = await readFileContent(__dirname + '/boilerplate/app.tsx')
+  const appContent = await readFileContent(__dirname + '/boilerplate/App.tsx')
   const readline = require('readline')
   
   const rl = readline.createInterface({
@@ -38,7 +38,7 @@ if (!fs.existsSync(dir)) {
 
   rl.question('Want to replace app.tsx with the Beagle configuration (y or n) ?', (answer) => {
     if (`${answer}` === 'y') {
-      fs.writeFile('src/app.tsx', appContent, function (err) {
+      fs.writeFile('src/App.tsx', appContent, function (err) {
         if (err) throw err
         process.exit()
       })
