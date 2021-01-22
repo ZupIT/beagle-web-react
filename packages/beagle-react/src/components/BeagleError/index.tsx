@@ -14,19 +14,38 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleDefaultComponent } from 'common/models'
+import React, { FC, useState } from 'react'
+import { BeagleErrorInterface } from 'common/models'
 import BeagleText from '../BeagleText'
 import withTheme from '../utils/withTheme'
+import { ErrorsDetailedContainer, StyledRetryButton, StyledRetryContainer, StyledShowMoreButton } from './styled'
 
-const BeagleError: FC<BeagleDefaultComponent> = props => {
-  const { className } = props
-  return (
-    <div className={className}>
-      <BeagleText text="Sorry!" textColor="red" />
-      <BeagleText text="An unexpected error happened while loading your page." />
-    </div>
-  )
+const BeagleError: FC<BeagleErrorInterface> = ({ retry, errors, className }) => {
+    const [showingDetails, setShowingDetails] = useState<boolean>(false);
+
+    const handleShowMore = () => {
+        setShowingDetails(!showingDetails);
+    };
+
+    return (
+        <StyledRetryContainer className={className}>
+            <BeagleText text="Sorry!" textColor="red" />
+            <BeagleText text="An unexpected error happened while loading your page." />
+            <StyledRetryButton type="button" data-testid="retry" onClick={() => retry()}>Retry</StyledRetryButton>
+            {
+                errors.length > 0 
+                ? (
+                    <>
+                        <StyledShowMoreButton type="button" data-testid="show-more" onClick={() => handleShowMore()}>{showingDetails ? 'Hide' : 'Show' } details { showingDetails ? '▲' : '▼' }</StyledShowMoreButton>
+                        <ErrorsDetailedContainer data-testid="details" className={showingDetails ? 'show' : ''}>
+                            {errors.map((error, index) => <p key={`key_${index}`} className="error-message"><span className="error-indicator">►</span> ERROR: { error.message }</p>)}
+                        </ErrorsDetailedContainer>
+                    </>
+                )
+                : null
+            }            
+        </StyledRetryContainer>
+    );
 }
 
-export default withTheme(BeagleError)
+export default withTheme(BeagleError);

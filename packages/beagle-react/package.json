@@ -24,7 +24,9 @@
     "unlink-beagle": "cd dist && yarn unlink && cd ../node_modules/react && yarn unlink && cd ../react-dom && yarn unlink && cd ../.."
   },
   "dependencies": {
+    "@types/react-native": "^0.63.46",
     "@zup-it/beagle-web": "1.5.0",
+    "react-native": "^0.63.4",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {

@@ -1,18 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot Error 1`] = `
-<div
-  class="Test Class"
+exports[`Beagle Error - render correctly with details Should match the snapshot 1`] = `
+<ComponentWithTheme
+  className="Test Class"
+  errors={
+    Array [
+      Object {
+        "message": "First Message",
+      },
+      Object {
+        "message": "Second Message",
+      },
+    ]
+  }
+  retry={[MockFunction]}
 >
-  <p
-    class="sc-bdfBwQ eliSds"
+  <BeagleError
+    className="Test Class"
+    errors={
+      Array [
+        Object {
+          "message": "First Message",
+        },
+        Object {
+          "message": "Second Message",
+        },
+      ]
+    }
+    retry={[MockFunction]}
   >
-    Sorry!
-  </p>
-  <p
-    class="sc-bdfBwQ fTPwPK"
+    <styled.section
+      className="Test Class"
+    >
+      <section
+        className="sc-dlfnbm cKbXoD Test Class"
+      >
+        <ComponentWithTheme
+          text="Sorry!"
+          textColor="red"
+        >
+          <BeagleText
+            className=""
+            text="Sorry!"
+            textColor="red"
+          >
+            <styled.p
+              className=""
+              textColor="red"
+            >
+              <p
+                className="sc-bdfBwQ eliSds"
+              >
+                Sorry!
+              </p>
+            </styled.p>
+          </BeagleText>
+        </ComponentWithTheme>
+        <ComponentWithTheme
+          text="An unexpected error happened while loading your page."
+        >
+          <BeagleText
+            className=""
+            text="An unexpected error happened while loading your page."
+          >
+            <styled.p
+              className=""
+            >
+              <p
+                className="sc-bdfBwQ fTPwPK"
+              >
+                An unexpected error happened while loading your page.
+              </p>
+            </styled.p>
+          </BeagleText>
+        </ComponentWithTheme>
+        <Styled(styled.button)
+          data-testid="retry"
+          onClick={[Function]}
+          type="button"
+        >
+          <button
+            className="sc-gsTCUz sc-hKgILt GjlDz kQKsvs"
+            data-testid="retry"
+            onClick={[Function]}
+            type="button"
+          >
+            Retry
+          </button>
+        </Styled(styled.button)>
+        <Styled(styled.button)
+          data-testid="show-more"
+          onClick={[Function]}
+          type="button"
+        >
+          <button
+            className="sc-gsTCUz sc-eCssSg GjlDz heRvxW"
+            data-testid="show-more"
+            onClick={[Function]}
+            type="button"
+          >
+            Show
+             details 
+            ▼
+          </button>
+        </Styled(styled.button)>
+        <styled.section
+          className=""
+          data-testid="details"
+        >
+          <section
+            className="sc-jSgupP iebOao"
+            data-testid="details"
+          >
+            <p
+              className="error-message"
+              key="key_0"
+            >
+              <span
+                className="error-indicator"
+              >
+                ►
+              </span>
+               ERROR: 
+              First Message
+            </p>
+            <p
+              className="error-message"
+              key="key_1"
+            >
+              <span
+                className="error-indicator"
+              >
+                ►
+              </span>
+               ERROR: 
+              Second Message
+            </p>
+          </section>
+        </styled.section>
+      </section>
+    </styled.section>
+  </BeagleError>
+</ComponentWithTheme>
+`;
+
+exports[`Beagle Error - render correctly without details Should match the snapshot 1`] = `
+<ComponentWithTheme
+  className="Test Class"
+  errors={Array []}
+  retry={[MockFunction]}
+>
+  <BeagleError
+    className="Test Class"
+    errors={Array []}
+    retry={[MockFunction]}
   >
-    An unexpected error happened while loading your page.
-  </p>
-</div>
+    <styled.section
+      className="Test Class"
+    >
+      <section
+        className="sc-dlfnbm cKbXoD Test Class"
+      >
+        <ComponentWithTheme
+          text="Sorry!"
+          textColor="red"
+        >
+          <BeagleText
+            className=""
+            text="Sorry!"
+            textColor="red"
+          >
+            <styled.p
+              className=""
+              textColor="red"
+            >
+              <p
+                className="sc-bdfBwQ eliSds"
+              >
+                Sorry!
+              </p>
+            </styled.p>
+          </BeagleText>
+        </ComponentWithTheme>
+        <ComponentWithTheme
+          text="An unexpected error happened while loading your page."
+        >
+          <BeagleText
+            className=""
+            text="An unexpected error happened while loading your page."
+          >
+            <styled.p
+              className=""
+            >
+              <p
+                className="sc-bdfBwQ fTPwPK"
+              >
+                An unexpected error happened while loading your page.
+              </p>
+            </styled.p>
+          </BeagleText>
+        </ComponentWithTheme>
+        <Styled(styled.button)
+          data-testid="retry"
+          onClick={[Function]}
+          type="button"
+        >
+          <button
+            className="sc-gsTCUz sc-hKgILt GjlDz kQKsvs"
+            data-testid="retry"
+            onClick={[Function]}
+            type="button"
+          >
+            Retry
+          </button>
+        </Styled(styled.button)>
+      </section>
+    </styled.section>
+  </BeagleError>
+</ComponentWithTheme>
 `;

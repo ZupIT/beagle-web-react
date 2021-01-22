@@ -19,53 +19,52 @@ import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
-import { StyledButton } from './styled'
-
+import { StyledButton } from '../commons.styled'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
-  if (!contentManager) return false
-  const element = contentManager.getElement()
-  let isSubmit = false
-  if (element.onPress){
-    isSubmit = Array.isArray(element.onPress) ?
-      element.onPress.filter(
-        el => el._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
-      element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
-  }
-  return isSubmit
+    if (!contentManager) return false
+    const element = contentManager.getElement()
+    let isSubmit = false
+    if (element.onPress) {
+        isSubmit = Array.isArray(element.onPress) ?
+            element.onPress.filter(
+                el => el._beagleAction_.toLowerCase() === 'beagle:submitform').length > 0 :
+            element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
+    }
+    return isSubmit
 }
 
 const BeagleButton: FC<BeagleButtonInterface> = ({
-  text,
-  className,
-  onPress,
-  style,
-  viewContentManager,
-  clickAnalyticsEvent,
-  disabled,
+    text,
+    className,
+    onPress,
+    style,
+    viewContentManager,
+    clickAnalyticsEvent,
+    disabled,
 }) => {
-  const beagleService = useContext(BeagleServiceContext)
-  const isSubmit = isSubmitButton(viewContentManager)
-  const beagleAnalytics = beagleService && beagleService.analytics
-  const type = isSubmit ? 'submit' : 'button'
-  const handlePress = () => {
-    if (clickAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
+    const beagleService = useContext(BeagleServiceContext)
+    const isSubmit = isSubmitButton(viewContentManager)
+    const beagleAnalytics = beagleService && beagleService.analytics
+    const type = isSubmit ? 'submit' : 'button'
+    const handlePress = () => {
+        if (clickAnalyticsEvent && beagleAnalytics)
+            beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
 
-    return isSubmit ? undefined : onPress && onPress()
-  }
+        return isSubmit ? undefined : onPress && onPress()
+    }
 
-  return (
-    <StyledButton
-      style={style}
-      className={className}
-      onClick={handlePress}
-      type={type}
-      disabled={disabled}
-    >
-      {text}
-    </StyledButton>
-  )
+    return (
+        <StyledButton
+            style={style}
+            className={className}
+            onClick={handlePress}
+            type={type}
+            disabled={disabled}
+        >
+            {text}
+        </StyledButton>
+    )
 }
 
 export default withTheme(BeagleButton)
