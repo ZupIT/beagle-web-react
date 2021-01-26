@@ -28,8 +28,8 @@ function isSubmitButton(contentManager?: ViewContentManager) {
   if (element.onPress) {
     isSubmit = Array.isArray(element.onPress)
       ? element.onPress.filter(
-          (el) => el._beagleAction_.toLowerCase() === 'beagle:submitform'
-        ).length > 0
+        (el) => el._beagleAction_.toLowerCase() === 'beagle:submitform'
+      ).length > 0
       : element.onPress._beagleAction_.toLowerCase() === 'beagle:submitform'
   }
   return isSubmit
