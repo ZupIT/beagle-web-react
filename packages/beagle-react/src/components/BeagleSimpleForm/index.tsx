@@ -20,13 +20,32 @@ import withTheme from '../utils/withTheme'
 
 const Form: FC<FormInterface> = ({
   onSubmit,
+  onValidationError,
   style,
   className,
   children,
 }) => {
+  let canSubmitForm = true
+  const lookUpInputErrors = (children: any[]) => {
+    children.map(item => {
+      if (item.props.children && item.props.children.length > 0)
+        lookUpInputErrors(item.props.children)
+      if ('error' in item.props && item.props.error) {
+        item.props.onBlur()
+        canSubmitForm = false
+      }
+    })
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (onSubmit) onSubmit()
+
+    if (children)
+      lookUpInputErrors(children as any[])
+
+    canSubmitForm ? onSubmit && onSubmit(): onValidationError && onValidationError()
+      
+
   }
 
   return (

@@ -32,13 +32,13 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   style,
   className,
   error,
-  showError
+  showError,
 }) => {
 
-  const errorColor = "#FF0000"
+  const errorColor = '#FF0000'
   const borderWithError: React.CSSProperties = {
     border: error && showError ? errorColor : '',
-    outline: error && showError ? `auto ${errorColor}` : ''
+    outline: error && showError ? `auto ${errorColor}` : '',
   }
 
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
@@ -49,7 +49,16 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
 
   const showErrorMessage = (() => {
     if (error && showError)
-      return <BeagleText text={error || ''} textColor={errorColor} style={{ fontSize: '0.8rem' }}></BeagleText>
+      return <BeagleText
+        text={error || ''}
+        textColor={errorColor}
+        style={{ fontSize: '0.8rem' }}>
+      </BeagleText>
+  })
+
+  const onBlurWithError = (() => {
+    showError = true
+    handleEvent(onBlur)
   })
 
 
@@ -62,7 +71,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
-        onBlur={handleEvent(onBlur)}
+        onBlur={onBlurWithError}
         onFocus={handleEvent(onFocus)}
         style={{ ...style, ...borderWithError }}
         className={className}

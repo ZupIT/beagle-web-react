@@ -14,8 +14,10 @@
   * limitations under the License.
 */
 
+import { BeagleAction } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from './types'
 
 export interface FormInterface extends BeagleDefaultComponent {
   onSubmit: () => void,
+  onValidationError?: () => void,
 }

@@ -14,7 +14,7 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   placeholder?: string,
   type?: InputType,
   error?: string,
-  showError?: boolean
+  showError?: boolean,
 }
 
 export interface BeagleTextAreaInterface extends BeagleTextInputInterface {
