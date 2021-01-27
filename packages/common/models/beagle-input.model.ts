@@ -13,6 +13,8 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   readOnly?: boolean,
   placeholder?: string,
   type?: InputType,
+  error?: string,
+  showError?: boolean
 }
 
 export interface BeagleTextAreaInterface extends BeagleTextInputInterface {

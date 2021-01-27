@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
+import BeagleText from '../BeagleText'
 
 const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
@@ -30,26 +31,54 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   onBlur,
   style,
   className,
+  error,
+  showError
 }) => {
+
+  const [touched, setTouched] = useState(false)
+  const [shouldShowError, setShowError] = useState(showError)
+  const errorColor = "#FF0000"
+  const borderWithError: React.CSSProperties = {
+    border:  touched && error && shouldShowError ? errorColor : '',
+    outline:  touched && error && shouldShowError ? `auto ${errorColor}` : ''
+  }
+
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
 
     handler({ value: event.target.value })
   }
 
+  const onBlurWithError = (() => {
+    setTouched(true)
+    return handleEvent(onBlur)
+  })
+
+  const showErrorMessage = (() => {
+    if (touched && error && shouldShowError)
+      return <BeagleText text={error || ''} textColor={errorColor}></BeagleText>
+  })
+
+  useEffect(() => {
+    setShowError(showError)
+  }, [value])
+
   return (
-    <input
-      value={value}
-      placeholder={placeholder}
-      disabled={disabled}
-      readOnly={readOnly}
-      type={type}
-      onChange={handleEvent(onChange)}
-      onBlur={handleEvent(onBlur)}
-      onFocus={handleEvent(onFocus)}
-      style={style}
-      className={className}
-    />
+    <>
+      <input
+        value={value}
+        placeholder={placeholder}
+        disabled={disabled}
+        readOnly={readOnly}
+        type={type}
+        onChange={handleEvent(onChange)}
+        onBlur={onBlurWithError}
+        onFocus={handleEvent(onFocus)}
+        style={{ ...style, ...borderWithError}}
+        className={className}
+      />
+      {showErrorMessage()}
+    </>
   )
 }
 
