@@ -53,7 +53,7 @@ exports[`Beagle snapshot image 1`] = `
       }
     >
       <figure
-        className="sc-gsTCUz crUlbz Test Class"
+        className="sc-gtssRu jwZSfG Test Class"
         style={
           Object {
             "height": "100",
@@ -68,7 +68,7 @@ exports[`Beagle snapshot image 1`] = `
         >
           <img
             alt="Test label"
-            className="sc-bdfBwQ ednZQG"
+            className="sc-bdnylx gAuNDe"
             mode="cover"
             src="mytesteimg.png"
           />

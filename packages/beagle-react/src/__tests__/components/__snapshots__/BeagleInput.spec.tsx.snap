@@ -30,6 +30,12 @@ exports[`Beagle snapshot Input 1`] = `
       onFocus={[Function]}
       placeholder="Testing"
       readOnly={false}
+      style={
+        Object {
+          "border": "",
+          "outline": "",
+        }
+      }
       type="TEXT"
       value="Testing"
     />

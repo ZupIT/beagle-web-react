@@ -43,7 +43,8 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
 
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
-
+    if (event.type === 'blur')
+      showError = true
     handler({ value: event.target.value })
   }
 
@@ -56,12 +57,6 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       </BeagleText>
   })
 
-  const onBlurWithError = (() => {
-    showError = true
-    handleEvent(onBlur)
-  })
-
-
   return (
     <>
       <input
@@ -71,7 +66,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
-        onBlur={onBlurWithError}
+        onBlur={handleEvent(onBlur)}
         onFocus={handleEvent(onFocus)}
         style={{ ...style, ...borderWithError }}
         className={className}

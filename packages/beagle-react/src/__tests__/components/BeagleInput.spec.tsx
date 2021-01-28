@@ -30,6 +30,7 @@ const beagleInputPropsMock: BeagleTextInputInterface = {
   onChange: jest.fn(),
   onFocus: jest.fn(),
   onBlur: jest.fn(),
+
 }
 
 configure({ adapter: new Adapter() })
