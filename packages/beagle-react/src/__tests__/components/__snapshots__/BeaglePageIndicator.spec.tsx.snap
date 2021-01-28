@@ -7,14 +7,14 @@ exports[`Beagle snapshot Page Indicator 1`] = `
 >
   <styled.ol>
     <ol
-      className="sc-hKFyIo XGnCt"
+      className="sc-hKgILt eliZDP"
     >
       <styled.li
         key="0/.0"
         selected={false}
       >
         <li
-          className="sc-eCApGN fZLCKp"
+          className="sc-eCssSg cFlIFM"
           selected={false}
         />
       </styled.li>
@@ -23,7 +23,7 @@ exports[`Beagle snapshot Page Indicator 1`] = `
         selected={true}
       >
         <li
-          className="sc-eCApGN fEInoz"
+          className="sc-eCssSg gBdWIe"
           selected={true}
         />
       </styled.li>
