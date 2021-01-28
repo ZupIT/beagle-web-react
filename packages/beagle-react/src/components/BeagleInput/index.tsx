@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
