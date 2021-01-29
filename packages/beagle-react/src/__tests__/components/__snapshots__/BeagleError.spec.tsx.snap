@@ -33,7 +33,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
       className="Test Class"
     >
       <section
-        className="sc-dlfnbm cKbXoD Test Class"
+        className="sc-dlfnbm DatSL Test Class"
       >
         <ComponentWithTheme
           text="Sorry!"
@@ -80,7 +80,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           type="button"
         >
           <button
-            className="sc-gsTCUz sc-hKgILt GjlDz kQKsvs"
+            className="sc-gsTCUz sc-hKgILt fiqiqT lhgqZA"
             data-testid="retry"
             onClick={[Function]}
             type="button"
@@ -94,13 +94,14 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           type="button"
         >
           <button
-            className="sc-gsTCUz sc-eCssSg GjlDz heRvxW"
+            className="sc-gsTCUz sc-eCssSg fiqiqT dkdlFW"
             data-testid="show-more"
             onClick={[Function]}
             type="button"
           >
             Show
-             details 
+             details
+             
             ▼
           </button>
         </Styled(styled.button)>
@@ -109,7 +110,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           data-testid="details"
         >
           <section
-            className="sc-jSgupP iebOao"
+            className="sc-jSgupP cMxdgM"
             data-testid="details"
           >
             <p
@@ -121,7 +122,8 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               >
                 ►
               </span>
-               ERROR: 
+               ERROR:
+               
               First Message
             </p>
             <p
@@ -133,7 +135,8 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               >
                 ►
               </span>
-               ERROR: 
+               ERROR:
+               
               Second Message
             </p>
           </section>
@@ -159,7 +162,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
       className="Test Class"
     >
       <section
-        className="sc-dlfnbm cKbXoD Test Class"
+        className="sc-dlfnbm DatSL Test Class"
       >
         <ComponentWithTheme
           text="Sorry!"
@@ -206,7 +209,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
           type="button"
         >
           <button
-            className="sc-gsTCUz sc-hKgILt GjlDz kQKsvs"
+            className="sc-gsTCUz sc-hKgILt fiqiqT lhgqZA"
             data-testid="retry"
             onClick={[Function]}
             type="button"
