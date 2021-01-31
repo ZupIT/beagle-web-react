@@ -43,9 +43,9 @@ const Form: FC<FormInterface> = ({
     if (children){
       const canSubmitForm = lookUpInputErrors(children as any[])
 
-      if(canSubmitForm){
+      if (canSubmitForm){
         onSubmit && onSubmit()
-      }else{
+      } else {
         onValidationError && onValidationError()
       }
     }    
