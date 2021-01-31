@@ -43,7 +43,7 @@ const Form: FC<FormInterface> = ({
     event.preventDefault()
 
     if (children){
-      const canSubmitForm = lookUpInputErrors(children as any[])
+      const canSubmitForm = lookUpInputErrors(children)
 
       if (canSubmitForm){
         onSubmit && onSubmit()
