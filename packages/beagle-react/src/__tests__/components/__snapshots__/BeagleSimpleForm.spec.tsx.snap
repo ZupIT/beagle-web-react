@@ -11,7 +11,42 @@ exports[`Beagle snapshot SimpleForm 1`] = `
     <form
       className=""
       onSubmit={[Function]}
-    />
+    >
+      <ComponentWithTheme
+        disabled={false}
+        placeholder="Testing"
+        readOnly={false}
+        type="TEXT"
+        value="Teste"
+      >
+        <BeagleInput
+          className=""
+          disabled={false}
+          placeholder="Testing"
+          readOnly={false}
+          type="TEXT"
+          value="Teste"
+        >
+          <input
+            className=""
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="Testing"
+            readOnly={false}
+            style={
+              Object {
+                "border": "",
+                "outline": "",
+              }
+            }
+            type="TEXT"
+            value="Teste"
+          />
+        </BeagleInput>
+      </ComponentWithTheme>
+    </form>
   </Form>
 </ComponentWithTheme>
 `;

@@ -26,8 +26,10 @@ const Form: FC<FormInterface> = ({
   children,
 }) => {
 
-  const lookUpInputErrors = (children: any[]) => {
-    children.map(item => {
+  const lookUpInputErrors = (children: any) => {
+    children = !Array.isArray(children) ? Array(children) : children
+
+    children.map((item: any) => {
       if (item.props.children && item.props.children.length > 0)
         lookUpInputErrors(item.props.children)
       if ('error' in item.props && item.props.error) {
