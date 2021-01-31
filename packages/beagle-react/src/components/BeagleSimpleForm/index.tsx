@@ -25,25 +25,30 @@ const Form: FC<FormInterface> = ({
   className,
   children,
 }) => {
-  let canSubmitForm = true
+
   const lookUpInputErrors = (children: any[]) => {
     children.map(item => {
       if (item.props.children && item.props.children.length > 0)
         lookUpInputErrors(item.props.children)
       if ('error' in item.props && item.props.error) {
-        item.props.onBlur()
-        canSubmitForm = false
+        return false
       }
     })
+    return true
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (children)
-      lookUpInputErrors(children as any[])
+    if (children){
+      const canSubmitForm = lookUpInputErrors(children as any[])
 
-    canSubmitForm ? onSubmit && onSubmit() : onValidationError && onValidationError()
+      if(canSubmitForm){
+        onSubmit && onSubmit()
+      }else{
+        onValidationError && onValidationError()
+      }
+    }    
   }
 
   return (
