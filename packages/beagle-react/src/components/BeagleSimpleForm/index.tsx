@@ -26,31 +26,27 @@ const Form: FC<FormInterface> = ({
   children,
 }) => {
 
-  const lookUpInputErrors = (children: any) => {
-    children = !Array.isArray(children) ? Array(children) : children
 
-    children.map((item: any) => {
-      if (item.props.children && item.props.children.length > 0)
-        lookUpInputErrors(item.props.children)
-      if ('error' in item.props && item.props.error) {
-        return false
-      }
-    })
-    return true
+  const lookUpInputErrors = (element: any): boolean => {
+
+    for (const item of element) {
+      if (item.props.error) return true
+      if (lookUpInputErrors(item.props.children)) return true
+    }
+    return false
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (children){
-      const canSubmitForm = lookUpInputErrors(children)
-
-      if (canSubmitForm){
-        onSubmit && onSubmit()
-      } else {
+    if (children) {
+      const hasError = lookUpInputErrors(children)
+      if (hasError) {
         onValidationError && onValidationError()
+      } else {
+        onSubmit && onSubmit()
       }
-    }    
+    }
   }
 
   return (

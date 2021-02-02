@@ -15,9 +15,10 @@
 */
 
 import { BeagleAction } from '@zup-it/beagle-web'
+import { BeagleComponent } from '../../beagle-react-native/dist/common/types'
 import { BeagleDefaultComponent } from './types'
 
-export interface FormInterface extends BeagleDefaultComponent {
+export interface FormInterface extends BeagleComponent, BeagleDefaultComponent {
   onSubmit: () => void,
   onValidationError?: () => void,
 }
