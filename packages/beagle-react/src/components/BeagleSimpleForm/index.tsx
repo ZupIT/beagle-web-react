@@ -28,7 +28,7 @@ const Form: FC<FormInterface> = ({
 
 
   const lookUpInputErrors = (elements: any): boolean => {
-    let childrenArray = React.Children.toArray(elements)
+    const childrenArray = React.Children.toArray(elements)
     
     for (const item of childrenArray as ReactElement[]) {
       if (item.props.error) return true
