@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { FormInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 
@@ -27,9 +27,10 @@ const Form: FC<FormInterface> = ({
 }) => {
 
 
-  const lookUpInputErrors = (element: any): boolean => {
-
-    for (const item of element) {
+  const lookUpInputErrors = (elements: any): boolean => {
+    let childrenArray = React.Children.toArray(elements)
+    
+    for (const item of childrenArray as ReactElement[]) {
       if (item.props.error) return true
       if (lookUpInputErrors(item.props.children)) return true
     }

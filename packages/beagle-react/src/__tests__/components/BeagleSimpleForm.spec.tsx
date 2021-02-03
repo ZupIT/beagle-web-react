@@ -46,4 +46,3 @@ test('Should call on submit handler', () => {
   wrapper.simulate('submit')
   expect(onSubmitMock).toHaveBeenCalledTimes(1)
 })
-
