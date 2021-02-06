@@ -15,7 +15,7 @@
 */
 
 import styled from 'styled-components'
-import { StyledButton } from '../commons.styled'
+import BeagleButton from '../BeagleButton'
 
 export const StyledRetryContainer = styled.section`
   display: flex;
@@ -26,12 +26,12 @@ export const StyledRetryContainer = styled.section`
   font-size: 23px;
 `
 
-export const StyledRetryButton = styled(StyledButton)`
+export const StyledRetryButton = styled(BeagleButton)`
   max-width: 200px;
   margin: 8px 4px 4px 4px;
 `
 
-export const StyledShowMoreButton = styled(StyledButton)`
+export const StyledShowMoreButton = styled(BeagleButton)`
   max-width: 200px;
   margin: 4px;
   border: none;

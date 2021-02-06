@@ -41,22 +41,19 @@ const BeagleError: FC<BeagleErrorInterface> = ({
       <BeagleText text="Sorry!" textColor="red" />
       <BeagleText text="An unexpected error happened while loading your page." />
       <StyledRetryButton
-        type="button"
         data-testid="retry"
-        onClick={() => retry()}
-      >
-        Retry
-      </StyledRetryButton>
+        onPress={retry}
+        text="Retry"
+      ></StyledRetryButton>
       {errors.length > 0 ? (
         <>
           <StyledShowMoreButton
-            type="button"
             data-testid="show-more"
-            onClick={() => handleShowMore()}
-          >
-            {showingDetails ? 'Hide' : 'Show'} details{' '}
-            {showingDetails ? '▲' : '▼'}
-          </StyledShowMoreButton>
+            onPress={handleShowMore}
+            text={`${showingDetails ? 'Hide' : 'Show'} details ${
+              showingDetails ? '▲' : '▼'
+            }`}
+          ></StyledShowMoreButton>
           <ErrorsDetailedContainer
             data-testid="details"
             className={showingDetails ? 'show' : ''}

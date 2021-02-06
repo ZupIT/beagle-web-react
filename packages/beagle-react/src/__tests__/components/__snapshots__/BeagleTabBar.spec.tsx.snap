@@ -30,19 +30,19 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
   >
     <styled.div>
       <div
-        className="sc-hKgILt chiWrn"
+        className="sc-dlfnbm CZBcd"
       >
         <styled.div
           key="0"
         >
           <div
-            className="sc-eCssSg iuJhs"
+            className="sc-hKgILt dVipMb"
           >
             <styled.div
               onClick={[Function]}
             >
               <div
-                className="sc-jSgupP ddjXuA"
+                className="sc-eCssSg beqbLp"
                 onClick={[Function]}
               >
                 First Tab
@@ -54,13 +54,13 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
           key="1"
         >
           <div
-            className="sc-eCssSg iuJhs"
+            className="sc-hKgILt dVipMb"
           >
             <styled.div
               onClick={[Function]}
             >
               <div
-                className="sc-jSgupP ddjXuA"
+                className="sc-eCssSg beqbLp"
                 onClick={[Function]}
               >
                 Second Tab

@@ -74,37 +74,72 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
             </styled.p>
           </BeagleText>
         </ComponentWithTheme>
-        <Styled(styled.button)
+        <Styled(ComponentWithTheme)
           data-testid="retry"
-          onClick={[Function]}
-          type="button"
+          onPress={[MockFunction]}
+          text="Retry"
         >
-          <button
-            className="sc-gsTCUz sc-hKgILt fiqiqT lhgqZA"
+          <ComponentWithTheme
+            className="sc-hKgILt lhgqZA"
             data-testid="retry"
-            onClick={[Function]}
-            type="button"
+            onPress={[MockFunction]}
+            text="Retry"
           >
-            Retry
-          </button>
-        </Styled(styled.button)>
-        <Styled(styled.button)
+            <BeagleButton
+              className="sc-hKgILt lhgqZA"
+              data-testid="retry"
+              onPress={[MockFunction]}
+              text="Retry"
+            >
+              <styled.button
+                className="sc-hKgILt lhgqZA"
+                onClick={[Function]}
+                type="button"
+              >
+                <button
+                  className="sc-gsTCUz fiqiqT sc-hKgILt lhgqZA"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Retry
+                </button>
+              </styled.button>
+            </BeagleButton>
+          </ComponentWithTheme>
+        </Styled(ComponentWithTheme)>
+        <Styled(ComponentWithTheme)
           data-testid="show-more"
-          onClick={[Function]}
-          type="button"
+          onPress={[Function]}
+          text="Show details ▼"
         >
-          <button
-            className="sc-gsTCUz sc-eCssSg fiqiqT dkdlFW"
+          <ComponentWithTheme
+            className="sc-eCssSg dkdlFW"
             data-testid="show-more"
-            onClick={[Function]}
-            type="button"
+            onPress={[Function]}
+            text="Show details ▼"
           >
-            Show
-             details
-             
-            ▼
-          </button>
-        </Styled(styled.button)>
+            <BeagleButton
+              className="sc-eCssSg dkdlFW"
+              data-testid="show-more"
+              onPress={[Function]}
+              text="Show details ▼"
+            >
+              <styled.button
+                className="sc-eCssSg dkdlFW"
+                onClick={[Function]}
+                type="button"
+              >
+                <button
+                  className="sc-gsTCUz fiqiqT sc-eCssSg dkdlFW"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Show details ▼
+                </button>
+              </styled.button>
+            </BeagleButton>
+          </ComponentWithTheme>
+        </Styled(ComponentWithTheme)>
         <styled.section
           className=""
           data-testid="details"
@@ -203,20 +238,39 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
             </styled.p>
           </BeagleText>
         </ComponentWithTheme>
-        <Styled(styled.button)
+        <Styled(ComponentWithTheme)
           data-testid="retry"
-          onClick={[Function]}
-          type="button"
+          onPress={[MockFunction]}
+          text="Retry"
         >
-          <button
-            className="sc-gsTCUz sc-hKgILt fiqiqT lhgqZA"
+          <ComponentWithTheme
+            className="sc-hKgILt lhgqZA"
             data-testid="retry"
-            onClick={[Function]}
-            type="button"
+            onPress={[MockFunction]}
+            text="Retry"
           >
-            Retry
-          </button>
-        </Styled(styled.button)>
+            <BeagleButton
+              className="sc-hKgILt lhgqZA"
+              data-testid="retry"
+              onPress={[MockFunction]}
+              text="Retry"
+            >
+              <styled.button
+                className="sc-hKgILt lhgqZA"
+                onClick={[Function]}
+                type="button"
+              >
+                <button
+                  className="sc-gsTCUz fiqiqT sc-hKgILt lhgqZA"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Retry
+                </button>
+              </styled.button>
+            </BeagleButton>
+          </ComponentWithTheme>
+        </Styled(ComponentWithTheme)>
       </section>
     </styled.section>
   </BeagleError>

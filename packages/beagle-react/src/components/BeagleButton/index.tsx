@@ -19,7 +19,7 @@ import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
-import { StyledButton } from '../commons.styled'
+import { StyledBeagleButton } from './styled'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
@@ -56,7 +56,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   }
 
   return (
-    <StyledButton
+    <StyledBeagleButton
       style={style}
       className={className}
       onClick={handlePress}
@@ -64,7 +64,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       disabled={disabled}
     >
       {text}
-    </StyledButton>
+    </StyledBeagleButton>
   )
 }
 
