@@ -19,6 +19,7 @@ import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
 import BeagleText from '../BeagleText'
+import { StyledInput } from './styled'
 
 const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
@@ -34,17 +35,9 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   error,
   showError,
 }) => {
-
-  const errorColor = '#FF0000'
-  const borderWithError: React.CSSProperties = {
-    border: error && showError ? errorColor : '',
-    outline: error && showError ? `auto ${errorColor}` : '',
-  }
-
+  
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
-    if (event.type === 'blur')
-      showError = true
     handler({ value: event.target.value })
   }
 
@@ -52,14 +45,14 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
     if (error && showError)
       return <BeagleText
         text={error || ''}
-        textColor={errorColor}
+        textColor={'#FF0000'}
         style={{ fontSize: '0.8rem' }}>
       </BeagleText>
   })
 
   return (
     <>
-      <input
+      <StyledInput
         value={value}
         placeholder={placeholder}
         disabled={disabled}
@@ -68,8 +61,10 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         onChange={handleEvent(onChange)}
         onBlur={handleEvent(onBlur)}
         onFocus={handleEvent(onFocus)}
-        style={{ ...style, ...borderWithError }}
+        style={{ ...style }}
         className={className}
+        error = {error}
+        showError = {showError}
       />
       {showErrorMessage()}
     </>
