@@ -27,7 +27,7 @@ exports[`Beagle snapshot SimpleForm 1`] = `
           type="TEXT"
           value="Teste"
         >
-          <input
+          <styled.input
             className=""
             disabled={false}
             onBlur={[Function]}
@@ -35,15 +35,23 @@ exports[`Beagle snapshot SimpleForm 1`] = `
             onFocus={[Function]}
             placeholder="Testing"
             readOnly={false}
-            style={
-              Object {
-                "border": "",
-                "outline": "",
-              }
-            }
+            style={Object {}}
             type="TEXT"
             value="Teste"
-          />
+          >
+            <input
+              className="sc-gtssRu gtDQTL"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Testing"
+              readOnly={false}
+              style={Object {}}
+              type="TEXT"
+              value="Teste"
+            />
+          </styled.input>
         </BeagleInput>
       </ComponentWithTheme>
     </form>
