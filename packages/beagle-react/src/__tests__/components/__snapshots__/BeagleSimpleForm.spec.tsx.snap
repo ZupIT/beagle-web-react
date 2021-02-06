@@ -40,7 +40,7 @@ exports[`Beagle snapshot SimpleForm 1`] = `
             value="Teste"
           >
             <input
-              className="sc-gtssRu gtDQTL"
+              className="sc-gsTCUz cbPgpe"
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
