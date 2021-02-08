@@ -42,6 +42,7 @@ export interface BeagleConfig<Schema = DefaultSchema> extends Config<Schema> {
 }
 
 export interface BeagleConfigReactNative<Schema = DefaultSchema> extends Config<Schema> {
+  platform?: string,
   localAssetsPath?: Record<string, number>,
 }
 
