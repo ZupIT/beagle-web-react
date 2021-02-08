@@ -21,7 +21,9 @@ interface StyledTextInputInterface {
   showError?: boolean,
 }
 
+export const errorColor = '#FF0000'
+
 export const StyledInput = styled.input<StyledTextInputInterface>`
-  border: ${({ error, showError }) => error && showError ? '#FF0000' : ''};
-  outline: ${({ error, showError }) => error && showError ? 'auto #FF0000' : ''};
+  border: ${({ error, showError }) => error && showError ? errorColor : ''};
+  outline: ${({ error, showError }) => error && showError ? `auto ${errorColor}` : ''};
 `

@@ -19,7 +19,7 @@ import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import withTheme from '../utils/withTheme'
 import BeagleText from '../BeagleText'
-import { StyledInput } from './styled'
+import { StyledInput, errorColor } from './styled'
 
 const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
@@ -35,7 +35,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   error,
   showError,
 }) => {
-  
+
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
@@ -45,7 +45,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
     if (error && showError)
       return <BeagleText
         text={error || ''}
-        textColor={'#FF0000'}
+        textColor={errorColor}
         style={{ fontSize: '0.8rem' }}>
       </BeagleText>
   })
@@ -63,8 +63,8 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         onFocus={handleEvent(onFocus)}
         style={{ ...style }}
         className={className}
-        error = {error}
-        showError = {showError}
+        error={error}
+        showError={showError}
       />
       {showErrorMessage()}
     </>
