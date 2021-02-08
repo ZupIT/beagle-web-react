@@ -97,7 +97,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
                 type="button"
               >
                 <button
-                  className="sc-gsTCUz fiqiqT sc-hKgILt lhgqZA"
+                  className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
                   onClick={[Function]}
                   type="button"
                 >
@@ -130,7 +130,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
                 type="button"
               >
                 <button
-                  className="sc-gsTCUz fiqiqT sc-eCssSg dkdlFW"
+                  className="sc-gsTCUz gtYKES sc-eCssSg dkdlFW"
                   onClick={[Function]}
                   type="button"
                 >
@@ -261,7 +261,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
                 type="button"
               >
                 <button
-                  className="sc-gsTCUz fiqiqT sc-hKgILt lhgqZA"
+                  className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
                   onClick={[Function]}
                   type="button"
                 >
