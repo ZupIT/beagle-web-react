@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@zup-it/beagle-web": "1.5.0",
-    "react-native": "^0.63.4",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {
@@ -40,7 +39,8 @@
     "enzyme-to-json": "^3.5.0",
     "jest-mock-extended": "^1.0.10",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "tscpaths": "^0.0.9"
   },
   "publishConfig": {
     "access": "public",

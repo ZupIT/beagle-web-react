@@ -18,7 +18,7 @@ import styled from 'styled-components'
 import { BeagleTheme } from '../commons.styled'
 
 export const StyledBeagleButton = styled.button`
-	border: 1px solid ${BeagleTheme.swampLight};
+  border: 1px solid ${BeagleTheme.swampLight};
   line-height: 34px;
   color: inherit;
   background: transparent;
