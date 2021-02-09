@@ -61,7 +61,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       className={className}
       onClick={handlePress}
       type={type}
-      disabled={enabled}
+      disabled={!enabled}
     >
       {text}
     </StyledButton>

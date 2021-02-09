@@ -77,7 +77,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity
-        disabled={enabled}
+        disabled={!enabled}
         onPress={handlePress}
         style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         <Text>{text}</Text>
