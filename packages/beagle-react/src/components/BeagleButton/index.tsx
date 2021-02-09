@@ -42,7 +42,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
-  disabled,
+  enabled,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
@@ -61,7 +61,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       className={className}
       onClick={handlePress}
       type={type}
-      disabled={disabled}
+      disabled={enabled}
     >
       {text}
     </StyledButton>

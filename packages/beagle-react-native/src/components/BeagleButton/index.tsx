@@ -43,7 +43,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
-  disabled,
+  enabled,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
@@ -77,7 +77,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity
-        disabled={disabled}
+        disabled={enabled}
         onPress={handlePress}
         style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
         <Text>{text}</Text>
