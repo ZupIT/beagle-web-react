@@ -37,6 +37,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   useParentScroll = false,
   _key,
   __suffix__,
+  isScrollIndicatorVisible = true,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
@@ -87,6 +88,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       direction={direction}
       useParentScroll={useParentScroll}
       style={style}
+      isScrollIndicatorVisible = {isScrollIndicatorVisible}
     >
       {children}
     </StyledListView>
