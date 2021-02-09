@@ -14,24 +14,18 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleWebViewInterface } from 'common/models'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
-import withTheme from '../utils/withTheme'
-import { StyledWebView } from './styled'
+import { Accessibility } from '../models/accessibility'
 
-const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = props => {
-  const { url, className, style, accessibility } = props
-  const a11y = buildAccessibility(accessibility)
+/* WARNING: If one day Beagle's BFF return more Accessibility props, please add here */
+export const buildAccessibility = (a11y?: Accessibility): Record<string, string> => {
+  let accessibilityProps: Record<string, string> = {}
 
-  return (
-    <StyledWebView 
-      className={className} 
-      style={style} 
-      src={url}
-      {...a11y}>
-    </StyledWebView>
-  )
+  if (a11y && a11y.accessible) {
+    accessibilityProps = {
+      ...(a11y.accessibilityLabel ? { 'aria-label': a11y.accessibilityLabel } : {}),
+      ...(a11y.isHeader ? { 'role': 'heading' } : {}),
+    }
+  }
+
+  return accessibilityProps
 }
-
-export default withTheme(BeagleWebView)

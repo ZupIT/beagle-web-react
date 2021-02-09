@@ -17,6 +17,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { logger, BeforeViewSnapshot } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from 'common/models'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { BeagleComponentsProvider } from './context'
 import { StyledTabView } from './styled'
@@ -31,7 +32,8 @@ export interface BeagleChildren {
  * Consider replacing this component for a tabBar with a pageview.
 */
 const BeagleTabView: FC<BeagleDefaultComponent> = props => {
-  const { children, className } = props
+  const { children, className, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
   const [activeTab, setActiveTab] = useState('')
   
@@ -51,7 +53,7 @@ const BeagleTabView: FC<BeagleDefaultComponent> = props => {
 
   return (
     <BeagleComponentsProvider value={tabViewContext}>
-      <StyledTabView className={className}>
+      <StyledTabView className={className} {...a11y}>
         {children}
       </StyledTabView>
     </BeagleComponentsProvider>

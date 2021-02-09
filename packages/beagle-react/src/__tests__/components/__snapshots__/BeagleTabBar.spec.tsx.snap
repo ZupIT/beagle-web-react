@@ -28,14 +28,23 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
     }
     onTabSelection={[Function]}
   >
-    <styled.div>
+    <styled.div
+      aria-colcount={2}
+    >
       <div
+        aria-colcount={2}
         className="sc-dlfnbm CZBcd"
       >
         <styled.div
+          aria-colindex={0}
+          aria-posinset={1}
+          aria-selected={false}
           key="0"
         >
           <div
+            aria-colindex={0}
+            aria-posinset={1}
+            aria-selected={false}
             className="sc-hKgILt dVipMb"
           >
             <styled.div
@@ -51,9 +60,15 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
           </div>
         </styled.div>
         <styled.div
+          aria-colindex={1}
+          aria-posinset={2}
+          aria-selected={false}
           key="1"
         >
           <div
+            aria-colindex={1}
+            aria-posinset={2}
+            aria-selected={false}
             className="sc-hKgILt dVipMb"
           >
             <styled.div

@@ -14,12 +14,12 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleTouchableInterface } from 'common/models'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleTouchable } from './styled'
-
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
   onPress,
@@ -27,17 +27,29 @@ const BeagleTouchable: FC<BeagleTouchableInterface> = ({
   className,
   style,
   children,
+  accessibility,
 }) => {
+  const a11y = buildAccessibility(accessibility)
   const beagleService = useContext(BeagleServiceContext)
+  const [pressed, setPressed] = useState(false)
   const beagleAnalytics = beagleService && beagleService.analytics
+  
   const handlePress = () => {
+    setPressed(false)
+
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
     return onPress && onPress()
   }
   
   return (
-    <StyledBeagleTouchable className={className} onClick={handlePress} style={style}>
+    <StyledBeagleTouchable 
+      className={className}
+      onMouseDown={e => setPressed(true)} 
+      onClick={handlePress} 
+      style={style}
+      aria-pressed={pressed}
+      {...a11y}>
       {children}
     </StyledBeagleTouchable>
   )

@@ -18,13 +18,19 @@ import React, { FC } from 'react'
 import { BeagleDefaultComponent } from 'common/models'
 import Spinner from '../Spinner'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import { StyledLoading } from './styled'
 
 const BeagleLoading: FC<BeagleDefaultComponent> = props => {
-  const { className, style } = props
+  const { className, style, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
   return (
-    <StyledLoading className={className} style={style}>
+    <StyledLoading 
+      className={className} 
+      style={style}
+      aria-busy={true}
+      {...a11y}>
       <Spinner />
     </StyledLoading>
   )

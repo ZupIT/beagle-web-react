@@ -14,13 +14,13 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import { StyledButton } from './styled'
-
 
 function isSubmitButton(contentManager?: ViewContentManager) {
   if (!contentManager) return false
@@ -43,12 +43,18 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   viewContentManager,
   clickAnalyticsEvent,
   disabled,
+  accessibility,
 }) => {
+  const [pressed, setPressed] = useState(false)
+  const a11y = buildAccessibility(accessibility)
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
   const beagleAnalytics = beagleService && beagleService.analytics
-  const type = isSubmit ? 'submit' : 'button'
+  const type = isSubmit ? 'submit' : 'button'  
+
   const handlePress = () => {
+    setPressed(false)
+
     if (clickAnalyticsEvent && beagleAnalytics)
       beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
 
@@ -59,9 +65,14 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     <StyledButton
       style={style}
       className={className}
+      onMouseDown={e => setPressed(true)} 
       onClick={handlePress}
       type={type}
+      role="button"
       disabled={disabled}
+      aria-disabled={disabled}
+      aria-pressed={pressed}
+      {...a11y}
     >
       {text}
     </StyledButton>

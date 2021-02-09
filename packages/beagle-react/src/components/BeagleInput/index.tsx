@@ -17,6 +17,7 @@
 import React, { FC } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 
 const BeagleInput: FC<BeagleTextInputInterface> = ({
@@ -30,7 +31,9 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   onBlur,
   style,
   className,
+  accessibility,
 }) => {
+  const a11y = buildAccessibility(accessibility)
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
 
@@ -49,6 +52,10 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       onFocus={handleEvent(onFocus)}
       style={style}
       className={className}
+      aria-placeholder={placeholder}
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
+      {...a11y}
     />
   )
 }

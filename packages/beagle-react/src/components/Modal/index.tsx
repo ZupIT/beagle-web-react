@@ -41,7 +41,12 @@ const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, ch
   }, [])
 
   const modal = (
-    <StyledModal ref={elementRef} style={style} className={className} onClick={closeOnClickOutside}>
+    <StyledModal 
+      ref={elementRef}
+      style={style}
+      className={className}
+      onClick={closeOnClickOutside}
+      aria-modal>
       {children}
     </StyledModal>
   )

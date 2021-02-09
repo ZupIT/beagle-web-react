@@ -17,17 +17,22 @@
 import React, { FC, useEffect } from 'react'
 import { BeagleContainerInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import { StyledContainer } from './styled'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, onInit, className, style } = props
+  const { children, onInit, className, style, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
   useEffect(() => {
     if (onInit) onInit()
   }, [])
 
   return (
-    <StyledContainer className={className} style={style}>
+    <StyledContainer 
+      className={className} 
+      style={style} 
+      {...a11y}>
       {children}
     </StyledContainer>
   )

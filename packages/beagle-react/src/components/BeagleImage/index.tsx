@@ -18,6 +18,7 @@ import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleImageInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import { StyledImage, StyledFigure } from './styled'
 
 const modeMap = {
@@ -35,6 +36,7 @@ const BeagleImage: FC<BeagleImageInterface> = ({
   accessibility,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
+  const a11y = buildAccessibility(accessibility)
   const urlBuilder = beagleService && beagleService.urlBuilder
   const source = (path._beagleImagePath_ === 'local' || !urlBuilder)
     ? path.url
@@ -42,8 +44,12 @@ const BeagleImage: FC<BeagleImageInterface> = ({
 
   return (
     <StyledFigure className={className} style={style} >
-      <StyledImage mode={(mode && modeMap[mode]) || 'cover'}
-        src={source} alt={accessibility && accessibility.accessibilityLabel} />
+      <StyledImage 
+        mode={(mode && modeMap[mode]) || 'cover'}
+        src={source} 
+        role="img"
+        alt={accessibility && accessibility.accessibilityLabel}
+        {...a11y} />
     </StyledFigure>
   )
 }
