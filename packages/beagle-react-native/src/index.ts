@@ -23,7 +23,7 @@ import BeagleRemoteView from './render/component'
 import defaultComponents from './components/index'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfigReactNative<Schema>) {
-  return createBeagleCoreUIService<Schema>({
+  return createBeagleCoreUIService<Schema, BeagleConfigReactNative<Schema>>({
     ...config,
     components: {
       ...config.components,
