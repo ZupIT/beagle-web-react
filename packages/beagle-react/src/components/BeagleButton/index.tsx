@@ -42,7 +42,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
-  disabled,
+  enabled,
   accessibility,
 }) => {
   const [pressed, setPressed] = useState(false)
@@ -51,6 +51,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   const isSubmit = isSubmitButton(viewContentManager)
   const beagleAnalytics = beagleService && beagleService.analytics
   const type = isSubmit ? 'submit' : 'button'  
+  const isDisabled = enabled === undefined ? false : !enabled
 
   const handlePress = () => {
     setPressed(false)
@@ -65,12 +66,12 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     <StyledButton
       style={style}
       className={className}
-      onMouseDown={e => setPressed(true)} 
+      onMouseDown={() => setPressed(true)} 
       onClick={handlePress}
       type={type}
-      role="button"
-      disabled={disabled}
-      aria-disabled={disabled}
+      role="button"      
+      disabled={isDisabled}
+      aria-disabled={isDisabled}
       aria-pressed={pressed}
       {...a11y}
     >
