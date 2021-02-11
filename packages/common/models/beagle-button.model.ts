@@ -7,5 +7,5 @@ export interface BeagleButtonInterface extends BeagleDefaultComponent, BeagleCom
   text: string,
   onPress?: () => void,
   clickAnalyticsEvent?: ClickEvent,
-  disabled?: boolean, 
+  enabled?: boolean, 
 }
