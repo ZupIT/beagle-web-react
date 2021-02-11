@@ -93,11 +93,13 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
             >
               <styled.button
                 className="sc-hKgILt lhgqZA"
+                disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
+                  disabled={false}
                   onClick={[Function]}
                   type="button"
                 >
@@ -126,11 +128,13 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
             >
               <styled.button
                 className="sc-eCssSg dkdlFW"
+                disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   className="sc-gsTCUz gtYKES sc-eCssSg dkdlFW"
+                  disabled={false}
                   onClick={[Function]}
                   type="button"
                 >
@@ -257,11 +261,13 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
             >
               <styled.button
                 className="sc-hKgILt lhgqZA"
+                disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
+                  disabled={false}
                   onClick={[Function]}
                   type="button"
                 >
