@@ -16,14 +16,41 @@
 
 import { Accessibility } from '../models/accessibility'
 
+type A11YAttr = { qualifiedName: string, value: string }
+
 /* WARNING: If one day Beagle's BFF return more Accessibility props, please add here */
 export const buildAccessibility = (a11y?: Accessibility): Record<string, string> => {
   let accessibilityProps: Record<string, string> = {}
+  const ariaMap: Record<string, string | A11YAttr> = {
+    accessibilityLabel: 'aria-label',
+    isHeader: {
+      qualifiedName: 'role',
+      value: 'heading',
+    },
+  }
 
   if (a11y && a11y.accessible) {
-    accessibilityProps = {
-      ...(a11y.accessibilityLabel ? { 'aria-label': a11y.accessibilityLabel } : {}),
-      ...(a11y.isHeader ? { 'role': 'heading' } : {}),
+    const keys = Object.keys(a11y).filter(k => k !== 'accessible')
+    for (const key of keys) {
+      if (a11y[key]) {
+        let qualifiedName: string, value: string
+        const mapped = ariaMap[key]
+
+        if (mapped) {
+          if ((mapped as A11YAttr).qualifiedName) {
+            qualifiedName = (mapped as A11YAttr).qualifiedName
+            value = (mapped as A11YAttr).value
+          } else {
+            qualifiedName = mapped as string
+            value = a11y[key] as string
+          }
+
+          accessibilityProps = {
+            ...accessibilityProps,
+            [qualifiedName]: value,
+          }
+        }
+      }
     }
   }
 

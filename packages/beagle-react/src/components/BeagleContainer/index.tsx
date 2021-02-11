@@ -31,7 +31,8 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
   return (
     <StyledContainer 
       className={className} 
-      style={style} 
+      style={style}
+      aria-live="polite" 
       {...a11y}>
       {children}
     </StyledContainer>

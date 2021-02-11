@@ -16,12 +16,14 @@
 
 import React, { FC, useEffect, useRef } from 'react'
 import { BeagleModalInterface } from 'common/models'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { StyledModal } from './styled'
 
-
-const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, children }) => {
+const Modal: FC<BeagleModalInterface> = props => {
+  const { isOpen, onClose, style, className, children, accessibility } = props
   const elementRef = useRef<HTMLDivElement>(null)
+  const a11y = buildAccessibility(accessibility)
 
   function closeOnEsc({ key }: KeyboardEvent) {
     if (key === 'Escape') {
@@ -46,7 +48,8 @@ const Modal: FC<BeagleModalInterface> = ({ isOpen, onClose, style, className, ch
       style={style}
       className={className}
       onClick={closeOnClickOutside}
-      aria-modal>
+      aria-modal={true}
+      {...a11y}>
       {children}
     </StyledModal>
   )
