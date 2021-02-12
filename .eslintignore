@@ -4,3 +4,4 @@ bin
 __tests__
 coverage
 jest.config.js
+packages/beagle-react/cli

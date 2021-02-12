@@ -1,3 +1,4 @@
+
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -14,11 +15,16 @@
   * limitations under the License.
 */
 
-export const BeagleTheme = {
-  swamp: '#001B26',
-  swampLight: 'rgba(0, 27, 38, 0.8)',
-  swampTransparent: 'rgba(0, 27, 38, 0.1)',
-  athensGray: '#F5F7F9',
-  blackTransparent: 'rgba(0, 0, 0, 0.1)',
-  darkGray: 'rgba(0, 0, 0, 0.75);',
-}
+const { copyFileSync, mkdirSync } = require('fs')
+
+const filesToCopy = [
+  { src: 'package.json', dest: './dist/package.json' },
+  { src: 'README.md', dest: './dist/README.md' },
+  { src: 'cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
+  { src: 'cli/init/boilerplate/beagle-service.ts', dest: './dist/cli/init/boilerplate/beagle-service.ts' },
+  { src: 'cli/init/index.js', dest: './dist/cli/init/index.js' },
+]
+
+mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
+
+filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
