@@ -65,7 +65,6 @@ exports[`Beagle snapshot image 1`] = `
           alt="Test label"
           aria-label="Test label"
           mode="cover"
-          role="img"
           src="mytesteimg.png"
         >
           <img
@@ -73,7 +72,6 @@ exports[`Beagle snapshot image 1`] = `
             aria-label="Test label"
             className="sc-bdfBwQ ednZQG"
             mode="cover"
-            role="img"
             src="mytesteimg.png"
           />
         </styled.img>

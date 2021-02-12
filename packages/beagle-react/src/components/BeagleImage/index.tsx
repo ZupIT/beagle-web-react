@@ -47,7 +47,6 @@ const BeagleImage: FC<BeagleImageInterface> = ({
       <StyledImage 
         mode={(mode && modeMap[mode]) || 'cover'}
         src={source} 
-        role="img"
         alt={accessibility && accessibility.accessibilityLabel}
         {...a11y} />
     </StyledFigure>
