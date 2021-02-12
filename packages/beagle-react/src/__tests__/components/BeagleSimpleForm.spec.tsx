@@ -17,8 +17,9 @@
 // Link.react.test.js
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow, mount } from 'enzyme'
+import { configure, mount } from 'enzyme'
 import Form from '../../components/BeagleSimpleForm'
+import BeagleInput from '../../components/BeagleInput'
 
 let wrapper: any
 let onSubmitMock: any
@@ -26,7 +27,15 @@ let onSubmitMock: any
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   onSubmitMock = jest.fn(()=>'submited')
-  wrapper = mount(<Form onSubmit={onSubmitMock}/>)
+  wrapper = mount(<Form onSubmit={onSubmitMock}>
+     <BeagleInput
+      value="Teste"
+      disabled={false}
+      readOnly={false}
+      placeholder="Testing"
+      type="TEXT"
+    />
+  </Form>)
 })
 
 test('Beagle snapshot SimpleForm', () => {
@@ -37,4 +46,3 @@ test('Should call on submit handler', () => {
   wrapper.simulate('submit')
   expect(onSubmitMock).toHaveBeenCalledTimes(1)
 })
-
