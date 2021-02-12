@@ -14,9 +14,16 @@
   * limitations under the License.
 */
 
-import { BeagleDefaultComponent } from './types'
+import styled from 'styled-components'
 
-export interface FormInterface extends BeagleDefaultComponent {
-  onSubmit: () => void,
-  onValidationError?: () => void,
+interface StyledTextInputInterface {
+  error?: string,
+  showError?: boolean,
 }
+
+export const errorColor = '#FF0000'
+
+export const StyledInput = styled.input<StyledTextInputInterface>`
+  border: ${({ error, showError }) => error && showError ? errorColor : ''};
+  outline: ${({ error, showError }) => error && showError ? `auto ${errorColor}` : ''};
+`

@@ -22,7 +22,7 @@ exports[`Beagle snapshot Input 1`] = `
     type="TEXT"
     value="Testing"
   >
-    <input
+    <styled.input
       className=""
       disabled={false}
       onBlur={[Function]}
@@ -30,9 +30,23 @@ exports[`Beagle snapshot Input 1`] = `
       onFocus={[Function]}
       placeholder="Testing"
       readOnly={false}
+      style={Object {}}
       type="TEXT"
       value="Testing"
-    />
+    >
+      <input
+        className="sc-gsTCUz cbPgpe"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Testing"
+        readOnly={false}
+        style={Object {}}
+        type="TEXT"
+        value="Testing"
+      />
+    </styled.input>
   </BeagleInput>
 </ComponentWithTheme>
 `;
