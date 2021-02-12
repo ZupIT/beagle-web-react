@@ -19,6 +19,8 @@ import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
+import BeagleText from '../BeagleText'
+import { StyledInput, errorColor } from './styled'
 
 const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
@@ -32,31 +34,48 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   style,
   className,
   accessibility,
+  error,
+  showError,
 }) => {
   const a11y = buildAccessibility(accessibility)
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
-
     handler({ value: event.target.value })
   }
 
+  const showErrorMessage = () => {
+    if (error && showError)
+      return (
+        <BeagleText
+          text={error || ''}
+          textColor={errorColor}
+          style={{ fontSize: '0.8rem' }}
+        ></BeagleText>
+      )
+  }
+
   return (
-    <input
-      value={value}
-      placeholder={placeholder}
-      disabled={disabled}
-      readOnly={readOnly}
-      type={type}
-      onChange={handleEvent(onChange)}
-      onBlur={handleEvent(onBlur)}
-      onFocus={handleEvent(onFocus)}
-      style={style}
-      className={className}
-      aria-placeholder={placeholder}
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      {...a11y}
-    />
+    <>
+      <StyledInput
+        value={value}
+        placeholder={placeholder}
+        disabled={disabled}
+        readOnly={readOnly}
+        type={type}
+        onChange={handleEvent(onChange)}
+        onBlur={handleEvent(onBlur)}
+        onFocus={handleEvent(onFocus)}
+        style={{ ...style }}
+        className={className}
+        error={error}
+        showError={showError}
+        aria-placeholder={placeholder}
+        aria-disabled={disabled}
+        aria-readonly={readOnly}
+        {...a11y}
+      />
+      {showErrorMessage()}
+    </>
   )
 }
 

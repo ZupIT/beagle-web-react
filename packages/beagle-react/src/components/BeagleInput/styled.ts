@@ -14,11 +14,16 @@
   * limitations under the License.
 */
 
-export const BeagleTheme = {
-  swamp: '#001B26',
-  swampLight: 'rgba(0, 27, 38, 0.8)',
-  swampTransparent: 'rgba(0, 27, 38, 0.1)',
-  athensGray: '#F5F7F9',
-  blackTransparent: 'rgba(0, 0, 0, 0.1)',
-  darkGray: 'rgba(0, 0, 0, 0.75);',
+import styled from 'styled-components'
+
+interface StyledTextInputInterface {
+  error?: string,
+  showError?: boolean,
 }
+
+export const errorColor = '#FF0000'
+
+export const StyledInput = styled.input<StyledTextInputInterface>`
+  border: ${({ error, showError }) => error && showError ? errorColor : ''};
+  outline: ${({ error, showError }) => error && showError ? `auto ${errorColor}` : ''};
+`

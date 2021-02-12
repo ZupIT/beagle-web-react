@@ -22,7 +22,7 @@ exports[`Beagle snapshot Input 1`] = `
     type="TEXT"
     value="Testing"
   >
-    <input
+    <styled.input
       aria-disabled={false}
       aria-placeholder="Testing"
       aria-readonly={false}
@@ -33,9 +33,26 @@ exports[`Beagle snapshot Input 1`] = `
       onFocus={[Function]}
       placeholder="Testing"
       readOnly={false}
+      style={Object {}}
       type="TEXT"
       value="Testing"
-    />
+    >
+      <input
+        aria-disabled={false}
+        aria-placeholder="Testing"
+        aria-readonly={false}
+        className="sc-gsTCUz cbPgpe"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Testing"
+        readOnly={false}
+        style={Object {}}
+        type="TEXT"
+        value="Testing"
+      />
+    </styled.input>
   </BeagleInput>
 </ComponentWithTheme>
 `;

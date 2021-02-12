@@ -18,4 +18,5 @@ import { BeagleDefaultComponent } from './types'
 
 export interface FormInterface extends BeagleDefaultComponent {
   onSubmit: () => void,
+  onValidationError?: () => void,
 }
