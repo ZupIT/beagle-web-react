@@ -11,10 +11,12 @@ exports[`Beagle snapshot Modal 1`] = `
     onClose={[MockFunction]}
   >
     <styled.div
+      aria-modal={true}
       className=""
       onClick={[Function]}
     >
       <div
+        aria-modal={true}
         className="sc-bdfBwQ eBKHls"
         onClick={[Function]}
       />

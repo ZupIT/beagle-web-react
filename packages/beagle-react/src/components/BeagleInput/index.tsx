@@ -17,6 +17,7 @@
 import React, { FC } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import BeagleText from '../BeagleText'
 import { StyledInput, errorColor } from './styled'
@@ -32,23 +33,26 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   onBlur,
   style,
   className,
+  accessibility,
   error,
   showError,
 }) => {
-
+  const a11y = buildAccessibility(accessibility)
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
   }
 
-  const showErrorMessage = (() => {
+  const showErrorMessage = () => {
     if (error && showError)
-      return <BeagleText
-        text={error || ''}
-        textColor={errorColor}
-        style={{ fontSize: '0.8rem' }}>
-      </BeagleText>
-  })
+      return (
+        <BeagleText
+          text={error || ''}
+          textColor={errorColor}
+          style={{ fontSize: '0.8rem' }}
+        ></BeagleText>
+      )
+  }
 
   return (
     <>
@@ -65,6 +69,10 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         className={className}
         error={error}
         showError={showError}
+        aria-placeholder={placeholder}
+        aria-disabled={disabled}
+        aria-readonly={readOnly}
+        {...a11y}
       />
       {showErrorMessage()}
     </>

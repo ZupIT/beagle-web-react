@@ -28,6 +28,9 @@ exports[`Beagle snapshot SimpleForm 1`] = `
           value="Teste"
         >
           <styled.input
+            aria-disabled={false}
+            aria-placeholder="Testing"
+            aria-readonly={false}
             className=""
             disabled={false}
             onBlur={[Function]}
@@ -40,6 +43,9 @@ exports[`Beagle snapshot SimpleForm 1`] = `
             value="Teste"
           >
             <input
+              aria-disabled={false}
+              aria-placeholder="Testing"
+              aria-readonly={false}
               className="sc-gsTCUz cbPgpe"
               disabled={false}
               onBlur={[Function]}

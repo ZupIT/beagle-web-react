@@ -14,24 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleWebViewInterface } from 'common/models'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
-import withTheme from '../utils/withTheme'
-import { StyledWebView } from './styled'
-
-const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = props => {
-  const { url, className, style, accessibility } = props
-  const a11y = buildAccessibility(accessibility)
-
-  return (
-    <StyledWebView 
-      className={className} 
-      style={style} 
-      src={url}
-      {...a11y}>
-    </StyledWebView>
-  )
+export interface Accessibility {
+  accessible: boolean,
+  accessibilityLabel?: string,
+  isHeader?: boolean,
 }
-
-export default withTheme(BeagleWebView)

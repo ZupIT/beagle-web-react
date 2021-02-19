@@ -25,13 +25,7 @@ export interface ImagePath {
   mobileId?: string,
 }
 
-export interface Accessibility {
-  accessible: boolean,
-  accessibilityLabel?: string,
-}
-
 export interface BeagleImageInterface extends BeagleDefaultComponent {
   path: ImagePath,
   mode?: ImageMode,
-  accessibility?: Accessibility,
 }

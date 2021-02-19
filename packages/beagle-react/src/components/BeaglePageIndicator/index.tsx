@@ -24,12 +24,20 @@ const BeaglePageIndicator: FC<PageIndicatorInterface> = ({
 
   const totalPages = numberOfPages ? Array(numberOfPages) : []
 
+  const isSelected = (index: number): boolean => index === currentPage
+
   return (
     <StyledOrderList>
       {
         Children.map(totalPages, (child, index) => (
-          <StyledItemList key={index} selected={index === currentPage}
-            selectedColor={selectedColor} unselectedColor={unselectedColor}>
+          <StyledItemList 
+            key={index} 
+            selected={isSelected(index)}
+            selectedColor={selectedColor} 
+            unselectedColor={unselectedColor}
+            aria-colindex={index}
+            aria-posinset={index + 1}
+            aria-selected={isSelected(index)}>
           </StyledItemList>
         ))
       }

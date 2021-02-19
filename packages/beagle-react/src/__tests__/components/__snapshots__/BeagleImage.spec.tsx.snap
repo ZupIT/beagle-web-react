@@ -63,11 +63,13 @@ exports[`Beagle snapshot image 1`] = `
       >
         <styled.img
           alt="Test label"
+          aria-label="Test label"
           mode="cover"
           src="mytesteimg.png"
         >
           <img
             alt="Test label"
+            aria-label="Test label"
             className="sc-bdfBwQ ednZQG"
             mode="cover"
             src="mytesteimg.png"

@@ -92,12 +92,14 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               text="Retry"
             >
               <styled.button
+                aria-disabled={false}
                 className="sc-hKgILt lhgqZA"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
+                  aria-disabled={false}
                   className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
                   disabled={false}
                   onClick={[Function]}
@@ -127,12 +129,14 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               text="Show details ▼"
             >
               <styled.button
+                aria-disabled={false}
                 className="sc-eCssSg dkdlFW"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
+                  aria-disabled={false}
                   className="sc-gsTCUz gtYKES sc-eCssSg dkdlFW"
                   disabled={false}
                   onClick={[Function]}
@@ -260,12 +264,14 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
               text="Retry"
             >
               <styled.button
+                aria-disabled={false}
                 className="sc-hKgILt lhgqZA"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
+                  aria-disabled={false}
                   className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
                   disabled={false}
                   onClick={[Function]}

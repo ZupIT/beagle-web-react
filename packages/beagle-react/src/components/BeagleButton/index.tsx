@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
+import { buildAccessibility } from 'common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { StyledBeagleButton } from './styled'
 
@@ -42,8 +43,10 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
+  accessibility,
   enabled,
 }) => {
+  const a11y = buildAccessibility(accessibility)
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
   const beagleAnalytics = beagleService && beagleService.analytics
@@ -63,6 +66,8 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       onClick={handlePress}
       type={type}
       disabled={isDisabled}
+      aria-disabled={isDisabled}
+      {...a11y}
     >
       {text}
     </StyledBeagleButton>

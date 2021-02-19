@@ -15,10 +15,11 @@
 */
 
 import { StyleProp } from 'react-native'
+import { Accessibility } from './accessibility'
 
 export type Direction =  'VERTICAL' | 'HORIZONTAL'
-
 export interface BeagleDefaultComponent<T = React.CSSProperties | StyleProp<any>> {
   style?: T,
   className?: string,
+  accessibility?: Accessibility,
 }

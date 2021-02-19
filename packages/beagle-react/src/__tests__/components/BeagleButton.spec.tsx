@@ -47,7 +47,6 @@ test('Beagle snapshot button', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-
 test('Should call on click handler', () => {
   wrapper.simulate('press')
   expect(handleButtonClickMock).toHaveBeenCalledTimes(1)
