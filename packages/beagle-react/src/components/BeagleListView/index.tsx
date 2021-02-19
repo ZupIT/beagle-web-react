@@ -18,6 +18,7 @@ import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import useScroll from './scroll'
 import { StyledListView } from './styled'
 import { BeagleListViewInterface } from './types'
@@ -38,8 +39,10 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   _key,
   __suffix__,
   isScrollIndicatorVisible = true,
+  accessibility,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
+  const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
   useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
@@ -89,6 +92,11 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       useParentScroll={useParentScroll}
       style={style}
       isScrollIndicatorVisible = {isScrollIndicatorVisible}
+      {
+        ...({ [direction === 'VERTICAL' ? 
+          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0 })
+      }
+      {...a11y}
     >
       {children}
     </StyledListView>

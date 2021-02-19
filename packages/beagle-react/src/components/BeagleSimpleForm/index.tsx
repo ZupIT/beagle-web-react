@@ -14,19 +14,40 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { FormInterface } from 'common/models'
 import withTheme from '../utils/withTheme'
 
 const Form: FC<FormInterface> = ({
   onSubmit,
+  onValidationError,
   style,
   className,
   children,
 }) => {
+
+
+  const lookUpInputErrors = (elements: any): boolean => {
+    const childrenArray = React.Children.toArray(elements)
+    
+    for (const item of childrenArray as ReactElement[]) {
+      if (item.props.error) return true
+      if (lookUpInputErrors(item.props.children)) return true
+    }
+    return false
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (onSubmit) onSubmit()
+
+    if (children) {
+      const hasError = lookUpInputErrors(children)
+      if (hasError) {
+        onValidationError && onValidationError()
+      } else {
+        onSubmit && onSubmit()
+      }
+    }
   }
 
   return (

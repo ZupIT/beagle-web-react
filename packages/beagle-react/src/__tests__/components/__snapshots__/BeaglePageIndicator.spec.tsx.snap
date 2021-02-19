@@ -10,19 +10,31 @@ exports[`Beagle snapshot Page Indicator 1`] = `
       className="sc-hKgILt eliZDP"
     >
       <styled.li
+        aria-colindex={0}
+        aria-posinset={1}
+        aria-selected={false}
         key="0/.0"
         selected={false}
       >
         <li
+          aria-colindex={0}
+          aria-posinset={1}
+          aria-selected={false}
           className="sc-eCssSg cFlIFM"
           selected={false}
         />
       </styled.li>
       <styled.li
+        aria-colindex={1}
+        aria-posinset={2}
+        aria-selected={true}
         key="1/.1"
         selected={true}
       >
         <li
+          aria-colindex={1}
+          aria-posinset={2}
+          aria-selected={true}
           className="sc-eCssSg gBdWIe"
           selected={true}
         />

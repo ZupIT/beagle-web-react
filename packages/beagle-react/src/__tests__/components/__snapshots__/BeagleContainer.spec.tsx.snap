@@ -20,6 +20,7 @@ exports[`Beagle snapshot container 1`] = `
     }
   >
     <styled.div
+      aria-live="polite"
       className="Test Class"
       style={
         Object {
@@ -29,6 +30,7 @@ exports[`Beagle snapshot container 1`] = `
       }
     >
       <div
+        aria-live="polite"
         className="sc-bdfBwQ ksAAfz Test Class"
         style={
           Object {

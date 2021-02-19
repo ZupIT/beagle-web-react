@@ -14,24 +14,16 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleWebViewInterface } from 'common/models'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
-import withTheme from '../utils/withTheme'
-import { StyledWebView } from './styled'
+import styled from 'styled-components'
 
-const BeagleWebView: FC<BeagleWebViewInterface<React.CSSProperties>> = props => {
-  const { url, className, style, accessibility } = props
-  const a11y = buildAccessibility(accessibility)
-
-  return (
-    <StyledWebView 
-      className={className} 
-      style={style} 
-      src={url}
-      {...a11y}>
-    </StyledWebView>
-  )
+interface StyledTextInputInterface {
+  error?: string,
+  showError?: boolean,
 }
 
-export default withTheme(BeagleWebView)
+export const errorColor = '#FF0000'
+
+export const StyledInput = styled.input<StyledTextInputInterface>`
+  border: ${({ error, showError }) => error && showError ? errorColor : ''};
+  outline: ${({ error, showError }) => error && showError ? `auto ${errorColor}` : ''};
+`

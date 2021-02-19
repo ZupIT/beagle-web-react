@@ -16,14 +16,21 @@
 
 import React, { FC } from 'react'
 import { BeagleTextInterface } from 'common/models'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { StyledText } from './styled'
 
 const BeagleText: FC<BeagleTextInterface> = props => {
-  const { text, className, textColor, alignment, style } = props
+  const { text, className, textColor, alignment, style, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
   return (
-    <StyledText textColor={textColor} alignment={alignment} className={className} style={style}>
+    <StyledText 
+      textColor={textColor} 
+      alignment={alignment} 
+      className={className} 
+      style={style}
+      {...a11y}>
       {text}
     </StyledText>
   )

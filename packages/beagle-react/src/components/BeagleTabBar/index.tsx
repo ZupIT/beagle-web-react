@@ -17,6 +17,7 @@
 import React, { FC } from 'react'
 import { BeagleTabBarInterface, ImagePath } from 'common/models'
 import withTheme from '../utils/withTheme'
+import { buildAccessibility } from '../../../../common/utils/accessibility'
 import {
   StyledTabBar,
   StyledBeagleTabItem,
@@ -30,8 +31,10 @@ export interface ItemTitle {
   icon?: ImagePath,
 }
 
+const BeagleTabBar: FC<BeagleTabBarInterface> = props => {
+  const { onTabSelection, currentTab, items, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
-const BeagleTabBar: FC<BeagleTabBarInterface> = ({ onTabSelection, currentTab, items }) => {
   const changeSelectedTab = (index: number) => {
     if (!onTabSelection) return
     onTabSelection(index)
@@ -41,15 +44,21 @@ const BeagleTabBar: FC<BeagleTabBarInterface> = ({ onTabSelection, currentTab, i
     <StyledBeagleImage path={item.icon}></StyledBeagleImage>
   ) : null
 
+  const isSelected = (index: number): boolean => index === currentTab
+
   return (
-    <StyledTabBar>
+    <StyledTabBar aria-colcount={items.length || 0} {...a11y}>
       {items.map((item, index) => (
-        <StyledBeagleTabItem key={index}>
+        <StyledBeagleTabItem 
+          key={index} 
+          aria-colindex={index}
+          aria-posinset={index + 1}
+          aria-selected={isSelected(index)}>
           <StyledBeagleTabItemContent onClick={() => changeSelectedTab(index)}>
             {tabImage(item)}
             {item.title}
           </StyledBeagleTabItemContent >
-          {index === currentTab && <StyledSelected></StyledSelected>}
+          {isSelected(index) && <StyledSelected></StyledSelected>}
         </StyledBeagleTabItem>
       ))}
     </StyledTabBar>
