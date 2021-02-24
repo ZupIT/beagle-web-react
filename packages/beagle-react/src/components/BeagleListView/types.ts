@@ -33,6 +33,7 @@ export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleC
   Beagle receives "key", it transforms it into "_key" */
   _key?: string,
   __suffix__?: string,
+  isScrollIndicatorVisible?: boolean,
 }
 
 export interface ScrollInterface {

@@ -38,6 +38,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   useParentScroll = false,
   _key,
   __suffix__,
+  isScrollIndicatorVisible = true,
   accessibility,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -90,6 +91,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       direction={direction}
       useParentScroll={useParentScroll}
       style={style}
+      isScrollIndicatorVisible = {isScrollIndicatorVisible}
       {
         ...({ [direction === 'VERTICAL' ? 
           'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0 })

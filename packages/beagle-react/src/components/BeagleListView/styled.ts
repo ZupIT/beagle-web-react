@@ -20,6 +20,7 @@ import { Direction } from 'common/models'
 interface StyledListViewInterface {
   direction: Direction,
   useParentScroll?: boolean,
+  isScrollIndicatorVisible?: boolean,
 }
 
 export const StyledListView = styled.div<StyledListViewInterface>`
@@ -28,4 +29,10 @@ export const StyledListView = styled.div<StyledListViewInterface>`
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
   height: ${({ direction }) => direction === 'VERTICAL' ? '100%' : 'auto'};
+  & ::-webkit-scrollbar {
+    display: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 'auto' : 'none'};
+  }
+  -ms-overflow-style: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 
+    'auto' : 'none'};
+  scrollbar-width: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 'auto' : 'none'};
 `
