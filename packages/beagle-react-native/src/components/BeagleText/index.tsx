@@ -14,9 +14,10 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { BeagleTextInterface, MobileAlignment } from 'common/models'
 import { Text, StyleSheet } from 'react-native'
+import { logger } from '@zup-it/beagle-web'
 
 const alignMap: Record<string, MobileAlignment> = {
   auto: 'auto',
@@ -27,6 +28,7 @@ const alignMap: Record<string, MobileAlignment> = {
 
 const BeagleText: FC<BeagleTextInterface> = props => {
   const { text, textColor, alignment, style } = props
+  const [renderedText, setRenderedText] = useState<string>('')
 
   const parsedAlignment = alignment && alignment != 'INHERIT' ?
     alignMap[alignment.toLowerCase()] :
@@ -41,13 +43,24 @@ const BeagleText: FC<BeagleTextInterface> = props => {
     },
   })
 
+  useEffect(() => {
+    try {
+      if (text && typeof text === 'object') {
+        setRenderedText(JSON.stringify(text))
+      } else setRenderedText((text && typeof text !== 'function') ? String(text) : '')
+    } catch (error) {
+      logger.error(error)
+      setRenderedText('')
+    }
+  }, [text])
+
   return (
     <Text
       style={{
         ...styleSheet.defaultStyles,
         ...styleSheet.fromBffStyles,
       }}>
-      {text}
+      {renderedText}
     </Text>
   )
 }
