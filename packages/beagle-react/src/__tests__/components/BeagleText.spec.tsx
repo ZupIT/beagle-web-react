@@ -17,18 +17,61 @@
 // Link.react.test.js
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, shallow } from 'enzyme'
+import { configure, mount, ReactWrapper } from 'enzyme'
 import BeagleText from '../../components/BeagleText'
+import { StyledText } from '../../components/BeagleText/styled'
 
-let wrapper: any
-
+const initialText = 'Test'
 
 configure({ adapter: new Adapter() })
-beforeAll(() => {
-  wrapper = shallow(<BeagleText text='Test' className='Test Class'/>)
-})
 
 test('Beagle snapshot Text', () => {
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={initialText} className='text-class'/>)
   expect(wrapper).toMatchSnapshot()
 })
 
+test('it should render the string as initialized', () => {
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={initialText} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML).toBe(initialText)
+})
+
+test('it should render not render any text when text is null', () => {
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={null} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML.length).toBe(0)
+})
+
+test('it should render not render any text when text is undefined', () => {
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={undefined} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML.length).toBe(0)
+})
+
+test('it should render numbers as strings', () => {
+  const value = 123.45
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={value} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML).toBe(String(value))
+})
+
+test('it should render an object as stringfied json object', () => {
+  const obj = { my: 'test' }
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={obj} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML).toBe(JSON.stringify(obj))
+})
+
+test('it should render an array as stringfied json array', () => {
+  const arr = [{ my: 'test' }, 'test', 123.45]
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={arr} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML).toBe(JSON.stringify(arr))
+})
+
+test('it should render an function as empty string', () => {
+  const fun = function test() { return true }
+  const wrapper: ReactWrapper<typeof BeagleText> = mount(<BeagleText text={fun} />)
+  const p = wrapper.find(StyledText).getDOMNode<HTMLParagraphElement>()
+  expect(p?.innerHTML).toBe('')
+})

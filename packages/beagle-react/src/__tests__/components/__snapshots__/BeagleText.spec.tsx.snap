@@ -1,8 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot Text 1`] = `
-<BeagleText
-  className="Test Class"
+<ComponentWithTheme
+  className="text-class"
   text="Test"
-/>
+>
+  <BeagleText
+    className="text-class"
+    text="Test"
+  >
+    <styled.p
+      className="text-class"
+    >
+      <p
+        className="sc-bdfBwQ fTPwPK text-class"
+      >
+        Test
+      </p>
+    </styled.p>
+  </BeagleText>
+</ComponentWithTheme>
 `;

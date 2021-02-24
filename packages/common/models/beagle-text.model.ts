@@ -20,7 +20,7 @@ export type TextAlignment = 'LEFT' | 'CENTER' | 'RIGHT' | 'INHERIT'
 export type MobileAlignment = 'auto' | 'center' | 'left' | 'right'
 
 export interface BeagleTextInterface extends BeagleDefaultComponent {
-  text: string,
+  text: unknown,
   textColor?: string,
   alignment?: TextAlignment,
 }
