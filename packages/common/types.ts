@@ -27,6 +27,7 @@ import {
   Strategy,
   BeagleUIElement,
   NetworkOptions,
+  RemoteView,
 } from '@zup-it/beagle-web'
 import { Omit } from '@zup-it/beagle-web/types'
 
@@ -121,8 +122,9 @@ export interface BeagleRemoteViewType extends LegacyLoadParams {
    * or the http method, you should take a look into navigation controllers or custom http clients,
    * both can be set in the configuration for the Beagle Service.
    */
-  route?: string,
+  route?: string | RemoteView,
   /**
+   * @deprecated since 1.7.0 prefer using the HttpAdditionalData in your Route properties instead
    * The options to perform http requests (http method, headers and cache strategy) for all
    * navigations in this BeagleView. If not specified, will use the default options.
    */
