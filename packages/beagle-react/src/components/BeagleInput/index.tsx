@@ -26,6 +26,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
   placeholder,
   disabled,
+  enabled,
   readOnly,
   type = 'TEXT',
   onChange,
@@ -54,12 +55,19 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       )
   }
 
+  const isDisabled = enabled === undefined ? false : !enabled
+
+
+  console.log('isDisabled =', enabled,'===', undefined,'?',false ,':',!enabled)
+  console.log('isDisabled -> enabled', enabled)
+  console.log('isDisabled -> disabled ', disabled)
+
   return (
     <>
       <StyledInput
         value={value}
         placeholder={placeholder}
-        disabled={disabled}
+        disabled={isDisabled}
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
@@ -70,7 +78,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         error={error}
         showError={showError}
         aria-placeholder={placeholder}
-        aria-disabled={disabled}
+        aria-disabled={isDisabled}
         aria-readonly={readOnly}
         {...a11y}
       />
