@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import { buildAccessibility } from '../../../../common/utils/accessibility'
@@ -39,11 +39,11 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   showError,
 }) => {
   const a11y = buildAccessibility(accessibility)
+  const [isEnabled, setIsEnabled] = useState<boolean>(true)
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
   }
-
   const showErrorMessage = () => {
     if (error && showError)
       return (
@@ -55,19 +55,20 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       )
   }
 
-  const isDisabled = enabled === undefined ? false : !enabled
-
-
-  console.log('isDisabled =', enabled,'===', undefined,'?',false ,':',!enabled)
-  console.log('isDisabled -> enabled', enabled)
-  console.log('isDisabled -> disabled ', disabled)
+  useEffect(() => {
+    if (disabled !== undefined){
+      setIsEnabled(!disabled)
+    } else { 
+      setIsEnabled(enabled === undefined ? true : enabled) 
+    }
+  }, [disabled, enabled])
 
   return (
     <>
       <StyledInput
         value={value}
         placeholder={placeholder}
-        disabled={isDisabled}
+        disabled={!isEnabled}
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
@@ -78,7 +79,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         error={error}
         showError={showError}
         aria-placeholder={placeholder}
-        aria-disabled={isDisabled}
+        aria-disabled={!isEnabled}
         aria-readonly={readOnly}
         {...a11y}
       />
