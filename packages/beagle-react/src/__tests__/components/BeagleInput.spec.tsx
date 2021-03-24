@@ -24,7 +24,6 @@ let wrapper: any
 const beagleInputPropsMock: BeagleTextInputInterface = {
   value: 'Testing',
   placeholder: 'Testing',
-  enabled: false,
   disabled: false,
   readOnly: false,
   type: 'TEXT',
@@ -70,7 +69,6 @@ test('Should update text on input', () => {
   const wrapper = mount(
     <BeagleInput
       value={inputStateValue}
-      enabled={false}
       disabled={false}
       readOnly={false}
       placeholder="Testing"
