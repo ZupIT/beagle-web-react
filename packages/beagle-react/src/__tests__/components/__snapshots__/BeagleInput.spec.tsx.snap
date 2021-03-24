@@ -3,6 +3,7 @@
 exports[`Beagle snapshot Input 1`] = `
 <ComponentWithTheme
   disabled={false}
+  enabled={true}
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   onFocus={[MockFunction]}
@@ -14,6 +15,7 @@ exports[`Beagle snapshot Input 1`] = `
   <BeagleInput
     className=""
     disabled={false}
+    enabled={true}
     onBlur={[MockFunction]}
     onChange={[MockFunction]}
     onFocus={[MockFunction]}
