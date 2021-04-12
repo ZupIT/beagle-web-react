@@ -56,10 +56,6 @@ describe('Tests', () => {
     wrapper = mount(getComponent())
   })
   
-  test('Beagle Tab Bar should render the tabs corretly', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-  
   test('Beagle Tab Bar should toggle the tab', () => {
     let tabs = wrapper.find(StyledBeagleTabItem)
   
