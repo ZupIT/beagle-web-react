@@ -16,8 +16,9 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, shallow } from 'enzyme'
 import Form from '../../components/BeagleSimpleForm'
 import BeagleInput from '../../components/BeagleInput'
 
@@ -27,7 +28,7 @@ let onSubmitMock: any
 configure({ adapter: new Adapter() })
 beforeAll(() => {
   onSubmitMock = jest.fn(()=>'submited')
-  wrapper = mount(<Form onSubmit={onSubmitMock}>
+  wrapper = shallow(<Form onSubmit={onSubmitMock}>
      <BeagleInput
       value="Teste"
       disabled={false}

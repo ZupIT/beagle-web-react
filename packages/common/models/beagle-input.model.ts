@@ -9,7 +9,12 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   onChange?: InputHandler,
   onFocus?: InputHandler,
   onBlur?: InputHandler,
-  disabled: boolean,
+  /**
+  * @deprecated since version 1.7.0. Use `enabled` instead.
+  *  Use field `enabled` to control whether the button is enabled or not in the layout.
+  */
+  disabled?: boolean,
+  enabled?: boolean,
   readOnly?: boolean,
   placeholder?: string,
   type?: InputType,

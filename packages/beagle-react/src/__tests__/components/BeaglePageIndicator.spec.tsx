@@ -16,15 +16,16 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, shallow } from 'enzyme'
 import BeaglePageIndicator from '../../components/BeaglePageIndicator'
 
 let wrapper: any
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = mount(<BeaglePageIndicator
+  wrapper = shallow(<BeaglePageIndicator
     numberOfPages={2}
     currentPage={1}>
     <p>First Page</p><p>Second Page</p>
