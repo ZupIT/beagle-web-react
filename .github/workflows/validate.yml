@@ -51,6 +51,10 @@ jobs:
       with:
         path: react
 
+    - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14.x
+
     - name: link beagle-react to beagle-web-core
       run: cd react && yarn link @zup-it/beagle-web
 
