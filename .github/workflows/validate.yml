@@ -67,7 +67,7 @@ jobs:
       run: cd react && yarn lint
     
     - name: test
-      run: cd react/packages/beagle-react && yarn test -u --maxWorkers=2
+      run: cd react/packages/beagle-react && yarn test --maxWorkers=2
 
     - name: test and comment
       continue-on-error: true
