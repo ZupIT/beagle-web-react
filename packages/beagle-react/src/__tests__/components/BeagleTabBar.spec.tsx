@@ -15,11 +15,11 @@
 */
 
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, mount, shallow } from 'enzyme'
 import BeagleTabBar from '../../components/BeagleTabBar'
 import { StyledBeagleTabItem, StyledSelected } from '../../components/BeagleTabBar/styled'
-import 'jest-styled-components'
 
 let wrapper: any
 let tabIndex: number

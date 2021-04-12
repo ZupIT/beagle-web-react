@@ -18,12 +18,11 @@
 import React from 'react'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, shallow } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleContainer from '../../components/BeagleContainer'
 import 'jest-styled-components'
 
-let beagleContextMock: any
 let wrapper: any
 const mockStyle: React.CSSProperties = {
   height: '100',
@@ -32,8 +31,9 @@ const mockStyle: React.CSSProperties = {
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  beagleContextMock = mock<ViewContentManager>()
-  wrapper = mount(
+  mock<ViewContentManager>()
+
+  wrapper = shallow(
     <BeagleContainer className="Test Class" style={mockStyle}>
       <p>Something inside</p>
     </BeagleContainer>

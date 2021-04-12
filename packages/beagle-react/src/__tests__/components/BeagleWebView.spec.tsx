@@ -16,10 +16,10 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
 import BeagleWebView from '../../components/BeagleWebView'
-import 'jest-styled-components'
 
 let wrapper: any
 

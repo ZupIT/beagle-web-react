@@ -15,11 +15,11 @@
 */
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, mount, shallow } from 'enzyme'
 import BeagleInput from '../../components/BeagleInput'
 import { BeagleTextInputInterface } from 'common/models'
-import 'jest-styled-components'
 
 let wrapper: any
 const beagleInputPropsMock: BeagleTextInputInterface = {
@@ -32,12 +32,11 @@ const beagleInputPropsMock: BeagleTextInputInterface = {
   onChange: jest.fn(),
   onFocus: jest.fn(),
   onBlur: jest.fn(),
-
 }
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = mount(<BeagleInput {...beagleInputPropsMock} />)
+  wrapper = shallow(<BeagleInput {...beagleInputPropsMock} />)
 })
 
 test('Beagle snapshot Input', () => {

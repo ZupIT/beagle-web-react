@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot container 1`] = `
-<ComponentWithTheme
+<BeagleContainer
   className="Test Class"
   style={
     Object {
@@ -10,40 +10,8 @@ exports[`Beagle snapshot container 1`] = `
     }
   }
 >
-  <BeagleContainer
-    className="Test Class"
-    style={
-      Object {
-        "height": "100",
-        "width": "50",
-      }
-    }
-  >
-    <styled.div
-      aria-live="polite"
-      className="Test Class"
-      style={
-        Object {
-          "height": "100",
-          "width": "50",
-        }
-      }
-    >
-      <div
-        aria-live="polite"
-        className="ksAAfz Test Class"
-        style={
-          Object {
-            "height": "100",
-            "width": "50",
-          }
-        }
-      >
-        <p>
-          Something inside
-        </p>
-      </div>
-    </styled.div>
-  </BeagleContainer>
-</ComponentWithTheme>
+  <p>
+    Something inside
+  </p>
+</BeagleContainer>
 `;

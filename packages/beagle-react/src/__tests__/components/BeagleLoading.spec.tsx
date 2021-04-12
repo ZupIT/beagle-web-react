@@ -16,11 +16,10 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
-import { CSSProperties } from 'styled-components'
 import BeagleLoading from '../../components/BeagleLoading'
-import 'jest-styled-components'
 
 let wrapper: any
 const mockStyle: React.CSSProperties = {

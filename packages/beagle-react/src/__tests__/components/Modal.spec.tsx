@@ -16,10 +16,10 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import Modal from '../../components/Modal'
-import 'jest-styled-components'
 
 configure({ adapter: new Adapter() })
 

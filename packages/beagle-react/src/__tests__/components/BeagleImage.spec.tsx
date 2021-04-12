@@ -16,15 +16,14 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import { mock } from 'jest-mock-extended'
 import Adapter from 'enzyme-adapter-react-16'
-import { configure, mount } from 'enzyme'
+import { configure, shallow } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleImage from '../../components/BeagleImage'
 import { ImagePath } from 'common/models'
-import 'jest-styled-components'
 
-let beagleContextMock: any
 let wrapper: any
 const mockStyle: React.CSSProperties = {
   height: '100',
@@ -38,8 +37,9 @@ const mockPath: ImagePath = {
 configure({ adapter: new Adapter() })
 
 beforeAll(() => {
-  beagleContextMock = mock<ViewContentManager>()
-  wrapper = mount(<BeagleImage
+  mock<ViewContentManager>()
+
+  wrapper = shallow(<BeagleImage
     className="Test Class"
     style={mockStyle}
     accessibility={{accessibilityLabel: 'Test label', accessible: true  }}
