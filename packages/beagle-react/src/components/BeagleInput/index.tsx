@@ -39,7 +39,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   showError,
 }) => {
   const a11y = buildAccessibility(accessibility)
-  const [isEnabled, setIsEnabled] = useState<boolean>(true)
+  const isEnabled = enabled === false || disabled === true
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
@@ -55,20 +55,12 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       )
   }
 
-  useEffect(() => {
-    if (disabled !== undefined){
-      setIsEnabled(!disabled)
-    } else { 
-      setIsEnabled(enabled === undefined ? true : enabled) 
-    }
-  }, [disabled, enabled])
-
   return (
     <>
       <StyledInput
         value={value}
         placeholder={placeholder}
-        disabled={!isEnabled}
+        disabled={isEnabled}
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
@@ -79,7 +71,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         error={error}
         showError={showError}
         aria-placeholder={placeholder}
-        aria-disabled={!isEnabled}
+        aria-disabled={isEnabled}
         aria-readonly={readOnly}
         {...a11y}
       />
