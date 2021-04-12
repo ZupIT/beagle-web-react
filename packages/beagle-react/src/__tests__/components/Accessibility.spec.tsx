@@ -21,6 +21,7 @@ import { configure, mount, shallow } from 'enzyme'
 import BeagleText from '../../components/BeagleText'
 import { Accessibility } from '../../../../common/models/accessibility'
 import { findDOMNode } from 'react-dom'
+import 'jest-styled-components'
 
 const ariaLabelText = 'Test Label'
 const getAttrsAsArrayFromElement = (element: HTMLElement) =>  [...Array.from(element?.attributes || [])]

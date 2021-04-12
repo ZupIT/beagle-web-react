@@ -20,6 +20,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import Form from '../../components/BeagleSimpleForm'
 import BeagleInput from '../../components/BeagleInput'
+import 'jest-styled-components'
 
 let wrapper: any
 let onSubmitMock: any

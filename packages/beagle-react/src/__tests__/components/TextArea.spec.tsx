@@ -20,6 +20,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount, shallow } from 'enzyme'
 import TextArea from '../../components/TextArea'
 import { BeagleTextAreaInterface } from 'common/models'
+import 'jest-styled-components'
 
 let wrapper: any
 const beagleTextAreaMockProps: BeagleTextAreaInterface = {

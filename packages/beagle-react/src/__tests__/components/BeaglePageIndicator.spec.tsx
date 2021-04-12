@@ -19,6 +19,7 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import BeaglePageIndicator from '../../components/BeaglePageIndicator'
+import 'jest-styled-components'
 
 let wrapper: any
 

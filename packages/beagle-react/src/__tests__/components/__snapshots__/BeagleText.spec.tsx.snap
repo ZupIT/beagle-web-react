@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot Text 1`] = `
+.c0 {
+  color: inherit;
+  text-align: inherit;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
 <ComponentWithTheme
   className="text-class"
   text="Test"
@@ -13,7 +21,7 @@ exports[`Beagle snapshot Text 1`] = `
       className="text-class"
     >
       <p
-        className="sc-bdfBwQ fTPwPK text-class"
+        className="c0 text-class"
       >
         Test
       </p>

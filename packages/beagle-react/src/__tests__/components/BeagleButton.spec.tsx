@@ -21,6 +21,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow, ShallowWrapper } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleButton from '../../components/BeagleButton'
+import 'jest-styled-components'
 
 const mockStyle: React.CSSProperties = {
   height: '100',

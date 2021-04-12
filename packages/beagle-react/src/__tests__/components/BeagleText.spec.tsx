@@ -20,6 +20,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount, ReactWrapper } from 'enzyme'
 import BeagleText from '../../components/BeagleText'
 import { StyledText } from '../../components/BeagleText/styled'
+import 'jest-styled-components'
 
 const initialText = 'Test'
 

@@ -31,7 +31,7 @@ exports[`Beagle snapshot container 1`] = `
     >
       <div
         aria-live="polite"
-        className="sc-bdfBwQ ksAAfz Test Class"
+        className="ksAAfz Test Class"
         style={
           Object {
             "height": "100",

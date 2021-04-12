@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import BeagleError from '../../components/BeagleError'
 import { ErrorsDetailedContainer, StyledRetryButton, StyledShowMoreButton } from '../../components/BeagleError/styled'
+import 'jest-styled-components'
 
 let wrapper: any
 let retryClickMock: any

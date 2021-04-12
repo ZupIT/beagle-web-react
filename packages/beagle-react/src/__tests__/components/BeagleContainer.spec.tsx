@@ -21,6 +21,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleContainer from '../../components/BeagleContainer'
+import 'jest-styled-components'
 
 let beagleContextMock: any
 let wrapper: any

@@ -20,6 +20,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
 import BeagleListView from '../../components/BeagleListView'
 import { Direction } from 'common/models'
+import 'jest-styled-components'
 
 let wrapper: any
 const directionMock: Direction = 'HORIZONTAL'

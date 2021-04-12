@@ -7,7 +7,7 @@ exports[`Beagle snapshot Page Indicator 1`] = `
 >
   <styled.ol>
     <ol
-      className="sc-hKgILt eliZDP"
+      className="eliZDP"
     >
       <styled.li
         aria-colindex={0}
@@ -20,7 +20,7 @@ exports[`Beagle snapshot Page Indicator 1`] = `
           aria-colindex={0}
           aria-posinset={1}
           aria-selected={false}
-          className="sc-eCssSg cFlIFM"
+          className="cFlIFM"
           selected={false}
         />
       </styled.li>
@@ -35,7 +35,7 @@ exports[`Beagle snapshot Page Indicator 1`] = `
           aria-colindex={1}
           aria-posinset={2}
           aria-selected={true}
-          className="sc-eCssSg gBdWIe"
+          className="gBdWIe"
           selected={true}
         />
       </styled.li>

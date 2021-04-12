@@ -33,7 +33,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
       className="Test Class"
     >
       <section
-        className="sc-dlfnbm DatSL Test Class"
+        className="DatSL Test Class"
       >
         <ComponentWithTheme
           text="Sorry!"
@@ -49,7 +49,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               textColor="red"
             >
               <p
-                className="sc-bdfBwQ eliSds"
+                className="eliSds"
               >
                 Sorry!
               </p>
@@ -67,7 +67,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
               className=""
             >
               <p
-                className="sc-bdfBwQ fTPwPK"
+                className="fTPwPK"
               >
                 An unexpected error happened while loading your page.
               </p>
@@ -80,27 +80,27 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           text="Retry"
         >
           <ComponentWithTheme
-            className="sc-hKgILt lhgqZA"
+            className="lhgqZA"
             data-testid="retry"
             onPress={[MockFunction]}
             text="Retry"
           >
             <BeagleButton
-              className="sc-hKgILt lhgqZA"
+              className="lhgqZA"
               data-testid="retry"
               onPress={[MockFunction]}
               text="Retry"
             >
               <styled.button
                 aria-disabled={false}
-                className="sc-hKgILt lhgqZA"
+                className="lhgqZA"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   aria-disabled={false}
-                  className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
+                  className="gtYKES lhgqZA"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -117,27 +117,27 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           text="Show details ▼"
         >
           <ComponentWithTheme
-            className="sc-eCssSg dkdlFW"
+            className="dkdlFW"
             data-testid="show-more"
             onPress={[Function]}
             text="Show details ▼"
           >
             <BeagleButton
-              className="sc-eCssSg dkdlFW"
+              className="dkdlFW"
               data-testid="show-more"
               onPress={[Function]}
               text="Show details ▼"
             >
               <styled.button
                 aria-disabled={false}
-                className="sc-eCssSg dkdlFW"
+                className="dkdlFW"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   aria-disabled={false}
-                  className="sc-gsTCUz gtYKES sc-eCssSg dkdlFW"
+                  className="gtYKES dkdlFW"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -153,7 +153,7 @@ exports[`Beagle Error - render correctly with details Should match the snapshot 
           data-testid="details"
         >
           <section
-            className="sc-jSgupP cMxdgM"
+            className="cMxdgM"
             data-testid="details"
           >
             <p
@@ -205,7 +205,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
       className="Test Class"
     >
       <section
-        className="sc-dlfnbm DatSL Test Class"
+        className="DatSL Test Class"
       >
         <ComponentWithTheme
           text="Sorry!"
@@ -221,7 +221,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
               textColor="red"
             >
               <p
-                className="sc-bdfBwQ eliSds"
+                className="eliSds"
               >
                 Sorry!
               </p>
@@ -239,7 +239,7 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
               className=""
             >
               <p
-                className="sc-bdfBwQ fTPwPK"
+                className="fTPwPK"
               >
                 An unexpected error happened while loading your page.
               </p>
@@ -252,27 +252,27 @@ exports[`Beagle Error - render correctly without details Should match the snapsh
           text="Retry"
         >
           <ComponentWithTheme
-            className="sc-hKgILt lhgqZA"
+            className="lhgqZA"
             data-testid="retry"
             onPress={[MockFunction]}
             text="Retry"
           >
             <BeagleButton
-              className="sc-hKgILt lhgqZA"
+              className="lhgqZA"
               data-testid="retry"
               onPress={[MockFunction]}
               text="Retry"
             >
               <styled.button
                 aria-disabled={false}
-                className="sc-hKgILt lhgqZA"
+                className="lhgqZA"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
               >
                 <button
                   aria-disabled={false}
-                  className="sc-gsTCUz gtYKES sc-hKgILt lhgqZA"
+                  className="gtYKES lhgqZA"
                   disabled={false}
                   onClick={[Function]}
                   type="button"

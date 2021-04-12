@@ -19,6 +19,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
 import BeagleInput from '../../components/BeagleInput'
 import { BeagleTextInputInterface } from 'common/models'
+import 'jest-styled-components'
 
 let wrapper: any
 const beagleInputPropsMock: BeagleTextInputInterface = {

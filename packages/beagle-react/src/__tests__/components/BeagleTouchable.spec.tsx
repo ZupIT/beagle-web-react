@@ -19,6 +19,7 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
 import BeagleTouchable from '../../components/BeagleTouchable'
+import 'jest-styled-components'
 
 let wrapper: any
 const onPressMock = jest.fn()

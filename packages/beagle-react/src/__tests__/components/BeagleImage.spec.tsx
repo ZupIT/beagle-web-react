@@ -22,6 +22,7 @@ import { configure, mount } from 'enzyme'
 import { ViewContentManager } from '@zup-it/beagle-web'
 import BeagleImage from '../../components/BeagleImage'
 import { ImagePath } from 'common/models'
+import 'jest-styled-components'
 
 let beagleContextMock: any
 let wrapper: any
