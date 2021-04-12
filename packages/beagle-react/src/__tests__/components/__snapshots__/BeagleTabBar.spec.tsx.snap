@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
+exports[`Snapshot Beagle Tab Bar should render the tabs corretly 1`] = `
+<BeagleTabBar
+  className=""
+  items={
+    Array [
+      Object {
+        "title": "First Tab",
+      },
+      Object {
+        "title": "Second Tab",
+      },
+    ]
+  }
+  onTabSelection={[Function]}
+/>
+`;
+
+exports[`Tests Beagle Tab Bar should render the tabs corretly 1`] = `
 <ComponentWithTheme
   items={
     Array [
