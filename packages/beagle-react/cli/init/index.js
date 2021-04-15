@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const fsPromises = fs.promises
-const dir = 'src/beagle'
+const dir = 'src'
 const fileOptions = { encoding: 'utf8' }
 
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir)
+}
+if (!fs.existsSync(dir + '/beagle/')) {
+  fs.mkdirSync(dir + '/beagle/')
 }
 
 (async () => {
@@ -19,15 +22,23 @@ if (!fs.existsSync(dir)) {
 
   await fsPromises.writeFile('src/beagle/beagle-service.ts', beagleContent, fileOptions)
 
-  rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', (answer) => {
-    if (`${answer}` === 'y') {
-      fs.writeFile('src/App.tsx', appContent, function (err) {
-        if (err) throw err
-        process.exit()
-      })
-    }
-    else {
+  if (!fs.existsSync(dir + '/app.tsx')) {
+    fs.writeFile(dir + '/app.tsx', appContent, function (err) {
+      if (err) throw err
       process.exit()
-    }
-  })
+    })
+  }
+  else {
+    rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', (answer) => {
+      if (`${answer}` === 'y') {
+        fs.writeFile('src/app.tsx', appContent, function (err) {
+          if (err) throw err
+          process.exit()
+        })
+      }
+      else {
+        process.exit()
+      }
+    })
+  }
 })()
