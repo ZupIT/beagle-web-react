@@ -37,13 +37,13 @@ function useComponent({
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
   const [viewID, setViewID] = useState(id)
-  
+
   if (!beagleService)
     throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   const beagleView = useMemo<BeagleView>(() => {
     if (!id) setViewID(`${nextId++}`)
-    
+
     const view = beagleService.createView(networkOptions, controllerId)
     view.subscribe(setUiTree)
     if (viewRef) viewRef.current = view
@@ -53,9 +53,12 @@ function useComponent({
 
   useEffect(() => {
     if (route) {
+      if (typeof route === 'string')
+        route = { url: route }
+
       const navigator = beagleView.getNavigator()
-      if (navigator.isEmpty()) navigator.pushView({ url: route })
-      else navigator.resetStack({ url: route }, controllerId)
+      if (navigator.isEmpty()) navigator.pushView(route)
+      else navigator.resetStack(route, controllerId)
     }
   }, [route])
 

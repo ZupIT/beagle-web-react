@@ -16,6 +16,7 @@
 
 // Link.react.test.js
 import React from 'react'
+import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount, ReactWrapper } from 'enzyme'
 import BeagleText from '../../components/BeagleText'

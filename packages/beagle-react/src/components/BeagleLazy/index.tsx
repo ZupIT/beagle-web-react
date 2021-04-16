@@ -23,10 +23,6 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManage
     throw new Error('Can\'t use the LazyComponent outside the context of Beagle.')
   }
 
-  function getRelativePath() {
-    return path.replace(/^([^\/])/, '/$1')
-  }
-
   function replaceChildren(tree: BeagleUIElement) {
     const beagleView = viewContentManager!.getView()
     const anchor = viewContentManager!.getElementId()
@@ -38,7 +34,7 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManage
     advantage of the cache system provided by Beagle */
     const beagleView = viewContentManager!.getView()
     const { urlBuilder, viewClient } = beagleView.getBeagleService()
-    const url = urlBuilder.build(getRelativePath())
+    const url = urlBuilder.build(path)
     viewClient.load({
       url,
       onChangeTree: replaceChildren,

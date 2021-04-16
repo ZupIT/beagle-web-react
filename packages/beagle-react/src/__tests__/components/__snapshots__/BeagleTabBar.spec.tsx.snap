@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
-<ComponentWithTheme
+exports[`Snapshot Beagle Tab Bar should render the tabs corretly 1`] = `
+<BeagleTabBar
+  className=""
   items={
     Array [
       Object {
@@ -13,78 +14,5 @@ exports[`Beagle Tab Bar should render the tabs corretly 1`] = `
     ]
   }
   onTabSelection={[Function]}
->
-  <BeagleTabBar
-    className=""
-    items={
-      Array [
-        Object {
-          "title": "First Tab",
-        },
-        Object {
-          "title": "Second Tab",
-        },
-      ]
-    }
-    onTabSelection={[Function]}
-  >
-    <styled.div
-      aria-colcount={2}
-    >
-      <div
-        aria-colcount={2}
-        className="sc-dlfnbm CZBcd"
-      >
-        <styled.div
-          aria-colindex={0}
-          aria-posinset={1}
-          aria-selected={false}
-          key="0"
-        >
-          <div
-            aria-colindex={0}
-            aria-posinset={1}
-            aria-selected={false}
-            className="sc-hKgILt dVipMb"
-          >
-            <styled.div
-              onClick={[Function]}
-            >
-              <div
-                className="sc-eCssSg beqbLp"
-                onClick={[Function]}
-              >
-                First Tab
-              </div>
-            </styled.div>
-          </div>
-        </styled.div>
-        <styled.div
-          aria-colindex={1}
-          aria-posinset={2}
-          aria-selected={false}
-          key="1"
-        >
-          <div
-            aria-colindex={1}
-            aria-posinset={2}
-            aria-selected={false}
-            className="sc-hKgILt dVipMb"
-          >
-            <styled.div
-              onClick={[Function]}
-            >
-              <div
-                className="sc-eCssSg beqbLp"
-                onClick={[Function]}
-              >
-                Second Tab
-              </div>
-            </styled.div>
-          </div>
-        </styled.div>
-      </div>
-    </styled.div>
-  </BeagleTabBar>
-</ComponentWithTheme>
+/>
 `;
