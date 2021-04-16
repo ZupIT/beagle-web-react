@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { BeagleTextInputInterface, InputHandler } from 'common/models'
 import { InputEvent } from '../types'
 import { buildAccessibility } from '../../../../common/utils/accessibility'
@@ -26,6 +26,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
   placeholder,
   disabled,
+  enabled,
   readOnly,
   type = 'TEXT',
   onChange,
@@ -38,11 +39,11 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   showError,
 }) => {
   const a11y = buildAccessibility(accessibility)
+  const isEnabled = enabled === false || disabled === true
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
   }
-
   const showErrorMessage = () => {
     if (error && showError)
       return (
@@ -59,7 +60,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       <StyledInput
         value={value}
         placeholder={placeholder}
-        disabled={disabled}
+        disabled={isEnabled}
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}
@@ -70,7 +71,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
         error={error}
         showError={showError}
         aria-placeholder={placeholder}
-        aria-disabled={disabled}
+        aria-disabled={isEnabled}
         aria-readonly={readOnly}
         {...a11y}
       />

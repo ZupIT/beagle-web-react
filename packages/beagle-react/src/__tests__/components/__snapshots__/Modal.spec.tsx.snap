@@ -1,6 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot Modal 1`] = `
+.c0 {
+  background: rgba(0,0,0,0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 > div {
+  background-color: #FFF;
+  border-radius: 25px;
+  padding: 30px;
+}
+
 <ComponentWithTheme
   isOpen={true}
   onClose={[MockFunction]}
@@ -17,7 +44,7 @@ exports[`Beagle snapshot Modal 1`] = `
     >
       <div
         aria-modal={true}
-        className="sc-bdfBwQ eBKHls"
+        className="c0"
         onClick={[Function]}
       />
     </styled.div>
