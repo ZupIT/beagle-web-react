@@ -4,9 +4,8 @@ const fsPromises = fs.promises
 const dir = 'src'
 const fileOptions = { encoding: 'utf8' }
 
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir)
-}
+fs.mkdirSync(dir, { recursive: true })
+
 if (!fs.existsSync(dir + '/beagle/')) {
   fs.mkdirSync(dir + '/beagle/')
 }
