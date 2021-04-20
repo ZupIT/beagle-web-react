@@ -8,6 +8,7 @@ exports[`Beagle snapshot Modal 1`] = `
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
