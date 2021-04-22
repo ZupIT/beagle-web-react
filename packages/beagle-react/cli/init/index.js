@@ -1,33 +1,49 @@
-#!/usr/bin/env node
-const fs = require('fs')
-const fsPromises = fs.promises
-const dir = 'src/beagle'
-const fileOptions = { encoding: 'utf8' }
-
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir)
-}
-
 (async () => {
-  const beagleContent = await fsPromises.readFile(__dirname + '/boilerplate/beagle-service.ts')
-  const appContent = await fsPromises.readFile(__dirname + '/boilerplate/App.tsx')
+  const { constants, promises } = require('fs')
+  const { access, mkdir, readFile, writeFile } = promises
+  const fileOptions = { encoding: 'utf8' }
+  const dir = "src"
+  const beagleContent = await readFile(__dirname + '/boilerplate/beagle-service.ts')
+  const appContent = await readFile(__dirname + '/boilerplate/App.tsx')
   const readline = require('readline')
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   })
 
-  await fsPromises.writeFile('src/beagle/beagle-service.ts', beagleContent, fileOptions)
+  await mkdir(`${dir}/beagle/`, { recursive: true });
+  await writeFile(`${dir}/beagle/beagle-service.ts`, beagleContent, fileOptions)
 
-  rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', (answer) => {
-    if (`${answer}` === 'y') {
-      fs.writeFile('src/App.tsx', appContent, function (err) {
-        if (err) throw err
-        process.exit()
-      })
-    }
-    else {
+  const createAppTsx = async (path, content) => {
+    try {
+      await writeFile(`${path}/app.tsx`, content)
       process.exit()
+    } catch (error) {
+      console.error(error)
+      process.exit(1)
     }
-  })
+  }
+  const appTsxExists = async (path) => {
+    try {
+      await access(`${path}/app.tsx`, constants.F_OK)
+      return true
+    } catch (error) {
+      console.error("app.tsx did not exist, it was created with Beagle settings.")
+      return false
+    }
+  }
+  const appFileExists = await appTsxExists(dir)
+  if (!appFileExists) {
+    createAppTsx(dir, appContent)
+  }
+  else {
+    rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', (answer) => {
+      if (`${answer}` === 'y' || `${answer}` === 'Y') {
+        createAppTsx(dir, appContent)
+      }
+      else {
+        process.exit()
+      }
+    })
+  }
 })()
