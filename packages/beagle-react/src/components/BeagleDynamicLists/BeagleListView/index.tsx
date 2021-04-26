@@ -14,8 +14,14 @@
   * limitations under the License.
 */
 
-import { Direction } from './types'
+import { DynamicListCoreInterface } from 'common/models'
+import React, { FC } from 'react'
+import DynamicListCore from '../DynamicListCore'
 
-export interface BeagleListViewInterface {
-  direction: Direction,
+const BeagleListView: FC<DynamicListCoreInterface> = (props) => {
+
+  return <DynamicListCore {...props} />
+
 }
+
+export default BeagleListView

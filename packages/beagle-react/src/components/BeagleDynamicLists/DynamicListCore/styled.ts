@@ -17,14 +17,28 @@
 import styled from 'styled-components'
 import { Direction } from 'common/models'
 
-interface StyledListViewInterface {
+interface StyledDynamicViewsInterface {
   direction: Direction,
   useParentScroll?: boolean,
   isScrollIndicatorVisible?: boolean,
+  isGrid?: boolean,
+  numColumns?: number
 }
 
-export const StyledListView = styled.div<StyledListViewInterface>`
-  display: flex;
+function generateColumns(numColumns: number) {
+  if (numColumns <= 0) return
+  let columns = []
+  for (let i = 0; i < numColumns; i++) {
+    columns?.push('auto')
+  }
+  return columns.join(' ')
+}
+
+export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
+  display: ${({ isGrid }) => isGrid ? 'grid' : 'flex'};
+  grid-template-columns: ${({ isGrid, numColumns }) => (isGrid && numColumns) && generateColumns(numColumns)};
+  grid-row-gap: ${(isGrid)=> isGrid && '10px'};
+  justify-content: ${(isGrid)=> isGrid && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
@@ -32,7 +46,7 @@ export const StyledListView = styled.div<StyledListViewInterface>`
   & ::-webkit-scrollbar {
     display: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 'auto' : 'none'};
   }
-  -ms-overflow-style: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 
+  -ms-overflow-style: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ?
     'auto' : 'none'};
   scrollbar-width: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 'auto' : 'none'};
 `

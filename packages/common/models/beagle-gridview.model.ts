@@ -14,8 +14,7 @@
   * limitations under the License.
 */
 
-import { Direction } from './types'
-
-export interface BeagleListViewInterface {
-  direction: Direction,
+export interface BeagleGridViewInterface {
+  isGrid?: boolean,
+  numColumns?: number
 }

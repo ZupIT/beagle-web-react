@@ -19,7 +19,7 @@ import React from 'react'
 import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
-import BeagleListView from '../../components/BeagleListView'
+import BeagleListView from '../../components/BeagleDynamicLists/BeagleListView'
 import { Direction } from 'common/models'
 
 let wrapper: any

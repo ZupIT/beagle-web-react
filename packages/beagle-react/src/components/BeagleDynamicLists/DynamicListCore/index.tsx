@@ -17,13 +17,14 @@
 import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree, logger } from '@zup-it/beagle-web'
-import withTheme from '../utils/withTheme'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
+import withTheme from '../../utils/withTheme'
 import useScroll from './scroll'
-import { StyledListView } from './styled'
-import { BeagleListViewInterface } from './types'
+import { StyledDynamicViewsInterface } from './styled'
+import { DynamicListCoreInterface } from '../../../../../common/models'
+import { buildAccessibility } from '../../../../../common/utils/accessibility'
 
-const BeagleListView: FC<BeagleListViewInterface> = ({
+
+const DynamicListCore: FC<DynamicListCoreInterface> = ({
   direction = 'VERTICAL',
   className,
   style,
@@ -40,6 +41,8 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   __suffix__,
   isScrollIndicatorVisible = true,
   accessibility,
+  isGrid,
+  numColumns
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
@@ -77,7 +80,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
           component.__suffix__ = `${suffix}:${iterationKey}`
         }
       })
-      
+
       return templateTree
     })
 
@@ -85,22 +88,26 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   }, [JSON.stringify(dataSource)])
 
   return (
-    <StyledListView
+    <StyledDynamicViewsInterface
       ref={elementRef}
       className={className}
       direction={direction}
       useParentScroll={useParentScroll}
       style={style}
-      isScrollIndicatorVisible = {isScrollIndicatorVisible}
+      isScrollIndicatorVisible={isScrollIndicatorVisible}
+      numColumns={numColumns}
+      isGrid={isGrid}
       {
-        ...({ [direction === 'VERTICAL' ? 
-          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0 })
+      ...({
+        [direction === 'VERTICAL' ?
+          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0
+      })
       }
       {...a11y}
     >
       {children}
-    </StyledListView>
+    </StyledDynamicViewsInterface>
   )
 }
 
-export default withTheme(BeagleListView)
+export default withTheme(DynamicListCore)
