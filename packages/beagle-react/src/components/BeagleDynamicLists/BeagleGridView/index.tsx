@@ -15,10 +15,10 @@
 */
 
 import React, { FC } from 'react'
-import DynamicListCore from '../DynamicListCore'
-import { DynamicListCoreInterface } from '../../../../../common/models'
+import DynamicListCoreComponent from '../DynamicListCore'
+import { BeagleGridViewInterface } from '../../../../../common/models'
 
-const BeagleGridView: FC<DynamicListCoreInterface> = (props) => {
+const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
 
   const gridProps = {
     ...props,
@@ -26,7 +26,7 @@ const BeagleGridView: FC<DynamicListCoreInterface> = (props) => {
   }
 
   return (
-    <DynamicListCore {...gridProps} />
+    <DynamicListCoreComponent {...gridProps} />
   )
 }
 

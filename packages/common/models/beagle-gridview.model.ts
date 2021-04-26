@@ -14,7 +14,9 @@
   * limitations under the License.
 */
 
-export interface BeagleGridViewInterface {
+import { DynamicListCoreInterface } from "./dynamicLists-core.model";
+
+export interface BeagleGridViewInterface extends DynamicListCoreInterface{
   isGrid?: boolean,
   numColumns?: number
 }

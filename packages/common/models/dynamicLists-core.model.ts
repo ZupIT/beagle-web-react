@@ -16,13 +16,11 @@
 
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { BeagleComponent } from '../types'
-import { BeagleGridViewInterface } from './beagle-gridview.model'
-import { BeagleListViewInterface } from './beagle-listview.model'
 import { BeagleDefaultComponent, Direction } from './types'
 
 export type NodeType = HTMLElement | null
 
-export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent, BeagleListViewInterface, BeagleGridViewInterface {
+export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
   dataSource: any[],
   iteratorName?: string,
   onInit?: () => void,

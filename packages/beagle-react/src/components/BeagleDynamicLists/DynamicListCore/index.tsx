@@ -20,11 +20,13 @@ import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
 import useScroll from './scroll'
 import { StyledDynamicViewsInterface } from './styled'
-import { DynamicListCoreInterface } from '../../../../../common/models'
+import { BeagleGridViewInterface, BeagleListViewInterface, DynamicListCoreInterface } from '../../../../../common/models'
 import { buildAccessibility } from '../../../../../common/utils/accessibility'
 
 
-const DynamicListCore: FC<DynamicListCoreInterface> = ({
+interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface{}
+
+const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
   className,
   style,
@@ -110,4 +112,4 @@ const DynamicListCore: FC<DynamicListCoreInterface> = ({
   )
 }
 
-export default withTheme(DynamicListCore)
+export default withTheme(DynamicListCoreComponent)
