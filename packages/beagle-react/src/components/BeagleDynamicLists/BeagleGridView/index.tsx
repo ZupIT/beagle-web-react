@@ -18,11 +18,8 @@ import React, { FC } from 'react'
 import DynamicListCoreComponent from '../DynamicListCore'
 import { BeagleGridViewInterface } from '../../../../../common/models'
 
-const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
-
-  return (
-    <DynamicListCoreComponent {...props} />
-  )
-}
+const BeagleGridView: FC<BeagleGridViewInterface> = (props) => (
+  <DynamicListCoreComponent {...props} />
+)
 
 export default BeagleGridView
