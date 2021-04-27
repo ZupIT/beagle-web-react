@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Beagle snapshot list view 1`] = `
-<BeagleListView
+<ComponentWithTheme
   className="Test Class"
   dataSource={
     Array [
