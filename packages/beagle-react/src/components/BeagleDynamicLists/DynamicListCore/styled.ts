@@ -29,7 +29,7 @@ function generateColumns(numColumns: number) {
   if (numColumns <= 0) return
   const columns = []
   for (let i = 0; i < numColumns; i++) {
-    columns?.push('auto')
+    columns.push('auto')
   }
   return columns.join(' ')
 }
