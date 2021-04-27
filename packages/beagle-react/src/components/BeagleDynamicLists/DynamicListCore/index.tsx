@@ -100,10 +100,10 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       numColumns={numColumns}
       isGrid={(numColumns && numColumns > 0) ? true : false}
       {
-      ...({
-        [direction === 'VERTICAL' ?
-          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0,
-      })
+        ...({
+          [direction === 'VERTICAL' ?
+            'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0,
+        })
       }
       {...a11y}
     >
