@@ -26,26 +26,29 @@ import { StyledDynamicViewsInterface } from './styled'
 
 interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface{}
 
-const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
-  direction = 'VERTICAL',
-  className,
-  style,
-  template,
-  onInit,
-  onScrollEnd,
-  scrollEndThreshold = 100,
-  dataSource,
-  iteratorName = 'item',
-  viewContentManager,
-  children,
-  useParentScroll = false,
-  _key,
-  __suffix__,
-  isScrollIndicatorVisible = true,
-  accessibility,
-  isGrid,
-  numColumns,
-}) => {
+const DynamicListCoreComponent: FC<DynamicViewInterface> = (props) => {
+
+  const {
+    direction = 'VERTICAL',
+    className,
+    style,
+    template,
+    onInit,
+    onScrollEnd,
+    scrollEndThreshold = 100,
+    dataSource,
+    iteratorName = 'item',
+    viewContentManager,
+    children,
+    useParentScroll = false,
+    _key,
+    __suffix__,
+    isScrollIndicatorVisible = true,
+    accessibility,
+    numColumns,
+  } = props
+
+
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
@@ -98,7 +101,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       style={style}
       isScrollIndicatorVisible={isScrollIndicatorVisible}
       numColumns={numColumns}
-      isGrid={isGrid}
+      isGrid={(numColumns && numColumns > 0 ) ? true : false}
       {
         ...({
           [direction === 'VERTICAL' ?
