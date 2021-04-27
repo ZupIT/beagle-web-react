@@ -25,19 +25,10 @@ interface StyledDynamicViewsInterface {
   numColumns?: number,
 }
 
-function generateColumns(numColumns: number) {
-  if (numColumns <= 0) return
-  const columns = []
-  for (let i = 0; i < numColumns; i++) {
-    columns.push('auto')
-  }
-  return columns.join(' ')
-}
-
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ isGrid }) => isGrid ? 'grid' : 'flex'};
   grid-template-columns: ${({ isGrid, numColumns }) => 
-    (isGrid && numColumns) && generateColumns(numColumns)};
+    (isGrid && numColumns) && `repeat(${numColumns}, auto)`};
   grid-row-gap: ${({ isGrid })=> isGrid && '10px'};
   justify-content: ${({ isGrid })=> isGrid && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
