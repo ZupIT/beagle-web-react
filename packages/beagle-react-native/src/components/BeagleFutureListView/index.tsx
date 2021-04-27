@@ -15,11 +15,11 @@
 */
 
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { BeagleFutureListViewInterface } from 'common/models'
+import { BeagleListViewInterface } from 'common/models'
 import { ScrollView, StyleSheet, NativeScrollEvent } from 'react-native'
 import { renderListViewDynamicItems } from 'common/utils/listview'
 
-const BeagleFutureListView: FC<BeagleFutureListViewInterface> = ({
+const BeagleFutureListView: FC<BeagleListViewInterface> = ({
   dataSource,
   direction,
   template,
