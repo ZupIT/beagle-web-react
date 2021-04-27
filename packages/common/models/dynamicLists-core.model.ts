@@ -32,7 +32,7 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
   Beagle receives "key", it transforms it into "_key" */
   _key?: string,
   __suffix__?: string,
-  isScrollIndicatorVisible?: boolean
+  isScrollIndicatorVisible?: boolean,
 }
 
 export interface ScrollInterface {

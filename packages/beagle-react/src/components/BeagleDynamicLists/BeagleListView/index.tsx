@@ -18,10 +18,7 @@ import { BeagleListViewInterface } from 'common/models'
 import React, { FC } from 'react'
 import DynamicListCoreComponent from '../DynamicListCore'
 
-const BeagleListView: FC<BeagleListViewInterface> = (props) => {
-
-  return <DynamicListCoreComponent {...props} />
-
-}
+const BeagleListView: FC<BeagleListViewInterface> = (props) => 
+  <DynamicListCoreComponent {...props} />
 
 export default BeagleListView

@@ -22,7 +22,7 @@ const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
 
   const gridProps = {
     ...props,
-    isGrid: true
+    isGrid: true,
   }
 
   return (

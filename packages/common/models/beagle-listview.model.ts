@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { DynamicListCoreInterface } from './dynamicLists-core.model';
+import { DynamicListCoreInterface } from './dynamicLists-core.model'
 import { Direction } from './types'
 
 export interface BeagleListViewInterface extends DynamicListCoreInterface {

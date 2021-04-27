@@ -60,7 +60,7 @@ const beagleDefaultComponents = {
   'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
-  'beagle:gridview': BeagleGridView
+  'beagle:gridview': BeagleGridView,
 }
 
 const webSpecificComponents = {

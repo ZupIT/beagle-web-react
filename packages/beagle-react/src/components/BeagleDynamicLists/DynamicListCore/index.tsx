@@ -18,10 +18,10 @@ import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
-import useScroll from './scroll'
-import { StyledDynamicViewsInterface } from './styled'
 import { BeagleGridViewInterface, BeagleListViewInterface, DynamicListCoreInterface } from '../../../../../common/models'
 import { buildAccessibility } from '../../../../../common/utils/accessibility'
+import useScroll from './scroll'
+import { StyledDynamicViewsInterface } from './styled'
 
 
 interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface{}
@@ -44,7 +44,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   isScrollIndicatorVisible = true,
   accessibility,
   isGrid,
-  numColumns
+  numColumns,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
@@ -100,10 +100,10 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       numColumns={numColumns}
       isGrid={isGrid}
       {
-      ...({
-        [direction === 'VERTICAL' ?
-          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0
-      })
+        ...({
+          [direction === 'VERTICAL' ?
+            'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0,
+        })
       }
       {...a11y}
     >

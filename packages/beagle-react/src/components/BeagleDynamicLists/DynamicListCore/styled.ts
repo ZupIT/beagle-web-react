@@ -22,12 +22,12 @@ interface StyledDynamicViewsInterface {
   useParentScroll?: boolean,
   isScrollIndicatorVisible?: boolean,
   isGrid?: boolean,
-  numColumns?: number
+  numColumns?: number,
 }
 
 function generateColumns(numColumns: number) {
   if (numColumns <= 0) return
-  let columns = []
+  const columns = []
   for (let i = 0; i < numColumns; i++) {
     columns?.push('auto')
   }
@@ -36,7 +36,8 @@ function generateColumns(numColumns: number) {
 
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ isGrid }) => isGrid ? 'grid' : 'flex'};
-  grid-template-columns: ${({ isGrid, numColumns }) => (isGrid && numColumns) && generateColumns(numColumns)};
+  grid-template-columns: ${({ isGrid, numColumns }) => 
+    (isGrid && numColumns) && generateColumns(numColumns)};
   grid-row-gap: ${(isGrid)=> isGrid && '10px'};
   justify-content: ${(isGrid)=> isGrid && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
