@@ -38,8 +38,8 @@ export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterfac
   display: ${({ isGrid }) => isGrid ? 'grid' : 'flex'};
   grid-template-columns: ${({ isGrid, numColumns }) => 
     (isGrid && numColumns) && generateColumns(numColumns)};
-  grid-row-gap: ${({isGrid})=> isGrid && '10px'};
-  justify-content: ${({isGrid})=> isGrid && 'space-evenly'};
+  grid-row-gap: ${({ isGrid })=> isGrid && '10px'};
+  justify-content: ${({ isGrid })=> isGrid && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};

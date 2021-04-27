@@ -101,7 +101,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = (props) => {
       style={style}
       isScrollIndicatorVisible={isScrollIndicatorVisible}
       numColumns={numColumns}
-      isGrid={(numColumns && numColumns > 0 ) ? true : false}
+      isGrid={(numColumns && numColumns > 0) ? true : false}
       {
         ...({
           [direction === 'VERTICAL' ?
