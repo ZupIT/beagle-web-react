@@ -20,13 +20,8 @@ import { BeagleGridViewInterface } from '../../../../../common/models'
 
 const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
 
-  const gridProps = {
-    ...props,
-    isGrid: true,
-  }
-
   return (
-    <DynamicListCoreComponent {...gridProps} />
+    <DynamicListCoreComponent {...props} />
   )
 }
 
