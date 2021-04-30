@@ -20,6 +20,8 @@ import { BeagleDefaultComponent, Direction } from './types'
 
 export type NodeType = HTMLElement | null
 
+export type ListType = 'GRID' | 'LIST'
+
 export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
   dataSource: any[],
   iteratorName?: string,
@@ -33,6 +35,7 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
   _key?: string,
   __suffix__?: string,
   isScrollIndicatorVisible?: boolean,
+  listType?: ListType,
 }
 
 export interface ScrollInterface {

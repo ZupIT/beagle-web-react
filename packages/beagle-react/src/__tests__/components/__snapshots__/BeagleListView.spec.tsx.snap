@@ -11,6 +11,7 @@ exports[`Beagle snapshot list view 1`] = `
     ]
   }
   direction="HORIZONTAL"
+  listType="LIST"
   style={
     Object {
       "height": "100",

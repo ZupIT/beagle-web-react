@@ -44,6 +44,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   isScrollIndicatorVisible = true,
   accessibility,
   numColumns,
+  listType,
 }) => {
 
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -98,7 +99,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       style={style}
       isScrollIndicatorVisible={isScrollIndicatorVisible}
       numColumns={numColumns}
-      isGrid={(numColumns && numColumns > 0) ? true : false}
+      listType={listType}
       {
         ...({
           [direction === 'VERTICAL' ?
