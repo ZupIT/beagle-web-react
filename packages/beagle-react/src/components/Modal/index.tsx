@@ -20,6 +20,10 @@ import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { StyledModal } from './styled'
 
+/**
+ * @deprecate since version 1.8.0.
+ * This component will be removed in a future version.
+*/
 const Modal: FC<BeagleModalInterface> = props => {
   const { isOpen, onClose, style, className, children, accessibility } = props
   const elementRef = useRef<HTMLDivElement>(null)
