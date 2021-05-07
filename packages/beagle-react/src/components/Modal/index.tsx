@@ -15,6 +15,7 @@
 */
 
 import React, { FC, useEffect, useRef } from 'react'
+import { logger } from '@zup-it/beagle-web'
 import { BeagleModalInterface } from 'common/models'
 import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
@@ -43,6 +44,7 @@ const Modal: FC<BeagleModalInterface> = props => {
 
   useEffect(() => {
     document.addEventListener('keyup', closeOnEsc)
+    logger.warn('This component is deprecated since version 1.8.0 and will be removed in a future version.')
     return () => document.removeEventListener('keyup', closeOnEsc)
   }, [])
 
