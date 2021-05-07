@@ -22,7 +22,7 @@ import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledTextArea } from './styled'
 
 /**
- * @deprecate since version 1.8.0.
+ * @deprecated since version 1.8.0.
  * This component will be removed in a future version.
 */
 const TextArea: FC<BeagleTextAreaInterface> = ({
