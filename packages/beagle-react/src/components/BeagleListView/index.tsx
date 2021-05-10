@@ -64,9 +64,10 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     if (!element) return
     const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
     const listViewId = viewContentManager.getElement().id
+    const renderer = viewContentManager.getView().getRenderer()
 
     element.children = dataSource.map((item, index) => {
-      const templateTree = Tree.clone(template)
+      const templateTree = renderer.preProcess(Tree.clone(template))
       const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
       const suffix = __suffix__ || ''
       templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
@@ -81,7 +82,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       return templateTree
     })
 
-    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
+    renderer.doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
   return (
