@@ -128,7 +128,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       numColumns={numColumns}
       listType={listType}
       {
-      ...(getAriaCount())
+        ...(getAriaCount())
       }
       {...a11y}
     >
