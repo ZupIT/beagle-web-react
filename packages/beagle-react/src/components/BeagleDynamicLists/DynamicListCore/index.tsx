@@ -18,7 +18,7 @@ import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree, logger } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
-import { BeagleGridViewInterface, BeagleListViewInterface, DynamicListCoreInterface } from '../../../../../common/models'
+import { BeagleGridViewInterface, BeagleListViewInterface } from '../../../../../common/models'
 import { buildAccessibility } from '../../../../../common/utils/accessibility'
 import useScroll from './scroll'
 import { StyledDynamicViewsInterface } from './styled'
@@ -55,8 +55,20 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     [Children.count(children)],
   )
 
+  const setTemplateWidthIfGrid = () => {
+    if (listType === 'LIST') return
+    if (!template.style) template.style = {}
+    const currentWidth = template.style.size && template.style.size.width
+    const customWidth = numColumns && document.body.clientWidth / numColumns
+    template.style.size = {
+      ...template.style.size,
+      width: currentWidth || { value: customWidth, type: 'REAL' },
+    }
+  }
+
   useEffect(() => {
     if (onInit) onInit()
+    setTemplateWidthIfGrid()
   }, [])
 
   useEffect(() => {
@@ -91,6 +103,19 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     viewContentManager.getView().getRenderer().doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
+  const getAriaCount = () => {
+    if (listType === 'LIST')
+      return {
+        [direction === 'VERTICAL' ? 'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0
+      }
+
+    if (listType === 'GRID' && numColumns)
+      return {
+        'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
+        'aria-colcount': numColumns,
+      }
+  }
+
   return (
     <StyledDynamicViewsInterface
       ref={elementRef}
@@ -102,10 +127,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       numColumns={numColumns}
       listType={listType}
       {
-        ...({
-          [direction === 'VERTICAL' ?
-            'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0,
-        })
+      ...(getAriaCount())
       }
       {...a11y}
     >
