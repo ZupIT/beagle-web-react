@@ -106,7 +106,8 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const getAriaCount = () => {
     if (listType === 'LIST')
       return {
-        [direction === 'VERTICAL' ? 'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0
+        [direction === 'VERTICAL' ? 'aria-rowcount' :
+          'aria-colcount']: Children.count(children) || 0,
       }
 
     if (listType === 'GRID' && numColumns)
