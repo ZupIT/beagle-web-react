@@ -25,7 +25,7 @@ interface StyledDynamicViewsInterface {
   numColumns?: number,
 }
 
-const screenSize = document.body.clientWidth;
+const screenSize = document.body.clientWidth
 
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ listType }) => listType === 'GRID' ? 'grid' : 'flex'};
