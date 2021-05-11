@@ -54,21 +54,9 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
   )
-
-  const setTemplateWidthIfGrid = () => {
-    if (listType === 'LIST') return
-    if (!template.style) template.style = {}
-    const currentWidth = template.style.size && template.style.size.width
-    const customWidth = numColumns && document.body.clientWidth / numColumns
-    template.style.size = {
-      ...template.style.size,
-      width: currentWidth || { value: customWidth, type: 'REAL' },
-    }
-  }
-
+  
   useEffect(() => {
     if (onInit) onInit()
-    setTemplateWidthIfGrid()
   }, [])
 
   useEffect(() => {

@@ -25,11 +25,13 @@ interface StyledDynamicViewsInterface {
   numColumns?: number,
 }
 
+const screenSize = document.body.clientWidth;
+
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ listType }) => listType === 'GRID' ? 'grid' : 'flex'};
-  grid-template-columns: ${({ listType, numColumns }) => 
-    (listType === 'GRID' && numColumns) && `repeat(${numColumns}, auto)`};
-  justify-content: ${({ listType })=> listType === 'GRID' && 'space-evenly'};
+  grid-template-columns: ${({ listType, numColumns }) =>
+    (listType === 'GRID' && numColumns) && `repeat(${numColumns}, ${screenSize / numColumns}px)`};
+  justify-content: ${({ listType }) => listType === 'GRID' && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
