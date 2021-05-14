@@ -4,6 +4,7 @@ export type InputHandler = (event: { value: string }) => void
 
 export type InputType = 'DATE' | 'EMAIL' | 'PASSWORD' | 'NUMBER' | 'TEXT'
 
+
 export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   value: string,
   onChange?: InputHandler,
@@ -22,6 +23,10 @@ export interface BeagleTextInputInterface extends BeagleDefaultComponent {
   showError?: boolean,
 }
 
+/**
+ * @deprecated since version 1.8.0.
+ * This interface will be removed in a future version.
+*/
 export interface BeagleTextAreaInterface extends BeagleTextInputInterface {
   name?: string,
   label?: string,
