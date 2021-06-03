@@ -14,18 +14,17 @@
   * limitations under the License.
 */
 
-import { BeagleListViewInterface, ListType } from 'common/models'
+import { BeagleListViewInterface } from 'common/models'
 import React, { FC } from 'react'
 import DynamicListCoreComponent from '../DynamicListCore'
 
 const BeagleListView: FC<BeagleListViewInterface> = (props) => {
   const listProps = {
     ...props,
-    listType: 'LIST' as ListType,
+    listType: 'LIST'
   }
 
   return <DynamicListCoreComponent {...listProps} />
 }
-
 
 export default BeagleListView

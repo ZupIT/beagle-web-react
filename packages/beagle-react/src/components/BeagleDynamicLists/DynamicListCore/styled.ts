@@ -15,22 +15,20 @@
 */
 
 import styled from 'styled-components'
-import { Direction, ListType } from 'common/models'
+import { Direction } from 'common/models'
 
 interface StyledDynamicViewsInterface {
   direction: Direction,
   useParentScroll?: boolean,
   isScrollIndicatorVisible?: boolean,
-  listType?: ListType,
+  listType?: string,
   numColumns?: number,
 }
-
-const screenSize = document.body.clientWidth
 
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ listType }) => listType === 'GRID' ? 'grid' : 'flex'};
   grid-template-columns: ${({ listType, numColumns }) =>
-    (listType === 'GRID' && numColumns) && `repeat(${numColumns}, ${screenSize / numColumns}px)`};
+    (listType === 'GRID' && numColumns) && `repeat(${numColumns}, 1fr)`};
   justify-content: ${({ listType }) => listType === 'GRID' && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};

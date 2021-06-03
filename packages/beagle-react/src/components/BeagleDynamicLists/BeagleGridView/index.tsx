@@ -16,12 +16,12 @@
 
 import React, { FC } from 'react'
 import DynamicListCoreComponent from '../DynamicListCore'
-import { BeagleGridViewInterface, ListType } from '../../../../../common/models'
+import { BeagleGridViewInterface } from '../../../../../common/models'
 
 const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
   const gridProps = {
     ...props,
-    listType: 'GRID' as ListType,
+    listType: 'GRID'
   }
 
 

@@ -23,8 +23,7 @@ import { buildAccessibility } from '../../../../../common/utils/accessibility'
 import useScroll from './scroll'
 import { StyledDynamicViewsInterface } from './styled'
 
-
-interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface { }
+type DynamicViewInterface = BeagleListViewInterface & BeagleGridViewInterface
 
 const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
@@ -66,10 +65,11 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
     }
 
-    const DYNAMIC_COMPONENTS = ['beagle:listview', 'beagle:gridview']
     const element = viewContentManager.getElement() as BeagleUIElement
+    
     if (!element) return
-    const componentTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
+    
+    const componentTag = viewContentManager.getElement()._beagleComponent_.toLowerCase() 
     const listViewId = viewContentManager.getElement().id
 
     element.children = dataSource.map((item, index) => {
@@ -77,12 +77,15 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
       const suffix = __suffix__ || ''
       templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
+      
       Tree.forEach(templateTree, (component, componentIndex) => {
         const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
         component.id = `${baseId}:${iterationKey}`
-        if (DYNAMIC_COMPONENTS.includes(componentTag)) {
+        
+        if (['beagle:listview', 'beagle:gridview'].includes(componentTag)) {
           component.__suffix__ = `${suffix}:${iterationKey}`
         }
+
       })
 
       return templateTree
