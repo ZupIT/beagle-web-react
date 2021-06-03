@@ -21,7 +21,7 @@ import DynamicListCoreComponent from '../DynamicListCore'
 const BeagleListView: FC<BeagleListViewInterface> = (props) => {
   const listProps = {
     ...props,
-    listType: 'LIST'
+    listType: 'LIST',
   }
 
   return <DynamicListCoreComponent {...listProps} />

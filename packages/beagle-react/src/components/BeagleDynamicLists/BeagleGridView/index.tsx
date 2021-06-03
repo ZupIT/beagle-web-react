@@ -21,7 +21,7 @@ import { BeagleGridViewInterface } from '../../../../../common/models'
 const BeagleGridView: FC<BeagleGridViewInterface> = (props) => {
   const gridProps = {
     ...props,
-    listType: 'GRID'
+    listType: 'GRID',
   }
 
 
