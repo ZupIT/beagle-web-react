@@ -17,7 +17,7 @@
 import React, { FC, useContext } from 'react'
 import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { Button, View } from 'react-native'
 import { ViewContentManager } from 'common/types'
 
 function isSubmitButton(contentManager?: ViewContentManager) {
@@ -43,7 +43,8 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   style,
   viewContentManager,
   clickAnalyticsEvent,
-  enabled,
+  enabled = true,
+  accessibility,
 }) => {
   const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
@@ -55,33 +56,14 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
     return isSubmit ? submitForm() : onPress && onPress()
   }
 
-  const styleSheet = StyleSheet.create({
-    fromBffStyles: {
-      ...style,
-    },
-    defaultStyles: {
-      flex: style && style.flex ? Number(style.flex) : 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignContent: 'center',
-      borderRadius: 5,
-      borderWidth: 1,
-      borderColor: '#000000',
-      borderStyle: 'solid',
-      minHeight: 60,
-      maxHeight: 60,
-      margin: 5,
-      minWidth: 200,
-    },
-  })
   return (
-    <View style={{ flex: 1 }}>
-      <TouchableOpacity
-        disabled={!enabled}
+    <View style={style}>
+      <Button
         onPress={handlePress}
-        style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
-        <Text>{text}</Text>
-      </TouchableOpacity>
+        title={text}
+        accessibilityLabel={accessibility?.accessibilityLabel}
+        disabled={!enabled}
+      />
     </View>
   )
 }

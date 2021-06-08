@@ -19,6 +19,7 @@ import { ImageResizeMode, StyleSheet, Image, ImageSourcePropType } from 'react-n
 import { BeagleImageInterface } from 'common/models'
 import BeagleServiceContext from 'common/provider'
 import { BeagleUIReactNativeService } from 'common/types'
+import { logger } from '@zup-it/beagle-web'
 
 
 const modeMap: Record<string, ImageResizeMode> = {
@@ -46,23 +47,25 @@ const BeagleImage: FC<BeagleImageInterface> = props => {
   })
 
   const localAssetsPath = beagleService?.getConfig().localAssetsPath
-  let imgSource: ImageSourcePropType = {}
+  let imgSource: ImageSourcePropType | null = null
 
   if (path._beagleImagePath_ === 'local' && path.mobileId) {
-    if (localAssetsPath && localAssetsPath[path.mobileId])
+    if (localAssetsPath && localAssetsPath[path.mobileId]) {
       imgSource = localAssetsPath[path.mobileId]
-    if (!imgSource) throw new Error(`Beagle could not find image source ${path.mobileId}`)
+    } else {
+      logger.warn(`Beagle could not find image source ${path.mobileId}`)
+    }
   } else {
     imgSource = { uri: path && path.url }
   }
 
-  return (
+  return imgSource ? (
     <Image
       source={imgSource}
       style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}
       {...accessibility}
     />
-  )
+  ) : null
 }
 
 export default BeagleImage
