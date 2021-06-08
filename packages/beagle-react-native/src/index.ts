@@ -17,10 +17,10 @@
 import createBeagleCoreUIService, { DefaultSchema, ErrorComponentParams } from '@zup-it/beagle-web'
 import { BeagleUIService, BeagleComponent, BeagleConfigReactNative } from 'common/types'
 import { BeagleProvider } from 'common/provider'
-import { AsyncStorage } from 'react-native'
 import { translateStyles } from 'lifecycles/translateStyles'
 import BeagleRemoteView from './render/component'
 import defaultComponents from './components/index'
+import { createVolatileStorage } from './volatile-storage'
 
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfigReactNative<Schema>) {
   return createBeagleCoreUIService<Schema, BeagleConfigReactNative<Schema>>({
@@ -30,8 +30,7 @@ function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfigReact
       ...defaultComponents,
     },
     platform: 'React Native',
-    // @ts-ignore
-    customStorage: config.customStorage || AsyncStorage,
+    customStorage: config.customStorage || createVolatileStorage(),
     localAssetsPath: config.localAssetsPath || {},
     lifecycles: {
       ...config.lifecycles,

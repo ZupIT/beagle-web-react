@@ -14,13 +14,28 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { BeagleListViewInterface } from 'common/models'
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, NativeScrollEvent } from 'react-native'
+import { renderListViewDynamicItems } from 'common/utils/listview'
 
-const BeagleListView: FC<BeagleListViewInterface> = props => {
-  const { children, direction, style } = props
-
+const BeagleListView: FC<BeagleListViewInterface> = ({
+  dataSource,
+  direction,
+  template,
+  __suffix__,
+  _key,
+  children,
+  className,
+  iteratorName = 'item',
+  onInit,
+  onScrollEnd,
+  scrollEndThreshold = 100,
+  style,
+  useParentScroll,
+  viewContentManager,
+}) => {
+  const scrollRef = useRef(null)
   const horizontal = direction && direction === 'HORIZONTAL'
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
@@ -34,8 +49,55 @@ const BeagleListView: FC<BeagleListViewInterface> = props => {
     },
   })
 
+  const [shouldLoadPage, setShouldLoadPage] = useState(true)
+
+  useEffect(() => {
+    onInit && onInit() || onScrollEnd && onScrollEnd()
+  }, [])
+
+  useEffect(() => {
+    renderListViewDynamicItems(
+      dataSource,
+      viewContentManager,
+      template,
+      _key,
+      __suffix__,
+      iteratorName
+    )
+    setShouldLoadPage(true)
+  }, [JSON.stringify(dataSource)])
+
+  const hasReachedEndOfList = ({
+    contentOffset,
+    layoutMeasurement,
+    contentSize }: NativeScrollEvent) => {
+
+    let offset = contentOffset.y
+    let layoutSize = layoutMeasurement.height
+    let listSize = contentSize.height
+    if (direction === 'HORIZONTAL') {
+      offset = contentOffset.x
+      layoutSize = layoutMeasurement.width
+      listSize = contentSize.width
+    }
+    const sizeSum = offset + layoutSize
+
+    return Math.round(sizeSum)
+      >= Math.round(listSize * scrollEndThreshold / 100)
+  }
+
+  function callOnEndAction(nativeEvent: NativeScrollEvent) {
+    if (hasReachedEndOfList(nativeEvent) && shouldLoadPage) {
+      setShouldLoadPage(false)
+      onScrollEnd && onScrollEnd() 
+    }
+  }
+
   return (
     <ScrollView
+      ref={scrollRef}
+      onScroll={({ nativeEvent }) => callOnEndAction(nativeEvent)}
+      scrollEventThrottle={1000}
       style={
         {
           ...styleSheet.defaultStyles,
