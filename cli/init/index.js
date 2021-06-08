@@ -1,10 +1,12 @@
+#!/usr/bin/env node
+
 (async () => {
-  const { constants, promises } = require('fs')
+  const { constants, promises, existsSync } = require('fs')
   const { access, mkdir, readFile, writeFile } = promises
   const fileOptions = { encoding: 'utf8' }
   const dir = "src"
   const beagleContent = await readFile(__dirname + '/boilerplate/beagle-service.ts')
-  const appContent = await readFile(__dirname + '/boilerplate/App.tsx')
+  const appContent = await readFile(__dirname + '/boilerplate/app.tsx')
   const readline = require('readline')
   const rl = readline.createInterface({
     input: process.stdin,
@@ -12,7 +14,11 @@
   })
 
   await mkdir(`${dir}/beagle/`, { recursive: true });
-  await writeFile(`${dir}/beagle/beagle-service.ts`, beagleContent, fileOptions)
+  await writeFile(
+    `${dir}/beagle/beagle-service.ts`,
+    beagleContent,
+    fileOptions,
+  )
 
   const createAppTsx = async (path, content) => {
     try {

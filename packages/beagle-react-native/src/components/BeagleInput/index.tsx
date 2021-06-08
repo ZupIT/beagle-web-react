@@ -29,38 +29,31 @@ const keyboardTypes: Record<string, KeyboardType> = {
 }
 
 const BeagleTextInput: FC<BeagleTextInputInterface> = ({
-  value: initialValue,
+  value,
   placeholder,
-  disabled,
   readOnly,
   type = 'TEXT',
   onChange,
   onFocus,
   onBlur,
   style,
+  enabled = true,
 }) => {
 
-  const [value, setValue] = useState(initialValue)
-  const isEditable = !disabled && !readOnly
-
-  const handleEvent = (handler?: InputHandler) => (text: string) => {
-    setValue(text)
-    return handler && handler({ value: text })
-  }
-
+  const handleOnChange = (text: string) => onChange && onChange({ value: text })
   const handleOnFocus = () => onFocus && onFocus({ value })
-
   const handleOnBlur = () => onBlur && onBlur({ value })
 
   const inputProps: TextInputProps = {
-    value: value,
-    placeholder: placeholder,
-    onChangeText: handleEvent(onChange),
+    value,
+    placeholder,
+    onChangeText: handleOnChange,
     onFocus: handleOnFocus,
     onBlur: handleOnBlur,
-    editable: isEditable,
+    editable: enabled && !readOnly,
     secureTextEntry: type === 'PASSWORD',
     keyboardType: keyboardTypes[type] || 'default',
+    focusable: enabled,
   }
 
   const styleSheet = StyleSheet.create({
@@ -68,12 +61,10 @@ const BeagleTextInput: FC<BeagleTextInputInterface> = ({
       ...style,
     },
     defaultStyles: {
-      flex: style && style.flex ? Number(style.flex) : 1,
       borderWidth: 1,
-      borderColor: '#000000',
+      borderColor: '#000',
       borderStyle: 'solid',
-      margin: 5,
-      maxHeight: 50,
+      backgroundColor: '#FFF',
     },
   })
 
