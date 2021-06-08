@@ -10,7 +10,9 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   ],
-  "private": true,
+  "private": false,
+  "homepage": "https://usebeagle.io",
+  "repository": "https://github.com/ZupIT/beagle-web-react",
   "scripts": {
     "fix-aliases": "node ../../node_modules/tscpaths/cjs -p tsconfig.json -s ../ -o ./dist",
     "clean": "rm -fr dist",
