@@ -14,8 +14,8 @@ will be used to launch new versions that uses the same version of Beagle Web Cor
 
 ## Compatibility
 Beagle RN Beta is guaranteed to work only with latest releases of React Native, i.e.
-version 0.64.1. It is probably possible to support older versions, but it is not a priority right
-now.
+version 0.64.1 or above. It is probably possible to support older versions, but it is not a priority
+right now.
 
 ## Installation
 Install it with npm or yarn.
@@ -97,7 +97,7 @@ export default createBeagleUIService({
 Beagle RN has an implementation of the webview default component, but since web views are not
 native to React Native, we need an additional library: `react-native-webview`.
 
-Since the lib `react-native-webview` needs to be native linked to iOS and Android, we decided to
+Since the lib `react-native-webview` needs to be natively linked to iOS and Android, we decided to
 add it as a peer-dependency, meaning, if you do need the WebView component, you also need to add
 this dependency to your `package.json`.
 
@@ -225,22 +225,22 @@ if you don't intend on using the default components and default actions, Beagle 
 ready for production.
 
 ### Components
-| Component      | Status          | Description                                                                                                  |
-|----------------|-----------------|--------------------------------------------------------------------------------------------------------------|
-| Container      | done            |                                                                                                              |
-| Screen         | not implemented | Working as a container                                                                                       |
-| Button         | done            |                                                                                                              |
-| Image          | incomplete      | There might be some problems with the image size. Placeholder is not implemented Couldn't test remote images |
-| TextInput      | incomplete      | Events don't seem to be working                                                                              |
-| Lazy component | done            |                                                                                                              |
-| ListView       | incomplete      | Extremely buggy and slow. Mainly on Android.                                                                 |
-| GridView       | not implemented |                                                                                                              |
-| PageView       | incomplete      | Doesn't render the children properly Can't navigate between pages                                            |
-| SimpleForm     | not implemented | Working as a container                                                                                       |
-| TabBar         | incomplete      | The tabbar doesn't scroll There seems to be a bug where a second tab bar in a page won't render              |
-| Text           | done            |                                                                                                              |
-| Touchable      | done            |                                                                                                              |
-| WebView        | done            |                                                                                                              |
+| Component      | Status          | Description                                                                                     |
+|----------------|-----------------|-------------------------------------------------------------------------------------------------|
+| Container      | done            |                                                                                                 |
+| Screen         | not implemented | Working as a container                                                                          |
+| Button         | done            |                                                                                                 |
+| Image          | incomplete      | There might be some problems with the image size. Placeholder is not implemented.               |
+| TextInput      | done            |                                                                                                 |
+| Lazy component | done            |                                                                                                 |
+| ListView       | incomplete      | Extremely buggy and slow. Mainly on Android.                                                    |
+| GridView       | not implemented |                                                                                                 |
+| PageView       | incomplete      | Doesn't render the children properly. Can't navigate between pages.                             |
+| SimpleForm     | not implemented | Working as a container                                                                          |
+| TabBar         | incomplete      | The tabbar doesn't scroll There seems to be a bug where a second tab bar in a page won't render |
+| Text           | done            |                                                                                                 |
+| Touchable      | done            |                                                                                                 |
+| WebView        | done            |                                                                                                 |
 
 We also need to check the styling here. Some of the components, even the ones marked as done, have
 way to many styles, which might create some undesired behavior.
@@ -248,14 +248,14 @@ way to many styles, which might create some undesired behavior.
 ### Actions
 | Actions         | Status          | Description                                                      |
 |-----------------|-----------------|------------------------------------------------------------------|
-| pushStack       | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| popStack        | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| pushView        | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| popView         | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| popToView       | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| resetStack      | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
-| openNativeRoute | not implemented | will try to use the browsers location, which doesn't exist.      |
-| openExternalUrl | not implemented | will try to use the browsers location, which doesn't exist.      |
+| PushStack       | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| PopStack        | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| PushView        | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| PopView         | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| PopToView       | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| ResetStack      | incomplete      | It works exactly like in web, i.e. the back button does nothing. |
+| OpenNativeRoute | not implemented | will try to use the browsers location, which doesn't exist.      |
+| OpenExternalUrl | not implemented | will try to use the browsers location, which doesn't exist.      |
 | AddChildren     | done            |                                                                  |
 | Condition       | done            |                                                                  |
 | Confirm         | not implemented |                                                                  |
