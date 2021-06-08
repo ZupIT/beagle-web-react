@@ -19,11 +19,9 @@ import React from 'react'
 import 'jest-styled-components'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, shallow } from 'enzyme'
-import BeagleListView from '../../components/BeagleDynamicLists/BeagleListView'
-import { Direction } from 'common/models'
+import BeagleGridView from '../../components/BeagleDynamicLists/BeagleGridView'
 
 let wrapper: any
-const directionMock: Direction = 'HORIZONTAL'
 const mockStyle: React.CSSProperties = {
   height: '100',
   width: '50',
@@ -31,14 +29,14 @@ const mockStyle: React.CSSProperties = {
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = shallow(<BeagleListView 
-    direction={directionMock} 
+  wrapper = shallow(<BeagleGridView 
+    numColumns={5}
     style={mockStyle} 
     dataSource={['testA', 'testB', 'testC']}
     template={{ _beagleComponent_: 'beagle:text', text: '@item' }}
     className='Test Class' />)
 })
 
-test('Beagle snapshot list view', () => {
+test('Beagle snapshot grid view', () => {
   expect(wrapper).toMatchSnapshot()
 })

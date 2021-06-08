@@ -15,7 +15,7 @@
 */
 
 import { useEffect, useRef } from 'react'
-import { ScrollInterface, NodeType } from './types'
+import { ScrollInterface, NodeType } from '../../../../../common/models'
 
 function useScroll(props: ScrollInterface, deps: any[]) {
   const allowedOnScrollRef = useRef(true)

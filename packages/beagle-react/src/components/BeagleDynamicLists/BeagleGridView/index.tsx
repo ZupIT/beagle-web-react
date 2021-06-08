@@ -14,9 +14,12 @@
   * limitations under the License.
 */
 
-import { DynamicListCoreInterface } from './dynamicLists-core.model'
-import { Direction } from './types'
+import React, { FC } from 'react'
+import DynamicListCoreComponent from '../DynamicListCore'
+import { BeagleGridViewInterface } from '../../../../../common/models'
 
-export interface BeagleListViewInterface extends DynamicListCoreInterface {
-  direction?: Direction,
-}
+const BeagleGridView: FC<BeagleGridViewInterface> = (props) => (
+  <DynamicListCoreComponent {...props} listType="GRID" />
+)
+
+export default BeagleGridView

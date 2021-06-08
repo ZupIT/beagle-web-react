@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot list view 1`] = `
+exports[`Beagle snapshot grid view 1`] = `
 <ComponentWithTheme
   className="Test Class"
   dataSource={
@@ -10,8 +10,8 @@ exports[`Beagle snapshot list view 1`] = `
       "testC",
     ]
   }
-  direction="HORIZONTAL"
-  listType="LIST"
+  listType="GRID"
+  numColumns={5}
   style={
     Object {
       "height": "100",

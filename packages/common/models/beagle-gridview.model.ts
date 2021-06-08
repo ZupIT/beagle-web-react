@@ -15,8 +15,7 @@
 */
 
 import { DynamicListCoreInterface } from './dynamicLists-core.model'
-import { Direction } from './types'
 
-export interface BeagleListViewInterface extends DynamicListCoreInterface {
-  direction?: Direction,
+export interface BeagleGridViewInterface extends DynamicListCoreInterface{
+  numColumns?: number,
 }

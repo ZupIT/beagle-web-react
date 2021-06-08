@@ -30,6 +30,13 @@ module.exports = {
   ],
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "TSEnumDeclaration",
+        "message": "Do not declare enums"
+      }
+    ],
     curly: 'off',
     indent: ['error', 2],
     quotes: ['error', 'single', { avoidEscape: true }],

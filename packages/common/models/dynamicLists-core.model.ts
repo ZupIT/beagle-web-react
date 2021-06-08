@@ -15,13 +15,12 @@
 */
 
 import { BeagleUIElement } from '@zup-it/beagle-web'
-import { BeagleDefaultComponent, Direction } from 'common/models'
-import { BeagleComponent } from 'common/types'
+import { BeagleComponent } from '../types'
+import { BeagleDefaultComponent, Direction } from './types'
 
 export type NodeType = HTMLElement | null
 
-export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleComponent {
-  direction: Direction,
+export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
   dataSource: any[],
   iteratorName?: string,
   onInit?: () => void,
