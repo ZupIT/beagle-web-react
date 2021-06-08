@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 (async () => {
-  const { constants, promises, existsSync } = require('fs')
+  const { constants, promises } = require('fs')
   const { access, mkdir, readFile, writeFile } = promises
   const fileOptions = { encoding: 'utf8' }
   const dir = "src"
@@ -14,11 +14,7 @@
   })
 
   await mkdir(`${dir}/beagle/`, { recursive: true });
-  await writeFile(
-    `${dir}/beagle/beagle-service.ts`,
-    beagleContent,
-    fileOptions,
-  )
+  await writeFile(`${dir}/beagle/beagle-service.ts`, beagleContent, fileOptions)
 
   const createAppTsx = async (path, content) => {
     try {
