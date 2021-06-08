@@ -23,7 +23,9 @@ import { buildAccessibility } from '../../../../../common/utils/accessibility'
 import useScroll from './scroll'
 import { StyledDynamicViewsInterface } from './styled'
 
-type DynamicViewInterface = BeagleListViewInterface & BeagleGridViewInterface
+interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface {
+  listType: 'GRID' | 'LIST',
+}
 
 const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
