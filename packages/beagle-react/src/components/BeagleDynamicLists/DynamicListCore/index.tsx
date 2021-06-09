@@ -73,10 +73,9 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     
     const componentTag = viewContentManager.getElement()._beagleComponent_.toLowerCase() 
     const listViewId = viewContentManager.getElement().id
-    const renderer = viewContentManager.getView().getRenderer()
 
     element.children = dataSource.map((item, index) => {
-      const templateTree = renderer.preProcess(Tree.clone(template))
+      const templateTree = Tree.clone(template)
       const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
       const suffix = __suffix__ || ''
       templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
@@ -94,7 +93,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       return templateTree
     })
 
-    renderer.doFullRender(element, element.id)
+    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
   const getAriaCount = () => {
