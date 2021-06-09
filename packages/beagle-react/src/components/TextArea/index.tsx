@@ -15,12 +15,17 @@
  */
 
 import React, { FC } from 'react'
+import { logger } from '@zup-it/beagle-web'
 import { BeagleTextAreaInterface } from 'common/models'
 import { InputEvent, InputHandler } from '../types'
 import { buildAccessibility } from '../../../../common/utils/accessibility'
 import withTheme from '../utils/withTheme'
 import { InputGroup, Label, StyledTextArea } from './styled'
 
+/**
+ * @deprecated since version 1.8.0.
+ * This component will be removed in a future version.
+*/
 const TextArea: FC<BeagleTextAreaInterface> = ({
   value,
   label,
@@ -35,6 +40,7 @@ const TextArea: FC<BeagleTextAreaInterface> = ({
   accessibility,
 }) => {
   const a11y = buildAccessibility(accessibility)
+  logger.warn('This component is deprecated since version 1.8.0 and will be removed in a future version.')
 
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return

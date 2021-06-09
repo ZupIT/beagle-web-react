@@ -20,7 +20,7 @@ import BeagleContainer from './BeagleContainer'
 import BeagleLoading from './BeagleLoading'
 import BeagleError from './BeagleError'
 import BeagleImage from './BeagleImage'
-import BeagleListView from './BeagleListView'
+import BeagleListView from './BeagleDynamicLists/BeagleListView'
 import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
 import BeagleSimpleForm from './BeagleSimpleForm'
@@ -34,6 +34,7 @@ import BeagleWebView from './BeagleWebView'
 import BeaglePageIndicator from './BeaglePageIndicator'
 import BeagleTabBar from './BeagleTabBar'
 import BeagleScreen from './BeagleScreen'
+import BeagleGridView from './BeagleDynamicLists/BeagleGridView'
 
 const libRequiredComponents = {
   'custom:error': BeagleError,
@@ -59,6 +60,7 @@ const beagleDefaultComponents = {
   'beagle:textInput': BeagleInput,
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
+  'beagle:gridview': BeagleGridView,
 }
 
 const webSpecificComponents = {

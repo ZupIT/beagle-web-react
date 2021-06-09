@@ -17,13 +17,17 @@
 import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { Tree, logger } from '@zup-it/beagle-web'
-import withTheme from '../utils/withTheme'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
+import withTheme from '../../utils/withTheme'
+import { BeagleGridViewInterface, BeagleListViewInterface } from '../../../../../common/models'
+import { buildAccessibility } from '../../../../../common/utils/accessibility'
 import useScroll from './scroll'
-import { StyledListView } from './styled'
-import { BeagleListViewInterface } from './types'
+import { StyledDynamicViewsInterface } from './styled'
 
-const BeagleListView: FC<BeagleListViewInterface> = ({
+interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface {
+  listType: 'GRID' | 'LIST',
+}
+
+const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
   className,
   style,
@@ -40,7 +44,10 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   __suffix__,
   isScrollIndicatorVisible = true,
   accessibility,
+  numColumns,
+  listType,
 }) => {
+
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
@@ -48,7 +55,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
   )
-
+  
   useEffect(() => {
     if (onInit) onInit()
   }, [])
@@ -61,8 +68,10 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     }
 
     const element = viewContentManager.getElement() as BeagleUIElement
+    
     if (!element) return
-    const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
+    
+    const componentTag = viewContentManager.getElement()._beagleComponent_.toLowerCase() 
     const listViewId = viewContentManager.getElement().id
     const renderer = viewContentManager.getView().getRenderer()
 
@@ -71,37 +80,55 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
       const suffix = __suffix__ || ''
       templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
+      
       Tree.forEach(templateTree, (component, componentIndex) => {
         const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
         component.id = `${baseId}:${iterationKey}`
-        if (component._beagleComponent_.toLowerCase() === listViewTag) {
+        
+        if (['beagle:listview', 'beagle:gridview'].includes(componentTag)) {
           component.__suffix__ = `${suffix}:${iterationKey}`
         }
+
       })
-      
+
       return templateTree
     })
 
     renderer.doFullRender(element, element.id)
   }, [JSON.stringify(dataSource)])
 
+  const getAriaCount = () => {
+    if (listType === 'LIST')
+      return {
+        [direction === 'VERTICAL' ? 'aria-rowcount' :
+          'aria-colcount']: Children.count(children) || 0,
+      }
+
+    if (listType === 'GRID' && numColumns)
+      return {
+        'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
+        'aria-colcount': numColumns,
+      }
+  }
+
   return (
-    <StyledListView
+    <StyledDynamicViewsInterface
       ref={elementRef}
       className={className}
       direction={direction}
       useParentScroll={useParentScroll}
       style={style}
-      isScrollIndicatorVisible = {isScrollIndicatorVisible}
+      isScrollIndicatorVisible={isScrollIndicatorVisible}
+      numColumns={numColumns}
+      listType={listType}
       {
-        ...({ [direction === 'VERTICAL' ? 
-          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0 })
+        ...(getAriaCount())
       }
       {...a11y}
     >
       {children}
-    </StyledListView>
+    </StyledDynamicViewsInterface>
   )
 }
 
-export default withTheme(BeagleListView)
+export default withTheme(DynamicListCoreComponent)

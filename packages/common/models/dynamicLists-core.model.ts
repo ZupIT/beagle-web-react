@@ -16,12 +16,11 @@
 
 import { BeagleUIElement } from '@zup-it/beagle-web'
 import { BeagleComponent } from '../types'
-import { Direction, BeagleDefaultComponent } from './types'
+import { BeagleDefaultComponent, Direction } from './types'
 
 export type NodeType = HTMLElement | null
 
-export interface BeagleFutureListViewInterface extends BeagleDefaultComponent, BeagleComponent {
-  direction: Direction,
+export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
   dataSource: any[],
   iteratorName?: string,
   onInit?: () => void,
@@ -33,6 +32,7 @@ export interface BeagleFutureListViewInterface extends BeagleDefaultComponent, B
   Beagle receives "key", it transforms it into "_key" */
   _key?: string,
   __suffix__?: string,
+  isScrollIndicatorVisible?: boolean,
 }
 
 export interface ScrollInterface {

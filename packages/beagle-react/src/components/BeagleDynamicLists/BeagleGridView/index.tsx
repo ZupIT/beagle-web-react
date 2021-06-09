@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,16 +14,12 @@
   * limitations under the License.
 */
 
-const { copyFileSync, mkdirSync } = require('fs')
+import React, { FC } from 'react'
+import DynamicListCoreComponent from '../DynamicListCore'
+import { BeagleGridViewInterface } from '../../../../../common/models'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-  { src: 'cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
-  { src: 'cli/init/boilerplate/beagle-service.ts', dest: './dist/cli/init/boilerplate/beagle-service.ts' },
-  { src: 'cli/init/index.js', dest: './dist/cli/init/index.js' },
-]
+const BeagleGridView: FC<BeagleGridViewInterface> = (props) => (
+  <DynamicListCoreComponent {...props} listType="GRID" />
+)
 
-mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
-
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+export default BeagleGridView
