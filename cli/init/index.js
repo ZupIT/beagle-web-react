@@ -7,6 +7,8 @@
   const dir = "src"
   const beagleContent = await readFile(__dirname + '/boilerplate/beagle-service.ts')
   const appContent = await readFile(__dirname + '/boilerplate/app.tsx')
+  const appTsx = 'app.tsx'
+  const beagleServicePath = 'beagle/beagle-service.ts'
   const readline = require('readline')
   const rl = readline.createInterface({
     input: process.stdin,
@@ -17,10 +19,10 @@
 
   const beagleServiceExists = async (path) => {
     try {
-      await access(`${path}/beagle/beagle-service.ts`, constants.F_OK)
+      await access(`${path}/${beagleServicePath}`, constants.F_OK)
       return true
     } catch (error) {
-      console.error("beagle/beagle-service.ts did not exist, it was created with Beagle settings.")
+      console.log("beagle/beagle-service.ts not found! Beagle settings used instead")
       return false
     }
   }
@@ -30,8 +32,8 @@
       await access(`${path}/app.tsx`, constants.F_OK)
       await overwriteAppTsx()
     } catch (error) {
-      console.error("app.tsx did not exist, it was created with Beagle settings.")
-      await createFile(`${dir}/app.tsx`, appContent)
+      console.log("app.tsx not found! Beagle settings used instead")
+      await createFile(`${dir}/${appTsx}`, appContent)
       process.exit()
     }
   }
@@ -47,9 +49,11 @@
 
   const overwriteAppTsx = async () => {
     rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', async (answer) => {
-      if (`${answer}` === 'y' || `${answer}` === 'Y') {
-        await createFile(`${dir}/app.tsx`, appContent)
-        process.exit()
+      if (new RegExp(`^${answer}$`, 'i').test('y')) {
+        if (`${answer}` === 'y' || `${answer}` === 'Y') {
+          await createFile(`${dir}/app.tsx`, appContent)
+          process.exit()
+        }
       }
       else {
         process.exit()
@@ -60,13 +64,13 @@
   const beagleServiceFileExists = await beagleServiceExists(dir)
 
   if (!beagleServiceFileExists) {
-    await createFile(`${dir}/beagle/beagle-service.ts`, beagleContent)
+    await createFile(`${dir}/${beagleServicePath}`, beagleContent)
     await appTsxExists(dir)
   }
   else {
     rl.question('Do you want to replace "beagle-service.ts" content with the Beagle default configuration (y or n)?', async (answer) => {
       if (`${answer}` === 'y' || `${answer}` === 'Y') {
-        await createFile(`${dir}/beagle/beagle-service.ts`, beagleContent)
+        await createFile(`${dir}/${beagleServicePath}`, beagleContent)
         await appTsxExists(dir)
       }
       else {
