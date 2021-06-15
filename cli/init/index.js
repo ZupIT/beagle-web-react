@@ -18,8 +18,7 @@
   await mkdir(`${dir}/beagle/`, { recursive: true });
 
   const beagleServiceExists = async (path) => {
-    const exists = await existsSync(`${path}/${beagleServicePath}`)
-    return exists
+    return await existsSync(`${path}/${beagleServicePath}`)
   }
 
   const appTsxExists = async (path) => {
@@ -50,11 +49,9 @@
   const overwriteAppTsx = async () => {
     rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', async (answer) => {
       if (new RegExp(`^${answer}$`, 'i').test('y')) {
-        if (`${answer}` === 'y' || `${answer}` === 'Y') {
-          await createFile(`${dir}/app.tsx`, appContent)
-          console.log("success! all configuration files were created correctly")
-          process.exit()
-        }
+        await createFile(`${dir}/app.tsx`, appContent)
+        console.log("success! all configuration files were created correctly")
+        process.exit()
       }
       else {
         console.log("success! all configuration files were created correctly")
@@ -71,7 +68,7 @@
   }
   else {
     rl.question('Do you want to replace "beagle-service.ts" content with the Beagle default configuration (y or n)?', async (answer) => {
-      if (`${answer}` === 'y' || `${answer}` === 'Y') {
+      if (new RegExp(`^${answer}$`, 'i').test('y')) {
         await createFile(`${dir}/${beagleServicePath}`, beagleContent)
         appTsxExists(dir)
       }
