@@ -22,13 +22,16 @@ interface StyledDynamicViewsInterface {
   useParentScroll?: boolean,
   isScrollIndicatorVisible?: boolean,
   listType?: string,
-  numColumns?: number,
+  spanCount?: number,
 }
 
 export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterface>`
   display: ${({ listType }) => listType === 'GRID' ? 'grid' : 'flex'};
-  grid-template-columns: ${({ listType, numColumns }) =>
-    (listType === 'GRID' && numColumns) && `repeat(${numColumns}, 1fr)`};
+  grid-auto-flow: ${({ direction }) => direction === 'HORIZONTAL' ? 'column' : 'row'};
+  grid-template-columns: ${({ listType, spanCount, direction }) =>
+    (listType === 'GRID' && spanCount && direction === 'VERTICAL') && `repeat(${spanCount}, 1fr)`};
+  grid-template-rows: ${({ listType, spanCount, direction }) =>
+    (listType === 'GRID' && spanCount && direction === 'HORIZONTAL') && `repeat(${spanCount}, 1fr)`};
   justify-content: ${({ listType }) => listType === 'GRID' && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
