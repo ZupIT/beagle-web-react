@@ -32,7 +32,7 @@ export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterfac
     (listType === 'GRID' && spanCount && direction === 'VERTICAL') && `repeat(${spanCount}, 1fr)`};
   grid-template-rows: ${({ listType, spanCount, direction }) =>
     (listType === 'GRID' && spanCount && direction === 'HORIZONTAL') && `repeat(${spanCount}, 1fr)`};
-  justify-content: ${({ listType }) => listType === 'GRID' && 'space-evenly'};
+  justify-content: ${({ listType, direction }) => listType === 'GRID' && direction === 'VERTICAL' && 'space-evenly'};
   flex-direction: ${({ direction }) => direction === 'VERTICAL' ? 'column' : 'row'};
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
