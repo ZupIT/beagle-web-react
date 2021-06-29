@@ -14,20 +14,8 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
-import { BeagleTextAreaInterface } from 'common/models'
-import { Text } from 'react-native'
-import BeagleTextInput from '../BeagleInput'
+import { DynamicListCoreInterface } from './dynamicLists-core.model'
 
-const BeagleTextArea: FC<BeagleTextAreaInterface> = props => {
-  const textAreaStyles = { ...props.style, maxHeight: 100 }
-
-  return (
-    <>
-      {props.label && <Text>{props.label}</Text>}
-      <BeagleTextInput {...props} style={textAreaStyles} />
-    </>
-  )
+export interface BeagleGridViewInterface extends DynamicListCoreInterface{
+  numColumns?: number,
 }
-
-export default BeagleTextArea

@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react-native",
-  "version": "1.7.0",
+  "version": "0.7.0",
   "main": "beagle-react-native/src/index.js",
   "typings": "beagle-react-native/src/index.d.ts",
   "license": "Apache-2.0",
@@ -10,7 +10,9 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   ],
-  "private": true,
+  "private": false,
+  "homepage": "https://usebeagle.io",
+  "repository": "https://github.com/ZupIT/beagle-web-react",
   "scripts": {
     "fix-aliases": "node ../../node_modules/tscpaths/cjs -p tsconfig.json -s ../ -o ./dist",
     "clean": "rm -fr dist",
@@ -23,21 +25,24 @@
   },
   "dependencies": {
     "@zup-it/beagle-web": "1.7.0",
-    "react-native": "^0.63.2",
-    "react-native-swiper": "^1.6.0",
-    "react-native-webview": "^10.8.3"
+    "react-native-swiper": "1.6.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-native-webview": "^10.8.3"
+    "react": ">=17.0.1",
+    "react-native": ">=0.64.1",
+    "react-native-webview": ">=11.6.2"
   },
   "devDependencies": {
-    "@types/react-native": "^0.63.48",
-    "react": "16.14.0"
+    "@types/react-native": "0.64.10",
+    "react": "16.14.0",
+    "react-native-webview": "11.6.2"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "dist"
+  },
+  "bin": {
+    "beagle": "./cli/init/index.js"
   }
 }

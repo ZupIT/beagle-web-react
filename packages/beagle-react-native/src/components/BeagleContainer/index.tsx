@@ -16,22 +16,13 @@
 
 import React, { FC, useEffect, useContext } from 'react'
 import { BeagleContainerInterface } from 'common/models'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import BeagleServiceContext from 'common/provider'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
   const beagleService = useContext(BeagleServiceContext)
   const { children, style, onInit, screenAnalyticsEvent } = props
   const beagleAnalytics = beagleService && beagleService.analytics
-  
-  const styleSheet = StyleSheet.create({
-    fromBffStyles: {
-      ...style,
-    },
-    defaultStyles:{
-      flex: style && style.flex ? Number(style.flex) : 1,
-    },
-  })
 
   useEffect(() => {
     if (screenAnalyticsEvent && beagleAnalytics)
@@ -43,11 +34,7 @@ const BeagleContainer: FC<BeagleContainerInterface> = props => {
     }
   }, [])
 
-  return (
-    <View  style={{ ...styleSheet.defaultStyles, ...styleSheet.fromBffStyles }}>
-      {children}
-    </View>
-  )
+  return <View style={style}>{children}</View>
 }
 
 export default BeagleContainer

@@ -18,13 +18,17 @@ import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
 import { logger } from '@zup-it/beagle-web'
 import { TemplateManager } from '@zup-it/beagle-web/beagle-view/template-manager/types'
-import withTheme from '../utils/withTheme'
-import { buildAccessibility } from '../../../../common/utils/accessibility'
+import withTheme from '../../utils/withTheme'
+import { BeagleGridViewInterface, BeagleListViewInterface } from '../../../../../common/models'
+import { buildAccessibility } from '../../../../../common/utils/accessibility'
 import useScroll from './scroll'
-import { StyledListView } from './styled'
-import { BeagleListViewInterface } from './types'
+import { StyledDynamicViewsInterface } from './styled'
 
-const BeagleListView: FC<BeagleListViewInterface> = ({
+interface DynamicViewInterface extends BeagleListViewInterface, BeagleGridViewInterface {
+  listType: 'GRID' | 'LIST',
+}
+
+const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
   className,
   style,
@@ -42,6 +46,8 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   __suffix__,
   isScrollIndicatorVisible = true,
   accessibility,
+  numColumns,
+  listType,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
@@ -50,7 +56,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
   )
-
+  
   useEffect(() => {
     if (onInit) onInit()
   }, [])
@@ -93,23 +99,38 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     renderer.doTemplateRender(manager, element.id, contexts, componentManager)
   }, [JSON.stringify(dataSource)])
 
+  const getAriaCount = () => {
+    if (listType === 'LIST')
+      return {
+        [direction === 'VERTICAL' ? 'aria-rowcount' :
+          'aria-colcount']: Children.count(children) || 0,
+      }
+
+    if (listType === 'GRID' && numColumns)
+      return {
+        'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
+        'aria-colcount': numColumns,
+      }
+  }
+
   return (
-    <StyledListView
+    <StyledDynamicViewsInterface
       ref={elementRef}
       className={className}
       direction={direction}
       useParentScroll={useParentScroll}
       style={style}
       isScrollIndicatorVisible={isScrollIndicatorVisible}
+      numColumns={numColumns}
+      listType={listType}
       {
-        ...({ [direction === 'VERTICAL' ? 
-          'aria-rowcount' : 'aria-colcount']: Children.count(children) || 0 })
+        ...(getAriaCount())
       }
       {...a11y}
     >
       {children}
-    </StyledListView>
+    </StyledDynamicViewsInterface>
   )
 }
 
-export default withTheme(BeagleListView)
+export default withTheme(DynamicListCoreComponent)

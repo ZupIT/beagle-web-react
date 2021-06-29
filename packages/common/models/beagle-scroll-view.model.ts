@@ -14,9 +14,9 @@
   * limitations under the License.
 */
 
-import { DynamicListCoreInterface } from './dynamicLists-core.model'
-import { Direction } from './types'
+import { BeagleDefaultComponent } from './types'
 
-export interface BeagleListViewInterface extends DynamicListCoreInterface {
-  direction?: Direction,
+export interface BeagleScrollViewInterface extends BeagleDefaultComponent {
+  scrollDirection: 'HORIZONTAL' | 'VERTICAL',
+  scrollBarEnabled: boolean,
 }

@@ -64,7 +64,7 @@ export function removeInvalidCssProperties(
   if (!style) return {}
   return Object.entries({ ...style })
     .filter(([key, value]) => VALID_CSS_PROPERTIES.includes(key) && !/auto|inherit/gmi.test(value))
-    .map(([key, value]) => [key, value.replace(/px/gmi, '')])
+    .map(([key, value]) => [key, typeof value === 'string' ? value.replace(/px/gmi, '') : value])
     .map(([key, value]) => /^\d+$/.test(value) ? [key, Number(value)] : [key, value])
     .reduce((previous, [key, value]) => ({ ...previous, [key]: value }), {})
 }
