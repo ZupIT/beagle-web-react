@@ -15,6 +15,7 @@
 */
 
 import { BeagleUIElement } from '@zup-it/beagle-web'
+import { TemplateManagerItem } from '@zup-it/beagle-web/beagle-view/template-manager/types'
 import { BeagleDefaultComponent, Direction } from 'common/models'
 import { BeagleComponent } from 'common/types'
 
@@ -27,7 +28,8 @@ export interface BeagleListViewInterface extends BeagleDefaultComponent, BeagleC
   onInit?: () => void,
   onScrollEnd?: () => void,
   scrollEndThreshold?: number,
-  template: BeagleUIElement,
+  template?: BeagleUIElement,
+  templates?: TemplateManagerItem[],
   useParentScroll?: boolean,
   /* the property "key" is not allowed in React. Since this is not a rule for Beagle, every time
   Beagle receives "key", it transforms it into "_key" */
