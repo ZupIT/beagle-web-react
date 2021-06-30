@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { BeagleUIElement } from '@zup-it/beagle-web'
+import { BeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
 import { BeagleComponent } from '../types'
 import { BeagleDefaultComponent, Direction } from './types'
 
@@ -26,10 +26,14 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
   onInit?: () => void,
   onScrollEnd?: () => void,
   scrollEndThreshold?: number,
-  template: BeagleUIElement,
+  /**
+   * @deprecated since v1.9.0 Will be removed in 2.0. Use `templates` attribute instead.
+  */
+  template?: BeagleUIElement,
+  templates?: TemplateManagerItem[],
   useParentScroll?: boolean,
-  /* the property "key" is not allowed in React. Since this is not a rule for Beagle, every time
-  Beagle receives "key", it transforms it into "_key" */
+  /* the property `key` is not allowed in React. Since this is not a rule for Beagle, every time
+  Beagle receives `key`, it transforms it into `_key` */
   _key?: string,
   __suffix__?: string,
   isScrollIndicatorVisible?: boolean,

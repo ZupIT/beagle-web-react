@@ -14,8 +14,7 @@
   * limitations under the License.
 */
 
-import { BeagleUIElement } from '@zup-it/beagle-web'
-import { TemplateManagerItem } from '@zup-it/beagle-web/beagle-view/template-manager/types'
+import { BeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent, Direction } from 'common/models'
 import { BeagleComponent } from 'common/types'
 

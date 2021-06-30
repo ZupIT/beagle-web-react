@@ -17,7 +17,7 @@
 import React, { FC, useEffect, useRef, Children } from 'react'
 import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
 import { logger } from '@zup-it/beagle-web'
-import { TemplateManager } from '@zup-it/beagle-web/beagle-view/template-manager/types'
+import { TemplateManager } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
 import { BeagleGridViewInterface, BeagleListViewInterface } from '../../../../../common/models'
 import { buildAccessibility } from '../../../../../common/utils/accessibility'
