@@ -61,6 +61,7 @@ const beagleDefaultComponents = {
   'beagle:webview': BeagleWebView,
   'beagle:tabbar': BeagleTabBar,
   'beagle:gridview': BeagleGridView,
+  'beagle:pullToRefresh': BeagleContainer,
 }
 
 const webSpecificComponents = {
