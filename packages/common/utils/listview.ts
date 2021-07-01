@@ -21,7 +21,8 @@ import {
   TemplateManagerItem, 
   TemplateManager, 
   IdentifiableBeagleUIElement, 
-  DataContext } from '@zup-it/beagle-web'
+  DataContext,
+} from '@zup-it/beagle-web'
 
 export function renderListViewDynamicItems(
   dataSource: any[],
