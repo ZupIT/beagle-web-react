@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useRef, Children } from 'react'
+import React, { FC, useEffect, useRef, Children, useMemo } from 'react'
 import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
 import { logger } from '@zup-it/beagle-web'
 import { TemplateManager } from '@zup-it/beagle-web'
@@ -52,6 +52,15 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
+  const templatesRaw: BeagleListViewInterface['templates'] = 
+    useMemo(() => 
+      viewContentManager ? viewContentManager.getElement().templates : undefined,
+    [JSON.stringify(dataSource), templates])
+
+  const isVertical = () => direction === 'VERTICAL'
+  const isGrid = () => listType === 'GRID'
+  const isList = () => listType === 'LIST'
+  
   useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
@@ -63,7 +72,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
 
   useEffect(() => {
     if (!Array.isArray(dataSource)) return
-
+    
     if (!viewContentManager) {
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
     }
@@ -71,10 +80,13 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const element = viewContentManager.getElement() as BeagleUIElement
     if (!element) return logger.error('The beagle:listView element was not found.')
 
-    if (!template && !templates) return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
+    if (!template && (!templatesRaw || !Array.isArray(templatesRaw) || templatesRaw.length === 0)) {
+      return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
+    }      
 
+    const componentTag = element._beagleComponent_.toLowerCase()
     const deprecatedTemplate = { case: false, view: template }
-    const templateItems = [...templates || [], deprecatedTemplate].filter(t => t.view) as { 
+    const templateItems = [...templatesRaw || [], deprecatedTemplate].filter(t => t.view) as { 
       case: boolean, 
       view: BeagleUIElement<Record<string, Record<string, any>>>, 
     }[]
@@ -89,29 +101,26 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
       const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
       const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
+      const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
       return {
         id: `${baseId}:${iterationKey}`,
         key: iterationKey,
-        __suffix__: `${suffix}:${iterationKey}`,
+        ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
       }
     }
     const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
     renderer.doTemplateRender(manager, element.id, contexts, componentManager)
   }, [JSON.stringify(dataSource)])
 
-  const getAriaCount = () => {
-    if (listType === 'LIST')
-      return {
-        [direction === 'VERTICAL' ? 'aria-rowcount' :
-          'aria-colcount']: Children.count(children) || 0,
-      }
-
-    if (listType === 'GRID' && numColumns)
-      return {
-        'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
-        'aria-colcount': numColumns,
-      }
-  }
+  const getAriaCount = () => ({
+    ...((isList() && { 
+      [`aria-${isVertical() ? 'row' : 'col'}count`]: Children.count(children) || 0,
+    }) || {}),
+    ...((isGrid() && numColumns && {
+      'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
+      'aria-colcount': numColumns,
+    }) || {}),
+  })
 
   return (
     <StyledDynamicViewsInterface
@@ -123,9 +132,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       isScrollIndicatorVisible={isScrollIndicatorVisible}
       numColumns={numColumns}
       listType={listType}
-      {
-        ...(getAriaCount())
-      }
+      {...(getAriaCount())}
       {...a11y}
     >
       {children}
