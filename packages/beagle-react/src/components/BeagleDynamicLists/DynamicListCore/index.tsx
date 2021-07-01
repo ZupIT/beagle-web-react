@@ -33,7 +33,6 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   className,
   style,
   template,
-  templates,
   onInit,
   onScrollEnd,
   scrollEndThreshold = 100,
@@ -55,7 +54,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const templatesRaw: BeagleListViewInterface['templates'] = 
     useMemo(() => 
       viewContentManager ? viewContentManager.getElement().templates : undefined,
-    [JSON.stringify(dataSource), templates])
+    [])
 
   const isVertical = () => direction === 'VERTICAL'
   const isGrid = () => listType === 'GRID'
