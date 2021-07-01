@@ -14,41 +14,60 @@
   * limitations under the License.
 */
 
-import { Tree, BeagleUIElement, logger, ViewContentManager } from '@zup-it/beagle-web'
+import { 
+  BeagleUIElement, 
+  logger, 
+  ViewContentManager, 
+  TemplateManagerItem, 
+  TemplateManager, 
+  IdentifiableBeagleUIElement, 
+  DataContext } from '@zup-it/beagle-web'
 
 export function renderListViewDynamicItems(
   dataSource: any[],
   viewContentManager: ViewContentManager | undefined,
-  template: BeagleUIElement,
+  template: BeagleUIElement | undefined,
+  templates: TemplateManagerItem[] | undefined,
   _key: string | undefined,
   __suffix__: string | undefined,
   iteratorName: string) {
   if (!Array.isArray(dataSource)) return
-
+  
   if (!viewContentManager) {
     return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
   }
 
   const element = viewContentManager.getElement() as BeagleUIElement
-  if (!element) return
-  const listViewTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
-  const listViewId = viewContentManager.getElement().id
+  if (!element) return logger.error('The beagle:listView element was not found.')
 
-  element.children = dataSource.map((item, index) => {
-    const templateTree = Tree.clone(template)
-    const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
-    const suffix = __suffix__ || ''
-    templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
-    Tree.forEach(templateTree, (component, componentIndex) => {
-      const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
-      component.id = `${baseId}:${iterationKey}`
-      if (component._beagleComponent_.toLowerCase() === listViewTag) {
-        component.__suffix__ = `${suffix}:${iterationKey}`
-      }
-    })
+  if (!template && (!templates || !Array.isArray(templates) || templates.length === 0)) {
+    return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
+  }
 
-    return templateTree
-  })
-
-  viewContentManager.getView().getRenderer().doFullRender(element, element.id)
+  const componentTag = element._beagleComponent_.toLowerCase()
+  const deprecatedTemplate = { case: false, view: template }
+  const templateItems = [...templates || [], deprecatedTemplate].filter(t => t.view) as { 
+    case: boolean, 
+    view: BeagleUIElement<Record<string, Record<string, any>>>, 
+  }[]
+  const defaultTemplate = templateItems.find(t => !t.case)
+  const manageableTemplates = templateItems.filter(t => t.case) || []
+  const suffix = __suffix__ || ''
+  const renderer = viewContentManager.getView().getRenderer()
+  const manager: TemplateManager = {
+    default: defaultTemplate && defaultTemplate.view,
+    templates: manageableTemplates,
+  }
+  const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
+    const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
+    const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
+    const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
+    return {
+      id: `${baseId}:${iterationKey}`,
+      key: iterationKey,
+      ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
+    }
+  }
+  const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
+  renderer.doTemplateRender(manager, element.id, contexts, componentManager)
 }
