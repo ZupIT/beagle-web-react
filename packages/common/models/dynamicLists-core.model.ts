@@ -21,6 +21,7 @@ import { BeagleDefaultComponent, Direction } from './types'
 export type NodeType = HTMLElement | null
 
 export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
+  direction?: Direction,
   dataSource: any[],
   iteratorName?: string,
   onInit?: () => void,
