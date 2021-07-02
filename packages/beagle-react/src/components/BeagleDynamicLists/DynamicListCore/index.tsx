@@ -93,7 +93,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       ...templatesRaw || [], 
       ...(template ? [{ view: template }] : []),
     ] as TemplateManagerItem[]
-    const defaultTemplate = templateItems.find(t => !t.case)
+    const defaultTemplate = templateItems.find(t => t.case === undefined)
     const manageableTemplates = templateItems.filter(t => t.case) || []
     const suffix = __suffix__ || ''
     const renderer = viewContentManager.getView().getRenderer()
