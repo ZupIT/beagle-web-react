@@ -21,7 +21,7 @@ import { BeagleDefaultComponent, Direction } from './types'
 export type NodeType = HTMLElement | null
 
 export interface TemplateItem {
-  case?: string,
+  case?: string | boolean,
   view: BeagleUIElement,
 }
 
