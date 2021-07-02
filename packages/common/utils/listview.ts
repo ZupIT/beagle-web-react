@@ -64,6 +64,7 @@ export function renderListViewDynamicItems(
     const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
     const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
     return {
+      ...component,
       id: `${baseId}:${iterationKey}`,
       key: iterationKey,
       ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
