@@ -17,12 +17,10 @@
 
   await mkdir(`${dir}/beagle/`, { recursive: true });
 
-  const beagleServiceExists = async (path) => {
-    return await existsSync(`${path}/${beagleServicePath}`)
-  }
+  const beagleServiceExists = path => existsSync(`${path}/${beagleServicePath}`)
 
   const appTsxExists = async (path) => {
-    const exists = await existsSync(`${path}/app.tsx`)
+    const exists = existsSync(`${path}/app.tsx`)
     if (exists) {
       overwriteAppTsx()
     }
