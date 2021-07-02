@@ -75,7 +75,6 @@ exports[`Render BeagleListView with multiple templates Beagle snapshot list view
         },
       },
       Object {
-        "case": false,
         "view": Object {
           "_beagleComponent_": "beagle:textInput",
           "id": "default-child",

@@ -17,21 +17,22 @@
 import { 
   BeagleUIElement, 
   logger, 
-  ViewContentManager, 
-  TemplateManagerItem, 
+  ViewContentManager,
   TemplateManager, 
   IdentifiableBeagleUIElement, 
   DataContext,
+  TemplateManagerItem,
 } from '@zup-it/beagle-web'
+import { TemplateItem } from '../models'
 
 export function renderListViewDynamicItems(
   dataSource: any[],
-  viewContentManager: ViewContentManager | undefined,
-  template: BeagleUIElement | undefined,
-  templates: TemplateManagerItem[] | undefined,
-  _key: string | undefined,
-  __suffix__: string | undefined,
-  iteratorName: string) {
+  viewContentManager?: ViewContentManager,
+  template?: BeagleUIElement,
+  templates?: TemplateItem[],
+  _key?: string,
+  __suffix__?: string,
+  iteratorName = 'item') {
   if (!Array.isArray(dataSource)) return
   
   if (!viewContentManager) {
@@ -46,11 +47,10 @@ export function renderListViewDynamicItems(
   }
 
   const componentTag = element._beagleComponent_.toLowerCase()
-  const deprecatedTemplate = { case: false, view: template }
-  const templateItems = [...templates || [], deprecatedTemplate].filter(t => t.view) as { 
-    case: boolean, 
-    view: BeagleUIElement<Record<string, Record<string, any>>>, 
-  }[]
+  const templateItems = [
+    ...templates || [], 
+    ...(template ? [{ view: template }] : []),
+  ] as TemplateManagerItem[]
   const defaultTemplate = templateItems.find(t => !t.case)
   const manageableTemplates = templateItems.filter(t => t.case) || []
   const suffix = __suffix__ || ''

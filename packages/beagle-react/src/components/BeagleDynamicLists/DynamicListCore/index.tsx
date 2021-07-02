@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useEffect, useRef, Children, useMemo } from 'react'
-import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement } from '@zup-it/beagle-web'
+import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
 import { logger } from '@zup-it/beagle-web'
 import { TemplateManager } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
@@ -79,16 +79,17 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const element = viewContentManager.getElement() as BeagleUIElement
     if (!element) return logger.error('The beagle:listView element was not found.')
 
-    if (!template && (!templatesRaw || !Array.isArray(templatesRaw) || templatesRaw.length === 0)) {
+    const hasAnyTemplate = template || 
+      (templatesRaw && Array.isArray(templatesRaw) && templatesRaw.length)
+    if (!hasAnyTemplate) {
       return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
     }      
 
     const componentTag = element._beagleComponent_.toLowerCase()
-    const deprecatedTemplate = { case: false, view: template }
-    const templateItems = [...templatesRaw || [], deprecatedTemplate].filter(t => t.view) as { 
-      case: boolean, 
-      view: BeagleUIElement<Record<string, Record<string, any>>>, 
-    }[]
+    const templateItems = [
+      ...templatesRaw || [], 
+      ...(template ? [{ view: template }] : []),
+    ] as TemplateManagerItem[]
     const defaultTemplate = templateItems.find(t => !t.case)
     const manageableTemplates = templateItems.filter(t => t.case) || []
     const suffix = __suffix__ || ''

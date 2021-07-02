@@ -14,11 +14,16 @@
   * limitations under the License.
 */
 
-import { BeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
+import { BeagleUIElement } from '@zup-it/beagle-web'
 import { BeagleComponent } from '../types'
 import { BeagleDefaultComponent, Direction } from './types'
 
 export type NodeType = HTMLElement | null
+
+export interface TemplateItem {
+  case?: string,
+  view: BeagleUIElement,
+}
 
 export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
   dataSource: any[],
@@ -30,7 +35,7 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
    * @deprecated since v1.9.0 Will be removed in 2.0. Use `templates` attribute instead.
   */
   template?: BeagleUIElement,
-  templates?: TemplateManagerItem[],
+  templates?: TemplateItem[],
   useParentScroll?: boolean,
   /* the property `key` is not allowed in React. Since this is not a rule for Beagle, every time
   Beagle receives `key`, it transforms it into `_key` */

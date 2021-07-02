@@ -32,7 +32,7 @@ const mockStyle: React.CSSProperties = {
 configure({ adapter: new Adapter() })
 
 /**
- * @deprecated since v1.7.0 Will be removed in 2.0. Use templates instead.
+ * @deprecated since v1.9.0 Will be removed in 2.0. Use templates instead.
  */
 describe('Render BeagleListView with template', () => {
   beforeAll(() => {
@@ -103,7 +103,6 @@ describe('Render BeagleListView with multiple templates', () => {
       },
     },
     {
-      case: false,
       view: {
         _beagleComponent_: 'beagle:textInput',
         id: `default-child`,
