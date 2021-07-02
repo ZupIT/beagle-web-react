@@ -46,6 +46,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   isScrollIndicatorVisible = true,
   accessibility,
   numColumns,
+  spanCount,
   listType,
 }) => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -60,11 +61,13 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const isGrid = () => listType === 'GRID'
   const isList = () => listType === 'LIST'
   
+  spanCount = spanCount || numColumns
+
   useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
     [Children.count(children)],
   )
-  
+
   useEffect(() => {
     if (onInit) onInit()
   }, [])
@@ -131,7 +134,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       useParentScroll={useParentScroll}
       style={style}
       isScrollIndicatorVisible={isScrollIndicatorVisible}
-      numColumns={numColumns}
+      spanCount={spanCount}
       listType={listType}
       {...(getAriaCount())}
       {...a11y}

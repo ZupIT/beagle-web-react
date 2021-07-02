@@ -26,6 +26,7 @@ export interface TemplateItem {
 }
 
 export interface DynamicListCoreInterface extends BeagleDefaultComponent, BeagleComponent {
+  direction?: Direction,
   dataSource: any[],
   iteratorName?: string,
   onInit?: () => void,
