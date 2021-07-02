@@ -1,6 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beagle snapshot list view 1`] = `
+exports[`Render BeagleListView with multiple templates Beagle snapshot list view 1`] = `
+<ComponentWithTheme
+  className="Test Class"
+  dataSource={
+    Array [
+      Object {
+        "key": "first",
+        "text": "First Child",
+      },
+      Object {
+        "key": "second",
+        "text": "Second Child",
+      },
+      Object {
+        "key": "third",
+        "text": "First Child",
+      },
+      Object {
+        "key": "unknown",
+        "text": "Unknown Child",
+      },
+    ]
+  }
+  direction="HORIZONTAL"
+  listType="LIST"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+  templates={
+    Array [
+      Object {
+        "case": "@{eq(item.key, 'first')}",
+        "view": Object {
+          "_beagleComponent_": "beagle:container",
+          "children": Array [
+            Object {
+              "_beagleComponent_": "beagle:textInput",
+              "id": "first-text",
+              "value": "first",
+            },
+          ],
+          "id": "first-child",
+        },
+      },
+      Object {
+        "case": "@{eq(item.key, 'second')}",
+        "view": Object {
+          "_beagleComponent_": "beagle:textInput",
+          "id": "second-child",
+          "value": "second",
+        },
+      },
+      Object {
+        "case": "@{eq(item.key, 'third')}",
+        "view": Object {
+          "_beagleComponent_": "beagle:container",
+          "children": Array [
+            Object {
+              "_beagleComponent_": "beagle:textInput",
+              "id": "third-label",
+              "value": "third label",
+            },
+            Object {
+              "_beagleComponent_": "beagle:input",
+              "id": "third-input",
+              "value": "third input",
+            },
+          ],
+          "id": "third-child",
+        },
+      },
+      Object {
+        "view": Object {
+          "_beagleComponent_": "beagle:textInput",
+          "id": "default-child",
+          "value": "default",
+        },
+      },
+    ]
+  }
+/>
+`;
+
+exports[`Render BeagleListView with template Beagle snapshot list view 1`] = `
 <ComponentWithTheme
   className="Test Class"
   dataSource={

@@ -14,9 +14,10 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useRef, Children } from 'react'
-import { BeagleUIElement } from '@zup-it/beagle-web'
-import { Tree, logger } from '@zup-it/beagle-web'
+import React, { FC, useEffect, useRef, Children, useMemo } from 'react'
+import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
+import { logger } from '@zup-it/beagle-web'
+import { TemplateManager } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
 import { BeagleGridViewInterface, BeagleListViewInterface } from '../../../../../common/models'
 import { buildAccessibility } from '../../../../../common/utils/accessibility'
@@ -48,10 +49,18 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   spanCount,
   listType,
 }) => {
-
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
+  const templatesRaw: BeagleListViewInterface['templates'] = 
+    useMemo(() => 
+      viewContentManager ? viewContentManager.getElement().templates : undefined,
+    [])
+
+  const isVertical = () => direction === 'VERTICAL'
+  const isGrid = () => listType === 'GRID'
+  const isList = () => listType === 'LIST'
+  
   spanCount = spanCount || numColumns
 
   useScroll(
@@ -65,55 +74,57 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
 
   useEffect(() => {
     if (!Array.isArray(dataSource)) return
-
+    
     if (!viewContentManager) {
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
     }
 
     const element = viewContentManager.getElement() as BeagleUIElement
+    if (!element) return logger.error('The beagle:listView element was not found.')
 
-    if (!element) return
+    const hasAnyTemplate = template || 
+      (templatesRaw && Array.isArray(templatesRaw) && templatesRaw.length)
+    if (!hasAnyTemplate) {
+      return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
+    }      
 
-    const componentTag = viewContentManager.getElement()._beagleComponent_.toLowerCase()
-    const listViewId = viewContentManager.getElement().id
-
-    element.children = dataSource.map((item, index) => {
-      const templateTree = Tree.clone(template)
-      const iterationKey = _key && item[_key] !== undefined ? item[_key] : index
-      const suffix = __suffix__ || ''
-      templateTree._implicitContexts_ = [{ id: iteratorName, value: item }]
-
-      Tree.forEach(templateTree, (component, componentIndex) => {
-        const baseId = component.id ? `${component.id}${suffix}` : `${listViewId}:${componentIndex}`
-        component.id = `${baseId}:${iterationKey}`
-
-        if (['beagle:listview', 'beagle:gridview'].includes(componentTag)) {
-          component.__suffix__ = `${suffix}:${iterationKey}`
-        }
-
-      })
-
-      return templateTree
-    })
-
-    viewContentManager.getView().getRenderer().doFullRender(element, element.id)
+    const componentTag = element._beagleComponent_.toLowerCase()
+    const templateItems = [
+      ...templatesRaw || [], 
+      ...(template ? [{ view: template }] : []),
+    ] as TemplateManagerItem[]
+    const defaultTemplate = templateItems.find(t => t.case === undefined)
+    const manageableTemplates = templateItems.filter(t => t.case) || []
+    const suffix = __suffix__ || ''
+    const renderer = viewContentManager.getView().getRenderer()
+    const manager: TemplateManager = {
+      default: defaultTemplate && defaultTemplate.view,
+      templates: manageableTemplates,
+    }
+    const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
+      const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
+      const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
+      const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
+      return {
+        ...component,
+        id: `${baseId}:${iterationKey}`,
+        key: iterationKey,
+        ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
+      }
+    }
+    const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
+    renderer.doTemplateRender(manager, element.id, contexts, componentManager)
   }, [JSON.stringify(dataSource)])
 
-  const getAriaCount = () => {
-    if (listType === 'LIST')
-      return {
-        [direction === 'VERTICAL' ? 'aria-rowcount' :
-          'aria-colcount']: Children.count(children) || 0,
-      }
-
-    if (listType === 'GRID' && spanCount)
-      return {
-        'aria-rowcount':
-          direction === 'VERTICAL' ? Math.ceil(Children.count(children) / spanCount) : spanCount,
-        'aria-colcount':
-          direction === 'VERTICAL' ? spanCount : Math.ceil(Children.count(children) / spanCount),
-      }
-  }
+  const getAriaCount = () => ({
+    ...((isList() && { 
+      [`aria-${isVertical() ? 'row' : 'col'}count`]: Children.count(children) || 0,
+    }) || {}),
+    ...((isGrid() && numColumns && {
+      'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
+      'aria-colcount': numColumns,
+    }) || {}),
+  })
 
   return (
     <StyledDynamicViewsInterface
@@ -125,9 +136,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       isScrollIndicatorVisible={isScrollIndicatorVisible}
       spanCount={spanCount}
       listType={listType}
-      {
-        ...(getAriaCount())
-      }
+      {...(getAriaCount())}
       {...a11y}
     >
       {children}

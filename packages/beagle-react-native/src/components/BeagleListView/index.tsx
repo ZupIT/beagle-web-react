@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { BeagleListViewInterface } from 'common/models'
 import { ScrollView, StyleSheet, NativeScrollEvent } from 'react-native'
 import { renderListViewDynamicItems } from 'common/utils/listview'
@@ -23,6 +23,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   dataSource,
   direction,
   template,
+  templates,
   __suffix__,
   _key,
   children,
@@ -36,6 +37,10 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
   viewContentManager,
 }) => {
   const scrollRef = useRef(null)
+  const templatesRaw: BeagleListViewInterface['templates'] = 
+    useMemo(() => 
+      viewContentManager ? viewContentManager.getElement().templates : undefined,
+    [JSON.stringify(dataSource), templates])
   const horizontal = direction && direction === 'HORIZONTAL'
   const styleSheet = StyleSheet.create({
     fromBffStyles: {
@@ -60,6 +65,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
       dataSource,
       viewContentManager,
       template,
+      templatesRaw,
       _key,
       __suffix__,
       iteratorName
@@ -82,8 +88,7 @@ const BeagleListView: FC<BeagleListViewInterface> = ({
     }
     const sizeSum = offset + layoutSize
 
-    return Math.round(sizeSum)
-      >= Math.round(listSize * scrollEndThreshold / 100)
+    return Math.round(sizeSum) >= Math.round(listSize * scrollEndThreshold / 100)
   }
 
   function callOnEndAction(nativeEvent: NativeScrollEvent) {
