@@ -73,7 +73,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   }, [])
 
   useEffect(() => {
-    if (!Array.isArray(dataSource)) return
+    if (!Array.isArray(dataSource) || dataSource.length === 0) return
     
     if (!viewContentManager) {
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
@@ -86,7 +86,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       (templatesRaw && Array.isArray(templatesRaw) && templatesRaw.length)
     if (!hasAnyTemplate) {
       return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
-    }      
+    }
 
     const componentTag = element._beagleComponent_.toLowerCase()
     const templateItems = [
