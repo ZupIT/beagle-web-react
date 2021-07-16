@@ -1,6 +1,6 @@
 {
   "name": "@zup-it/beagle-react",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "main": "beagle-react/src/index.js",
   "typings": "beagle-react/src/index.d.ts",
   "license": "Apache-2.0",
@@ -26,7 +26,7 @@
     "unlink-beagle": "cd dist && yarn unlink && cd ../node_modules/react && yarn unlink && cd ../react-dom && yarn unlink && cd ../.."
   },
   "dependencies": {
-    "@zup-it/beagle-web": "1.9.0",
+    "@zup-it/beagle-web": "1.9.1",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {

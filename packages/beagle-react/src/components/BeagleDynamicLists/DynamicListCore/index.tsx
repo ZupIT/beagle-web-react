@@ -86,7 +86,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       (templatesRaw && Array.isArray(templatesRaw) && templatesRaw.length)
     if (!hasAnyTemplate) {
       return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
-    }      
+    }
 
     const componentTag = element._beagleComponent_.toLowerCase()
     const templateItems = [
