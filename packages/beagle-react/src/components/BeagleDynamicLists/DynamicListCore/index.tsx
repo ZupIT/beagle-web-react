@@ -73,7 +73,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   }, [])
 
   useEffect(() => {
-    if (!Array.isArray(dataSource) || dataSource.length === 0) return
+    if (!Array.isArray(dataSource)) return
     
     if (!viewContentManager) {
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
