@@ -8,4 +8,4 @@ Please, follow the instructions according to the framework:
 
 # License
 Beagle React is Apache licensed.
-<!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)-->
+<!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/main/LICENSE)-->

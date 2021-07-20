@@ -124,4 +124,4 @@ You should see the screen with the text present in the text attribute in the jso
 
 # License
 Beagle React is Apache licensed.
-<!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/master/LICENSE)-->
+<!--[Apache licensed](https://github.com/ZupIT/beagle-web-react/blob/main/LICENSE)-->
