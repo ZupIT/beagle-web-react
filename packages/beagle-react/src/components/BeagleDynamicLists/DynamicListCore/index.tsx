@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useEffect, useRef, Children, useMemo } from 'react'
-import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement, TemplateManagerItem } from '@zup-it/beagle-web'
+import { BeagleUIElement, DataContext, IdentifiableBeagleUIElement, TemplateManagerItem, Tree } from '@zup-it/beagle-web'
 import { logger } from '@zup-it/beagle-web'
 import { TemplateManager } from '@zup-it/beagle-web'
 import withTheme from '../../utils/withTheme'
@@ -102,15 +102,18 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       templates: manageableTemplates,
     }
     const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
-      const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
-      const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
-      const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
-      return {
-        ...component,
-        id: `${baseId}:${iterationKey}`,
-        key: iterationKey,
-        ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
-      }
+      Tree.forEach(component, (treeComponent, componentIndex) => {
+        const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
+        const baseId = treeComponent.id 
+          ? `${treeComponent.id}${suffix}` 
+          : `${element.id}:${componentIndex}`
+        const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
+        treeComponent.id = `${baseId}:${iterationKey}`
+        if (hasSuffix) {
+          treeComponent.__suffix__ = `${suffix}:${iterationKey}`
+        }
+      })
+      return component
     }
     const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
     renderer.doTemplateRender(manager, element.id, contexts, componentManager)
