@@ -101,12 +101,20 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       default: defaultTemplate && defaultTemplate.view,
       templates: manageableTemplates,
     }
+
+    const getIterationKey = (index: number) => 
+      _key && dataSource[index][_key] ? dataSource[index][_key] : index
+
+    const getBaseId = (
+      component: IdentifiableBeagleUIElement, 
+      componentIndex: number, 
+      suffix: string,
+    ) => component.id ? `${component.id}${suffix}` : `${element.id}:${componentIndex}`
+
     const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
       Tree.forEach(component, (treeComponent, componentIndex) => {
-        const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
-        const baseId = treeComponent.id 
-          ? `${treeComponent.id}${suffix}` 
-          : `${element.id}:${componentIndex}`
+        const iterationKey = getIterationKey(index)
+        const baseId = getBaseId(treeComponent, componentIndex, suffix)
         const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
         treeComponent.id = `${baseId}:${iterationKey}`
         if (hasSuffix) {
@@ -115,6 +123,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       })
       return component
     }
+    
     const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
     renderer.doTemplateRender(manager, element.id, contexts, componentManager)
   }, [JSON.stringify(dataSource)])
