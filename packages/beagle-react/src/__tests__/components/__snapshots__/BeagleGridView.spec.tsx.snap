@@ -11,18 +11,26 @@ exports[`Beagle snapshot grid view 1`] = `
     ]
   }
   listType="GRID"
-  numColumns={5}
   style={
     Object {
       "height": "100",
       "width": "50",
     }
   }
-  template={
-    Object {
-      "_beagleComponent_": "beagle:text",
-      "text": "@item",
-    }
+  templates={
+    Array [
+      Object {
+        "view": Object {
+          "_beagleComponent_": "beagle:container",
+          "children": Array [
+            Object {
+              "_beagleComponent_": "beagle:text",
+              "text": "@item",
+            },
+          ],
+        },
+      },
+    ]
   }
 />
 `;

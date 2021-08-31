@@ -25,7 +25,6 @@ import { StyledInput, errorColor } from './styled'
 const BeagleInput: FC<BeagleTextInputInterface> = ({
   value,
   placeholder,
-  disabled,
   enabled,
   readOnly,
   type = 'TEXT',
@@ -39,7 +38,7 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
   showError,
 }) => {
   const a11y = buildAccessibility(accessibility)
-  const isEnabled = enabled === false || disabled === true
+  const isEnabled = enabled === false
   const handleEvent = (handler?: InputHandler) => (event: InputEvent) => {
     if (!handler) return
     handler({ value: event.target.value })
@@ -60,7 +59,6 @@ const BeagleInput: FC<BeagleTextInputInterface> = ({
       <StyledInput
         value={value}
         placeholder={placeholder}
-        disabled={isEnabled}
         readOnly={readOnly}
         type={type}
         onChange={handleEvent(onChange)}

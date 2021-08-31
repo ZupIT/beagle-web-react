@@ -6,7 +6,6 @@ exports[`Beagle snapshot SimpleForm 1`] = `
   onSubmit={[MockFunction]}
 >
   <ComponentWithTheme
-    disabled={false}
     placeholder="Testing"
     readOnly={false}
     type="TEXT"

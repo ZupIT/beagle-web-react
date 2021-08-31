@@ -32,10 +32,6 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
   onInit?: () => void,
   onScrollEnd?: () => void,
   scrollEndThreshold?: number,
-  /**
-   * @deprecated since v1.9.0 Will be removed in 2.0. Use `templates` attribute instead.
-  */
-  template?: BeagleUIElement,
   templates?: TemplateItem[],
   useParentScroll?: boolean,
   /* the property `key` is not allowed in React. Since this is not a rule for Beagle, every time

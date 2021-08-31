@@ -32,7 +32,6 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   direction = 'VERTICAL',
   className,
   style,
-  template,
   onInit,
   onScrollEnd,
   scrollEndThreshold = 100,
@@ -45,7 +44,6 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   __suffix__,
   isScrollIndicatorVisible = true,
   accessibility,
-  numColumns,
   spanCount,
   listType,
 }) => {
@@ -61,7 +59,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const isGrid = () => listType === 'GRID'
   const isList = () => listType === 'LIST'
   
-  spanCount = spanCount || numColumns
+  spanCount = spanCount
 
   useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
@@ -82,7 +80,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const element = viewContentManager.getElement() as BeagleUIElement
     if (!element) return logger.error('The beagle:listView element was not found.')
 
-    const hasAnyTemplate = template || 
+    const hasAnyTemplate =
       (templatesRaw && Array.isArray(templatesRaw) && templatesRaw.length)
     if (!hasAnyTemplate) {
       return logger.error('The beagle:listView requires a template or multiple templates to be rendered!')
@@ -91,7 +89,6 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const componentTag = element._beagleComponent_.toLowerCase()
     const templateItems = [
       ...templatesRaw || [], 
-      ...(template ? [{ view: template }] : []),
     ] as TemplateManagerItem[]
     const defaultTemplate = templateItems.find(t => t.case === undefined)
     const manageableTemplates = templateItems.filter(t => t.case) || []
@@ -132,9 +129,8 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     ...((isList() && { 
       [`aria-${isVertical() ? 'row' : 'col'}count`]: Children.count(children) || 0,
     }) || {}),
-    ...((isGrid() && numColumns && {
-      'aria-rowcount': Math.ceil(Children.count(children) / numColumns),
-      'aria-colcount': numColumns,
+    ...((isGrid() && {
+      'aria-rowcount': Math.ceil(Children.count(children)),
     }) || {}),
   })
 
