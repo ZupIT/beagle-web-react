@@ -14,10 +14,8 @@
   * limitations under the License.
 */
 
-import { ScreenEvent } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from './types'
 
 export interface BeagleContainerInterface extends BeagleDefaultComponent {
   onInit?: () => void,
-  screenAnalyticsEvent?: ScreenEvent,
 }

@@ -14,10 +14,8 @@
   * limitations under the License.
 */
 
-import { ClickEvent } from '@zup-it/beagle-web'
 import { BeagleDefaultComponent } from './types'
 
 export interface BeagleTouchableInterface extends BeagleDefaultComponent {
   onPress: () => void,
-  clickAnalyticsEvent?: ClickEvent,
 }

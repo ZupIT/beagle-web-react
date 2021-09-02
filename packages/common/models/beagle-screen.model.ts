@@ -14,8 +14,6 @@
   * limitations under the License.
 */
 
-import { ScreenEvent } from '@zup-it/beagle-web'
-
 export interface BeagleScreenInterface {
-  screenAnalyticsEvent?: ScreenEvent,
+  screenName: string,
 }

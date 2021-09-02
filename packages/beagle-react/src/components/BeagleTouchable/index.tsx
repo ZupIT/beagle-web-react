@@ -23,22 +23,18 @@ import { StyledBeagleTouchable } from './styled'
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
   onPress,
-  clickAnalyticsEvent,
   className,
   style,
   children,
   accessibility,
 }) => {
   const a11y = buildAccessibility(accessibility)
-  const beagleService = useContext(BeagleServiceContext)
+ 
   const [pressed, setPressed] = useState(false)
-  const beagleAnalytics = beagleService && beagleService.analytics
-  
-  const handlePress = () => {
-    setPressed(false)
+ 
 
-    if (clickAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
+  const handlePress = () => {
+    setPressed(false) 
     return onPress && onPress()
   }
   
