@@ -14,25 +14,17 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext } from 'react'
-import BeagleServiceContext from 'common/provider'
+import React, { FC } from 'react'
 import { BeagleTouchableInterface } from 'common/models'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 
 
 const BeagleTouchable: FC<BeagleTouchableInterface> = ({ 
   onPress,
-  clickAnalyticsEvent,
   style,
   children,
 }) => {
-  const beagleService = useContext(BeagleServiceContext)
-  const beagleAnalytics = beagleService && beagleService.analytics
-  const handlePress = () => {
-    if (clickAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
-    return onPress && onPress()
-  }
+  const handlePress = () => onPress && onPress()
 
   const styleSheet = StyleSheet.create({
     fromBffStyles: {

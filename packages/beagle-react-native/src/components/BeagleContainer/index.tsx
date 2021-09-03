@@ -14,25 +14,13 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useContext } from 'react'
+import React, { FC } from 'react'
 import { BeagleContainerInterface } from 'common/models'
 import { View } from 'react-native'
-import BeagleServiceContext from 'common/provider'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const beagleService = useContext(BeagleServiceContext)
-  const { children, style, onInit, screenAnalyticsEvent } = props
-  const beagleAnalytics = beagleService && beagleService.analytics
+  const { children, style } = props
 
-  useEffect(() => {
-    if (screenAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
-    if (onInit) onInit()
-    return () => {
-      if (screenAnalyticsEvent && beagleAnalytics)
-        beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)
-    }
-  }, [])
 
   return <View style={style}>{children}</View>
 }

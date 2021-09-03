@@ -14,8 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, useContext } from 'react'
-import BeagleServiceContext from 'common/provider'
+import React, { FC } from 'react'
 import { BeagleButtonInterface } from 'common/models'
 import { Button, View } from 'react-native'
 import { ViewContentManager } from 'common/types'
@@ -42,19 +41,11 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   onPress,
   style,
   viewContentManager,
-  clickAnalyticsEvent,
   enabled = true,
   accessibility,
 }) => {
-  const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
-  const beagleAnalytics = beagleService && beagleService.analytics
-  const handlePress = () => {
-    if (clickAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
-
-    return isSubmit ? submitForm() : onPress && onPress()
-  }
+  const handlePress = () => isSubmit ? submitForm() : onPress && onPress()
 
   return (
     <View style={style}>

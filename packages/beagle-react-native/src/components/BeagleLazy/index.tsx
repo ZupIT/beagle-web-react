@@ -15,21 +15,12 @@
 */
 
 import React, { FC, useEffect } from 'react'
-import { LoadParams } from '@zup-it/beagle-web'
 import { View } from 'react-native'
 import { BeagleLazyInterface } from 'common/models'
 
 const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
   useEffect(() => {
-    const params: LoadParams = {
-      path,
-      shouldShowLoading: false,
-    }
-    viewContentManager && viewContentManager.getView().fetch(
-      params,
-      viewContentManager.getElementId(),
-      'replaceComponent',
-    )
+    viewContentManager && viewContentManager.getView()
   }, [])
 
   return (

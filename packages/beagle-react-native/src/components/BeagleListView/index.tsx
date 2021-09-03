@@ -14,104 +14,10 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { BeagleListViewInterface } from 'common/models'
-import { ScrollView, StyleSheet, NativeScrollEvent } from 'react-native'
-import { renderListViewDynamicItems } from 'common/utils/listview'
+import { FC } from 'react'
 
-const BeagleListView: FC<BeagleListViewInterface> = ({
-  dataSource,
-  direction,
-  template,
-  templates,
-  __suffix__,
-  _key,
-  children,
-  className,
-  iteratorName = 'item',
-  onInit,
-  onScrollEnd,
-  scrollEndThreshold = 100,
-  style,
-  useParentScroll,
-  viewContentManager,
-}) => {
-  const scrollRef = useRef(null)
-  const templatesRaw: BeagleListViewInterface['templates'] = 
-    useMemo(() => 
-      viewContentManager ? viewContentManager.getElement().templates : undefined,
-    [JSON.stringify(dataSource), templates])
-  const horizontal = direction && direction === 'HORIZONTAL'
-  const styleSheet = StyleSheet.create({
-    fromBffStyles: {
-      ...style,
-    },
-    defaultStyles: {
-      flex: style && style.flex ? Number(style.flex) : 1,
-      borderWidth: 1,
-      borderColor: '#000000',
-      borderStyle: 'solid',
-    },
-  })
-
-  const [shouldLoadPage, setShouldLoadPage] = useState(true)
-
-  useEffect(() => {
-    onInit && onInit() || onScrollEnd && onScrollEnd()
-  }, [])
-
-  useEffect(() => {
-    renderListViewDynamicItems(
-      dataSource,
-      viewContentManager,
-      template,
-      templatesRaw,
-      _key,
-      __suffix__,
-      iteratorName
-    )
-    setShouldLoadPage(true)
-  }, [JSON.stringify(dataSource)])
-
-  const hasReachedEndOfList = ({
-    contentOffset,
-    layoutMeasurement,
-    contentSize }: NativeScrollEvent) => {
-
-    let offset = contentOffset.y
-    let layoutSize = layoutMeasurement.height
-    let listSize = contentSize.height
-    if (direction === 'HORIZONTAL') {
-      offset = contentOffset.x
-      layoutSize = layoutMeasurement.width
-      listSize = contentSize.width
-    }
-    const sizeSum = offset + layoutSize
-
-    return Math.round(sizeSum) >= Math.round(listSize * scrollEndThreshold / 100)
-  }
-
-  function callOnEndAction(nativeEvent: NativeScrollEvent) {
-    if (hasReachedEndOfList(nativeEvent) && shouldLoadPage) {
-      setShouldLoadPage(false)
-      onScrollEnd && onScrollEnd() 
-    }
-  }
-
-  return (
-    <ScrollView
-      ref={scrollRef}
-      onScroll={({ nativeEvent }) => callOnEndAction(nativeEvent)}
-      scrollEventThrottle={1000}
-      style={
-        {
-          ...styleSheet.defaultStyles,
-          ...styleSheet.fromBffStyles,
-        }}
-      horizontal={horizontal}>
-      {children}
-    </ScrollView>
-  )
+const BeagleListView: FC = () => { 
+  throw Error('The listView component is not implemented yet')
 }
 
 export default BeagleListView
