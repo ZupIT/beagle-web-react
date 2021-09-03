@@ -15,10 +15,9 @@
 */
 
 import React, { FC } from 'react'
-import { BeagleScreenInterface } from 'common/models'
 import { StyledScreen } from './styled'
 
-const BeagleScreen: FC<BeagleScreenInterface> = props => {
+const BeagleScreen: FC = props => {
   const { children } = props
 
   return (
