@@ -83,12 +83,6 @@ export interface BeagleRemoteViewType {
    */
   route?: string | RemoteView,
   /**
-   * using the HttpAdditionalData in your Route properties instead
-   * The options to perform http requests (http method, headers and cache strategy) for all
-   * navigations in this BeagleView. If not specified, will use the default options.
-   */
-  networkOptions?: HttpAdditionalData,
-  /**
    * Tells which navigation controller to use until a new one is declared. The navigation controller
    * is responsible for the visual feedback of a navigation: the loading and error components, for
    * instance. This property is useful to setup the first request, which is not controlled by the
