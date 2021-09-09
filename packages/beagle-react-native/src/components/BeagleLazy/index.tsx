@@ -15,4 +15,12 @@
 */
 
 // todo: implement this according to the new ViewClient API
-throw new Error('Not implemented yet')
+
+import { FC } from 'react'
+
+const BeagleLazy: FC = () => { 
+  throw new Error('Not implemented yet')
+}
+
+export default BeagleLazy
+
