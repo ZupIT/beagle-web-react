@@ -85,9 +85,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     }
 
     const componentTag = element._beagleComponent_.toLowerCase()
-    const templateItems = [
-      ...templatesRaw || [],
-    ] as TemplateManagerItem[]
+    const templateItems = (templatesRaw || []) as TemplateManagerItem[]
     const defaultTemplate = templateItems.find(t => t.case === undefined)
     const manageableTemplates = templateItems.filter(t => t.case) || []
     const suffix = __suffix__ || ''
