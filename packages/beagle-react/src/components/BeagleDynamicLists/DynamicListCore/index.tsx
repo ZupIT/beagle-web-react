@@ -50,16 +50,14 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const a11y = buildAccessibility(accessibility)
   const hasRendered = !Array.isArray(dataSource) || dataSource.length === Children.count(children)
-  const templatesRaw: BeagleListViewInterface['templates'] = 
-    useMemo(() => 
+  const templatesRaw: BeagleListViewInterface['templates'] =
+    useMemo(() =>
       viewContentManager ? viewContentManager.getElement().templates : undefined,
     [])
 
   const isVertical = () => direction === 'VERTICAL'
   const isGrid = () => listType === 'GRID'
   const isList = () => listType === 'LIST'
-  
-  spanCount = spanCount
 
   useScroll(
     { elementRef, direction, onScrollEnd, scrollEndThreshold, useParentScroll, hasRendered },
@@ -72,7 +70,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
 
   useEffect(() => {
     if (!Array.isArray(dataSource)) return
-    
+
     if (!viewContentManager) {
       return logger.error('The beagle:listView component should only be used inside a view rendered by Beagle.')
     }
@@ -88,7 +86,7 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
 
     const componentTag = element._beagleComponent_.toLowerCase()
     const templateItems = [
-      ...templatesRaw || [], 
+      ...templatesRaw || [],
     ] as TemplateManagerItem[]
     const defaultTemplate = templateItems.find(t => t.case === undefined)
     const manageableTemplates = templateItems.filter(t => t.case) || []
@@ -99,12 +97,12 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       templates: manageableTemplates,
     }
 
-    const getIterationKey = (index: number) => 
+    const getIterationKey = (index: number) =>
       _key && dataSource[index][_key] ? dataSource[index][_key] : index
 
     const getBaseId = (
-      component: IdentifiableBeagleUIElement, 
-      componentIndex: number, 
+      component: IdentifiableBeagleUIElement,
+      componentIndex: number,
       suffix: string,
     ) => component.id ? `${component.id}${suffix}` : `${element.id}:${componentIndex}`
 
@@ -120,17 +118,20 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
       })
       return component
     }
-    
+
     const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
     renderer.doTemplateRender(manager, element.id, contexts, componentManager)
   }, [JSON.stringify(dataSource)])
 
   const getAriaCount = () => ({
-    ...((isList() && { 
+    ...((isList() && {
       [`aria-${isVertical() ? 'row' : 'col'}count`]: Children.count(children) || 0,
     }) || {}),
-    ...((isGrid() && {
-      'aria-rowcount': Math.ceil(Children.count(children)),
+    ...((isGrid() && spanCount && {
+      'aria-rowcount': direction === 'HORIZONTAL' ? spanCount : 
+        Math.ceil(Children.count(children) / spanCount),
+      'aria-colcount': direction === 'VERTICAL' ? spanCount : 
+        Math.ceil(Children.count(children) / spanCount),
     }) || {}),
   })
 

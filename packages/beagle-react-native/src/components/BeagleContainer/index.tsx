@@ -14,13 +14,16 @@
   * limitations under the License.
 */
 
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { BeagleContainerInterface } from 'common/models'
 import { View } from 'react-native'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, style } = props
+  const { children, style, onInit } = props
 
+  useEffect(() => {
+    if (onInit) onInit()
+  }, [])
 
   return <View style={style}>{children}</View>
 }
