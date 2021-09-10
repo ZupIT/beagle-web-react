@@ -39,7 +39,7 @@ export const StyledDynamicViewsInterface = styled.div<StyledDynamicViewsInterfac
   overflow: ${({ useParentScroll }) => useParentScroll ? 'inherit' : 'auto'};
   width: ${({ direction }) => direction === 'HORIZONTAL' ? '100%' : 'auto'};
   height: ${({ direction }) => direction === 'VERTICAL' ? '100%' : 'auto'};
-  & ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ? 'auto' : 'none'};
   }
   -ms-overflow-style: ${({ isScrollIndicatorVisible }) => isScrollIndicatorVisible ?
