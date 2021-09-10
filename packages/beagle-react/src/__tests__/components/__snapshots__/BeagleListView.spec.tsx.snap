@@ -85,30 +85,3 @@ exports[`Render BeagleListView with multiple templates Beagle snapshot list view
   }
 />
 `;
-
-exports[`Render BeagleListView with template Beagle snapshot list view 1`] = `
-<ComponentWithTheme
-  className="Test Class"
-  dataSource={
-    Array [
-      "testA",
-      "testB",
-      "testC",
-    ]
-  }
-  direction="HORIZONTAL"
-  listType="LIST"
-  style={
-    Object {
-      "height": "100",
-      "width": "50",
-    }
-  }
-  template={
-    Object {
-      "_beagleComponent_": "beagle:text",
-      "text": "@item",
-    }
-  }
-/>
-`;

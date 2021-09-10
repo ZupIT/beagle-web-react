@@ -15,11 +15,9 @@
 */
 
 import styled from 'styled-components'
-import { PageIndicatorInterface } from 'common/models'
 import { BeagleTheme } from '../commons.styled'
 
 interface StyledItemInterface {
-  pageIndicator?: PageIndicatorInterface,
   selected: boolean,
 }
 
@@ -69,9 +67,7 @@ export const StyledItemList = styled.li<StyledItemInterface>`
   cursor: pointer;
   border-radius: 50%;
   margin: 10px;
-  background-color: ${({ selected, pageIndicator }) => selected ?
-    (pageIndicator && pageIndicator.selectedColor) || BeagleTheme.swamp :
-    (pageIndicator && pageIndicator.unselectedColor) || BeagleTheme.swampTransparent}
+  background-color: ${(BeagleTheme.swamp || BeagleTheme.swampTransparent)}
 `
 
 export const StyleContentItems = styled.div`

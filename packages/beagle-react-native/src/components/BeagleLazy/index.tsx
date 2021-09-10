@@ -14,29 +14,13 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect } from 'react'
-import { LoadParams } from '@zup-it/beagle-web'
-import { View } from 'react-native'
-import { BeagleLazyInterface } from 'common/models'
+// todo: implement this according to the new ViewClient API
 
-const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
-  useEffect(() => {
-    const params: LoadParams = {
-      path,
-      shouldShowLoading: false,
-    }
-    viewContentManager && viewContentManager.getView().fetch(
-      params,
-      viewContentManager.getElementId(),
-      'replaceComponent',
-    )
-  }, [])
+import { FC } from 'react'
 
-  return (
-    <View>
-      {children}
-    </View>
-  )
+const BeagleLazy: FC = () => { 
+  throw new Error('Not implemented yet')
 }
 
 export default BeagleLazy
+

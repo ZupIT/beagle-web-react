@@ -24,14 +24,9 @@ import BeagleListView from './BeagleDynamicLists/BeagleListView'
 import BeagleLazy from './BeagleLazy'
 import BeagleTouchable from './BeagleTouchable'
 import BeagleSimpleForm from './BeagleSimpleForm'
-import BeagleTabView from './BeagleTabView'
-import BeagleTabItem from './BeagleTabView/BeagleTabItem'
 import BeaglePageView from './BeaglePageView'
-import Modal from './Modal'
-import TextArea from './TextArea'
 import BeagleInput from './BeagleInput'
 import BeagleWebView from './BeagleWebView'
-import BeaglePageIndicator from './BeaglePageIndicator'
 import BeagleTabBar from './BeagleTabBar'
 import BeagleScreen from './BeagleScreen'
 import BeagleGridView from './BeagleDynamicLists/BeagleGridView'
@@ -48,11 +43,8 @@ const beagleDefaultComponents = {
   'beagle:container': BeagleContainer,
   'beagle:screencomponent': BeagleScreen,
   'beagle:pageview': BeaglePageView,
-  'beagle:pageindicator': BeaglePageIndicator,
   'beagle:networkimage': BeagleImage,
   'beagle:image': BeagleImage,
-  'beagle:tabview': BeagleTabView,
-  'beagle:tabitem': BeagleTabItem,
   'beagle:scrollview': BeagleContainer,
   'beagle:touchable': BeagleTouchable,
   'beagle:simpleform': BeagleSimpleForm,
@@ -64,13 +56,7 @@ const beagleDefaultComponents = {
   'beagle:pullToRefresh': BeagleContainer,
 }
 
-const webSpecificComponents = {
-  'custom:modal': Modal,
-  'custom:text-area': TextArea,
-}
-
 export default {
   ...libRequiredComponents,
   ...beagleDefaultComponents,
-  ...webSpecificComponents,
 }

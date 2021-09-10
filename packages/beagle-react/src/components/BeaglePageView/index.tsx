@@ -28,23 +28,11 @@ import { KeyBoardArrow } from './KeyboardArrowLeft'
 
 const BeaglePageView: FC<BeaglePageViewInterface> = ({
   children, onPageChange, currentPage, showArrow,
-  /**
-   * @deprecated Since version 1.1. Will be deleted in version 2.0.
-   * Use pageIndicator as a component instead.
-  */
-  pageIndicator,
 }) => {
   const [active, setActive] = useState(currentPage || 0)
   const numberChildren = Children.count(children)
 
   showArrow = showArrow !== undefined ? showArrow : true
-
-  useEffect(() => {
-    if (pageIndicator)
-      console.warn(`The page view you are using is deprecated. 
-      This will be removed in a future version; please refactor this component 
-      using new context features.`)
-  }, [])
 
   useEffect(() => {
     if (currentPage !== undefined && currentPage !== active)
@@ -64,18 +52,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
     if (active < numberChildren - 1)
       updatePage(active + 1)
   }
-
-  const bullets = pageIndicator ? (
-    <StyledOrderList>
-      {
-        Children.map(children, (child, index) => (
-          <StyledItemList onClick={() => setActive(index)} selected={index === active}
-            pageIndicator={pageIndicator}>
-          </StyledItemList>
-        ))
-      }
-    </StyledOrderList>
-  ) : null
 
   const rightArrow = showArrow ? (
     <StyledRightArrow onClick={nextSlide}>
@@ -111,7 +87,6 @@ const BeaglePageView: FC<BeaglePageViewInterface> = ({
         }
       </StyleContentItems>
       {rightArrow}
-      {bullets}
     </StyledBeaglePageView>
   )
 }

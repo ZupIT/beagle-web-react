@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-import React, { FC, useContext, useState } from 'react'
+import React, { FC } from 'react'
 import { ViewContentManager } from '@zup-it/beagle-web'
-import BeagleServiceContext from 'common/provider'
 import { BeagleButtonInterface } from 'common/models'
 import { buildAccessibility } from 'common/utils/accessibility'
 import withTheme from '../utils/withTheme'
@@ -42,22 +41,16 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
   onPress,
   style,
   viewContentManager,
-  clickAnalyticsEvent,
   accessibility,
   enabled,
 }) => {
   const a11y = buildAccessibility(accessibility)
-  const beagleService = useContext(BeagleServiceContext)
   const isSubmit = isSubmitButton(viewContentManager)
-  const beagleAnalytics = beagleService && beagleService.analytics
   const type = isSubmit ? 'submit' : 'button'
   const isDisabled = enabled === undefined ? false : !enabled
-  const handlePress = () => {
-    if (clickAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnClick(clickAnalyticsEvent)
-
-    return isSubmit ? undefined : onPress && onPress()
-  }
+  const handlePress = () => 
+    isSubmit ? undefined : onPress && onPress()
+  
 
   return (
     <StyledBeagleButton

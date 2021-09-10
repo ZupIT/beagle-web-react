@@ -17,10 +17,5 @@
 import { DynamicListCoreInterface } from './dynamicLists-core.model'
 
 export interface BeagleGridViewInterface extends DynamicListCoreInterface{
-   /**
-   * @deprecated Since version 1.9.0. Will be deleted in version 2.0.
-   * Use spanCount instead.
-  */
-  numColumns?: number,
   spanCount?: number,
 }

@@ -18,8 +18,6 @@ import { useState, useEffect, useContext, useMemo } from 'react'
 import {
   BeagleUIElement,
   BeagleView,
-  logger,
-  LoadParams,
 } from '@zup-it/beagle-web'
 import BeagleProvider from './provider'
 import { BeagleRemoteViewType } from './types'
@@ -30,9 +28,7 @@ function useComponent({
   id,
   viewRef,
   route,
-  networkOptions,
   controllerId,
-  ...deprecated
 }: BeagleRemoteViewType) {
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
@@ -44,7 +40,7 @@ function useComponent({
   const beagleView = useMemo<BeagleView>(() => {
     if (!id) setViewID(`${nextId++}`)
 
-    const view = beagleService.createView(networkOptions, controllerId)
+    const view = beagleService.createView(controllerId)
     view.subscribe(setUiTree)
     if (viewRef) viewRef.current = view
 
@@ -61,20 +57,6 @@ function useComponent({
       else navigator.resetStack(route, controllerId)
     }
   }, [route])
-
-  // todo: legacy code. Remove with v2.0.
-  useEffect(() => {
-    const deprecatedKeys = Object.keys(deprecated)
-
-    if (deprecatedKeys.length) {
-      logger.warn(`The following properties in the BeagleRemoteView are deprecated and will be removed in v2.0: ${deprecatedKeys.join(', ')}.\nYou should use "route" to specify the path to the first view and "navigationOptions" for further request setup.`)
-      if (route) {
-        logger.warn('You shouldn\'t mix the new BeagleRemoteView properties with the deprecated ones. All deprecated properties will be ignored.')
-      } else if (deprecated.path) {
-        beagleView.fetch(deprecated as LoadParams)
-      }
-    }
-  }, [JSON.stringify(deprecated)])
 
   useEffect(() => {
     beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)

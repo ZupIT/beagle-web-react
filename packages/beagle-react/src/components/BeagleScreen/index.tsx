@@ -14,24 +14,11 @@
   * limitations under the License.
 */
 
-import React, { FC, useEffect, useContext } from 'react'
-import BeagleServiceContext from 'common/provider'
-import { BeagleScreenInterface } from 'common/models'
+import React, { FC } from 'react'
 import { StyledScreen } from './styled'
 
-const BeagleScreen: FC<BeagleScreenInterface> = props => {
-  const beagleService = useContext(BeagleServiceContext)
-  const { children, screenAnalyticsEvent } = props
-  const beagleAnalytics = beagleService && beagleService.analytics
-
-  useEffect(() => {
-    if (screenAnalyticsEvent && beagleAnalytics)
-      beagleAnalytics.trackEventOnScreenAppeared(screenAnalyticsEvent)
-    return () => {
-      if (screenAnalyticsEvent && beagleAnalytics)
-        beagleAnalytics.trackEventOnScreenDisappeared(screenAnalyticsEvent)
-    }
-  }, [])
+const BeagleScreen: FC = props => {
+  const { children } = props
 
   return (
     <StyledScreen>

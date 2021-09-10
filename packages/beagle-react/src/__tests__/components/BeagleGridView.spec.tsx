@@ -29,11 +29,20 @@ const mockStyle: React.CSSProperties = {
 
 configure({ adapter: new Adapter() })
 beforeAll(() => {
-  wrapper = shallow(<BeagleGridView 
-    numColumns={5}
-    style={mockStyle} 
+  wrapper = shallow(<BeagleGridView
+    style={mockStyle}
     dataSource={['testA', 'testB', 'testC']}
-    template={{ _beagleComponent_: 'beagle:text', text: '@item' }}
+    templates={[{
+      view: {
+        _beagleComponent_: 'beagle:container',
+        children: [
+          {
+            _beagleComponent_: 'beagle:text',
+            text: '@item'
+          }
+        ],
+      },
+    }]}
     className='Test Class' />)
 })
 

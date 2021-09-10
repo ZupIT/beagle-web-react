@@ -26,8 +26,8 @@ import {
   HttpMethod,
   Strategy,
   BeagleUIElement,
-  NetworkOptions,
   RemoteView,
+  HttpAdditionalData,
 } from '@zup-it/beagle-web'
 import { Omit } from '@zup-it/beagle-web/types'
 
@@ -65,48 +65,7 @@ export { DataContext }
 
 export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>
 
-// todo: legacy type. Remove for v2.0.
-export interface LegacyLoadParams {
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  path?: string,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  fallback?: BeagleUIElement,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  method?: HttpMethod,
-  /**
-   * @deprecated
-   */
-  headers?: Record<string, string>,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  shouldShowLoading?: boolean,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  shouldShowError?: boolean,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  strategy?: Strategy,
-  /**
-   * @deprecated
-   */
-  loadingComponent?: string,
-  /**
-   * @deprecated since v1.3. Will be removed in 2.0.
-   */
-  errorComponent?: string,
-}
-
-// todo: remove the "extends" for v2.0.
-export interface BeagleRemoteViewType extends LegacyLoadParams {
+export interface BeagleRemoteViewType {
   /**
    * the id of this beagle view. Will be assigned a random id if none is provided.
    */
@@ -123,12 +82,6 @@ export interface BeagleRemoteViewType extends LegacyLoadParams {
    * both can be set in the configuration for the Beagle Service.
    */
   route?: string | RemoteView,
-  /**
-   * @deprecated since 1.7.0 prefer using the HttpAdditionalData in your Route properties instead
-   * The options to perform http requests (http method, headers and cache strategy) for all
-   * navigations in this BeagleView. If not specified, will use the default options.
-   */
-  networkOptions?: NetworkOptions,
   /**
    * Tells which navigation controller to use until a new one is declared. The navigation controller
    * is responsible for the visual feedback of a navigation: the loading and error components, for

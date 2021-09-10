@@ -31,7 +31,6 @@ beforeAll(() => {
   wrapper = shallow(<Form onSubmit={onSubmitMock}>
      <BeagleInput
       value="Teste"
-      disabled={false}
       readOnly={false}
       placeholder="Testing"
       type="TEXT"

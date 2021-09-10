@@ -25,7 +25,6 @@ import BeagleTextInput from './BeagleInput'
 import BeagleTouchable from './BeagleTouchable'
 import BeagleTabBar from './BeagleTabBar'
 import BeaglePageView from './BeaglePageView'
-import BeaglePageIndicator from './PageIndicator'
 import BeagleLazy from './BeagleLazy'
 import BeagleSimpleForm from './BeagleSimpleForm'
 import BeagleWebView from './BeagleWebView'
@@ -46,7 +45,6 @@ const beagleDefaultComponents = {
   'beagle:touchable': BeagleTouchable,
   'beagle:tabbar': BeagleTabBar,
   'beagle:pageview': BeaglePageView,
-  'beagle:pageIndicator': BeaglePageIndicator,
   'beagle:lazycomponent': BeagleLazy,
   'beagle:simpleform': BeagleSimpleForm,
   'beagle:webview': BeagleWebView,

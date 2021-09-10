@@ -31,27 +31,6 @@ const mockStyle: React.CSSProperties = {
 
 configure({ adapter: new Adapter() })
 
-/**
- * @deprecated since v1.9.0 Will be removed in 2.0. Use templates instead.
- */
-describe('Render BeagleListView with template', () => {
-  beforeAll(() => {
-    wrapper = shallow(
-      <BeagleListView
-        direction={directionMock}
-        style={mockStyle}
-        dataSource={['testA', 'testB', 'testC']}
-        template={{ _beagleComponent_: 'beagle:text', text: '@item' }}
-        className="Test Class"
-      />
-    )
-  })
-  
-  test('Beagle snapshot list view', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
-
 describe('Render BeagleListView with multiple templates', () => {
   const dataSource = [
     { key: 'first', text: 'First Child' },

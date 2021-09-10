@@ -14,14 +14,8 @@
   * limitations under the License.
 */
 import { BeagleDefaultComponent } from './types'
-import { PageIndicatorInterface } from './beagle-pageindicator.model'
 
 export interface BeaglePageViewInterface extends BeagleDefaultComponent {
-  /**
-   * @deprecated Since version 1.1. Will be deleted in version 2.0.
-   * Use pageIndicator as a component instead.
-  */
-  pageIndicator?: PageIndicatorInterface,
   onPageChange?: (index: number) => void,
   currentPage?: number,
   showArrow?: boolean,

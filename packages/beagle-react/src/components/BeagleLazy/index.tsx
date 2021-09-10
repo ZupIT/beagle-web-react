@@ -40,7 +40,6 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManage
       onChangeTree: replaceChildren,
       retry: fetchLazyView,
       shouldShowLoading: false,
-      ...beagleView.getNetworkOptions(),
     })
   }
 
