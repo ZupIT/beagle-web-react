@@ -15,54 +15,24 @@
 */
 
 import { useState, useEffect, useContext, useMemo } from 'react'
-import {
-  BeagleUIElement,
-  BeagleView,
-} from '@zup-it/beagle-web'
+import { BeagleUIElement, BeagleView } from '@zup-it/beagle-web'
 import BeagleProvider from './provider'
-import { BeagleRemoteViewType } from './types'
 
 let nextId = 0
 
-function useComponent({
-  id,
-  viewRef,
-  route,
-  controllerId,
-}: BeagleRemoteViewType) {
+function useWidget(view: BeagleView) {
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
-  const [viewID, setViewID] = useState(id)
+  const viewID = useMemo(() => `${nextId++}`, [])
 
-  if (!beagleService)
-    throw Error('Couldn\'t find a BeagleProvider in the component tree!')
-
-  const beagleView = useMemo<BeagleView>(() => {
-    if (!id) setViewID(`${nextId++}`)
-
-    const view = beagleService.createView(controllerId)
-    view.subscribe(setUiTree)
-    if (viewRef) viewRef.current = view
-
-    return view
-  }, [])
+  if (!beagleService) throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   useEffect(() => {
-    if (route) {
-      if (typeof route === 'string')
-        route = { url: route }
-
-      const navigator = beagleView.getNavigator()
-      if (navigator.isEmpty()) navigator.pushView(route)
-      else navigator.resetStack(route, controllerId)
-    }
-  }, [route])
-
-  useEffect(() => {
-    beagleService.viewContentManagerMap.register(`${viewID}`, beagleView)
+    view.onChange(setUiTree)
+    beagleService.viewContentManagerMap.register(`${viewID}`, view)
     return () => {
       beagleService.viewContentManagerMap.unregister(`${viewID}`)
-      beagleView.destroy()
+      view.destroy()
     }
   }, [])
 
@@ -73,4 +43,4 @@ function useComponent({
   }
 }
 
-export default useComponent
+export default useWidget

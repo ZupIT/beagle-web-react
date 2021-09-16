@@ -14,24 +14,20 @@
   * limitations under the License.
 */
 
-import React, { FC, MutableRefObject, ReactElement, useRef, useEffect } from 'react'
-import { BeagleRemoteViewType } from 'common/types'
+import React, { FC, MutableRefObject } from 'react'
+import { BeagleView } from '@zup-it/beagle-web'
+import useWidget from 'common/useWidget'
 import createReactComponentTree from 'common/renderer'
-import { BeagleNavigator, RemoteView } from '@zup-it/beagle-web'
 import BeagleId from './BeagleId'
-import BeagleReactNavigator from './beagle-navigator'
 
-const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
-  const navigatorRef: MutableRefObject<BeagleNavigator<ReactElement> | undefined> = useRef()
+const BeagleWidget: FC<{ view: BeagleView }> = ({ view }) => {
+  const { beagleService, uiTree, viewID } = useWidget(view)
 
-  /*useEffect(() => {
-    if (navigatorRef.current) {
-      const remote: RemoteView = typeof loadParams.route
-      navigatorRef.current.pushStack()
-    }
-  }, [navigatorRef.current])*/
-  
-  return <BeagleReactNavigator navigatorRef={navigatorRef} />
+  const components = beagleService.getConfig().components
+  const contentManagerMap = beagleService.viewContentManagerMap
+
+  if (!uiTree || !viewID) return <></>
+  return createReactComponentTree(components, uiTree, viewID, contentManagerMap, BeagleId)
 }
 
-export default BeagleRemoteView
+export default BeagleWidget

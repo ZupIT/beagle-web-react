@@ -66,14 +66,14 @@ export { DataContext }
 export type NonNull = Array<number | Record<any, any> | Array<any> | string | true>
 
 export interface BeagleRemoteViewType {
-  /**
-   * the id of this beagle view. Will be assigned a random id if none is provided.
-   */
+/**
+ * the id of this beagle view. Will be assigned a random id if none is provided.
+ */
   id?: string,
   /**
-   * React ref to attach a reference to the BeagleView to. Useful for manipulating the BeagleView
-   * manually.
-   */
+  * React ref to attach a reference to the BeagleView to. Useful for manipulating the BeagleView
+  * manually.
+  */
   viewRef?: MutableRefObject<BeagleView | undefined>,
   /**
    * The initial route to navigate the BeagleView to. If this property changes, the navigation
