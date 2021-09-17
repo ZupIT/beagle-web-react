@@ -16,20 +16,20 @@
 
 import React, { FC, MutableRefObject, ReactElement, useRef, useEffect } from 'react'
 import { BeagleRemoteViewType } from 'common/types'
-import createReactComponentTree from 'common/renderer'
 import { BeagleNavigator, RemoteView } from '@zup-it/beagle-web'
-import BeagleId from './BeagleId'
 import BeagleReactNavigator from './beagle-navigator'
 
 const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteViewType) => {
   const navigatorRef: MutableRefObject<BeagleNavigator<ReactElement> | undefined> = useRef()
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (navigatorRef.current) {
-      const remote: RemoteView = typeof loadParams.route
-      navigatorRef.current.pushStack()
+      const remote: RemoteView = typeof loadParams.route === 'string'
+        ? { url: loadParams.route }
+        : loadParams.route
+      navigatorRef.current.pushStack(remote, loadParams.controllerId)
     }
-  }, [navigatorRef.current])*/
+  }, [navigatorRef.current])
   
   return <BeagleReactNavigator navigatorRef={navigatorRef} />
 }

@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, MutableRefObject, ReactElement, useEffect } from 'react'
+import React, { FC, MutableRefObject, ReactElement, useEffect, createElement } from 'react'
 import { BeagleNavigator, BeagleView } from '@zup-it/beagle-web'
 import useNavigator from 'common/useNavigator'
 import BeagleWidget from './beagle-widget'
@@ -23,8 +23,14 @@ interface Props {
   navigatorRef?: MutableRefObject<BeagleNavigator<ReactElement> | undefined>,
 }
 
+let nextKey = 0
+
+const widgetBuilder = (view: BeagleView) => {
+  const id = `beagle-navigator-widget:${++nextKey}`
+  return <BeagleWidget key={id} id={id} view={view} />
+}
+
 const BeagleNavigator: FC<Props> = ({ navigatorRef }) => {
-  const widgetBuilder = (view: BeagleView) => <BeagleWidget view={view} />
   const { navigator, currentWidget } = useNavigator(widgetBuilder)
   useEffect(() => {
     if (navigatorRef) navigatorRef.current = navigator

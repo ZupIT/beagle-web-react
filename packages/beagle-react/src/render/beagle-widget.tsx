@@ -14,20 +14,25 @@
   * limitations under the License.
 */
 
-import React, { FC, MutableRefObject } from 'react'
+import React, { FC } from 'react'
 import { BeagleView } from '@zup-it/beagle-web'
 import useWidget from 'common/useWidget'
 import createReactComponentTree from 'common/renderer'
 import BeagleId from './BeagleId'
 
-const BeagleWidget: FC<{ view: BeagleView }> = ({ view }) => {
-  const { beagleService, uiTree, viewID } = useWidget(view)
+let nextKey = 0
+
+const BeagleWidget: FC<{ id?: string, view: BeagleView }> = ({
+  id = `beagle-widget:${++nextKey}`,
+  view,
+}) => {
+  const { beagleService, uiTree } = useWidget(id, view)
 
   const components = beagleService.getConfig().components
   const contentManagerMap = beagleService.viewContentManagerMap
 
-  if (!uiTree || !viewID) return <></>
-  return createReactComponentTree(components, uiTree, viewID, contentManagerMap, BeagleId)
+  if (!uiTree) return <></>
+  return createReactComponentTree(components, uiTree, id, contentManagerMap, BeagleId)
 }
 
 export default BeagleWidget

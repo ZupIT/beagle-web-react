@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { useState, useEffect, useContext, useMemo, ReactElement } from 'react'
+import { FC, useState, useEffect, useContext, useMemo, ReactElement } from 'react'
 import {
   BeagleView,
   DefaultWebNavigator,
@@ -29,7 +29,12 @@ function useNavigator(widgetBuilder: (view: BeagleView) => ReactElement) {
 
   const navigator = useMemo(() => DefaultWebNavigator.create(beagleService, widgetBuilder), [])
 
-  useEffect(() => navigator.onChange(setCurrentWidget), [])
+  useEffect(() => {
+    navigator.onChange((widget) => {
+      console.log('Navigator changed with', widget.key)
+      setCurrentWidget(widget)
+    })
+  }, [])
 
   return {
     navigator,

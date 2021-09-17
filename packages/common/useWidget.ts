@@ -18,26 +18,26 @@ import { useState, useEffect, useContext, useMemo } from 'react'
 import { BeagleUIElement, BeagleView } from '@zup-it/beagle-web'
 import BeagleProvider from './provider'
 
-let nextId = 0
-
-function useWidget(view: BeagleView) {
+function useWidget(id: string, view: BeagleView) {
   const beagleService = useContext(BeagleProvider)
   const [uiTree, setUiTree] = useState<BeagleUIElement>()
-  const viewID = useMemo(() => `${nextId++}`, [])
 
   if (!beagleService) throw Error('Couldn\'t find a BeagleProvider in the component tree!')
 
   useEffect(() => {
     view.onChange(setUiTree)
-    beagleService.viewContentManagerMap.register(`${viewID}`, view)
+    beagleService.viewContentManagerMap.register(`${id}`, view)
+    // the next two lines force a re-render in case this React component has been unmounted
+    const tree = view.getTree()
+    if (tree) view.getRenderer().doFullRender(tree)
     return () => {
-      beagleService.viewContentManagerMap.unregister(`${viewID}`)
+      beagleService.viewContentManagerMap.unregister(`${id}`)
       view.destroy()
     }
   }, [])
 
   return {
-    viewID,
+    id,
     uiTree,
     beagleService,
   }
