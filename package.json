@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "beagle-web-react",
-  "version": "1.10.0",
+  "version": "1.10.2",
   "license": "Apache-2.0",
   "licenses": [
     {
@@ -31,7 +31,7 @@
     "test": "jest ./packages/common/__tests__/"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "1.10.0"
+    "@zup-it/beagle-web": "1.10.2"
   },
   "devDependencies": {
     "@types/enzyme": "3.10.5",
