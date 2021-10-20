@@ -15,7 +15,7 @@
 */
 
 import React, { FC, useEffect } from 'react'
-import { BeagleUIElement, BeagleChildren } from '@zup-it/beagle-web'
+import { BeagleUIElement, BeagleChildren, ErrorComponentParams } from '@zup-it/beagle-web'
 import { BeagleLazyInterface } from 'common/models'
 
 const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManager }) => {
@@ -29,21 +29,25 @@ const BeagleLazy: FC<BeagleLazyInterface> = ({ path, children, viewContentManage
     beagleView.getRenderer().doFullRender(tree, anchor, 'replace')
   }
 
-  function fetchLazyView() {
-    /* here we are going to use the viewClient instead of making the request ourselves to take 
-    advantage of the cache system provided by Beagle */
+  async function fetchLazyView() {
     const beagleView = viewContentManager!.getView()
-    const { urlBuilder, viewClient } = beagleView.getBeagleService()
-    const url = urlBuilder.build(path)
-    viewClient.load({
-      url,
-      onChangeTree: replaceChildren,
-      retry: fetchLazyView,
-      shouldShowLoading: false,
-    })
+    const { viewClient } = beagleView.getBeagleService()
+    try {
+      const view = await viewClient.fetch({ url: path })
+      replaceChildren(view)
+    } catch (error) {
+      const errorView: BeagleUIElement & ErrorComponentParams = {
+        _beagleComponent_: 'custom:error',
+        errors: [error as any],
+        retry: fetchLazyView,
+      }
+      replaceChildren(errorView)
+    }
   }
 
-  useEffect(fetchLazyView, [])
+  useEffect(() => {
+    fetchLazyView()
+  }, [])
 
   return (
     <div>
