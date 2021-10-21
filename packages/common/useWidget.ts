@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import { useState, useEffect, useContext, useMemo } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BeagleUIElement, BeagleView } from '@zup-it/beagle-web'
 import BeagleProvider from './provider'
 
@@ -26,12 +26,12 @@ function useWidget(id: string, view: BeagleView) {
 
   useEffect(() => {
     view.onChange(setUiTree)
-    beagleService.viewContentManagerMap.register(`${id}`, view)
+    beagleService.viewContentManagerMap.register(id, view)
     // the next two lines force a re-render in case this React component has been unmounted
     const tree = view.getTree()
     if (tree) view.getRenderer().doFullRender(tree)
     return () => {
-      beagleService.viewContentManagerMap.unregister(`${id}`)
+      beagleService.viewContentManagerMap.unregister(id)
       view.destroy()
     }
   }, [])

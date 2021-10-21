@@ -14,7 +14,7 @@
   * limitations under the License.
 */
 
-import React, { FC, MutableRefObject, ReactElement, useEffect, createElement } from 'react'
+import React, { FC, MutableRefObject, ReactElement, useEffect } from 'react'
 import { BeagleNavigator, BeagleView } from '@zup-it/beagle-web'
 import useNavigator from 'common/useNavigator'
 import BeagleWidget from './beagle-widget'
