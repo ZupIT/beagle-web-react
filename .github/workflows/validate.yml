@@ -65,7 +65,7 @@ jobs:
       run: cd react && yarn
     
     - name: lint
-      run: cd react/packages/beagle-react && yarn lint
+      run: cd react && yarn lint
     
     - name: test
       run: cd react/packages/beagle-react && yarn test --maxWorkers=2
