@@ -33,7 +33,8 @@ jobs:
     - name: clone beagle-web-core
       uses: actions/checkout@v2
       with:
-        repository: ZupIT/beagle-web-core
+        repository: Orangestack-com/beagle-web-core
+        token: ${{ secrets.GIT_PAT }}
         path: core
 
     - name: install beagle-web-core
@@ -57,8 +58,8 @@ jobs:
     - name: link beagle-react to beagle-web-core
       run: cd react/packages/beagle-react && yarn link @zup-it/beagle-web
 
-    - name: link beagle-react-native to beagle-web-core
-      run: cd react/packages/beagle-react-native && yarn link @zup-it/beagle-web
+    #- name: link beagle-react-native to beagle-web-core
+    # run: cd react/packages/beagle-react-native && yarn link @zup-it/beagle-web
 
     - name: install
       run: cd react && yarn
@@ -79,4 +80,4 @@ jobs:
         test-command: "yarn test --maxWorkers=2"
 
     - name: type-check
-      run: cd react && yarn build
+      run: cd react/packages/beagle-react && yarn build
