@@ -80,4 +80,4 @@ jobs:
         test-command: "yarn test --maxWorkers=2"
 
     - name: type-check
-      run: cd react && yarn build
+      run: cd react/packages/beagle-react && yarn build
