@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,19 +14,12 @@
   * limitations under the License.
 */
 
-const { copyFileSync, mkdirSync } = require('fs')
+import { filterBooleanArray } from 'utils/array'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-  { src: './cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
-  {
-    src: './cli/init/boilerplate/beagle-service.ts',
-    dest: './dist/cli/init/boilerplate/beagle-service.ts',
-  },
-  { src: './cli/init/index.js', dest: './dist/cli/init/index.js' },
-]
-
-mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
-
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+describe('filterBooleanArray', () => {
+  it('should remove invalid value if found', () => {
+    const invalidArray = [true, 'a', 'teste', undefined, false]
+    const validArray = [true, 'a', 'teste']
+    expect(filterBooleanArray(invalidArray)).toStrictEqual(validArray)
+  })
+})

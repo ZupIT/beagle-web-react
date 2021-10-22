@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,19 +14,25 @@
   * limitations under the License.
 */
 
-const { copyFileSync, mkdirSync } = require('fs')
+// Link.react.test.js
+import React from 'react'
+import 'jest-styled-components'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, shallow } from 'enzyme'
+import BeagleLoading from 'components/BeagleLoading'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-  { src: './cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
-  {
-    src: './cli/init/boilerplate/beagle-service.ts',
-    dest: './dist/cli/init/boilerplate/beagle-service.ts',
-  },
-  { src: './cli/init/index.js', dest: './dist/cli/init/index.js' },
-]
+let wrapper: any
+const mockStyle: React.CSSProperties = {
+  height: '100',
+  width: '50',
+}
 
-mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
+configure({ adapter: new Adapter() })
+beforeAll(() => {
+  wrapper = shallow(<BeagleLoading className='Test Class' style={mockStyle} />)
+})
 
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+test('Beagle snapshot Loading', () => {
+  expect(wrapper).toMatchSnapshot()
+})
+

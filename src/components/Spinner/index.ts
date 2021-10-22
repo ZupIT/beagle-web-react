@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,19 +14,17 @@
   * limitations under the License.
 */
 
-const { copyFileSync, mkdirSync } = require('fs')
+import styled from 'styled-components'
+import { BeagleTheme } from 'components/commons.styled'
+import { spin } from 'components/utils/animation'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-  { src: './cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
-  {
-    src: './cli/init/boilerplate/beagle-service.ts',
-    dest: './dist/cli/init/boilerplate/beagle-service.ts',
-  },
-  { src: './cli/init/index.js', dest: './dist/cli/init/index.js' },
-]
+const Spinner = styled.div`
+  border: 8px solid ${BeagleTheme.blackTransparent};
+  border-left-color: ${BeagleTheme.athensGray};
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: ${spin} 1s linear infinite;
+`
 
-mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
-
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+export default Spinner

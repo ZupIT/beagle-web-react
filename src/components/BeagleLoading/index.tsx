@@ -1,4 +1,3 @@
-
 /*
   * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
@@ -15,19 +14,26 @@
   * limitations under the License.
 */
 
-const { copyFileSync, mkdirSync } = require('fs')
+import React, { FC } from 'react'
+import { BeagleDefaultComponent } from 'models'
+import withTheme from 'components/utils/withTheme'
+import { buildAccessibility } from 'utils/accessibility'
+import Spinner from 'components/Spinner'
+import { StyledLoading } from './styled'
 
-const filesToCopy = [
-  { src: 'package.json', dest: './dist/package.json' },
-  { src: 'README.md', dest: './dist/README.md' },
-  { src: './cli/init/boilerplate/app.tsx', dest: './dist/cli/init/boilerplate/app.tsx' },
-  {
-    src: './cli/init/boilerplate/beagle-service.ts',
-    dest: './dist/cli/init/boilerplate/beagle-service.ts',
-  },
-  { src: './cli/init/index.js', dest: './dist/cli/init/index.js' },
-]
+const BeagleLoading: FC<BeagleDefaultComponent> = props => {
+  const { className, style, accessibility } = props
+  const a11y = buildAccessibility(accessibility)
 
-mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })
+  return (
+    <StyledLoading 
+      className={className} 
+      style={style}
+      aria-busy={true}
+      {...a11y}>
+      <Spinner />
+    </StyledLoading>
+  )
+}
 
-filesToCopy.forEach(({ src, dest }) => copyFileSync(src, dest))
+export default withTheme(BeagleLoading)
