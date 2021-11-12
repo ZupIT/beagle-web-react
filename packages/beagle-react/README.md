@@ -37,7 +37,7 @@ yarn beagle init
 For npm
 
 ```
-npm beagle init
+npx beagle init
 ```
 
 ### Step 2: JSON creation to be rendered
