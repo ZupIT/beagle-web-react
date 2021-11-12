@@ -24,11 +24,27 @@ npm install --save @zup-it/beagle-react
 ## Usage configurations
 After you finished the installation,  you need to make **Beagle's usage configuration for React's framework**. To do so, you just have to follow these steps:
 
+### Step 1: Automatic configuration
 
-### Step 1: JSON creation to be rendered
+Run one of the commands below to generate the files that will be used by the Beagle library. You can run the command according to your package manager (yarn or npm):
 
-On your project, create a file named `payload.json` and copy the code below. For this example, we'll make a local JSON file to be rendered with Beagle's library.
+For yarn
 
+```
+yarn beagle init
+```
+
+For npm
+
+```
+npm beagle init
+```
+
+### Step 2: JSON creation to be rendered
+
+For the sake of this getting started you can use this URL to request a sample JSON: http://usebeagle.io.s3-website-sa-east-1.amazonaws.com/start/welcome
+
+The response should be something like the following:
 ```json
 {
     "_beagleComponent_": "beagle:container",
@@ -58,23 +74,24 @@ The Beagle's library comes with many pre-defined components ready to be used in 
 The code above creates a JSON with two os these components: container e text.
 ```
 
-### Step 2: File configuration
+### Step 3: Beagle service configuration
 
-After you add the JSON on your project, create another file in the path `/src`, but this time with the name **Beagle**. Inside it, name a new file as `beagle-service.ts`. 
+Now open the `beagle-service.ts` file that was generated in step 1 and copy this code if it is not already there:
 
-Now open the `beagle-service.ts` file and copy this code:
 ```
 import { createBeagleUIService } from '@zup-it/beagle-react'
 
 export default createBeagleUIService({
-  baseUrl: "",
+  baseUrl: "http://usebeagle.io.s3-website-sa-east-1.amazonaws.com/start/",
   components: {}
 })
 ```
 
-At this point of the configuration, you can add, for example, a path to Beagle's external server. The most indicated is to let the baseUrl propriety without value because we'll use a local file (`payload.json)` for this example. 
+Note here that we are using the same URL from step 2 but we removed the endpoint name '/welcome'
 
-Then, open the component file where you want the JSON to be rendered and change it as in the example below:
+### Step 3: Using the Beagle Remote View
+
+Open the component file where you want the JSON to be rendered and change it as in the example below:
 
 ```
 import React from 'react';
@@ -85,18 +102,17 @@ import BeagleService from './beagle/beagle-service';
 function App() {
   return (
     <BeagleProvider value={BeagleService}>
-      <BeagleRemoteView path={'/payload.json'} />
+      <BeagleRemoteView route={'/welcome'} />
     </BeagleProvider>
   );
 }
 
 export default App;
 ```
-
-When we make this note, we indicate to Beagle that our defined layout will be rendered on `payload.json` file. In this case, two components are provided on the library: 
+The beagle remove view component sets where the requested screens should be rendered within our application. In this case, the components coming from '/welcome' 
 
 - **`<BeagleProvider>`**: Responsible to provide a `value` propriety as `beagle-service` created on the previous step and contains the initial configurations; 
-- **`<BeagleRemoteView>`**: Responsible to receive a `path` propriety, which is the path to our JSON file.
+- **`<BeagleRemoteView>`**: Responsible to receive a `route` propriety, which is the route to our JSON file.
 
 ```
 Notice that here we add '/' because this value will be associated to the defined `baseUrl` on the file `beagle-service.ts`
@@ -115,9 +131,8 @@ npm run start
 
 After finished this commands, access the local: `http://localhost:3000` 
 
-You should see the screen with the text present in the text attribute in the json above
+You should see the screen represented by the JSON above
 
-`Well done, you created your first screen with Beagle!`
 
 ### Debugging beagle-react locally
 [If you want to find out how to debug beagle-react locally check this file](/docs/debug_local.md)
