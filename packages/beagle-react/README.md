@@ -1,4 +1,7 @@
+
 # [Beagle React](https://docs.usebeagle.io/v/v1.0-en/get-started/installing-beagle/web#react)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5389/badge)](https://bestpractices.coreinfrastructure.org/projects/5389)
+
 Beagle React is a Zup's open source library for using [Beagle](https://docs.usebeagle.io/v/v1.0-en/) in a [React](https://reactjs.org) based project.
 
 # Getting started
