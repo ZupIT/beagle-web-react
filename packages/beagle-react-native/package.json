@@ -33,7 +33,7 @@
     "react-native-webview": ">=11.6.2"
   },
   "devDependencies": {
-    "@types/react-native": "0.64.10",
+    "@types/react-native": "0.66.6",
     "react": "16.14.0",
     "react-native-webview": "11.6.2"
   },
