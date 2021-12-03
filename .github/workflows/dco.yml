@@ -26,5 +26,6 @@ jobs:
     steps:
       - uses: ZupIT/zup-dco-validator@18c54faf1f183c4bffddf5d81900559355bdc20a #v1.0
         env:
+          SKIP_AUTHORS: "dependabot[bot]"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_GPG: false
