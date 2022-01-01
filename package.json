@@ -45,7 +45,7 @@
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
-    "lerna": "^3.22.1",
+    "lerna": "^4.0.0",
     "nodemon": "^2.0.4",
     "ts-jest": "25.2.1",
     "tscpaths": "https://github.com/Tiagoperes/tscpaths.git#498769882091cfe6fd8c4067bb50843dc4ca551e",
