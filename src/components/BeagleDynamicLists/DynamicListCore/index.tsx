@@ -98,13 +98,10 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
     const getIterationKey = (index: number) =>
       _key && dataSource[index][_key] ? dataSource[index][_key] : index
 
-    const getBaseId = (
-      component: IdentifiableBeagleUIElement,
-      componentIndex: number,
-      suffix: string,
-    ) => component.id ? `${component.id}${suffix}` : `${element.id}:${componentIndex}`
+    const getBaseId = (component: BeagleUIElement, componentIndex: number, suffix: string) => 
+      component.id ? `${component.id}${suffix}` : `${element.id}:${componentIndex}`
 
-    const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
+    const componentManager = (component: BeagleUIElement, index: number): BeagleUIElement => {
       Tree.forEach(component, (treeComponent, componentIndex) => {
         const iterationKey = getIterationKey(index)
         const baseId = getBaseId(treeComponent, componentIndex, suffix)

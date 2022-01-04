@@ -22,6 +22,7 @@ import {
   IdentifiableBeagleUIElement, 
   DataContext,
   TemplateManagerItem,
+  Tree,
 } from '@zup-it/beagle-web'
 import { TemplateItem } from 'models'
 
@@ -59,16 +60,24 @@ export function renderListViewDynamicItems(
     default: defaultTemplate && defaultTemplate.view,
     templates: manageableTemplates,
   }
-  const componentManager = (component: IdentifiableBeagleUIElement, index: number) => {
-    const iterationKey = _key && dataSource[index][_key] ? dataSource[index][_key] : index
-    const baseId = component.id ? `${component.id}${suffix}` : `${element.id}:${index}`
-    const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
-    return {
-      ...component,
-      id: `${baseId}:${iterationKey}`,
-      key: iterationKey,
-      ...(hasSuffix ? { __suffix__: `${suffix}:${iterationKey}` } : {}),
-    }
+
+  const getIterationKey = (index: number) => 
+    _key && dataSource[index][_key] ? dataSource[index][_key] : index
+
+  const getBaseId = (component: BeagleUIElement, componentIndex: number, suffix: string) => 
+    component.id ? `${component.id}${suffix}` : `${element.id}:${componentIndex}`
+
+  const componentManager = (component: BeagleUIElement, index: number): BeagleUIElement => {
+    Tree.forEach(component, (treeComponent, componentIndex) => {
+      const iterationKey = getIterationKey(index)
+      const baseId = getBaseId(treeComponent, componentIndex, suffix)
+      const hasSuffix = ['beagle:listview', 'beagle:gridview'].includes(componentTag)
+      treeComponent.id = `${baseId}:${iterationKey}`
+      if (hasSuffix) {
+        treeComponent.__suffix__ = `${suffix}:${iterationKey}`
+      }
+    })
+    return component
   }
   const contexts: DataContext[][] = dataSource.map(item => [{ id: iteratorName, value: item }])
   renderer.doTemplateRender(manager, element.id, contexts, componentManager)

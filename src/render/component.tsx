@@ -27,7 +27,7 @@ const BeagleRemoteView: FC<BeagleRemoteViewType> = (loadParams: BeagleRemoteView
       const remote: RemoteView = typeof loadParams.route === 'string'
         ? { url: loadParams.route }
         : loadParams.route
-      navigatorRef.current.pushStack(remote, loadParams.controllerId)
+      navigatorRef.current.pushStack({ route: remote, controllerId: loadParams.controllerId })
     }
   }, [navigatorRef.current])
   
