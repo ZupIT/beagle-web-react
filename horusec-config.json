@@ -3,6 +3,7 @@
     "**/__tests__/**"
   ],
   "horusecCliFalsePositiveHashes": [
-    "3df6e0512c60da09cb3577f28cddd065218c992c12fa624a88ef3868175bff9f"
+    "3df6e0512c60da09cb3577f28cddd065218c992c12fa624a88ef3868175bff9f",
+    "85934c32e8353863733cdd0c5fb33243edef71fe773e2fa1a02e9f3491d7cf7a"
   ]
 } 
