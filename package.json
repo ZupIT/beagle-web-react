@@ -44,7 +44,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0",
+    "jest": "^27.4.7",
     "lerna": "^3.22.1",
     "nodemon": "^2.0.4",
     "ts-jest": "25.2.1",
