@@ -30,7 +30,10 @@ const BeagleText: FC<BeagleTextInterface> = (props) => {
     try {
       if (text && typeof text === 'object') {
         setRenderedText(JSON.stringify(text))
-      } else setRenderedText((text && typeof text !== 'function') ? String(text) : '')
+      } else {
+        setRenderedText((text !== null && text !== undefined && typeof text !== 'function') ?
+          String(text) : '')
+      }
     } catch (error) {
       logger.error(error)
       setRenderedText('')
