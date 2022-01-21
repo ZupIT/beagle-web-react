@@ -21,11 +21,14 @@ import { buildAccessibility } from 'utils/accessibility'
 import { StyledContainer } from './styled'
 
 const BeagleContainer: FC<BeagleContainerInterface> = props => {
-  const { children, onInit, className, style, accessibility } = props
+  const { children, onInit, className, style, accessibility, viewContentManager } = props
   const a11y = buildAccessibility(accessibility)
 
   useEffect(() => {
-    if (onInit) onInit()
+    if (onInit && !viewContentManager?.getState('hasLoaded')) {
+      viewContentManager?.setState('hasLoaded', true)
+      onInit()
+    } 
   }, [])
 
   return (

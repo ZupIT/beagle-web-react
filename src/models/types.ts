@@ -14,6 +14,7 @@
   * limitations under the License.
 */
 
+import { ViewContentManager } from '@zup-it/beagle-web'
 import { CSSProperties } from 'react'
 import { Accessibility } from './accessibility'
 
@@ -22,4 +23,5 @@ export interface BeagleDefaultComponent {
   style?: CSSProperties,
   className?: string,
   accessibility?: Accessibility,
+  viewContentManager?: ViewContentManager,
 }

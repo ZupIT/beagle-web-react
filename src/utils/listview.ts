@@ -19,7 +19,6 @@ import {
   logger, 
   ViewContentManager,
   TemplateManager, 
-  IdentifiableBeagleUIElement, 
   DataContext,
   TemplateManagerItem,
   Tree,

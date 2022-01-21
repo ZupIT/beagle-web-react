@@ -65,7 +65,10 @@ const DynamicListCoreComponent: FC<DynamicViewInterface> = ({
   )
 
   useEffect(() => {
-    if (onInit) onInit()
+    if (onInit && !viewContentManager?.getState('hasLoaded')) {
+      viewContentManager?.setState('hasLoaded', true)
+      onInit()
+    } 
   }, [])
 
   useEffect(() => {
