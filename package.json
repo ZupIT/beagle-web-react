@@ -24,7 +24,7 @@
     "lint": "eslint ./src/**/*.ts",
     "link-beagle": "cd dist && yarn link && cd ../node_modules/react && yarn link && cd ../react-dom && yarn link && cd ../..",
     "unlink-beagle": "cd dist && yarn unlink && cd ../node_modules/react && yarn unlink && cd ../react-dom && yarn unlink && cd ../..",
-    "auto-license": "ts-node bin/auto-license.ts"
+    "auto-license": "ts-node --skip-project bin/auto-license.ts"
   },
   "dependencies": {
     "@zup-it/beagle-web": "1.10.0",
