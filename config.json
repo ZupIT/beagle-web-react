@@ -28,7 +28,8 @@
     "**/*.svg",
     "**/*.lock",
     "**/*.sum",
-    "**/*.ico"
+    "**/*.ico",
+    "**/*.snap"
   ],
   "startDateLicense": 2020
 } 

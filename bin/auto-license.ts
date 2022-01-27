@@ -18,7 +18,7 @@ import { readFile, writeFile } from 'fs/promises'
 import glob from 'glob-promise'
 import { difference } from 'lodash'
 
-const whitelist = ['**/*.js', '**/*.ts', '**/*.yml']
+const whitelist = ['**/*.js', '**/*.ts', '**/*.yml', '**/*.tsx']
 const blacklist = ['node_modules/**/*.*', 'coverage/**/*.*', 'dist/**/*.*']
 const headerIdentifier = /^\s*(\*|#) Copyright 2020/gm
 
@@ -47,7 +47,7 @@ async function getFiles() {
 }
 
 function createHeader(filename: string, header: string) {
-  const shape = (filename.endsWith('.js') || filename.endsWith('.ts')) ? jsHeaderShape : defaultHeaderShape
+  const shape = (filename.endsWith('.js') || filename.endsWith('.ts') || filename.endsWith('.tsx')) ? jsHeaderShape : defaultHeaderShape
   const middleLines = header.split('\n').map(l => `${shape.middleLinePrefix}${l}`).join('\n')
   return `${shape.firstLine}\n${middleLines}\n${shape.lastLine}\n`
 }
