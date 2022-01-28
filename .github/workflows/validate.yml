@@ -33,8 +33,7 @@ jobs:
     - name: clone beagle-web-core
       uses: actions/checkout@v2
       with:
-        repository: Orangestack-com/beagle-web-core
-        token: ${{ secrets.GIT_PAT }}
+        repository: ZupIT/beagle-web-core
         path: core
 
     - name: install beagle-web-core
