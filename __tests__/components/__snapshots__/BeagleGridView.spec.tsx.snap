@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot grid view 1`] = `
+<ComponentWithTheme
+  className="Test Class"
+  dataSource={
+    Array [
+      "testA",
+      "testB",
+      "testC",
+    ]
+  }
+  listType="GRID"
+  style={
+    Object {
+      "height": "100",
+      "width": "50",
+    }
+  }
+  templates={
+    Array [
+      Object {
+        "view": Object {
+          "_beagleComponent_": "beagle:container",
+          "children": Array [
+            Object {
+              "_beagleComponent_": "beagle:text",
+              "text": "@item",
+            },
+          ],
+        },
+      },
+    ]
+  }
+/>
+`;

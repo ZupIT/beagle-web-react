@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beagle snapshot Input 1`] = `
+<BeagleInput
+  className=""
+  enabled={true}
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onFocus={[MockFunction]}
+  placeholder="Testing"
+  readOnly={false}
+  type="TEXT"
+  value="Testing"
+/>
+`;

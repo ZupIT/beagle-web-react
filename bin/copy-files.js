@@ -1,6 +1,6 @@
 
 /*
-  * Copyright 2020 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
+  * Copyright 2020, 2022 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ const filesToCopy = [
     src: './cli/init/boilerplate/beagle-service.ts',
     dest: './dist/cli/init/boilerplate/beagle-service.ts',
   },
-  { src: '../../cli/init/index.js', dest: './dist/cli/init/index.js' },
+  { src: './cli/init/index.js', dest: './dist/cli/init/index.js' },
 ]
 
 mkdirSync('./dist/cli/init/boilerplate/', { recursive: true })

@@ -8,9 +8,19 @@
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "jsx": "react",
+    "outDir": "./dist/",
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "models/*": ["models/*"],
+      "render/*": ["render/*"],
+      "utils/*": ["utils/*"],
+      "types/*": ["types/*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*", "__tests__/**/*"],
+  "exclude": ["node_modules"]
 }
