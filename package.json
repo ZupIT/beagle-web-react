@@ -52,7 +52,7 @@
     "eslint-plugin-react": "^7.19.0",
     "glob": "^7.2.0",
     "glob-promise": "^4.2.2",
-    "husky": "^4.2.5",
+    "husky": "^7.0.4",
     "jest": "^26.1.0",
     "jest-mock-extended": "^1.0.10",
     "jest-styled-components": "^7.0.3",
