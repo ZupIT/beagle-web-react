@@ -62,7 +62,7 @@ const BeagleButton: FC<BeagleButtonInterface> = ({
       aria-disabled={isDisabled}
       {...a11y}
     >
-      {text}
+      {typeof text === 'string' ? text : JSON.stringify(text)}
     </StyledBeagleButton>
   )
 }
