@@ -23,7 +23,7 @@ import defaultComponents from './components'
 function createBeagleUIService<Schema = DefaultSchema>(config: BeagleConfig<Schema>) {
   return createBeagleCoreUIService<Schema>({
     ...config,
-    platform: 'WEB',
+    platform: 'WEB-React',
     components: {
       ...defaultComponents,
       ...config.components,
