@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  * Copyright 2020, 2022 ZUP IT SERVICOS EM TECNOLOGIA E INOVACAO SA
  * 
@@ -13,8 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#!/usr/bin/env node
 
 (async () => {
   const { promises, existsSync } = require('fs')
