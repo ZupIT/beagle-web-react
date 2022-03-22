@@ -14,7 +14,7 @@
   # limitations under the License.
 #
 
-name: Horusec Pull Request
+name: Horusec Validation
 
 on:
   pull_request:
@@ -24,8 +24,8 @@ on:
       - release/*
 
 jobs:
-  horusec:
-    name: horusec
+  horusec-validation:
+    name: Horusec Validation
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -34,6 +34,13 @@ jobs:
           depth: 0
 
       - name: Running Horusec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HORUSEC_CLI_REPOSITORY_AUTHORIZATION: ${{secrets.HORUSEC_TOKEN}}
+          HORUSEC_CLI_HORUSEC_API_URI: "https://api-horusec.zup.com.br"
+          HORUSEC_CLI_REPOSITORY_NAME: ${{ github.event.pull_request.head.repo.full_name }}
+          REPOSITORY_OWNER: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-rc
-          horusec start -p . -e true -u "https://api-horusec.zup.com.br" -G true -n "${GITHUB_REPOSITORY}_${GITHUB_REF##*/}"
+          echo "Repository Owner is: ${{env.REPOSITORY_OWNER}}"
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-rc 
+          horusec start -p . -e=$(if [ "${{env.REPOSITORY_OWNER}}" == "ZupIT/beagle-android" ]; then echo "true"; else echo "false"; fi) -G true
