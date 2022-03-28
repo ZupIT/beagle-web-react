@@ -21,7 +21,6 @@ const { versionToArray, fetchNpmVersion, getPackageJson } = require('./utils')
 function isVersionGreater(a, b) {
   const aAsArray = versionToArray(a)
   const bAsArray = versionToArray(b)
-  let isGreater = false
   return aAsArray.reduce((isGreater, aValue, index) => isGreater || aValue > bAsArray[index], false)
 }
 
