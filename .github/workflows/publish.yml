@@ -18,7 +18,7 @@ name: Publishing process
 
 on:
   push:
-    branches: [ main ]
+    branches: [ release/2.0.0 ]
 
 jobs:
   publish:
@@ -30,63 +30,63 @@ jobs:
 
       # get the version in package.json
       - name: get current version
-        run: echo PACKAGE_VERSION=$(node bin/publish/get-version) >> $GITHUB_ENV
+        run: echo PACKAGE_VERSION=$(node ../bin/publish/get-version) >> $GITHUB_ENV
       
       # check if the version in package.json is greater than the version in NPM
   
       - name: check if this version should be published
-        run: echo SHOULD_PUBLISH=$(node bin/publish/should-publish) >> $GITHUB_ENV
+        run: echo SHOULD_PUBLISH=$(node ../bin/publish/should-publish) >> $GITHUB_ENV
 
       # if it's a new version, create a new release
 
-      - name: create release
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ env.PACKAGE_VERSION }}
-          release_name: Release v${{ env.PACKAGE_VERSION }}
-          body: |
-            Todo: release notes should go here
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+      # - name: create release
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: v${{ env.PACKAGE_VERSION }}
+      #     release_name: Release v${{ env.PACKAGE_VERSION }}
+      #     body: |
+      #       Todo: release notes should go here
+      #       - First Change
+      #       - Second Change
+      #     draft: false
+      #     prerelease: false
 
-      # if it's a new version, publish to NPM
+      # # if it's a new version, publish to NPM
 
-      - name: clear cache
-        run: cd packages/beagle-react && yarn cache clean
+      # - name: clear cache
+      #   run: yarn cache clean
 
-      - name: install
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && yarn
+      # - name: install
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   run: yarn
 
-      - name: setup node
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
+      # - name: setup node
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '12.x'
+      #     registry-url: 'https://registry.npmjs.org'
 
-      - name: build
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && yarn build
+      # - name: build
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   run: yarn build
 
-      - name: Read secrets from AWS Secrets Manager into environment variables
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        uses: abhilash1in/aws-secrets-manager-action@v1.0.1
-        with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: us-east-1
-            secrets: |
-                beagle/web/publish
-            parse-json: true
+      # - name: Read secrets from AWS Secrets Manager into environment variables
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   uses: abhilash1in/aws-secrets-manager-action@v1.0.1
+      #   with:
+      #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #       aws-region: us-east-1
+      #       secrets: |
+      #           beagle/web/publish
+      #       parse-json: true
 
-      - name: publish to NPM
-        if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && cd dist && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ env.BEAGLE_WEB_PUBLISH_NPM_AUTH }}
+      # - name: publish to NPM
+      #   if: ${{ env.SHOULD_PUBLISH == 'true' }}
+      #   run: cd dist && npm publish --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ env.BEAGLE_WEB_PUBLISH_NPM_AUTH }}
