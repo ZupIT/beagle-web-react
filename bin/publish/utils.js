@@ -32,7 +32,7 @@ function fetchNpmVersion(packageName) {
 }
 
 function getPackageJson() {
-  return require('../package.json')
+  return require('./package.json')
 }
 
 module.exports = {
