@@ -57,11 +57,11 @@ jobs:
       # if it's a new version, publish to NPM
 
       - name: clear cache
-        run: cd packages/beagle-react && yarn cache clean
+        run: yarn cache clean
 
       - name: install
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && yarn
+        run: yarn
 
       - name: setup node
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: build
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && yarn build
+        run: yarn build
 
       - name: Read secrets from AWS Secrets Manager into environment variables
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
@@ -87,6 +87,6 @@ jobs:
 
       - name: publish to NPM
         if: ${{ env.SHOULD_PUBLISH == 'true' }}
-        run: cd packages/beagle-react && cd dist && npm publish --access public
+        run: cd dist && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ env.BEAGLE_WEB_PUBLISH_NPM_AUTH }}
