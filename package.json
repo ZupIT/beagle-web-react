@@ -35,7 +35,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@types/enzyme": "3.10.5",
+    "@types/enzyme": "3.10.12",
     "@types/enzyme-adapter-react-16": "1.0.6",
     "@types/jest": "25.1.4",
     "@types/lodash": "^4.14.178",
