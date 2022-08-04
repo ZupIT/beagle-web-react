@@ -41,7 +41,7 @@ const createReactComponentTree = <Schema>(
 
   if (!Component) {
     console.error(
-      `Error: Beagle could not find component ${_beagleComponent_}. This component and its children won't be rendered.`
+      `Error: Beagle could not find component ${_beagleComponent_ as string}. This component and its children won't be rendered.`
     )
     return createElement(Fragment)
   }
