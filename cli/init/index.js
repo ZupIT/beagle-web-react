@@ -48,7 +48,7 @@
 
   await mkdir(`${srcPath}/${beaglePath}/`, { recursive: true })
   await createBeagleFile(beaglePath, 'beagle-service.ts')
-  await createBeagleFile('', 'app.tsx')
+  await createBeagleFile('', 'App.tsx')
   console.log("success! all configuration files were created correctly")
   process.exit()
 })()
