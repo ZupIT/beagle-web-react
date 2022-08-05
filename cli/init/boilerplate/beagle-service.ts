@@ -17,6 +17,6 @@
 import { createBeagleUIService } from '@zup-it/beagle-react'
 
 export default createBeagleUIService({
-  baseUrl: 'http://usebeagle.io.s3-website-sa-east-1.amazonaws.com/start/',
+  baseUrl: 'https://62ed756ec1ef25f3da7a5452.mockapi.io/start',
   components: {},
 })

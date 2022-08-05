@@ -18,37 +18,45 @@
 
 (async () => {
   const { constants, promises: { access, mkdir, readFile, writeFile } } = require('fs')
-  const { question } = require('readline').createInterface({ input: process.stdin, output: process.stdout })
   const srcPath = 'src'
-  const beaglePath = 'beagle'
+  const beaglePath = `${srcPath}/beagle`
   const yes = (answer) => /^(y|yes)$/gi.test(answer)
-  const getDirPath = (path) => `${srcPath}/${path}`
-  const questionAsync = (query) => new Promise((resolve) => { question(query, (answer) => { resolve(answer) }) })
+  const questionAsync = (query) => new Promise((resolve) => { 
+    require('readline')
+      .createInterface({ input: process.stdin, output: process.stdout })
+      .question(query, (answer) => { resolve(answer) })
+  })
+  const getBoilerplateContent = async (path) => await readFile(`${__dirname}/boilerplate/${path}`)
   
-  const createFile = async (path, contentOrPath, fetchContent = false) => {
+  const createFile = async (path, content) => {
     try {
-      let fileContent = contentOrPath
-      if (fetchContent) fileContent = await readFile(`${__dirname}/boilerplate/${contentOrPath}`)
-      await writeFile(getDirPath(path), fileContent, 'utf8')
+      await writeFile(path, content, 'utf8')
     } catch (e) {
       console.error(e)
       process.exit(1)
     }
   }
   
-  const createBeagleFile = async (path, name) => {
+  const createOrOverrideFile = async (path, content) => {
     try {
-      await access(getDirPath(path), constants.F_OK)
-      const answer = await questionAsync(`The file "${name}" already exists! Do you want to replace the content with the Beagle configuration (Y/N)?`)
-      yes(answer) && await createFile(path, name, true)
+      await access(path, constants.F_OK)
+      const answer = await questionAsync(`The file "${path}" already exists! Do you want to replace the content with the Beagle configuration (Y/N)?`)
+      yes(answer) && await createFile(path, content)
     } catch (_) {
-      await createFile(`${path}/${name}`, name, true)
+      console.log(_)
+      await createFile(path, content)
     }
   }
 
-  await mkdir(`${srcPath}/${beaglePath}/`, { recursive: true })
-  await createBeagleFile(beaglePath, 'beagle-service.ts')
-  await createBeagleFile('', 'App.tsx')
+  await mkdir(beaglePath, { recursive: true })
+  await createOrOverrideFile(`${beaglePath}/beagle-service.ts`, await getBoilerplateContent('beagle-service.ts'))
+  await createOrOverrideFile(`${srcPath}/App.tsx`, await getBoilerplateContent('App.tsx'))
+  /** Due to some issues related to Create React App (CRA) after version 5, this file is needed to be created.
+   * More here:
+   * Discussion: https://github.com/facebook/create-react-app/discussions/11767
+   * Pull to br merged: https://github.com/facebook/create-react-app/pull/11752
+   */
+  await createOrOverrideFile('.env', 'GENERATE_SOURCEMAP=false')
   console.log("success! all configuration files were created correctly")
   process.exit()
 })()
