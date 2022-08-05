@@ -17,78 +17,46 @@
  */
 
 (async () => {
-  const { promises, existsSync } = require('fs')
-  const { mkdir, readFile, writeFile } = promises
-  const fileOptions = { encoding: 'utf8' }
-  const dir = "src"
-  const beagleContent = await readFile(__dirname + '/boilerplate/beagle-service.ts')
-  const appContent = await readFile(__dirname + '/boilerplate/app.tsx')
-  const appTsx = 'app.tsx'
-  const beagleServicePath = 'beagle/beagle-service.ts'
-  const readline = require('readline')
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
+  const { constants, promises: { access, mkdir, readFile, writeFile } } = require('fs')
+  const srcPath = 'src'
+  const beaglePath = `${srcPath}/beagle`
+  const yes = (answer) => /^(y|yes)$/gi.test(answer)
+  const questionAsync = (query) => new Promise((resolve) => { 
+    require('readline')
+      .createInterface({ input: process.stdin, output: process.stdout })
+      .question(query, (answer) => { resolve(answer) })
   })
-
-  await mkdir(`${dir}/beagle/`, { recursive: true });
-
-  const beagleServiceExists = path => existsSync(`${path}/${beagleServicePath}`)
-
-  const appTsxExists = async (path) => {
-    const exists = existsSync(`${path}/app.tsx`)
-    if (exists) {
-      overwriteAppTsx()
-    }
-    else {
-      generateAppTsx()
-    }
-  }
-
-  const generateAppTsx = async () => {
-    await createFile(`${dir}/${appTsx}`, appContent)
-    console.log("success! all configuration files were created correctly")
-    process.exit()
-  }
-
+  const getBoilerplateContent = async (path) => await readFile(`${__dirname}/boilerplate/${path}`)
+  
   const createFile = async (path, content) => {
     try {
-      await writeFile(path, content, fileOptions)
-    } catch (error) {
-      console.error(error)
+      await writeFile(path, content, 'utf8')
+    } catch (e) {
+      console.error(e)
       process.exit(1)
     }
   }
-
-  const overwriteAppTsx = async () => {
-    rl.question('Do you want to replace "app.tsx" content with the Beagle configuration (y or n)?', async (answer) => {
-      if (new RegExp(`^${answer}$`, 'i').test('y')) {
-        await createFile(`${dir}/app.tsx`, appContent)
-        console.log("success! all configuration files were created correctly")
-        process.exit()
-      }
-      else {
-        console.log("success! all configuration files were created correctly")
-        process.exit()
-      }
-    })
+  
+  const createOrOverrideFile = async (path, content) => {
+    try {
+      await access(path, constants.F_OK)
+      const answer = await questionAsync(`The file "${path}" already exists! Do you want to replace the content with the Beagle configuration (Y/N)?`)
+      yes(answer) && await createFile(path, content)
+    } catch (_) {
+      console.log(_)
+      await createFile(path, content)
+    }
   }
 
-  const beagleServiceFileExists = await beagleServiceExists(dir)
-
-  if (!beagleServiceFileExists) {
-    await createFile(`${dir}/${beagleServicePath}`, beagleContent)
-    appTsxExists(dir)
-  }
-  else {
-    rl.question('Do you want to replace "beagle-service.ts" content with the Beagle default configuration (y or n)?', async (answer) => {
-      if (new RegExp(`^${answer}$`, 'i').test('y')) {
-        await createFile(`${dir}/${beagleServicePath}`, beagleContent)
-        appTsxExists(dir)
-      }
-      else {
-        appTsxExists(dir)
-      }
-    })
-  }
+  await mkdir(beaglePath, { recursive: true })
+  await createOrOverrideFile(`${beaglePath}/beagle-service.ts`, await getBoilerplateContent('beagle-service.ts'))
+  await createOrOverrideFile(`${srcPath}/App.tsx`, await getBoilerplateContent('App.tsx'))
+  /** Due to some issues related to Create React App (CRA) after version 5, this file is needed to be created.
+   * More here:
+   * Discussion: https://github.com/facebook/create-react-app/discussions/11767
+   * Pull to br merged: https://github.com/facebook/create-react-app/pull/11752
+   */
+  await createOrOverrideFile('.env', 'GENERATE_SOURCEMAP=false')
+  console.log("success! all configuration files were created correctly")
+  process.exit()
 })()
