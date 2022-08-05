@@ -18,22 +18,18 @@
 
 (async () => {
   const { constants, promises: { access, mkdir, readFile, writeFile } } = require('fs')
-  const paths = {
-    src: 'src',
-    appTsx: 'app.tsx',
-    beagleService: 'beagle/beagle-service.ts',
-    beagleServiceFile: 'beagle-service.ts',
-  }
-  
-  const questionAsync = (query) => new Promise((resolve) => {
-    require('readline').createInterface({ input: process.stdin, output: process.stdout }).question(query, (answer) => { resolve(answer) })
-  })
+  const { question } = require('readline').createInterface({ input: process.stdin, output: process.stdout })
+  const srcPath = 'src'
+  const beaglePath = 'beagle'
+  const yes = (answer) => /^(y|yes)$/gi.test(answer)
+  const getDirPath = (path) => `${srcPath}/${path}`
+  const questionAsync = (query) => new Promise((resolve) => { question(query, (answer) => { resolve(answer) }) })
   
   const createFile = async (path, contentOrPath, fetchContent = false) => {
     try {
       let fileContent = contentOrPath
       if (fetchContent) fileContent = await readFile(`${__dirname}/boilerplate/${contentOrPath}`)
-      await writeFile(`${paths.src}/${path}`, fileContent, 'utf8')
+      await writeFile(getDirPath(path), fileContent, 'utf8')
     } catch (e) {
       console.error(e)
       process.exit(1)
@@ -42,17 +38,17 @@
   
   const createBeagleFile = async (path, name) => {
     try {
-      await access(`${paths.src}/${path}`, constants.F_OK)
+      await access(getDirPath(path), constants.F_OK)
       const answer = await questionAsync(`The file "${name}" already exists! Do you want to replace the content with the Beagle configuration (Y/N)?`)
-      if (/^(y|yes)$/gi.test(answer)) await createFile(path, name, true)
+      yes(answer) && await createFile(path, name, true)
     } catch (_) {
-      await createFile(path, name, true)
+      await createFile(`${path}/${name}`, name, true)
     }
   }
 
-  await mkdir(`${paths.src}/beagle/`, { recursive: true })
-  createBeagleFile(paths.beagleService, paths.beagleServiceFile)
-  createBeagleFile(paths.appTsx, paths.appTsx)
+  await mkdir(`${srcPath}/${beaglePath}/`, { recursive: true })
+  await createBeagleFile(beaglePath, 'beagle-service.ts')
+  await createBeagleFile('', 'app.tsx')
   console.log("success! all configuration files were created correctly")
   process.exit()
 })()
