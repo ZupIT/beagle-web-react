@@ -54,7 +54,7 @@
     "glob-promise": "^4.2.2",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
-    "jest-mock-extended": "^1.0.10",
+    "jest-mock-extended": "^2.0.7",
     "jest-styled-components": "^7.0.3",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.4",
