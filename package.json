@@ -27,7 +27,7 @@
     "auto-license": "ts-node --skip-project bin/auto-license.ts"
   },
   "dependencies": {
-    "@zup-it/beagle-web": "2.0.1",
+    "@zup-it/beagle-web": "2.0.2",
     "styled-components": "^5.1.1"
   },
   "peerDependencies": {
