@@ -18,7 +18,6 @@ import React, { FC, useEffect, useRef, Children, useMemo, useState } from 'react
 import { BeagleUIElement, ImplicitDataContext, TemplateManagerItem, Tree } from '@zup-it/beagle-web'
 import { isContextExpression } from '@zup-it/beagle-web/utils/expression'
 import setContext from '@zup-it/beagle-web/action/set-context'
-import '@zup-it/beagle-web/extensions/object.extensions'
 import { logger } from '@zup-it/beagle-web'
 import { TemplateManager } from '@zup-it/beagle-web'
 import { BeagleGridViewInterface, BeagleListViewInterface } from 'models'
