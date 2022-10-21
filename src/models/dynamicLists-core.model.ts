@@ -29,6 +29,7 @@ export interface DynamicListCoreInterface extends BeagleDefaultComponent, Beagle
   direction?: Direction,
   dataSource: any[],
   iteratorName?: string,
+  indexName?: string,
   onInit?: () => void,
   onScrollEnd?: () => void,
   scrollEndThreshold?: number,
