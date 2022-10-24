@@ -23,9 +23,9 @@ import { StyledImage, StyledFigure } from './styled'
 
 const modeMap = {
   FIT_XY: 'fill',
-  CENTER_CROP: 'none',
-  CENTER: 'contain',
-  FIT_CENTER: 'cover',
+  CENTER_CROP: 'cover',
+  CENTER: 'none',
+  FIT_CENTER: 'contain',
 }
 
 const BeagleImage: FC<BeagleImageInterface> = ({
